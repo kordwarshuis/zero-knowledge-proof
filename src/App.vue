@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, onUnmounted } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import Character from './components/Character.vue'
 import PlayingCard from './components/PlayingCard.vue'
 import { useI18n } from './composables/useI18n.js'
@@ -24,6 +24,8 @@ const {
   reset,
   setNarrow,
 } = game
+
+const menuOpen = ref(false)
 
 const steps = [
   { id: 'inspect', labelKey: 'steps.inspect' },
@@ -53,6 +55,23 @@ const activeStep = computed(() => {
   if (['sorting', 'proving'].includes(step.value)) return 'prove'
   return 'result'
 })
+
+const activeStepIndex = computed(() =>
+  steps.findIndex((item) => item.id === activeStep.value),
+)
+
+function toggleMenu() {
+  menuOpen.value = !menuOpen.value
+}
+
+function closeMenu() {
+  menuOpen.value = false
+}
+
+function chooseLocale(next) {
+  setLocale(next)
+  closeMenu()
+}
 
 const personANote = computed(() => {
   switch (step.value) {
@@ -167,6 +186,10 @@ const showSecretPile = computed(
     remaining.value.length > 0,
 )
 
+function onKeydown(event) {
+  if (event.key === 'Escape' && menuOpen.value) closeMenu()
+}
+
 function syncViewport() {
   setNarrow(window.matchMedia('(max-width: 720px)').matches)
 }
@@ -174,55 +197,97 @@ function syncViewport() {
 onMounted(() => {
   syncViewport()
   window.addEventListener('resize', syncViewport)
+  window.addEventListener('keydown', onKeydown)
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', syncViewport)
+  window.removeEventListener('keydown', onKeydown)
 })
 </script>
 
 <template>
   <div class="page">
     <header class="top">
-      <nav class="lang-switch" :aria-label="t('language')">
-        <button
-          type="button"
-          :class="{ 'is-active': locale === 'nl' }"
-          :aria-pressed="locale === 'nl'"
-          @click="setLocale('nl')"
-        >
-          NL
-        </button>
-        <button
-          type="button"
-          :class="{ 'is-active': locale === 'en' }"
-          :aria-pressed="locale === 'en'"
-          @click="setLocale('en')"
-        >
-          EN
-        </button>
-      </nav>
-      <p class="eyebrow">{{ t('eyebrow') }}</p>
-      <h1>{{ t('title') }}</h1>
-      <p class="lede">
-        {{ t('ledeBefore') }}
-        <em>{{ t('ledeEm') }}</em>
-        {{ t('ledeAfter') }}
-      </p>
-      <ol class="progress" :aria-label="t('stepsLabel')">
-        <li
-          v-for="item in steps"
-          :key="item.id"
-          :class="{
-            'is-active': activeStep === item.id,
-            'is-done':
-              steps.findIndex((stepItem) => stepItem.id === activeStep) >
-              steps.findIndex((stepItem) => stepItem.id === item.id),
-          }"
-        >
-          {{ t(item.labelKey) }}
-        </li>
-      </ol>
+      <div class="title-row">
+        <div class="brand">
+          <h1>{{ t('title') }}</h1>
+          <ol class="progress" :aria-label="t('stepsLabel')">
+            <li
+              v-for="(item, index) in steps"
+              :key="item.id"
+              :class="{
+                'is-active': activeStep === item.id,
+                'is-done': activeStepIndex > index && activeStepIndex !== -1,
+              }"
+            >
+              <span class="step-label">{{ t(item.labelKey) }}</span>
+            </li>
+          </ol>
+        </div>
+
+        <div class="menu">
+          <button
+            class="menu-toggle"
+            type="button"
+            :aria-expanded="menuOpen"
+            aria-controls="site-menu"
+            :aria-label="menuOpen ? t('menuClose') : t('menuOpen')"
+            @click="toggleMenu"
+          >
+            <span class="burger" :class="{ 'is-open': menuOpen }" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </span>
+          </button>
+
+          <div
+            v-if="menuOpen"
+            class="menu-backdrop"
+            aria-hidden="true"
+            @click="closeMenu"
+          ></div>
+
+          <div
+            v-show="menuOpen"
+            id="site-menu"
+            class="menu-panel"
+            role="dialog"
+            :aria-label="t('menu')"
+          >
+            <section class="menu-section">
+              <h2>{{ t('language') }}</h2>
+              <div class="lang-switch" :aria-label="t('language')">
+                <button
+                  type="button"
+                  :class="{ 'is-active': locale === 'nl' }"
+                  :aria-pressed="locale === 'nl'"
+                  @click="chooseLocale('nl')"
+                >
+                  NL
+                </button>
+                <button
+                  type="button"
+                  :class="{ 'is-active': locale === 'en' }"
+                  :aria-pressed="locale === 'en'"
+                  @click="chooseLocale('en')"
+                >
+                  EN
+                </button>
+              </div>
+            </section>
+
+            <section class="menu-section">
+              <h2>{{ t('info') }}</h2>
+              <p class="eyebrow">{{ t('eyebrow') }}</p>
+              <p class="lede">
+                {{ t('ledeBefore') }}
+                <em>{{ t('ledeEm') }}</em>
+                {{ t('ledeAfter') }}
+              </p>
+            </section>
+          </div>
+        </div>
+      </div>
     </header>
 
     <div class="people">
@@ -324,21 +389,194 @@ onUnmounted(() => {
 .page {
   width: min(1080px, 100%);
   margin: 0 auto;
-  padding: 28px 20px 48px;
+  padding: 14px 20px 36px;
+}
+
+.top {
+  margin-bottom: 12px;
+}
+
+.title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  min-width: 0;
+  flex: 1;
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.progress {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0;
+  padding: 0;
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.progress li {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(201, 214, 204, 0.55);
+}
+
+.progress li:not(:last-child)::after {
+  content: '·';
+  margin: 0 0.55em;
+  color: rgba(230, 200, 122, 0.45);
+  font-weight: 600;
+}
+
+.progress li .step-label {
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+
+.progress li.is-done {
+  color: #cde3d4;
+}
+
+.progress li.is-active {
+  color: var(--cream);
+}
+
+.progress li.is-active .step-label {
+  border-bottom-color: var(--brass);
+}
+
+.menu {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.menu-toggle {
+  appearance: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid rgba(230, 200, 122, 0.28);
+  background: rgba(15, 24, 20, 0.55);
+  color: var(--cream);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.menu-toggle:focus-visible {
+  outline: 2px solid #f7f1e6;
+  outline-offset: 2px;
+}
+
+.burger {
+  width: 18px;
+  height: 12px;
+  position: relative;
+  display: block;
+}
+
+.burger i {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 1px;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    top 0.2s ease;
+}
+
+.burger i:nth-child(1) {
+  top: 0;
+}
+
+.burger i:nth-child(2) {
+  top: 5px;
+}
+
+.burger i:nth-child(3) {
+  top: 10px;
+}
+
+.burger.is-open i:nth-child(1) {
+  top: 5px;
+  transform: rotate(45deg);
+}
+
+.burger.is-open i:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.is-open i:nth-child(3) {
+  top: 5px;
+  transform: rotate(-45deg);
+}
+
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(8, 12, 10, 0.35);
+}
+
+.menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 90;
+  width: min(22rem, calc(100vw - 40px));
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(16, 24, 20, 0.96);
+  border: 1px solid rgba(230, 200, 122, 0.22);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+}
+
+.menu-section + .menu-section {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(230, 200, 122, 0.14);
+}
+
+.menu-section h2 {
+  margin: 0 0 8px;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass);
 }
 
 .lang-switch {
   display: flex;
-  justify-content: center;
-  gap: 4px;
-  margin-bottom: 14px;
+  gap: 6px;
 }
 
 .lang-switch button {
   appearance: none;
   min-width: 44px;
   padding: 6px 10px;
-  border-radius: 999px;
+  border-radius: 8px;
   border: 1px solid rgba(230, 200, 122, 0.28);
   background: transparent;
   color: var(--muted);
@@ -360,68 +598,26 @@ onUnmounted(() => {
   outline-offset: 2px;
 }
 
-.top {
-  text-align: center;
-  margin-bottom: 22px;
-}
-
 .eyebrow {
   margin: 0 0 8px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 0.72rem;
-  color: var(--brass);
-}
-
-h1 {
-  margin: 0;
-  font-family: var(--heading);
-  font-size: clamp(2rem, 5vw, 3.4rem);
-  font-weight: 600;
-  color: var(--cream);
-  letter-spacing: -0.03em;
+  font-size: 0.68rem;
+  color: var(--muted);
 }
 
 .lede {
-  margin: 10px auto 0;
-  max-width: 42rem;
-  color: var(--muted);
-}
-
-.progress {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 0;
-  margin: 22px 0 0;
-  flex-wrap: wrap;
-}
-
-.progress li {
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(230, 200, 122, 0.25);
-  color: var(--muted);
-  font-size: 0.82rem;
-}
-
-.progress li.is-active {
-  background: rgba(230, 200, 122, 0.16);
+  margin: 0;
   color: var(--cream);
-  border-color: var(--brass);
-}
-
-.progress li.is-done {
-  color: #cde3d4;
-  border-color: rgba(205, 227, 212, 0.35);
+  font-size: 0.95rem;
+  line-height: 1.45;
 }
 
 .people {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .table {
@@ -436,8 +632,8 @@ h1 {
 
 .felt {
   position: relative;
-  height: min(54vh, 500px);
-  min-height: 380px;
+  height: min(62vh, 560px);
+  min-height: 400px;
   border-radius: 18px;
   overflow: hidden;
   background:
@@ -606,8 +802,8 @@ h1 {
 }
 
 .panel {
-  margin-top: 18px;
-  padding: 20px 22px;
+  margin-top: 14px;
+  padding: 16px 18px;
   border-radius: 18px;
   background: rgba(15, 24, 20, 0.92);
   border: 1px solid rgba(230, 200, 122, 0.18);
@@ -619,12 +815,12 @@ h1 {
 .narration {
   margin: 0;
   color: var(--cream);
-  font-size: 1.05rem;
-  line-height: 1.5;
+  font-size: 1.02rem;
+  line-height: 1.45;
 }
 
 .action {
-  margin-top: 16px;
+  margin-top: 14px;
   appearance: none;
   border: 0;
   border-radius: 999px;
@@ -648,13 +844,13 @@ h1 {
 }
 
 .wait {
-  margin: 16px 0 0;
+  margin: 14px 0 0;
   color: var(--muted);
   min-height: 1.2em;
 }
 
 .properties {
-  margin: 16px 0 0;
+  margin: 14px 0 0;
   padding: 0;
   list-style: none;
   display: grid;

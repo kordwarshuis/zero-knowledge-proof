@@ -5,6 +5,10 @@ export const messages = {
     htmlLang: 'nl',
     documentTitle: 'Zero-knowledgebewijs met speelkaarten',
     language: 'Taal',
+    menu: 'Menu',
+    menuOpen: 'Menu openen',
+    menuClose: 'Menu sluiten',
+    info: 'Info',
     eyebrow: 'Een kleine demonstratie aan de kaarttafel',
     title: 'Zero-knowledgebewijs',
     ledeBefore:
@@ -126,6 +130,10 @@ export const messages = {
     htmlLang: 'en',
     documentTitle: 'Zero-Knowledge Proof with playing cards',
     language: 'Language',
+    menu: 'Menu',
+    menuOpen: 'Open menu',
+    menuClose: 'Close menu',
+    info: 'Info',
     eyebrow: 'A small card-table demonstration',
     title: 'Zero-knowledge proof',
     ledeBefore:

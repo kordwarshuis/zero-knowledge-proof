@@ -52,14 +52,14 @@ defineProps({
 <style scoped>
 .character {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  align-items: flex-start;
+  gap: 12px;
   min-width: 0;
 }
 
 .portrait {
-  width: 72px;
-  height: 72px;
+  width: 56px;
+  height: 56px;
   flex: 0 0 auto;
 }
 
@@ -125,31 +125,26 @@ defineProps({
 .title {
   margin: 0;
   font-family: var(--heading);
-  font-size: 1.15rem;
+  font-size: 1rem;
   color: var(--cream);
 }
 
 .subtitle {
-  margin: 2px 0 0;
-  font-size: 0.85rem;
+  margin: 1px 0 0;
+  font-size: 0.8rem;
   color: var(--muted);
 }
 
 .note {
-  margin: 8px 0 0;
-  font-size: 0.92rem;
+  margin: 4px 0 0;
+  font-size: 0.86rem;
   line-height: 1.35;
   color: var(--cream);
 }
 
 @media (max-width: 720px) {
-  .portrait {
-    width: 56px;
-    height: 56px;
-  }
-
   .title {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }
 </style>
