@@ -43,7 +43,7 @@ defineProps({
     </svg>
     <div class="copy">
       <p class="title">{{ title }}</p>
-      <p class="subtitle">{{ subtitle }}</p>
+      <p v-if="subtitle" class="subtitle">{{ subtitle }}</p>
       <p v-if="note" class="note">{{ note }}</p>
     </div>
   </div>
