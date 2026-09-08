@@ -2,16 +2,40 @@ import { computed, ref, watch } from 'vue'
 import { messages } from '../i18n/messages.js'
 
 const STORAGE_KEY = 'zkp-locale'
+const PARAM = 'lang'
 
-function detectLocale() {
+function isLocale(value) {
+  return value === 'nl' || value === 'en'
+}
+
+function localeFromUrl() {
+  const value = new URLSearchParams(window.location.search).get(PARAM)
+  return isLocale(value) ? value : null
+}
+
+function localeFromStorage() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved === 'nl' || saved === 'en') return saved
+    return isLocale(saved) ? saved : null
   } catch {
-    // Ignore blocked storage.
+    return null
   }
+}
+
+function localeFromBrowser() {
   const language = (navigator.language || '').toLowerCase()
   return language.startsWith('nl') ? 'nl' : 'en'
+}
+
+function detectLocale() {
+  return localeFromUrl() ?? localeFromStorage() ?? localeFromBrowser()
+}
+
+function writeUrlLocale(next) {
+  const url = new URL(window.location.href)
+  if (url.searchParams.get(PARAM) === next) return
+  url.searchParams.set(PARAM, next)
+  window.history.replaceState(window.history.state, '', url)
 }
 
 const locale = ref(detectLocale())
@@ -31,10 +55,16 @@ function applyDocumentLanguage(next) {
   document.title = messages[next].documentTitle
 }
 
+function syncFromUrl() {
+  const fromUrl = localeFromUrl()
+  if (fromUrl && fromUrl !== locale.value) locale.value = fromUrl
+}
+
 watch(
   locale,
   (next) => {
     applyDocumentLanguage(next)
+    writeUrlLocale(next)
     try {
       localStorage.setItem(STORAGE_KEY, next)
     } catch {
@@ -43,6 +73,8 @@ watch(
   },
   { immediate: true },
 )
+
+window.addEventListener('popstate', syncFromUrl)
 
 export function useI18n() {
   const t = (path, vars) => interpolate(lookup(path) ?? path, vars)
@@ -56,7 +88,7 @@ export function useI18n() {
   }
 
   function setLocale(next) {
-    if (next === 'nl' || next === 'en') locale.value = next
+    if (isLocale(next)) locale.value = next
   }
 
   return {
