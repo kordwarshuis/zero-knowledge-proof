@@ -349,20 +349,41 @@ onUnmounted(() => {
       </div>
     </header>
 
-    <div class="people">
-      <Character
-        who="a"
-        :title="t('personATitle')"
-        :subtitle="t('personARole')"
-        :note="personANote"
-      />
-      <Character
-        who="b"
-        :title="t('personBTitle')"
-        :subtitle="t('personBRole')"
-        :note="personBNote"
-      />
-    </div>
+    <section class="status" aria-live="polite">
+      <div class="people">
+        <Character
+          who="a"
+          :title="t('personATitle')"
+          :subtitle="t('personARole')"
+          :note="personANote"
+        />
+        <Character
+          who="b"
+          :title="t('personBTitle')"
+          :subtitle="t('personBRole')"
+          :note="personBNote"
+        />
+      </div>
+
+      <p class="narration">{{ narration }}</p>
+
+      <ul v-if="step === 'result'" class="properties">
+        <template v-if="proofSucceeded">
+          <li>
+            <strong>{{ t('properties.completenessLabel') }}</strong>
+            {{ t('properties.completeness') }}
+          </li>
+          <li>
+            <strong>{{ t('properties.zeroKnowledgeLabel') }}</strong>
+            {{ t('properties.zeroKnowledge', colorVars) }}
+          </li>
+        </template>
+        <li v-else>
+          <strong>{{ t('properties.soundnessLabel') }}</strong>
+          {{ t('properties.soundness', colorVars) }}
+        </li>
+      </ul>
+    </section>
 
     <section class="table" :aria-label="t('tableLabel')">
       <div class="felt">
@@ -428,8 +449,7 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <section class="panel" aria-live="polite">
-      <p class="narration">{{ narration }}</p>
+    <footer class="controls">
       <div v-if="primaryAction || secondaryAction" class="actions">
         <button
           v-if="primaryAction"
@@ -450,25 +470,8 @@ onUnmounted(() => {
           {{ secondaryAction.label }}
         </button>
       </div>
-      <p v-else class="wait">{{ busy ? t('watchCards') : '' }}</p>
-
-      <ul v-if="step === 'result'" class="properties">
-        <template v-if="proofSucceeded">
-          <li>
-            <strong>{{ t('properties.completenessLabel') }}</strong>
-            {{ t('properties.completeness') }}
-          </li>
-          <li>
-            <strong>{{ t('properties.zeroKnowledgeLabel') }}</strong>
-            {{ t('properties.zeroKnowledge', colorVars) }}
-          </li>
-        </template>
-        <li v-else>
-          <strong>{{ t('properties.soundnessLabel') }}</strong>
-          {{ t('properties.soundness', colorVars) }}
-        </li>
-      </ul>
-    </section>
+      <p v-else-if="busy" class="wait">{{ t('watchCards') }}</p>
+    </footer>
   </div>
 </template>
 
@@ -707,6 +710,40 @@ h1 {
   margin-bottom: 12px;
 }
 
+.status {
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(15, 24, 20, 0.72);
+  border: 1px solid rgba(230, 200, 122, 0.14);
+}
+
+.status .people {
+  margin-bottom: 10px;
+}
+
+.narration {
+  margin: 0;
+  color: var(--cream);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.properties {
+  margin: 10px 0 0;
+  padding: 10px 0 0;
+  border-top: 1px solid rgba(230, 200, 122, 0.14);
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.properties strong {
+  color: var(--brass);
+}
+
 .table {
   position: relative;
   border-radius: 28px;
@@ -719,8 +756,8 @@ h1 {
 
 .felt {
   position: relative;
-  height: min(62vh, 560px);
-  min-height: 400px;
+  height: min(58vh, 540px);
+  min-height: 380px;
   border-radius: 18px;
   overflow: hidden;
   background:
@@ -916,33 +953,18 @@ h1 {
   line-height: 1.25;
 }
 
+.controls {
+  margin-top: 14px;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 14px;
 }
 
 .action:hover:not(:disabled) {
   filter: brightness(1.06);
-}
-
-.panel {
-  margin-top: 14px;
-  padding: 16px 18px;
-  border-radius: 18px;
-  background: rgba(15, 24, 20, 0.92);
-  border: 1px solid rgba(230, 200, 122, 0.18);
-  position: sticky;
-  bottom: 12px;
-  backdrop-filter: blur(10px);
-}
-
-.narration {
-  margin: 0;
-  color: var(--cream);
-  font-size: 1.02rem;
-  line-height: 1.45;
 }
 
 .action {
@@ -981,22 +1003,9 @@ h1 {
 }
 
 .wait {
-  margin: 14px 0 0;
+  margin: 0;
   color: var(--muted);
   min-height: 1.2em;
-}
-
-.properties {
-  margin: 14px 0 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 8px;
-  color: var(--muted);
-}
-
-.properties strong {
-  color: var(--brass);
 }
 
 @media (max-width: 720px) {
