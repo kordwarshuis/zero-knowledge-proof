@@ -38,8 +38,9 @@ export const messages = {
     mysteryCard: 'Kaart van persoon A',
     mysteryHidden: 'voor mij verborgen',
     remainingPrivate: 'Overgebleven kaarten — nog privé',
-    ownColorHidden: '{ownCards} blijven verborgen',
+    ownColorHidden: '{claimCards} blijven verborgen',
     shownToB: 'Getoond aan persoon B',
+    missingCard: 'Ontbrekende kaart',
     watchCards: 'Kijk naar de kaarten…',
     faceDownCard: 'Een speelkaart met de achterkant naar boven',
     personA: {
@@ -50,9 +51,13 @@ export const messages = {
       drawn: 'Je trok {card}. Persoon B kan die niet zien.',
       sorting: 'Bekijk de overgebleven kaarten in het privé.',
       proving:
-        'Laat persoon B alle vier de {otherCards} zien. Houd je {ownCards} verborgen.',
+        'Laat persoon B alle vier de {otherCards} zien. Houd de {claimCards} verborgen.',
+      provingCheat:
+        'Je beweert een {claimCard} te hebben. Probeer alle vier de {otherCards} te laten zien…',
       result:
         'Persoon B is overtuigd — en weet nog steeds niet welke {ownCard} je hebt.',
+      resultCheat:
+        'Het bedrog mislukte. Je kon geen vier {otherCards} laten zien, omdat je een {ownCard} vasthoudt.',
     },
     personB: {
       intro: 'Ik moet overtuigd raken van de kleur van jouw kaart.',
@@ -67,11 +72,13 @@ export const messages = {
       provingOne: 'Ik heb tot nu toe 1 {otherCard} gezien.',
       provingMany: 'Ik heb tot nu toe {count} {otherCards} gezien.',
       result:
-        'Alle vier de {otherCards} liggen hier. De verborgen kaart moet {ownColor} zijn — maar ik weet nog steeds niet welke van de vier {ownCards} het is.',
+        'Alle vier de {otherCards} liggen hier. De verborgen kaart moet {claimColor} zijn — maar ik weet nog steeds niet welke van de vier {claimCards} het is.',
+      resultCheat:
+        'Er zijn maar drie {otherCards} getoond. Er ontbreekt er één. Ik geloof de bewering niet.',
     },
     narration: {
       intro:
-        'Een zero-knowledgebewijs laat je iemand overtuigen dat een stelling waar is, zonder verder iets te onthullen. Hier wil persoon A bewijzen welke kleur haar kaart heeft — zonder te laten zien welke kaart het is.',
+        'Een zero-knowledgebewijs laat je iemand overtuigen dat een stelling waar is, zonder verder iets te onthullen. Hier wil persoon A bewijzen welke kleur haar kaart heeft — zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
       inspect:
         'Voordat iemand trekt, bekijkt persoon B het hele spel: vier rode kaarten en vier zwarte. Jullie zijn het erover eens welke acht kaarten er zijn.',
       shuffling: 'De kaarten worden geschud en omgekeerd.',
@@ -80,19 +87,24 @@ export const messages = {
       drawing:
         'De kaart schuift achter het privéscherm. Alleen jij ziet de voorkant.',
       drawn:
-        'Je hebt een {ownCard}. Dat kun je bewijzen door persoon B alle vier de {otherCards} te laten zien — en geen van je {ownCards}.',
+        'Je hebt een {ownCard}. Bewijs dat eerlijk, of probeer te beweren dat je een {otherCard} hebt — en kijk hoe dat misgaat.',
       sorting:
         'Je bekijkt de overgebleven zeven kaarten in het privé. Persoon B ziet hun voorkant nog steeds niet.',
       proving:
-        'Elke {otherCard} uit de rest wordt aan persoon B getoond. Jouw {ownCards} blijven aan jouw kant van het scherm.',
+        'Elke {otherCard} uit de rest wordt aan persoon B getoond. De {claimCards} blijven aan jouw kant van het scherm.',
+      provingCheat:
+        'Je probeert te bewijzen dat je een {claimCard} hebt door alle {otherCards} te tonen. Omdat je eigenlijke kaart {ownColor} is, kun je er maar drie laten zien.',
       result:
-        'Persoon B heeft nu alle vier de {otherCards} gezien, dus jouw verborgen kaart moet {ownColor} zijn. De drie overgebleven {ownCards} zijn nooit getoond, dus persoon B kan niet zeggen welke van de vier {ownCards} je hebt getrokken. Dat is het zero-knowledge-gedeelte.',
+        'Persoon B heeft nu alle vier de {otherCards} gezien, dus jouw verborgen kaart moet {claimColor} zijn. De drie overgebleven {claimCards} zijn nooit getoond, dus persoon B kan niet zeggen welke van de vier {claimCards} je hebt getrokken. Dat is het zero-knowledge-gedeelte.',
+      resultCheat:
+        'Je beweerde een {claimCard} te hebben, maar kon maar drie {otherCards} tonen. Persoon B merkt dat er één ontbreekt en weigert de bewering. Een onware stelling kun je niet bewijzen — dat heet deugdelijkheid (soundness).',
     },
     actions: {
       begin: 'Laat persoon B het spel zien',
       shuffle: 'Schudden en omdraaien',
       draw: 'Trek een willekeurige kaart',
       prove: 'Bewijs dat je een {ownCard} hebt',
+      cheat: 'Probeer te liegen ({claimCard})',
       again: 'Opnieuw spelen',
     },
     properties: {
@@ -101,6 +113,9 @@ export const messages = {
       zeroKnowledgeLabel: 'Nulkennis.',
       zeroKnowledge:
         'Persoon B leerde alleen dat jouw kaart {ownColor} is — niet welke van de vier {ownCards} het is.',
+      soundnessLabel: 'Deugdelijkheid.',
+      soundness:
+        'Een onware stelling valt niet te bewijzen. Door te beweren dat je een {claimCard} had terwijl je een {ownCard} vasthield, kon je niet alle vier de {otherCards} laten zien.',
     },
     colors: {
       red: 'rood',
@@ -163,8 +178,9 @@ export const messages = {
     mysteryCard: 'Person A’s card',
     mysteryHidden: 'hidden from me',
     remainingPrivate: 'Remaining cards — still private',
-    ownColorHidden: '{ownCards} kept hidden',
+    ownColorHidden: '{claimCards} kept hidden',
     shownToB: 'Shown to Person B',
+    missingCard: 'Missing card',
     watchCards: 'Watch the cards…',
     faceDownCard: 'A face-down playing card',
     personA: {
@@ -175,9 +191,13 @@ export const messages = {
       drawn: 'You drew the {card}. Person B cannot see it.',
       sorting: 'Look through the remaining cards in private.',
       proving:
-        'Show Person B all four {otherCards}. Keep your {ownCards} hidden.',
+        'Show Person B all four {otherCards}. Keep the {claimCards} hidden.',
+      provingCheat:
+        'You claim to have a {claimCard}. Try to show all four {otherCards}…',
       result:
         'Person B is convinced — and still does not know which {ownCard} you hold.',
+      resultCheat:
+        'The cheat failed. You could not show four {otherCards}, because you are holding a {ownCard}.',
     },
     personB: {
       intro: 'I need to be convinced about the colour of your card.',
@@ -193,11 +213,13 @@ export const messages = {
       provingOne: 'I have been shown 1 {otherCard} so far.',
       provingMany: 'I have been shown {count} {otherCards} so far.',
       result:
-        'All four {otherCards} are here. The hidden card must be {ownColor} — but I still do not know which of the four {ownCards} it is.',
+        'All four {otherCards} are here. The hidden card must be {claimColor} — but I still do not know which of the four {claimCards} it is.',
+      resultCheat:
+        'Only three {otherCards} were shown. One is missing. I do not accept the claim.',
     },
     narration: {
       intro:
-        'A zero-knowledge proof lets you convince someone a statement is true without revealing anything else. Here, Person A wants to prove which colour her card is — without showing which card it is.',
+        'A zero-knowledge proof lets you convince someone a statement is true without revealing anything else. Here, Person A wants to prove which colour her card is — without showing which card it is. You can also try to lie, to see that cheating does not work.',
       inspect:
         'Before anyone draws, Person B inspects the whole deck: four red cards and four black cards. Both of you agree on exactly which eight cards exist.',
       shuffling: 'The cards are shuffled and turned face down.',
@@ -206,19 +228,24 @@ export const messages = {
       drawing:
         'The card slides behind the privacy screen. Only you will see its face.',
       drawn:
-        'You have a {ownCard}. You can prove that fact by showing Person B all four {otherCards} — and none of your {ownCards}.',
+        'You have a {ownCard}. Prove that honestly, or try claiming you have a {otherCard} — and watch the cheat fail.',
       sorting:
         'You look at the remaining seven cards in private. Person B still cannot see their faces.',
       proving:
-        'Every {otherCard} from the remainder is shown to Person B. Your {ownCards} stay on your side of the screen.',
+        'Every {otherCard} from the remainder is shown to Person B. The {claimCards} stay on your side of the screen.',
+      provingCheat:
+        'You try to prove you have a {claimCard} by showing all the {otherCards}. Because your real card is {ownColor}, you can only produce three.',
       result:
-        'Person B has now seen all four {otherCards}, so your hidden card must be {ownColor}. The three leftover {ownCards} were never shown, so Person B cannot tell which of the four {ownCards} you drew. That is the zero-knowledge part.',
+        'Person B has now seen all four {otherCards}, so your hidden card must be {claimColor}. The three leftover {claimCards} were never shown, so Person B cannot tell which of the four {claimCards} you drew. That is the zero-knowledge part.',
+      resultCheat:
+        'You claimed to have a {claimCard}, but could only show three {otherCards}. Person B notices one is missing and rejects the claim. A false statement cannot be proven — that is soundness.',
     },
     actions: {
       begin: 'Show Person B the deck',
       shuffle: 'Shuffle and turn face down',
       draw: 'Draw a random card',
       prove: 'Prove you have a {ownCard}',
+      cheat: 'Try to cheat ({claimCard})',
       again: 'Play again',
     },
     properties: {
@@ -227,6 +254,9 @@ export const messages = {
       zeroKnowledgeLabel: 'Zero knowledge.',
       zeroKnowledge:
         'Person B learned only that your card is {ownColor} — not which of the four {ownCards} it is.',
+      soundnessLabel: 'Soundness.',
+      soundness:
+        'A false statement cannot be proven. By claiming a {claimCard} while holding a {ownCard}, you could not show all four {otherCards}.',
     },
     colors: {
       red: 'red',

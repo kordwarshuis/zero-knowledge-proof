@@ -16,11 +16,18 @@ const {
   remaining,
   handColor,
   otherColor,
+  claimedColor,
+  showColor,
+  isCheating,
+  proofSucceeded,
+  missingSlots,
   busy,
+  isNarrow,
   begin,
   shuffleDeck,
   draw,
   prove,
+  tryCheat,
   reset,
   setNarrow,
 } = game
@@ -34,15 +41,34 @@ const steps = [
   { id: 'result', labelKey: 'steps.result' },
 ]
 
+function colorWords(color) {
+  return {
+    color: t(`colors.${color}`),
+    card: t(`colorCard.${color}`),
+    cards: t(`colorCards.${color}`),
+  }
+}
+
 const colorVars = computed(() => {
   const own = handColor.value ?? 'red'
-  const other = otherColor.value
+  const other = otherColor.value ?? (own === 'red' ? 'black' : 'red')
+  const claim = claimedColor.value ?? own
+  const shown = showColor.value ?? other
+  const ownWords = colorWords(own)
+  const claimWords = colorWords(claim)
+  const shownWords = colorWords(shown)
+  const lieWords = colorWords(other)
   return {
-    ownColor: t(`colors.${own}`),
-    ownCard: t(`colorCard.${own}`),
-    ownCards: t(`colorCards.${own}`),
-    otherCard: t(`colorCard.${other}`),
-    otherCards: t(`colorCards.${other}`),
+    ownColor: ownWords.color,
+    ownCard: ownWords.card,
+    ownCards: ownWords.cards,
+    claimColor: claimWords.color,
+    claimCard: claimWords.card,
+    claimCards: claimWords.cards,
+    otherColor: shownWords.color,
+    otherCard: shownWords.card,
+    otherCards: shownWords.cards,
+    lieCard: lieWords.card,
   }
 })
 
@@ -91,9 +117,13 @@ const personANote = computed(() => {
     case 'sorting':
       return t('personA.sorting')
     case 'proving':
-      return t('personA.proving', colorVars.value)
+      return isCheating.value
+        ? t('personA.provingCheat', colorVars.value)
+        : t('personA.proving', colorVars.value)
     case 'result':
-      return t('personA.result', colorVars.value)
+      return isCheating.value
+        ? t('personA.resultCheat', colorVars.value)
+        : t('personA.result', colorVars.value)
     default:
       return ''
   }
@@ -124,7 +154,9 @@ const personBNote = computed(() => {
         count: revealed.value.length,
       })
     case 'result':
-      return t('personB.result', colorVars.value)
+      return isCheating.value
+        ? t('personB.resultCheat', colorVars.value)
+        : t('personB.result', colorVars.value)
     default:
       return ''
   }
@@ -147,15 +179,19 @@ const narration = computed(() => {
     case 'sorting':
       return t('narration.sorting')
     case 'proving':
-      return t('narration.proving', colorVars.value)
+      return isCheating.value
+        ? t('narration.provingCheat', colorVars.value)
+        : t('narration.proving', colorVars.value)
     case 'result':
-      return t('narration.result', colorVars.value)
+      return isCheating.value
+        ? t('narration.resultCheat', colorVars.value)
+        : t('narration.result', colorVars.value)
     default:
       return ''
   }
 })
 
-const action = computed(() => {
+const primaryAction = computed(() => {
   switch (step.value) {
     case 'intro':
       return { label: t('actions.begin'), run: begin }
@@ -172,12 +208,22 @@ const action = computed(() => {
   }
 })
 
+const secondaryAction = computed(() => {
+  if (step.value !== 'drawn' || !otherColor.value) return null
+  return {
+    label: t('actions.cheat', { claimCard: colorVars.value.lieCard }),
+    run: tryCheat,
+  }
+})
+
 const showPrivateLabel = computed(() =>
   ['drawing', 'drawn', 'sorting', 'proving', 'result'].includes(step.value),
 )
 
 const showPublicLabel = computed(
-  () => ['proving', 'result'].includes(step.value) && revealed.value.length > 0,
+  () =>
+    ['proving', 'result'].includes(step.value) &&
+    (revealed.value.length > 0 || missingSlots.value > 0),
 )
 
 const showSecretPile = computed(
@@ -185,6 +231,19 @@ const showSecretPile = computed(
     ['sorting', 'proving', 'result'].includes(step.value) &&
     remaining.value.length > 0,
 )
+
+const missingSlotLayouts = computed(() => {
+  if (!missingSlots.value) return []
+  const narrow = isNarrow.value
+  const start = revealed.value.length
+  return Array.from({ length: missingSlots.value }, (_, offset) => {
+    const i = start + offset
+    return {
+      left: narrow ? 18 + i * 21 : 51 + i * 11.5,
+      top: narrow ? 24 : 52,
+    }
+  })
+})
 
 function onKeydown(event) {
   if (event.key === 'Escape' && menuOpen.value) closeMenu()
@@ -348,6 +407,17 @@ onUnmounted(() => {
           {{ t('shownToB') }} ({{ revealed.length }}/4)
         </p>
 
+        <div
+          v-for="(slotPos, index) in missingSlotLayouts"
+          :key="`missing-${index}`"
+          class="missing-slot"
+          :style="{ left: `${slotPos.left}%`, top: `${slotPos.top}%` }"
+          aria-hidden="true"
+        >
+          <span class="mystery">?</span>
+          <small>{{ t('missingCard') }}</small>
+        </div>
+
         <PlayingCard
           v-for="card in cards"
           v-show="layouts[card.id]"
@@ -360,25 +430,42 @@ onUnmounted(() => {
 
     <section class="panel" aria-live="polite">
       <p class="narration">{{ narration }}</p>
-      <button
-        v-if="action"
-        class="action"
-        type="button"
-        :disabled="busy"
-        @click="action.run"
-      >
-        {{ action.label }}
-      </button>
+      <div v-if="primaryAction || secondaryAction" class="actions">
+        <button
+          v-if="primaryAction"
+          class="action"
+          type="button"
+          :disabled="busy"
+          @click="primaryAction.run"
+        >
+          {{ primaryAction.label }}
+        </button>
+        <button
+          v-if="secondaryAction"
+          class="action action-secondary"
+          type="button"
+          :disabled="busy"
+          @click="secondaryAction.run"
+        >
+          {{ secondaryAction.label }}
+        </button>
+      </div>
       <p v-else class="wait">{{ busy ? t('watchCards') : '' }}</p>
 
       <ul v-if="step === 'result'" class="properties">
-        <li>
-          <strong>{{ t('properties.completenessLabel') }}</strong>
-          {{ t('properties.completeness') }}
-        </li>
-        <li>
-          <strong>{{ t('properties.zeroKnowledgeLabel') }}</strong>
-          {{ t('properties.zeroKnowledge', colorVars) }}
+        <template v-if="proofSucceeded">
+          <li>
+            <strong>{{ t('properties.completenessLabel') }}</strong>
+            {{ t('properties.completeness') }}
+          </li>
+          <li>
+            <strong>{{ t('properties.zeroKnowledgeLabel') }}</strong>
+            {{ t('properties.zeroKnowledge', colorVars) }}
+          </li>
+        </template>
+        <li v-else>
+          <strong>{{ t('properties.soundnessLabel') }}</strong>
+          {{ t('properties.soundness', colorVars) }}
         </li>
       </ul>
     </section>
@@ -797,6 +884,45 @@ h1 {
   line-height: 1.3;
 }
 
+.missing-slot {
+  position: absolute;
+  z-index: 6;
+  width: 86px;
+  min-height: 122px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 10px;
+  border: 2px dashed rgba(193, 26, 43, 0.75);
+  background: rgba(16, 24, 20, 0.4);
+  color: #f0c4c8;
+  text-align: center;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.missing-slot .mystery {
+  font-family: var(--heading);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.missing-slot small {
+  font-size: 0.64rem;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
 .action:hover:not(:disabled) {
   filter: brightness(1.06);
 }
@@ -820,7 +946,7 @@ h1 {
 }
 
 .action {
-  margin-top: 14px;
+  margin-top: 0;
   appearance: none;
   border: 0;
   border-radius: 999px;
@@ -831,6 +957,17 @@ h1 {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+}
+
+.action-secondary {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(230, 200, 122, 0.45);
+}
+
+.action-secondary:hover:not(:disabled) {
+  filter: none;
+  background: rgba(230, 200, 122, 0.12);
 }
 
 .action:disabled {
@@ -937,6 +1074,16 @@ h1 {
     top: 8%;
     width: 64px;
     min-height: 92px;
+  }
+
+  .missing-slot {
+    width: 64px;
+    min-height: 92px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 </style>

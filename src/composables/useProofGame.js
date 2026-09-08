@@ -14,6 +14,10 @@ function slot(x, y, extras = {}) {
   }
 }
 
+function opposite(color) {
+  return color === 'red' ? 'black' : 'red'
+}
+
 function randomScatter(cards, narrow) {
   const map = {}
   cards.forEach((card, i) => {
@@ -36,6 +40,7 @@ export function useProofGame() {
   const scatter = ref(null)
   const isNarrow = ref(false)
   const busy = ref(false)
+  const claimedColor = ref(null)
 
   const hand = computed(
     () => cards.value.find((card) => card.id === handId.value) ?? null,
@@ -54,8 +59,31 @@ export function useProofGame() {
   const handColor = computed(() => hand.value?.color ?? null)
 
   const otherColor = computed(() =>
-    handColor.value === 'red' ? 'black' : 'red',
+    handColor.value ? opposite(handColor.value) : null,
   )
+
+  const isCheating = computed(
+    () =>
+      Boolean(claimedColor.value) &&
+      Boolean(handColor.value) &&
+      claimedColor.value !== handColor.value,
+  )
+
+  const showColor = computed(() =>
+    claimedColor.value ? opposite(claimedColor.value) : otherColor.value,
+  )
+
+  const proofSucceeded = computed(
+    () =>
+      step.value === 'result' &&
+      revealedIds.value.length === 4 &&
+      !isCheating.value,
+  )
+
+  const missingSlots = computed(() => {
+    if (step.value !== 'result') return 0
+    return Math.max(0, 4 - revealedIds.value.length)
+  })
 
   const layouts = computed(() => {
     const map = {}
@@ -176,17 +204,25 @@ export function useProofGame() {
     isNarrow.value = value
   }
 
-  async function begin() {
-    cards.value = cloneDeck()
+  function clearRoundState() {
     handId.value = null
     revealedIds.value = []
     handRevealed.value = false
     scatter.value = null
+    claimedColor.value = null
+    busy.value = false
+  }
+
+  async function begin() {
+    cards.value = cloneDeck()
+    clearRoundState()
     step.value = 'inspect'
   }
 
   async function shuffleDeck() {
     busy.value = true
+    claimedColor.value = null
+    revealedIds.value = []
     step.value = 'shuffling'
     for (let pass = 0; pass < 3; pass += 1) {
       cards.value = shuffle(cards.value)
@@ -200,6 +236,8 @@ export function useProofGame() {
 
   async function draw() {
     busy.value = true
+    claimedColor.value = null
+    revealedIds.value = []
     const index = Math.floor(Math.random() * cards.value.length)
     handId.value = cards.value[index].id
     handRevealed.value = false
@@ -210,15 +248,22 @@ export function useProofGame() {
     busy.value = false
   }
 
-  async function prove() {
+  async function runProof(claim) {
+    if (!handColor.value || busy.value) return
+
     busy.value = true
+    claimedColor.value = claim
+    revealedIds.value = []
     step.value = 'sorting'
     await wait(1100)
     step.value = 'proving'
 
-    // Showing all four cards of the opposite colour proves the hidden card's
-    // colour. The drawn card is never among them, so all four can be shown.
-    const toShow = cards.value.filter((card) => card.color === otherColor.value)
+    // Honest claim: show all four of the opposite colour.
+    // False claim: try the same protocol for the lie — only three cards are left.
+    const needed = opposite(claim)
+    const toShow = cards.value.filter(
+      (card) => card.color === needed && card.id !== handId.value,
+    )
 
     for (const card of toShow) {
       await wait(520)
@@ -230,13 +275,17 @@ export function useProofGame() {
     busy.value = false
   }
 
+  function prove() {
+    return runProof(handColor.value)
+  }
+
+  function tryCheat() {
+    return runProof(opposite(handColor.value))
+  }
+
   function reset() {
     cards.value = cloneDeck()
-    handId.value = null
-    revealedIds.value = []
-    handRevealed.value = false
-    scatter.value = null
-    busy.value = false
+    clearRoundState()
     step.value = 'inspect'
   }
 
@@ -249,12 +298,18 @@ export function useProofGame() {
     remaining,
     handColor,
     otherColor,
+    claimedColor,
+    showColor,
+    isCheating,
+    proofSucceeded,
+    missingSlots,
     busy,
     isNarrow,
     begin,
     shuffleDeck,
     draw,
     prove,
+    tryCheat,
     reset,
     setNarrow,
   }
