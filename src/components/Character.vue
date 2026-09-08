@@ -140,6 +140,7 @@ defineProps({
   font-size: 0.86rem;
   line-height: 1.35;
   color: var(--cream);
+  min-height: 2.7em;
 }
 
 @media (max-width: 720px) {

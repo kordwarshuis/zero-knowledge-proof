@@ -367,22 +367,24 @@ onUnmounted(() => {
 
       <p class="narration">{{ narration }}</p>
 
-      <ul v-if="step === 'result'" class="properties">
-        <template v-if="proofSucceeded">
-          <li>
-            <strong>{{ t('properties.completenessLabel') }}</strong>
-            {{ t('properties.completeness') }}
+      <div class="properties-slot">
+        <ul v-if="step === 'result'" class="properties">
+          <template v-if="proofSucceeded">
+            <li>
+              <strong>{{ t('properties.completenessLabel') }}</strong>
+              {{ t('properties.completeness') }}
+            </li>
+            <li>
+              <strong>{{ t('properties.zeroKnowledgeLabel') }}</strong>
+              {{ t('properties.zeroKnowledge', colorVars) }}
+            </li>
+          </template>
+          <li v-else>
+            <strong>{{ t('properties.soundnessLabel') }}</strong>
+            {{ t('properties.soundness', colorVars) }}
           </li>
-          <li>
-            <strong>{{ t('properties.zeroKnowledgeLabel') }}</strong>
-            {{ t('properties.zeroKnowledge', colorVars) }}
-          </li>
-        </template>
-        <li v-else>
-          <strong>{{ t('properties.soundnessLabel') }}</strong>
-          {{ t('properties.soundness', colorVars) }}
-        </li>
-      </ul>
+        </ul>
+      </div>
     </section>
 
     <section class="table" :aria-label="t('tableLabel')">
@@ -716,10 +718,14 @@ h1 {
   border-radius: 14px;
   background: rgba(15, 24, 20, 0.72);
   border: 1px solid rgba(230, 200, 122, 0.14);
+  display: flex;
+  flex-direction: column;
+  min-height: 17rem;
 }
 
 .status .people {
   margin-bottom: 10px;
+  min-height: 4.75rem;
 }
 
 .narration {
@@ -727,12 +733,23 @@ h1 {
   color: var(--cream);
   font-size: 0.98rem;
   line-height: 1.45;
+  min-height: 5.8em;
+  max-height: 5.8em;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(230, 200, 122, 0.35) transparent;
+}
+
+.properties-slot {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(230, 200, 122, 0.14);
+  min-height: 3.8rem;
 }
 
 .properties {
-  margin: 10px 0 0;
-  padding: 10px 0 0;
-  border-top: 1px solid rgba(230, 200, 122, 0.14);
+  margin: 0;
+  padding: 0;
   list-style: none;
   display: grid;
   gap: 6px;
@@ -1024,6 +1041,14 @@ h1 {
 @media (max-width: 720px) {
   .people {
     grid-template-columns: 1fr;
+  }
+
+  .status {
+    min-height: 19rem;
+  }
+
+  .status .people {
+    min-height: 8.5rem;
   }
 
   .felt {
