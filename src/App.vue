@@ -387,6 +387,30 @@ onUnmounted(() => {
 
     <section class="table" :aria-label="t('tableLabel')">
       <div class="felt">
+        <div class="controls">
+          <div v-if="primaryAction || secondaryAction" class="actions">
+            <button
+              v-if="primaryAction"
+              class="action"
+              type="button"
+              :disabled="busy"
+              @click="primaryAction.run"
+            >
+              {{ primaryAction.label }}
+            </button>
+            <button
+              v-if="secondaryAction"
+              class="action action-secondary"
+              type="button"
+              :disabled="busy"
+              @click="secondaryAction.run"
+            >
+              {{ secondaryAction.label }}
+            </button>
+          </div>
+          <p v-else-if="busy" class="wait">{{ t('watchCards') }}</p>
+        </div>
+
         <div
           class="privacy-screen"
           :class="{ 'is-on': showPrivateLabel }"
@@ -448,30 +472,6 @@ onUnmounted(() => {
         />
       </div>
     </section>
-
-    <footer class="controls">
-      <div v-if="primaryAction || secondaryAction" class="actions">
-        <button
-          v-if="primaryAction"
-          class="action"
-          type="button"
-          :disabled="busy"
-          @click="primaryAction.run"
-        >
-          {{ primaryAction.label }}
-        </button>
-        <button
-          v-if="secondaryAction"
-          class="action action-secondary"
-          type="button"
-          :disabled="busy"
-          @click="secondaryAction.run"
-        >
-          {{ secondaryAction.label }}
-        </button>
-      </div>
-      <p v-else-if="busy" class="wait">{{ t('watchCards') }}</p>
-    </footer>
   </div>
 </template>
 
@@ -766,6 +766,25 @@ h1 {
     linear-gradient(160deg, #1f5a3a 0%, #143728 55%, #0f2f22 100%);
 }
 
+.controls {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  width: max-content;
+  max-width: calc(100% - 24px);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
 .privacy-screen {
   position: absolute;
   left: 36%;
@@ -953,16 +972,6 @@ h1 {
   line-height: 1.25;
 }
 
-.controls {
-  margin-top: 14px;
-}
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
 .action:hover:not(:disabled) {
   filter: brightness(1.06);
 }
@@ -979,17 +988,18 @@ h1 {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
 }
 
 .action-secondary {
-  background: transparent;
+  background: rgba(16, 24, 20, 0.72);
   color: var(--cream);
-  border: 1px solid rgba(230, 200, 122, 0.45);
+  border: 1px solid rgba(230, 200, 122, 0.55);
 }
 
 .action-secondary:hover:not(:disabled) {
   filter: none;
-  background: rgba(230, 200, 122, 0.12);
+  background: rgba(16, 24, 20, 0.9);
 }
 
 .action:disabled {
@@ -1004,6 +1014,9 @@ h1 {
 
 .wait {
   margin: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(16, 24, 20, 0.72);
   color: var(--muted);
   min-height: 1.2em;
 }
