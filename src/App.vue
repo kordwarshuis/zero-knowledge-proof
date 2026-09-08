@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import Character from './components/Character.vue'
 import PlayingCard from './components/PlayingCard.vue'
 import { useI18n } from './composables/useI18n.js'
@@ -33,6 +33,7 @@ const {
 } = game
 
 const menuOpen = ref(false)
+const menuTab = ref(null)
 
 const steps = [
   { id: 'inspect', labelKey: 'steps.inspect' },
@@ -90,13 +91,24 @@ function toggleMenu() {
   menuOpen.value = !menuOpen.value
 }
 
+function openMenu() {
+  menuOpen.value = true
+}
+
 function closeMenu() {
   menuOpen.value = false
+  nextTick(() => menuTab.value?.focus())
 }
 
 function chooseLocale(next) {
   setLocale(next)
-  closeMenu()
+}
+
+function isTypingTarget(target) {
+  if (!(target instanceof HTMLElement)) return false
+  return Boolean(
+    target.closest('input, textarea, select, [contenteditable="true"]'),
+  )
 }
 
 const personANote = computed(() => {
@@ -246,12 +258,33 @@ const missingSlotLayouts = computed(() => {
 })
 
 function onKeydown(event) {
-  if (event.key === 'Escape' && menuOpen.value) closeMenu()
+  if (event.metaKey || event.ctrlKey || event.altKey) return
+  if (isTypingTarget(event.target)) return
+
+  if (event.key === 'Escape') {
+    if (!menuOpen.value) return
+    event.preventDefault()
+    closeMenu()
+    return
+  }
+
+  if (event.key === 'o' || event.key === 'O') {
+    if (menuOpen.value) return
+    event.preventDefault()
+    openMenu()
+  }
 }
 
 function syncViewport() {
   setNarrow(window.matchMedia('(max-width: 720px)').matches)
 }
+
+watch(menuOpen, async (open) => {
+  document.body.style.overflow = open ? 'hidden' : ''
+  if (!open) return
+  await nextTick()
+  document.getElementById('site-menu')?.focus()
+})
 
 onMounted(() => {
   syncViewport()
@@ -260,6 +293,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  document.body.style.overflow = ''
   window.removeEventListener('resize', syncViewport)
   window.removeEventListener('keydown', onKeydown)
 })
@@ -267,9 +301,27 @@ onUnmounted(() => {
 
 <template>
   <div class="page">
-    <header class="top">
-      <div class="title-row">
-        <div class="brand">
+    <Transition name="fade">
+      <div
+        v-if="menuOpen"
+        class="menu-backdrop"
+        aria-hidden="true"
+        @click="closeMenu"
+      ></div>
+    </Transition>
+
+    <aside class="drawer" :class="{ 'is-open': menuOpen }">
+      <div
+        id="site-menu"
+        class="drawer-panel"
+        role="dialog"
+        tabindex="-1"
+        :inert="menuOpen ? undefined : true"
+        :aria-modal="menuOpen"
+        :aria-label="t('menu')"
+        :aria-hidden="!menuOpen"
+      >
+        <header class="brand">
           <h1>{{ t('title') }}</h1>
           <ol class="progress" :aria-label="t('stepsLabel')">
             <li
@@ -280,74 +332,60 @@ onUnmounted(() => {
                 'is-done': activeStepIndex > index && activeStepIndex !== -1,
               }"
             >
+              <span class="step-index">{{ index + 1 }}</span>
               <span class="step-label">{{ t(item.labelKey) }}</span>
             </li>
           </ol>
-        </div>
+        </header>
 
-        <div class="menu">
-          <button
-            class="menu-toggle"
-            type="button"
-            :aria-expanded="menuOpen"
-            aria-controls="site-menu"
-            :aria-label="menuOpen ? t('menuClose') : t('menuOpen')"
-            @click="toggleMenu"
-          >
-            <span class="burger" :class="{ 'is-open': menuOpen }" aria-hidden="true">
-              <i></i><i></i><i></i>
-            </span>
-          </button>
-
-          <div
-            v-if="menuOpen"
-            class="menu-backdrop"
-            aria-hidden="true"
-            @click="closeMenu"
-          ></div>
-
-          <div
-            v-show="menuOpen"
-            id="site-menu"
-            class="menu-panel"
-            role="dialog"
-            :aria-label="t('menu')"
-          >
-            <section class="menu-section">
-              <h2>{{ t('language') }}</h2>
-              <div class="lang-switch" :aria-label="t('language')">
-                <button
-                  type="button"
-                  :class="{ 'is-active': locale === 'nl' }"
-                  :aria-pressed="locale === 'nl'"
-                  @click="chooseLocale('nl')"
-                >
-                  NL
-                </button>
-                <button
-                  type="button"
-                  :class="{ 'is-active': locale === 'en' }"
-                  :aria-pressed="locale === 'en'"
-                  @click="chooseLocale('en')"
-                >
-                  EN
-                </button>
-              </div>
-            </section>
-
-            <section class="menu-section">
-              <h2>{{ t('info') }}</h2>
-              <p class="eyebrow">{{ t('eyebrow') }}</p>
-              <p class="lede">
-                {{ t('ledeBefore') }}
-                <em>{{ t('ledeEm') }}</em>
-                {{ t('ledeAfter') }}
-              </p>
-            </section>
+        <section class="menu-section">
+          <h2>{{ t('language') }}</h2>
+          <div class="lang-switch" :aria-label="t('language')">
+            <button
+              type="button"
+              :class="{ 'is-active': locale === 'nl' }"
+              :aria-pressed="locale === 'nl'"
+              @click="chooseLocale('nl')"
+            >
+              NL
+            </button>
+            <button
+              type="button"
+              :class="{ 'is-active': locale === 'en' }"
+              :aria-pressed="locale === 'en'"
+              @click="chooseLocale('en')"
+            >
+              EN
+            </button>
           </div>
-        </div>
+        </section>
+
+        <section class="menu-section">
+          <h2>{{ t('info') }}</h2>
+          <p class="eyebrow">{{ t('eyebrow') }}</p>
+          <p class="lede">
+            {{ t('ledeBefore') }}
+            <em>{{ t('ledeEm') }}</em>
+            {{ t('ledeAfter') }}
+          </p>
+        </section>
       </div>
-    </header>
+
+      <button
+        ref="menuTab"
+        class="drawer-tab"
+        type="button"
+        :aria-expanded="menuOpen"
+        aria-controls="site-menu"
+        aria-keyshortcuts="O"
+        :aria-label="menuOpen ? t('menuClose') : t('menuOpen')"
+        @click="toggleMenu"
+      >
+        <span class="tab-chevron" aria-hidden="true"></span>
+        <span class="tab-label" aria-hidden="true">{{ t('menu') }}</span>
+        <kbd class="tab-key" aria-hidden="true">O</kbd>
+      </button>
+    </aside>
 
     <section class="status" aria-live="polite">
       <div class="people">
@@ -481,23 +519,127 @@ onUnmounted(() => {
 .page {
   width: min(1080px, 100%);
   margin: 0 auto;
-  padding: 14px 20px 36px;
+  padding: 16px 20px 36px;
 }
 
-.top {
-  margin-bottom: 12px;
+@media (max-width: 1140px) {
+  .page {
+    padding-left: 56px;
+  }
 }
 
-.title-row {
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(8, 12, 10, 0.45);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.drawer {
+  --tab-size: 42px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 90;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
+  transform: translateX(calc(-100% + var(--tab-size)));
+  transition: transform 0.28s ease;
+}
+
+.drawer.is-open {
+  transform: translateX(0);
+}
+
+.drawer-panel {
+  width: min(24rem, calc(100vw - 56px));
+  height: 100%;
+  overflow-y: auto;
+  padding: 28px 22px 32px;
+  background: rgba(16, 24, 20, 0.97);
+  border-right: 1px solid rgba(230, 200, 122, 0.22);
+  box-shadow: 8px 0 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+}
+
+.drawer-panel:focus {
+  outline: none;
+}
+
+.drawer-tab {
+  appearance: none;
+  align-self: center;
+  width: var(--tab-size);
+  min-height: 132px;
+  padding: 14px 0 12px;
+  border: 1px solid rgba(230, 200, 122, 0.28);
+  border-left: 0;
+  border-radius: 0 12px 12px 0;
+  background: rgba(16, 24, 20, 0.96);
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 6px 0 18px rgba(0, 0, 0, 0.22);
+}
+
+.drawer-tab:focus-visible {
+  outline: 2px solid #f7f1e6;
+  outline-offset: 2px;
+}
+
+.tab-chevron {
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  margin: 4px 0 2px 2px;
+  transition: transform 0.2s ease;
+}
+
+.drawer.is-open .tab-chevron {
+  transform: rotate(135deg);
+  margin-left: 0;
+}
+
+.tab-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.tab-key {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 2px 5px;
+  border-radius: 4px;
+  border: 1px solid rgba(230, 200, 122, 0.35);
+  color: var(--muted);
 }
 
 .brand {
   min-width: 0;
-  flex: 1;
 }
 
 h1 {
@@ -513,27 +655,29 @@ h1 {
 .progress {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0;
+  flex-direction: column;
+  gap: 6px;
   padding: 0;
-  margin: 6px 0 0;
+  margin: 16px 0 0;
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   line-height: 1.35;
 }
 
 .progress li {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   color: rgba(201, 214, 204, 0.55);
 }
 
-.progress li:not(:last-child)::after {
-  content: '·';
-  margin: 0 0.55em;
-  color: rgba(230, 200, 122, 0.45);
+.progress li .step-index {
+  width: 1.1em;
+  flex: 0 0 auto;
+  font-size: 0.72rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(230, 200, 122, 0.55);
 }
 
 .progress li .step-label {
@@ -545,7 +689,16 @@ h1 {
   color: #cde3d4;
 }
 
+.progress li.is-done .step-index {
+  color: #cde3d4;
+}
+
 .progress li.is-active {
+  color: var(--cream);
+}
+
+.progress li.is-active .step-index,
+.progress li.is-active .step-label {
   color: var(--cream);
 }
 
@@ -553,99 +706,15 @@ h1 {
   border-bottom-color: var(--brass);
 }
 
-.menu {
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.menu-toggle {
-  appearance: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  border: 1px solid rgba(230, 200, 122, 0.28);
-  background: rgba(15, 24, 20, 0.55);
-  color: var(--cream);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-}
-
-.menu-toggle:focus-visible {
-  outline: 2px solid #f7f1e6;
-  outline-offset: 2px;
-}
-
-.burger {
-  width: 18px;
-  height: 12px;
-  position: relative;
-  display: block;
-}
-
-.burger i {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 1.5px;
-  background: currentColor;
-  border-radius: 1px;
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease,
-    top 0.2s ease;
-}
-
-.burger i:nth-child(1) {
-  top: 0;
-}
-
-.burger i:nth-child(2) {
-  top: 5px;
-}
-
-.burger i:nth-child(3) {
-  top: 10px;
-}
-
-.burger.is-open i:nth-child(1) {
-  top: 5px;
-  transform: rotate(45deg);
-}
-
-.burger.is-open i:nth-child(2) {
-  opacity: 0;
-}
-
-.burger.is-open i:nth-child(3) {
-  top: 5px;
-  transform: rotate(-45deg);
-}
-
-.menu-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-  background: rgba(8, 12, 10, 0.35);
-}
-
-.menu-panel {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  z-index: 90;
-  width: min(22rem, calc(100vw - 40px));
-  padding: 16px;
-  border-radius: 14px;
-  background: rgba(16, 24, 20, 0.96);
-  border: 1px solid rgba(230, 200, 122, 0.22);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(12px);
-}
-
 .menu-section + .menu-section {
-  margin-top: 16px;
-  padding-top: 14px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(230, 200, 122, 0.14);
+}
+
+.brand + .menu-section {
+  margin-top: 22px;
+  padding-top: 16px;
   border-top: 1px solid rgba(230, 200, 122, 0.14);
 }
 
@@ -703,6 +772,14 @@ h1 {
   color: var(--cream);
   font-size: 0.95rem;
   line-height: 1.45;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer,
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: none;
+  }
 }
 
 .people {
