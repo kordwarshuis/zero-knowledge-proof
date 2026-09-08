@@ -14,8 +14,9 @@ const {
   hand,
   revealed,
   remaining,
+  handColor,
+  otherColor,
   busy,
-  proofSucceeded,
   begin,
   shuffleDeck,
   draw,
@@ -30,6 +31,18 @@ const steps = [
   { id: 'prove', labelKey: 'steps.prove' },
   { id: 'result', labelKey: 'steps.result' },
 ]
+
+const colorVars = computed(() => {
+  const own = handColor.value ?? 'red'
+  const other = otherColor.value
+  return {
+    ownColor: t(`colors.${own}`),
+    ownCard: t(`colorCard.${own}`),
+    ownCards: t(`colorCards.${own}`),
+    otherCard: t(`colorCard.${other}`),
+    otherCards: t(`colorCards.${other}`),
+  }
+})
 
 const activeStep = computed(() => {
   if (step.value === 'intro') return ''
@@ -59,9 +72,9 @@ const personANote = computed(() => {
     case 'sorting':
       return t('personA.sorting')
     case 'proving':
-      return t('personA.proving')
+      return t('personA.proving', colorVars.value)
     case 'result':
-      return proofSucceeded.value ? t('personA.resultOk') : t('personA.resultFail')
+      return t('personA.result', colorVars.value)
     default:
       return ''
   }
@@ -84,10 +97,15 @@ const personBNote = computed(() => {
       return t('personB.sorting')
     case 'proving':
       if (!revealed.value.length) return t('personB.provingWait')
-      if (revealed.value.length === 1) return t('personB.provingOne')
-      return t('personB.provingMany', { count: revealed.value.length })
+      if (revealed.value.length === 1) {
+        return t('personB.provingOne', colorVars.value)
+      }
+      return t('personB.provingMany', {
+        ...colorVars.value,
+        count: revealed.value.length,
+      })
     case 'result':
-      return proofSucceeded.value ? t('personB.resultOk') : t('personB.resultFail')
+      return t('personB.result', colorVars.value)
     default:
       return ''
   }
@@ -106,17 +124,13 @@ const narration = computed(() => {
     case 'drawing':
       return t('narration.drawing')
     case 'drawn':
-      return hand.value?.color === 'red'
-        ? t('narration.drawnRed')
-        : t('narration.drawnBlack')
+      return t('narration.drawn', colorVars.value)
     case 'sorting':
       return t('narration.sorting')
     case 'proving':
-      return t('narration.proving')
+      return t('narration.proving', colorVars.value)
     case 'result':
-      return proofSucceeded.value
-        ? t('narration.resultOk')
-        : t('narration.resultFail')
+      return t('narration.result', colorVars.value)
     default:
       return ''
   }
@@ -131,13 +145,7 @@ const action = computed(() => {
     case 'shuffled':
       return { label: t('actions.draw'), run: draw }
     case 'drawn':
-      return {
-        label:
-          hand.value?.color === 'red'
-            ? t('actions.prove')
-            : t('actions.proveAnyway'),
-        run: prove,
-      }
+      return { label: t('actions.prove', colorVars.value), run: prove }
     case 'result':
       return { label: t('actions.again'), run: reset }
     default:
@@ -149,14 +157,14 @@ const showPrivateLabel = computed(() =>
   ['drawing', 'drawn', 'sorting', 'proving', 'result'].includes(step.value),
 )
 
-const showPublicLabel = computed(() =>
-  ['proving', 'result'].includes(step.value) && revealed.value.length > 0,
+const showPublicLabel = computed(
+  () => ['proving', 'result'].includes(step.value) && revealed.value.length > 0,
 )
 
 const showSecretPile = computed(
   () =>
     ['sorting', 'proving', 'result'].includes(step.value) &&
-    remaining.value.some((card) => card.color === 'red'),
+    remaining.value.length > 0,
 )
 
 function syncViewport() {
@@ -265,10 +273,14 @@ onUnmounted(() => {
           <small>{{ t('mysteryCard') }}<br />{{ t('mysteryHidden') }}</small>
         </div>
         <p v-if="showSecretPile" class="zone-label secret">
-          {{ step === 'sorting' ? t('remainingPrivate') : t('redsHidden') }}
+          {{
+            step === 'sorting'
+              ? t('remainingPrivate')
+              : t('ownColorHidden', colorVars)
+          }}
         </p>
         <p v-if="showPublicLabel" class="zone-label public">
-          {{ t('shownToB') }}
+          {{ t('shownToB') }} ({{ revealed.length }}/4)
         </p>
 
         <PlayingCard
@@ -295,17 +307,13 @@ onUnmounted(() => {
       <p v-else class="wait">{{ busy ? t('watchCards') : '' }}</p>
 
       <ul v-if="step === 'result'" class="properties">
-        <li v-if="proofSucceeded">
+        <li>
           <strong>{{ t('properties.completenessLabel') }}</strong>
           {{ t('properties.completeness') }}
         </li>
-        <li v-if="proofSucceeded">
+        <li>
           <strong>{{ t('properties.zeroKnowledgeLabel') }}</strong>
-          {{ t('properties.zeroKnowledge') }}
-        </li>
-        <li v-if="!proofSucceeded">
-          <strong>{{ t('properties.soundnessLabel') }}</strong>
-          {{ t('properties.soundness') }}
+          {{ t('properties.zeroKnowledge', colorVars) }}
         </li>
       </ul>
     </section>

@@ -51,11 +51,10 @@ export function useProofGame() {
     ),
   )
 
-  const proofSucceeded = computed(
-    () =>
-      step.value === 'result' &&
-      revealedIds.value.length === 4 &&
-      hand.value?.color === 'red',
+  const handColor = computed(() => hand.value?.color ?? null)
+
+  const otherColor = computed(() =>
+    handColor.value === 'red' ? 'black' : 'red',
   )
 
   const layouts = computed(() => {
@@ -140,21 +139,21 @@ export function useProofGame() {
     const showPrivateFaces =
       current === 'sorting' || current === 'proving' || current === 'result'
 
-      remaining.value.forEach((card, i) => {
-        if (narrow) {
-          map[card.id] = slot(22 + (i % 4) * 20, 62 + Math.floor(i / 4) * 12, {
-            rot: -10 + i * 3,
-            faceUp: showPrivateFaces,
-            z: 8 + i,
-          })
-        } else {
-          map[card.id] = slot(9 + i * 3.6, 30 + (i % 2), {
-            rot: -12 + i * 3.5,
-            faceUp: showPrivateFaces,
-            z: 8 + i,
-          })
-        }
-      })
+    remaining.value.forEach((card, i) => {
+      if (narrow) {
+        map[card.id] = slot(22 + (i % 4) * 20, 62 + Math.floor(i / 4) * 12, {
+          rot: -10 + i * 3,
+          faceUp: showPrivateFaces,
+          z: 8 + i,
+        })
+      } else {
+        map[card.id] = slot(9 + i * 3.6, 30 + (i % 2), {
+          rot: -12 + i * 3.5,
+          faceUp: showPrivateFaces,
+          z: 8 + i,
+        })
+      }
+    })
 
     revealed.value.forEach((card, i) => {
       map[card.id] = slot(
@@ -216,13 +215,16 @@ export function useProofGame() {
     step.value = 'sorting'
     await wait(1100)
     step.value = 'proving'
-    const blacks = cards.value.filter(
-      (card) => card.id !== handId.value && card.color === 'black',
-    )
-    for (const card of blacks) {
+
+    // Showing all four cards of the opposite colour proves the hidden card's
+    // colour. The drawn card is never among them, so all four can be shown.
+    const toShow = cards.value.filter((card) => card.color === otherColor.value)
+
+    for (const card of toShow) {
       await wait(520)
       revealedIds.value = [...revealedIds.value, card.id]
     }
+
     await wait(850)
     step.value = 'result'
     busy.value = false
@@ -245,8 +247,9 @@ export function useProofGame() {
     hand,
     revealed,
     remaining,
+    handColor,
+    otherColor,
     busy,
-    proofSucceeded,
     isNarrow,
     begin,
     shuffleDeck,
