@@ -1,14 +1,17 @@
 <script setup>
 import { computed } from 'vue'
+import { useI18n } from '../composables/useI18n.js'
 
 const props = defineProps({
   card: { type: Object, required: true },
   layout: { type: Object, required: true },
 })
 
+const { t, cardLabel } = useI18n()
+
 const aria = computed(() => {
-  if (!props.layout.faceUp) return 'A face-down playing card'
-  return props.card.label
+  if (!props.layout.faceUp) return t('faceDownCard')
+  return cardLabel(props.card)
 })
 </script>
 

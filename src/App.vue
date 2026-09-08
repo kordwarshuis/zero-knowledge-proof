@@ -2,8 +2,10 @@
 import { computed, onMounted, onUnmounted } from 'vue'
 import Character from './components/Character.vue'
 import PlayingCard from './components/PlayingCard.vue'
+import { useI18n } from './composables/useI18n.js'
 import { useProofGame } from './composables/useProofGame.js'
 
+const { locale, t, cardLabel, setLocale } = useI18n()
 const game = useProofGame()
 const {
   step,
@@ -23,10 +25,10 @@ const {
 } = game
 
 const steps = [
-  { id: 'inspect', label: 'Inspect' },
-  { id: 'draw', label: 'Draw' },
-  { id: 'prove', label: 'Prove' },
-  { id: 'result', label: 'Result' },
+  { id: 'inspect', labelKey: 'steps.inspect' },
+  { id: 'draw', labelKey: 'steps.draw' },
+  { id: 'prove', labelKey: 'steps.prove' },
+  { id: 'result', labelKey: 'steps.result' },
 ]
 
 const activeStep = computed(() => {
@@ -42,26 +44,24 @@ const activeStep = computed(() => {
 const personANote = computed(() => {
   switch (step.value) {
     case 'intro':
-      return 'You will draw a card that only you can see.'
+      return t('personA.intro')
     case 'inspect':
-      return 'You can see the deck too — nothing is hidden yet.'
+      return t('personA.inspect')
     case 'shuffling':
     case 'shuffled':
-      return 'The cards are face down. Draw one at random.'
+      return t('personA.shuffled')
     case 'drawing':
-      return 'Pulling a card behind the privacy screen…'
+      return t('personA.drawing')
     case 'drawn':
       return hand.value
-        ? `You drew the ${hand.value.label}. Person B cannot see it.`
+        ? t('personA.drawn', { card: cardLabel(hand.value) })
         : ''
     case 'sorting':
-      return 'Look through the remaining cards in private.'
+      return t('personA.sorting')
     case 'proving':
-      return 'Show Person B every black card. Keep the red ones hidden.'
+      return t('personA.proving')
     case 'result':
-      return proofSucceeded.value
-        ? 'Person B is convinced — and still does not know which red card you hold.'
-        : 'You could not produce four black cards, because you are holding one.'
+      return proofSucceeded.value ? t('personA.resultOk') : t('personA.resultFail')
     default:
       return ''
   }
@@ -70,26 +70,24 @@ const personANote = computed(() => {
 const personBNote = computed(() => {
   switch (step.value) {
     case 'intro':
-      return 'I need to be convinced you have a red card.'
+      return t('personB.intro')
     case 'inspect':
-      return 'Four red, four black. I have seen every card in this deck.'
+      return t('personB.inspect')
     case 'shuffling':
-      return 'I no longer know the order.'
+      return t('personB.shuffling')
     case 'shuffled':
-      return 'Same eight cards, now face down. I do not know which is which.'
+      return t('personB.shuffled')
     case 'drawing':
     case 'drawn':
-      return 'Person A is holding a card. I cannot see it. It might be red or black.'
+      return t('personB.drawn')
     case 'sorting':
-      return 'Person A is looking at the remaining cards. The screen blocks my view.'
+      return t('personB.sorting')
     case 'proving':
-      return revealed.value.length
-        ? `I have been shown ${revealed.value.length} black card${revealed.value.length === 1 ? '' : 's'} so far.`
-        : 'Waiting to see black cards…'
+      if (!revealed.value.length) return t('personB.provingWait')
+      if (revealed.value.length === 1) return t('personB.provingOne')
+      return t('personB.provingMany', { count: revealed.value.length })
     case 'result':
-      return proofSucceeded.value
-        ? 'All four black cards are here. The hidden card must be red — but I still do not know which of the four red cards it is.'
-        : 'Only three black cards were shown. One black card is missing. I am not convinced.'
+      return proofSucceeded.value ? t('personB.resultOk') : t('personB.resultFail')
     default:
       return ''
   }
@@ -98,27 +96,27 @@ const personBNote = computed(() => {
 const narration = computed(() => {
   switch (step.value) {
     case 'intro':
-      return 'A zero-knowledge proof lets you convince someone a statement is true without revealing anything else. Here, Person A wants to prove she has a red card — without showing which red card it is.'
+      return t('narration.intro')
     case 'inspect':
-      return 'Before anyone draws, Person B inspects the whole deck: four red cards and four black cards. Both of you agree on exactly which eight cards exist.'
+      return t('narration.inspect')
     case 'shuffling':
-      return 'The cards are shuffled and turned face down.'
+      return t('narration.shuffling')
     case 'shuffled':
-      return 'You are Person A. Draw a random card. Person B will not be allowed to see it.'
+      return t('narration.shuffled')
     case 'drawing':
-      return 'The card slides behind the privacy screen. Only you will see its face.'
+      return t('narration.drawing')
     case 'drawn':
       return hand.value?.color === 'red'
-        ? 'You have a red card. You can prove that fact by showing Person B every black card — and none of the red ones.'
-        : 'You have a black card. Try the proof anyway. If the statement is false, it should fail.'
+        ? t('narration.drawnRed')
+        : t('narration.drawnBlack')
     case 'sorting':
-      return 'You look at the remaining seven cards in private. Person B still cannot see their faces.'
+      return t('narration.sorting')
     case 'proving':
-      return 'Every black card from the remainder is shown to Person B. Red cards stay on your side of the screen.'
+      return t('narration.proving')
     case 'result':
       return proofSucceeded.value
-        ? 'Person B has now seen all four black cards, so your hidden card must be red. The three leftover red cards were never shown, so Person B cannot tell which of the four red cards you drew. That is the zero-knowledge part.'
-        : 'You only had three black cards left to show, because the fourth is in your hand. Person B notices a black card is missing and refuses to believe you drew red. You cannot prove a false statement.'
+        ? t('narration.resultOk')
+        : t('narration.resultFail')
     default:
       return ''
   }
@@ -127,21 +125,21 @@ const narration = computed(() => {
 const action = computed(() => {
   switch (step.value) {
     case 'intro':
-      return { label: 'Show Person B the deck', run: begin }
+      return { label: t('actions.begin'), run: begin }
     case 'inspect':
-      return { label: 'Shuffle and turn face down', run: shuffleDeck }
+      return { label: t('actions.shuffle'), run: shuffleDeck }
     case 'shuffled':
-      return { label: 'Draw a random card', run: draw }
+      return { label: t('actions.draw'), run: draw }
     case 'drawn':
       return {
         label:
           hand.value?.color === 'red'
-            ? 'Prove you have a red card'
-            : 'Try to prove you have a red card',
+            ? t('actions.prove')
+            : t('actions.proveAnyway'),
         run: prove,
       }
     case 'result':
-      return { label: 'Play again', run: reset }
+      return { label: t('actions.again'), run: reset }
     default:
       return null
   }
@@ -178,13 +176,32 @@ onUnmounted(() => {
 <template>
   <div class="page">
     <header class="top">
-      <p class="eyebrow">A small card-table demonstration</p>
-      <h1>Zero-knowledge proof</h1>
+      <nav class="lang-switch" :aria-label="t('language')">
+        <button
+          type="button"
+          :class="{ 'is-active': locale === 'nl' }"
+          :aria-pressed="locale === 'nl'"
+          @click="setLocale('nl')"
+        >
+          NL
+        </button>
+        <button
+          type="button"
+          :class="{ 'is-active': locale === 'en' }"
+          :aria-pressed="locale === 'en'"
+          @click="setLocale('en')"
+        >
+          EN
+        </button>
+      </nav>
+      <p class="eyebrow">{{ t('eyebrow') }}</p>
+      <h1>{{ t('title') }}</h1>
       <p class="lede">
-        Prove you drew a red card without showing it — and without revealing
-        <em>which</em> red card it is.
+        {{ t('ledeBefore') }}
+        <em>{{ t('ledeEm') }}</em>
+        {{ t('ledeAfter') }}
       </p>
-      <ol class="progress" aria-label="Demonstration steps">
+      <ol class="progress" :aria-label="t('stepsLabel')">
         <li
           v-for="item in steps"
           :key="item.id"
@@ -195,7 +212,7 @@ onUnmounted(() => {
               steps.findIndex((stepItem) => stepItem.id === item.id),
           }"
         >
-          {{ item.label }}
+          {{ t(item.labelKey) }}
         </li>
       </ol>
     </header>
@@ -203,39 +220,41 @@ onUnmounted(() => {
     <div class="people">
       <Character
         who="a"
-        title="You · Person A"
-        subtitle="Prover"
+        :title="t('personATitle')"
+        :subtitle="t('personARole')"
         :note="personANote"
       />
       <Character
         who="b"
-        title="Person B"
-        subtitle="Verifier"
+        :title="t('personBTitle')"
+        :subtitle="t('personBRole')"
         :note="personBNote"
       />
     </div>
 
-    <section class="table" aria-label="Card table">
+    <section class="table" :aria-label="t('tableLabel')">
       <div class="felt">
         <div
           class="privacy-screen"
           :class="{ 'is-on': showPrivateLabel }"
           aria-hidden="true"
         >
-          <span class="plaque a-side">Your eyes only</span>
-          <span class="plaque b-side">No view</span>
+          <span class="plaque a-side">{{ t('plaquePrivate') }}</span>
+          <span class="plaque b-side">{{ t('plaquePublic') }}</span>
         </div>
 
-        <p v-if="step === 'inspect'" class="row-tag red">Red</p>
-        <p v-if="step === 'inspect'" class="row-tag black">Black</p>
+        <p v-if="step === 'inspect'" class="row-tag red">{{ t('red') }}</p>
+        <p v-if="step === 'inspect'" class="row-tag black">{{ t('black') }}</p>
 
         <p v-if="step === 'drawing' || step === 'drawn'" class="zone-label private">
-          Private — Person B cannot see this
+          {{ t('privateZone') }}
         </p>
         <p v-if="hand && showPrivateLabel" class="hand-caption">
-          <span>Your card</span>
-          <strong>{{ layouts[hand.id]?.faceUp ? hand.label : 'Coming to you face down…' }}</strong>
-          <small>Person B cannot see this card</small>
+          <span>{{ t('yourCard') }}</span>
+          <strong>{{
+            layouts[hand.id]?.faceUp ? cardLabel(hand) : t('cardComing')
+          }}</strong>
+          <small>{{ t('personBCannotSeeCard') }}</small>
         </p>
         <div
           v-if="hand && showPrivateLabel"
@@ -243,13 +262,13 @@ onUnmounted(() => {
           aria-hidden="true"
         >
           <span class="mystery">?</span>
-          <small>Person A’s card<br />hidden from me</small>
+          <small>{{ t('mysteryCard') }}<br />{{ t('mysteryHidden') }}</small>
         </div>
         <p v-if="showSecretPile" class="zone-label secret">
-          {{ step === 'sorting' ? 'Remaining cards — still private' : 'Red cards kept hidden' }}
+          {{ step === 'sorting' ? t('remainingPrivate') : t('redsHidden') }}
         </p>
         <p v-if="showPublicLabel" class="zone-label public">
-          Shown to Person B
+          {{ t('shownToB') }}
         </p>
 
         <PlayingCard
@@ -273,22 +292,20 @@ onUnmounted(() => {
       >
         {{ action.label }}
       </button>
-      <p v-else class="wait">{{ busy ? 'Watch the cards…' : '' }}</p>
+      <p v-else class="wait">{{ busy ? t('watchCards') : '' }}</p>
 
       <ul v-if="step === 'result'" class="properties">
         <li v-if="proofSucceeded">
-          <strong>Completeness.</strong>
-          The statement was true, so the proof succeeded.
+          <strong>{{ t('properties.completenessLabel') }}</strong>
+          {{ t('properties.completeness') }}
         </li>
         <li v-if="proofSucceeded">
-          <strong>Zero knowledge.</strong>
-          Person B learned only that your card is red — not whether it is the
-          ace or king of hearts or diamonds.
+          <strong>{{ t('properties.zeroKnowledgeLabel') }}</strong>
+          {{ t('properties.zeroKnowledge') }}
         </li>
         <li v-if="!proofSucceeded">
-          <strong>Soundness.</strong>
-          A false statement cannot be proven. Holding a black card, you could
-          not show all four black cards.
+          <strong>{{ t('properties.soundnessLabel') }}</strong>
+          {{ t('properties.soundness') }}
         </li>
       </ul>
     </section>
@@ -300,6 +317,39 @@ onUnmounted(() => {
   width: min(1080px, 100%);
   margin: 0 auto;
   padding: 28px 20px 48px;
+}
+
+.lang-switch {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.lang-switch button {
+  appearance: none;
+  min-width: 44px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(230, 200, 122, 0.28);
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.lang-switch button.is-active {
+  background: rgba(230, 200, 122, 0.16);
+  color: var(--cream);
+  border-color: var(--brass);
+}
+
+.lang-switch button:focus-visible {
+  outline: 2px solid #f7f1e6;
+  outline-offset: 2px;
 }
 
 .top {

@@ -1,8 +1,8 @@
 export const SUITS = {
-  hearts: { symbol: '♥', color: 'red', name: 'Hearts' },
-  diamonds: { symbol: '♦', color: 'red', name: 'Diamonds' },
-  spades: { symbol: '♠', color: 'black', name: 'Spades' },
-  clubs: { symbol: '♣', color: 'black', name: 'Clubs' },
+  hearts: { symbol: '♥', color: 'red' },
+  diamonds: { symbol: '♦', color: 'red' },
+  spades: { symbol: '♠', color: 'black' },
+  clubs: { symbol: '♣', color: 'black' },
 }
 
 export const FULL_DECK = [
@@ -18,7 +18,6 @@ export const FULL_DECK = [
   ...card,
   color: SUITS[card.suit].color,
   symbol: SUITS[card.suit].symbol,
-  label: `${card.rank === 'A' ? 'Ace' : 'King'} of ${SUITS[card.suit].name}`,
 }))
 
 export function cloneDeck() {
