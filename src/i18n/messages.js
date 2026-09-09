@@ -22,7 +22,7 @@ export const messages = {
     home: 'Home',
     info: 'Info',
     eyebrow: 'Een kleine demonstratie aan de kaarttafel',
-    title: 'Zero-knowledge-proof (nulkennisbewijs)',
+    title: 'Zero-knowledge-proof (nulkennisbewijs) en digitale identiteit',
     ledeBefore:
       'Bewijs welke kleur je hebt getrokken zonder de kaart te laten zien — en zonder te onthullen',
     ledeEm: 'welke',
@@ -32,7 +32,7 @@ export const messages = {
     modalGotIt: 'Begrepen',
     modalStep: 'Stap {current} van {total}',
     welcome: {
-      title: 'Zero-knowledge-proof (nulkennisbewijs)',
+      title: 'Zero-knowledge-proof (nulkennisbewijs) en digitale identiteit',
       riskTitle: 'Digitale identiteit',
       risk:
         'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Hackers krijgen vaak veel meer van jou te zien dan nodig is.',
@@ -199,7 +199,7 @@ export const messages = {
     home: 'Home',
     info: 'Info',
     eyebrow: 'A small card-table demonstration',
-    title: 'Zero-knowledge-proof',
+    title: 'Zero-knowledge-proof and digital identity',
     ledeBefore:
       'Prove which colour you drew without showing the card — and without revealing',
     ledeEm: 'which',
@@ -209,7 +209,7 @@ export const messages = {
     modalGotIt: 'Got it',
     modalStep: 'Step {current} of {total}',
     welcome: {
-      title: 'Zero-knowledge-proof',
+      title: 'Zero-knowledge-proof and digital identity',
       riskTitle: 'Digital identity',
       risk:
         'Digital identity is increasingly vulnerable to hacks and misuse. Hackers often see far more of you than was ever needed.',
@@ -377,7 +377,7 @@ export const messages = {
     home: 'Startseite',
     info: 'Info',
     eyebrow: 'Eine kleine Demonstration am Kartentisch',
-    title: 'Zero-Knowledge-Beweis',
+    title: 'Zero-Knowledge-Beweis und digitale Identität',
     ledeBefore:
       'Beweise, welche Farbe du gezogen hast, ohne die Karte zu zeigen — und ohne zu verraten,',
     ledeEm: 'welche',
@@ -387,7 +387,7 @@ export const messages = {
     modalGotIt: 'Verstanden',
     modalStep: 'Schritt {current} von {total}',
     welcome: {
-      title: 'Zero-Knowledge-Beweis',
+      title: 'Zero-Knowledge-Beweis und digitale Identität',
       riskTitle: 'Digitale Identität',
       risk:
         'Digitale Identität wird immer häufiger gehackt und missbraucht. Hacker sehen oft weit mehr von dir, als jemals nötig war.',
@@ -555,7 +555,7 @@ export const messages = {
     home: 'Accueil',
     info: 'Info',
     eyebrow: 'Une petite démonstration à la table de cartes',
-    title: 'Preuve à divulgation nulle',
+    title: 'Preuve à divulgation nulle et identité numérique',
     ledeBefore:
       'Prouvez quelle couleur vous avez tirée sans montrer la carte — et sans révéler',
     ledeEm: 'laquelle',
@@ -565,7 +565,7 @@ export const messages = {
     modalGotIt: 'Compris',
     modalStep: 'Étape {current} sur {total}',
     welcome: {
-      title: 'Preuve à divulgation nulle',
+      title: 'Preuve à divulgation nulle et identité numérique',
       riskTitle: 'Identité numérique',
       risk:
         'L’identité numérique est de plus en plus piratée et détournée. Les pirates voient souvent bien plus de vous que nécessaire.',
