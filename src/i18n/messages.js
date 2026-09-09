@@ -3,7 +3,7 @@ export const LOCALES = ['en', 'nl']
 export const messages = {
   nl: {
     htmlLang: 'nl',
-    documentTitle: 'Zero-knowledgebewijs met speelkaarten',
+    documentTitle: 'Zero-knowledge-bewijs met speelkaarten',
     socialDescription:
       'Bewijs welke kleur je hebt getrokken zonder de kaart te laten zien — en zonder te onthullen welke kaart van die kleur het is.',
     ogImageAlt:
@@ -14,7 +14,7 @@ export const messages = {
     menuClose: 'Menu sluiten',
     info: 'Info',
     eyebrow: 'Een kleine demonstratie aan de kaarttafel',
-    title: 'Zero-knowledgebewijs',
+    title: 'Zero-knowledge-bewijs',
     ledeBefore:
       'Bewijs welke kleur je hebt getrokken zonder de kaart te laten zien — en zonder te onthullen',
     ledeEm: 'welke',
@@ -24,10 +24,10 @@ export const messages = {
     modalGotIt: 'Begrepen',
     modalStep: 'Stap {current} van {total}',
     welcome: {
-      title: 'Zero-knowledgebewijs',
+      title: 'Zero-knowledge-bewijs',
       riskTitle: 'Digitale identiteit',
       risk:
-        'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Hackers krijgen vaak veel meer van jou te zien dan nodig was.',
+        'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Hackers krijgen vaak veel meer van jou te zien dan nodig is.',
       newspaper: {
         masthead: 'Het Digitaal Dagblad',
         date: 'Februari 2026',
@@ -37,7 +37,7 @@ export const messages = {
       },
       rethinkTitle: 'Minder laten zien',
       rethink:
-        'Daarom moeten we opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledgebewijs helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
+        'Daarom moeten we opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledge-bewijs helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
       exampleTitle: 'Een alledaags voorbeeld',
       example:
         'Bij de deur van een café wil de portier weten of je oud genoeg bent om binnen te mogen. Hij hoeft alleen te weten: ja of nee — niet wanneer je precies geboren bent, waar je woont, of andere gegevens op je ID.',
@@ -114,7 +114,7 @@ export const messages = {
     },
     narration: {
       intro:
-        'Een zero-knowledgebewijs laat je iemand overtuigen dat een stelling waar is, zonder verder iets te onthullen. Hier wil de bewijzer bewijzen welke kleur haar kaart heeft — zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
+        'Een zero-knowledge-bewijs laat je iemand overtuigen dat een stelling waar is, zonder verder iets te onthullen. Hier wil de bewijzer bewijzen welke kleur haar kaart heeft — zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
       inspect:
         'Voordat je een kaart trekt, bekijkt de controleur het hele spel: vier rode kaarten en vier zwarte. Jullie zijn het erover eens welke acht kaarten er zijn.',
       shuffling: 'De kaarten worden geschud en omgekeerd.',
