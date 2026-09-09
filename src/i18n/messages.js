@@ -88,7 +88,7 @@ export const messages = {
     watchCards: 'Kijk naar de kaarten…',
     faceDownCard: 'Een speelkaart met de achterkant naar boven',
     personA: {
-      intro: 'Jij trekt een kaart die alleen jij kunt zien.',
+      intro: '“Ik trek een kaart die alleen ik kan zien.”',
       inspect: 'Jij ziet het spel ook — er is nog niets verborgen.',
       shuffled: 'De kaarten liggen achterkant boven. Trek er willekeurig één.',
       drawing: 'De kaart gaat achter het privéscherm…',
@@ -104,7 +104,7 @@ export const messages = {
         'Het bedrog mislukte. Je kon geen vier {otherCards} laten zien, omdat je een {ownCard} vasthoudt.',
     },
     personB: {
-      intro: 'Ik moet overtuigd raken van de kleur van jouw kaart.',
+      intro: '“Ik moet overtuigd raken van de kleur van jouw kaart.”',
       inspect: 'Vier rood, vier zwart. Ik heb elke kaart in dit spel gezien.',
       shuffling: 'Ik ken de volgorde niet meer.',
       shuffled:
@@ -266,7 +266,7 @@ export const messages = {
     watchCards: 'Watch the cards…',
     faceDownCard: 'A face-down playing card',
     personA: {
-      intro: 'You will draw a card that only you can see.',
+      intro: '“I will draw a card that only I can see.”',
       inspect: 'You can see the deck too — nothing is hidden yet.',
       shuffled: 'The cards are face down. Draw one at random.',
       drawing: 'Pulling a card behind the privacy screen…',
@@ -282,7 +282,7 @@ export const messages = {
         'The cheat failed. You could not show four {otherCards}, because you are holding a {ownCard}.',
     },
     personB: {
-      intro: 'I need to be convinced about the colour of your card.',
+      intro: '“I need to be convinced about the colour of your card.”',
       inspect: 'Four red, four black. I have seen every card in this deck.',
       shuffling: 'I no longer know the order.',
       shuffled:
@@ -445,7 +445,7 @@ export const messages = {
     watchCards: 'Schau auf die Karten…',
     faceDownCard: 'Eine verdeckte Spielkarte',
     personA: {
-      intro: 'Du ziehst eine Karte, die nur du sehen kannst.',
+      intro: '“Ich ziehe eine Karte, die nur ich sehen kann.”',
       inspect: 'Du siehst das Spiel auch — noch ist nichts verborgen.',
       shuffled: 'Die Karten liegen verdeckt. Ziehe eine zufällig.',
       drawing: 'Die Karte geht hinter den Sichtschutz…',
@@ -461,7 +461,7 @@ export const messages = {
         'Der Betrug ist gescheitert. Du konntest keine vier {otherCards} zeigen, weil du eine {ownCard} hältst.',
     },
     personB: {
-      intro: 'Ich muss von der Farbe deiner Karte überzeugt werden.',
+      intro: '“Ich muss von der Farbe deiner Karte überzeugt werden.”',
       inspect: 'Vier rot, vier schwarz. Ich habe jede Karte in diesem Spiel gesehen.',
       shuffling: 'Ich kenne die Reihenfolge nicht mehr.',
       shuffled:
@@ -624,7 +624,7 @@ export const messages = {
     watchCards: 'Regardez les cartes…',
     faceDownCard: 'Une carte à jouer face cachée',
     personA: {
-      intro: 'Vous tirez une carte que vous seule pouvez voir.',
+      intro: '“Je tire une carte que moi seule peux voir.”',
       inspect: 'Vous voyez aussi le jeu — rien n’est encore caché.',
       shuffled: 'Les cartes sont face cachée. Tirez-en une au hasard.',
       drawing: 'La carte passe derrière le paravent…',
@@ -640,7 +640,7 @@ export const messages = {
         'La triche a échoué. Vous n’avez pas pu montrer quatre {otherCards}, parce que vous tenez une {ownCard}.',
     },
     personB: {
-      intro: 'Je dois être convaincue de la couleur de votre carte.',
+      intro: '“Je dois être convaincue de la couleur de votre carte.”',
       inspect: 'Quatre rouges, quatre noires. J’ai vu chaque carte de ce jeu.',
       shuffling: 'Je ne connais plus l’ordre.',
       shuffled:
