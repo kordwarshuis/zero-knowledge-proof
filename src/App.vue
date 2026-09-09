@@ -693,6 +693,10 @@ onUnmounted(() => {
       </div>
     </section>
 
+    <footer class="site-credit">
+      <p>{{ t('credit') }}</p>
+    </footer>
+
     <Teleport to="body">
       <Transition name="fade">
         <div
@@ -1357,6 +1361,19 @@ h1 {
   background: rgba(16, 24, 20, 0.72);
   color: var(--muted);
   min-height: 1.2em;
+}
+
+.site-credit {
+  margin: 18px 0 0;
+  text-align: center;
+}
+
+.site-credit p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  opacity: 0.78;
 }
 
 @media (max-width: 720px) {

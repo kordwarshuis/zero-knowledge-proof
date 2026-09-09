@@ -184,6 +184,7 @@ export const messages = {
       clubs: 'klaveren',
     },
     cardOf: '{rank} van {suit}',
+    credit: '© Kor Dwarshuis – 2026 – gemaakt met AI',
   },
   en: {
     htmlLang: 'en',
@@ -362,6 +363,7 @@ export const messages = {
       clubs: 'Clubs',
     },
     cardOf: '{rank} of {suit}',
+    credit: '© Kor Dwarshuis – 2026 – made with AI',
   },
   de: {
     htmlLang: 'de',
@@ -540,6 +542,7 @@ export const messages = {
       clubs: 'Kreuz',
     },
     cardOf: '{suit}-{rank}',
+    credit: '© Kor Dwarshuis – 2026 – erstellt mit KI',
   },
   fr: {
     htmlLang: 'fr',
@@ -718,5 +721,6 @@ export const messages = {
       clubs: 'trèfle',
     },
     cardOf: '{rank} de {suit}',
+    credit: '© Kor Dwarshuis – 2026 – réalisé avec l’IA',
   },
 }
