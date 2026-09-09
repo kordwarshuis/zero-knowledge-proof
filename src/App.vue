@@ -703,6 +703,28 @@ onUnmounted(() => {
           >
             <p v-if="modalStepLabel" class="modal-step">{{ modalStepLabel }}</p>
             <h2 id="modal-title">{{ modalTitle }}</h2>
+            <div
+              v-if="modalKind === 'welcome' && welcomeStep === 0"
+              class="lang-switch modal-lang"
+              :aria-label="t('language')"
+            >
+              <button
+                type="button"
+                :class="{ 'is-active': locale === 'nl' }"
+                :aria-pressed="locale === 'nl'"
+                @click="setLocale('nl')"
+              >
+                NL
+              </button>
+              <button
+                type="button"
+                :class="{ 'is-active': locale === 'en' }"
+                :aria-pressed="locale === 'en'"
+                @click="setLocale('en')"
+              >
+                EN
+              </button>
+            </div>
             <div class="modal-body">
               <div v-if="welcomeShowsRoles" class="welcome-roles">
                 <Character
@@ -1561,6 +1583,39 @@ h1 {
   .welcome-roles {
     gap: 12px;
   }
+}
+
+.modal-lang {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: -4px 0 14px;
+}
+
+.modal-lang button {
+  appearance: none;
+  min-width: 44px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(230, 200, 122, 0.28);
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.modal-lang button.is-active {
+  background: rgba(230, 200, 122, 0.16);
+  color: var(--cream);
+  border-color: var(--brass);
+}
+
+.modal-lang button:focus-visible {
+  outline: 2px solid #f7f1e6;
+  outline-offset: 2px;
 }
 
 .modal-confirm {
