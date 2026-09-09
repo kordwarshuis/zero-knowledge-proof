@@ -24,6 +24,13 @@ export const messages = {
       riskTitle: 'Digitale identiteit',
       risk:
         'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Wie een account overneemt of een datalek uitbuit, krijgt vaak veel meer van jou te zien dan nodig was.',
+      newspaper: {
+        masthead: 'Het Digitaal Dagblad',
+        date: 'Februari 2026',
+        section: 'Cybersecurity',
+        headline: 'Miljoenen Odido-klanten getroffen door grootschalige hack',
+        deck: 'Namen, adressen, rekeningnummers en documentnummers van identiteitsbewijzen op straat na weigering losgeld.',
+      },
       rethinkTitle: 'Minder laten zien',
       rethink:
         'Daarom moeten we opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledgebewijs helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
@@ -189,6 +196,13 @@ export const messages = {
       riskTitle: 'Digital identity',
       risk:
         'Digital identity is increasingly vulnerable to hacks and misuse. Whoever takes over an account or exploits a data breach often sees far more of you than was ever needed.',
+      newspaper: {
+        masthead: 'The Digital Gazette',
+        date: 'September 2026',
+        section: 'Cybersecurity',
+        headline: 'IDScan breach puts 150M+ driver’s licences up for sale',
+        deck: 'High-resolution identity scans from shops and rental desks exposed after hackers hit a major verification firm.',
+      },
       rethinkTitle: 'Show less',
       rethink:
         'So we need to rethink when we show something, what we show, and why. A zero-knowledge proof helps with that: you prove that something is true without revealing the underlying data.',

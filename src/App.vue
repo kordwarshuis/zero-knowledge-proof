@@ -181,7 +181,7 @@ const modalBody = ref([])
 const welcomeStep = ref(0)
 
 const welcomePages = computed(() => [
-  { titleKey: 'welcome.riskTitle', textKey: 'welcome.risk' },
+  { titleKey: 'welcome.riskTitle', textKey: 'welcome.risk', kind: 'risk' },
   { titleKey: 'welcome.rethinkTitle', textKey: 'welcome.rethink' },
   { titleKey: 'welcome.exampleTitle', textKey: 'welcome.example' },
   { titleKey: 'welcome.bridgeTitle', textKey: 'welcome.bridge' },
@@ -195,6 +195,9 @@ const welcomeIsLast = computed(
 )
 const welcomeShowsRoles = computed(
   () => modalKind.value === 'welcome' && welcomePage.value?.kind === 'roles',
+)
+const welcomeShowsNewspaper = computed(
+  () => modalKind.value === 'welcome' && welcomePage.value?.kind === 'risk',
 )
 
 const modalTitle = computed(() => {
@@ -718,6 +721,20 @@ onUnmounted(() => {
                 />
               </div>
               <template v-else>
+                <figure
+                  v-if="welcomeShowsNewspaper"
+                  class="newspaper"
+                  :aria-label="t('welcome.newspaper.headline')"
+                >
+                  <p class="newspaper-masthead">{{ t('welcome.newspaper.masthead') }}</p>
+                  <p class="newspaper-meta">
+                    <span>{{ t('welcome.newspaper.date') }}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{{ t('welcome.newspaper.section') }}</span>
+                  </p>
+                  <h3 class="newspaper-headline">{{ t('welcome.newspaper.headline') }}</h3>
+                  <p class="newspaper-deck">{{ t('welcome.newspaper.deck') }}</p>
+                </figure>
                 <p v-for="(paragraph, index) in modalParagraphs" :key="index">
                   <strong v-if="paragraph.label">{{ paragraph.label }}</strong>
                   {{ paragraph.text }}
@@ -1436,7 +1453,7 @@ h1 {
   margin-bottom: 18px;
 }
 
-.modal-body p {
+.modal-body > p {
   margin: 0;
   color: var(--cream);
   font-size: 0.98rem;
@@ -1445,6 +1462,92 @@ h1 {
 
 .modal-body strong {
   color: var(--brass);
+}
+
+.newspaper {
+  margin: 0 0 4px;
+  padding: 16px 16px 14px;
+  border-radius: 2px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.35), transparent 40%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(40, 32, 24, 0.03) 0,
+      rgba(40, 32, 24, 0.03) 1px,
+      transparent 1px,
+      transparent 7px
+    ),
+    #f3ead2;
+  color: #1a1510;
+  box-shadow:
+    inset 0 0 0 1px rgba(40, 32, 24, 0.18),
+    0 10px 24px rgba(0, 0, 0, 0.22);
+  transform: rotate(-0.4deg);
+}
+
+.newspaper p,
+.newspaper h3 {
+  color: inherit;
+}
+
+.newspaper-masthead {
+  margin: 0;
+  text-align: center;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.35rem, 3.4vw, 1.7rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.newspaper-masthead::before,
+.newspaper-masthead::after {
+  content: '';
+  display: block;
+  height: 2px;
+  margin: 8px 0;
+  background: #111;
+}
+
+.newspaper-masthead::after {
+  height: 1px;
+  margin-top: 4px;
+}
+
+.newspaper-meta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.45em;
+  margin: 0 0 10px;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4a4036;
+}
+
+.newspaper-headline {
+  margin: 0 0 8px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.2rem, 3.2vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #111;
+  text-wrap: balance;
+}
+
+.newspaper-deck {
+  margin: 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(26, 21, 16, 0.35);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: #2a241c;
 }
 
 .welcome-roles {
