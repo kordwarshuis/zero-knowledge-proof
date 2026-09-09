@@ -22,13 +22,8 @@ function localeFromStorage() {
   }
 }
 
-function localeFromBrowser() {
-  const language = (navigator.language || '').toLowerCase()
-  return language.startsWith('nl') ? 'nl' : 'en'
-}
-
 function detectLocale() {
-  return localeFromUrl() ?? localeFromStorage() ?? localeFromBrowser()
+  return localeFromUrl() ?? localeFromStorage() ?? 'en'
 }
 
 function writeUrlLocale(next) {
@@ -50,9 +45,28 @@ function interpolate(template, vars = {}) {
   )
 }
 
+function setMeta(attr, key, value) {
+  let el = document.querySelector(`meta[${attr}="${key}"]`)
+  if (!el) {
+    el = document.createElement('meta')
+    el.setAttribute(attr, key)
+    document.head.appendChild(el)
+  }
+  el.setAttribute('content', value)
+}
+
 function applyDocumentLanguage(next) {
-  document.documentElement.lang = messages[next].htmlLang
-  document.title = messages[next].documentTitle
+  const copy = messages[next]
+  document.documentElement.lang = copy.htmlLang
+  document.title = copy.documentTitle
+  setMeta('name', 'description', copy.socialDescription)
+  setMeta('property', 'og:locale', next === 'nl' ? 'nl_NL' : 'en_US')
+  setMeta('property', 'og:title', copy.documentTitle)
+  setMeta('property', 'og:description', copy.socialDescription)
+  setMeta('property', 'og:image:alt', copy.ogImageAlt)
+  setMeta('name', 'twitter:title', copy.documentTitle)
+  setMeta('name', 'twitter:description', copy.socialDescription)
+  setMeta('name', 'twitter:image:alt', copy.ogImageAlt)
 }
 
 function syncFromUrl() {

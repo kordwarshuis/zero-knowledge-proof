@@ -16,12 +16,12 @@ This is a teaching analogy, not a cryptographic protocol such as a zk-SNARK.
 
 ## Language
 
-Dutch and English are both supported. Open the menu for language and info, or set the language in the URL:
+Dutch and English are both supported. English is the default. Open the menu for language and info, or set the language in the URL:
 
-- `/?lang=nl`
 - `/?lang=en`
+- `/?lang=nl`
 
-Without a parameter, the app uses your saved choice and otherwise falls back to the browser language.
+Without a parameter, the app uses your saved choice and otherwise English (`?lang=en`).
 
 ## Run locally
 
