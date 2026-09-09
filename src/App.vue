@@ -37,6 +37,9 @@ const modalOpen = ref(false)
 const modalKind = ref(null)
 const pendingAction = ref(null)
 const modalCloseBtn = ref(null)
+let autoModalTimer = null
+
+const AUTO_MODAL_DELAY_MS = 2000
 
 const steps = [
   { id: 'inspect', labelKey: 'steps.inspect' },
@@ -345,6 +348,26 @@ watch(overlayOpen, (open) => {
   document.body.style.overflow = open ? 'hidden' : ''
 })
 
+function clearAutoModalTimer() {
+  if (autoModalTimer == null) return
+  clearTimeout(autoModalTimer)
+  autoModalTimer = null
+}
+
+function scheduleAutoModal(kind, body) {
+  clearAutoModalTimer()
+  autoModalTimer = setTimeout(() => {
+    autoModalTimer = null
+    if (modalOpen.value) return
+    pendingAction.value = null
+    pendingLabel.value = ''
+    modalBody.value = body
+    modalKind.value = kind
+    modalOpen.value = true
+    closeMenu()
+  }, AUTO_MODAL_DELAY_MS)
+}
+
 watch(modalOpen, async (open) => {
   if (!open) return
   await nextTick()
@@ -352,27 +375,21 @@ watch(modalOpen, async (open) => {
 })
 
 watch(step, (next, prev) => {
+  clearAutoModalTimer()
   if (modalOpen.value) return
 
   if (next === 'drawn' && prev !== 'drawn') {
-    pendingAction.value = null
-    pendingLabel.value = ''
-    modalBody.value = t('narration.drawn', colorVars.value)
-    modalKind.value = 'drawn'
-    modalOpen.value = true
-    closeMenu()
+    scheduleAutoModal('drawn', t('narration.drawn', colorVars.value))
     return
   }
 
   if (next === 'result' && prev !== 'result') {
-    pendingAction.value = null
-    pendingLabel.value = ''
-    modalBody.value = isCheating.value
-      ? t('narration.resultCheat', colorVars.value)
-      : t('narration.result', colorVars.value)
-    modalKind.value = 'result'
-    modalOpen.value = true
-    closeMenu()
+    scheduleAutoModal(
+      'result',
+      isCheating.value
+        ? t('narration.resultCheat', colorVars.value)
+        : t('narration.result', colorVars.value),
+    )
   }
 })
 
@@ -384,6 +401,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  clearAutoModalTimer()
   document.body.style.overflow = ''
   window.removeEventListener('resize', syncViewport)
   window.removeEventListener('keydown', onKeydown)
