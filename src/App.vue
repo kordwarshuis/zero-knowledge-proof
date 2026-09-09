@@ -185,8 +185,8 @@ const welcomePages = computed(() => [
   { titleKey: 'welcome.rethinkTitle', textKey: 'welcome.rethink' },
   { titleKey: 'welcome.exampleTitle', textKey: 'welcome.example' },
   { titleKey: 'welcome.bridgeTitle', textKey: 'welcome.bridge' },
-  { titleKey: 'welcome.rolesTitle', kind: 'roles' },
   { titleKey: 'welcome.cardsTitle', textKey: 'welcome.cards' },
+  { titleKey: 'welcome.rolesTitle', kind: 'roles' },
 ])
 
 const welcomePage = computed(() => welcomePages.value[welcomeStep.value] ?? null)
@@ -1417,6 +1417,7 @@ h1 {
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.2;
+  text-align: center;
 }
 
 .modal-step {
@@ -1426,6 +1427,7 @@ h1 {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--brass);
+  text-align: center;
 }
 
 .modal-body {
