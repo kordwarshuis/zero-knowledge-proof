@@ -4,11 +4,12 @@ defineProps({
   title: { type: String, required: true },
   subtitle: { type: String, required: true },
   note: { type: String, default: '' },
+  stacked: { type: Boolean, default: false },
 })
 </script>
 
 <template>
-  <div class="character" :class="`is-${who}`">
+  <div class="character" :class="[`is-${who}`, { 'is-stacked': stacked }]">
     <svg
       class="portrait"
       viewBox="0 0 80 80"
@@ -143,9 +144,36 @@ defineProps({
   min-height: 2.7em;
 }
 
+.is-stacked {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.is-stacked .portrait {
+  width: 72px;
+  height: 72px;
+}
+
+.is-stacked .note {
+  min-height: 0;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
 @media (max-width: 720px) {
   .title {
     font-size: 0.95rem;
+  }
+
+  .is-stacked .portrait {
+    width: 58px;
+    height: 58px;
+  }
+
+  .is-stacked .note {
+    font-size: 0.84rem;
   }
 }
 </style>

@@ -185,12 +185,16 @@ const welcomePages = computed(() => [
   { titleKey: 'welcome.rethinkTitle', textKey: 'welcome.rethink' },
   { titleKey: 'welcome.exampleTitle', textKey: 'welcome.example' },
   { titleKey: 'welcome.bridgeTitle', textKey: 'welcome.bridge' },
+  { titleKey: 'welcome.rolesTitle', kind: 'roles' },
   { titleKey: 'welcome.cardsTitle', textKey: 'welcome.cards' },
 ])
 
 const welcomePage = computed(() => welcomePages.value[welcomeStep.value] ?? null)
 const welcomeIsLast = computed(
   () => welcomeStep.value >= welcomePages.value.length - 1,
+)
+const welcomeShowsRoles = computed(
+  () => modalKind.value === 'welcome' && welcomePage.value?.kind === 'roles',
 )
 
 const modalTitle = computed(() => {
@@ -208,6 +212,9 @@ const modalTitle = computed(() => {
 
 const modalParagraphs = computed(() => {
   if (modalKind.value === 'welcome' && welcomePage.value) {
+    if (welcomePage.value.kind === 'roles' || !welcomePage.value.textKey) {
+      return []
+    }
     return [{ text: t(welcomePage.value.textKey) }]
   }
   return modalBody.value
@@ -694,10 +701,28 @@ onUnmounted(() => {
             <p v-if="modalStepLabel" class="modal-step">{{ modalStepLabel }}</p>
             <h2 id="modal-title">{{ modalTitle }}</h2>
             <div class="modal-body">
-              <p v-for="(paragraph, index) in modalParagraphs" :key="index">
-                <strong v-if="paragraph.label">{{ paragraph.label }}</strong>
-                {{ paragraph.text }}
-              </p>
+              <div v-if="welcomeShowsRoles" class="welcome-roles">
+                <Character
+                  who="a"
+                  stacked
+                  :title="t('personATitle')"
+                  subtitle=""
+                  :note="t('welcome.rolesProver')"
+                />
+                <Character
+                  who="b"
+                  stacked
+                  :title="t('personBTitle')"
+                  subtitle=""
+                  :note="t('welcome.rolesVerifier')"
+                />
+              </div>
+              <template v-else>
+                <p v-for="(paragraph, index) in modalParagraphs" :key="index">
+                  <strong v-if="paragraph.label">{{ paragraph.label }}</strong>
+                  {{ paragraph.text }}
+                </p>
+              </template>
             </div>
             <button
               ref="modalCloseBtn"
@@ -1418,6 +1443,19 @@ h1 {
 
 .modal-body strong {
   color: var(--brass);
+}
+
+.welcome-roles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 520px) {
+  .welcome-roles {
+    gap: 12px;
+  }
 }
 
 .modal-confirm {
