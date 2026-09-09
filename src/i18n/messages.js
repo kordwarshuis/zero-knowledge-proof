@@ -49,7 +49,7 @@ export const messages = {
       rolesVerifier: 'En toch wil ik weten of de kaart rood is of niet!',
       cardsTitle: 'Een voorbeeld',
       cards:
-        'We laten dat nu zien met speelkaarten. De bewijzer bewijst welke kleur haar kaart heeft, zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
+        'We laten dat nu zien met speelkaarten. De bewijzer bewijst welke kleur haar kaart heeft, zonder te laten zien welke kaart het is. (Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.)',
     },
     stepsLabel: 'Stappen van de demonstratie',
     steps: {
@@ -131,7 +131,7 @@ export const messages = {
       provingCheat:
         'Je probeert te bewijzen dat je een {claimCard} hebt door alle {otherCards} te tonen. Omdat je eigenlijke kaart {ownColor} is, kun je er maar drie laten zien.',
       result:
-        'De controleur heeft nu alle vier de {otherCards} gezien, dus jouw verborgen kaart moet {claimColor} zijn. De drie overgebleven {claimCards} zijn nooit getoond, dus de controleur kan niet zeggen welke van de vier {claimCards} je hebt getrokken. Dat is het zero-knowledge-gedeelte.',
+        'De controleur heeft nu alle vier de {otherCards} gezien, dus jouw verborgen kaart moet wel {claimColor} zijn. De drie overgebleven {claimCards} zijn nooit getoond, dus de controleur kan niet zeggen welke van de vier {claimCards} je hebt getrokken. Dat is het zero-knowledge-gedeelte.',
       resultCheat:
         'Je beweerde een {claimCard} te hebben, maar kon maar drie {otherCards} tonen. De controleur merkt dat er één ontbreekt en weigert de bewering. Een onware stelling kun je niet bewijzen — dat heet deugdelijkheid (soundness).',
     },
@@ -225,7 +225,7 @@ export const messages = {
       rolesVerifier: 'And yet I want to know whether the card is red or not!',
       cardsTitle: 'An example',
       cards:
-        'Next we will show that with playing cards. The prover proves which colour her card is, without showing which card it is. You can also try to lie, to see that cheating does not work.',
+        'Next we will show that with playing cards. The prover proves which colour her card is, without showing which card it is. (You can also try to lie, to see that cheating does not work.)',
     },
     stepsLabel: 'Demonstration steps',
     steps: {
