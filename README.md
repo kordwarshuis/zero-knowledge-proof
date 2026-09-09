@@ -1,6 +1,6 @@
 # Zero-Knowledge Proof with playing cards
 
-An interactive Vue.js demonstration of a simplified zero-knowledge proof, using a tiny deck of four red cards and four black cards. Available in Dutch and English.
+An interactive Vue.js demonstration of a simplified zero-knowledge-proof, using a tiny deck of four red cards and four black cards. Available in Dutch and English.
 
 You are **the prover**. You draw a random card that only you can see. Then you convince **the verifier** of the card's colour — without showing it, and without revealing which card of that colour it is. You can also try to cheat, to see that a false claim fails.
 

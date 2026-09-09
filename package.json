@@ -2,7 +2,7 @@
   "name": "zero-knowledge-proof",
   "private": true,
   "version": "0.0.0",
-  "description": "Interactive Vue demo of a zero-knowledge proof using a deck of cards",
+  "description": "Interactive Vue demo of a zero-knowledge-proof using a deck of cards",
   "type": "module",
   "scripts": {
     "dev": "vite",

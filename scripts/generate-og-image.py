@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the Open Graph share image for the zero-knowledge proof demo."""
+"""Generate the Open Graph share image for the zero-knowledge-proof demo."""
 
 from __future__ import annotations
 
@@ -287,7 +287,7 @@ def main():
     lede = fnt(GEORGIA_ITALIC, 17)
 
     draw.text((44 * SCALE, 22 * SCALE), spaced("A SMALL DEMONSTRATION"), font=eyebrow, fill=BRASS)
-    draw.text((44 * SCALE, 44 * SCALE), "Zero-knowledge proof", font=title, fill=CREAM)
+    draw.text((44 * SCALE, 44 * SCALE), "Zero-knowledge-proof", font=title, fill=CREAM)
     draw.text((44 * SCALE, 92 * SCALE), "Prove the colour — without showing the card.", font=lede, fill=MUTED)
 
     felt_box = (32 * SCALE, 136 * SCALE, W - 32 * SCALE, H - 28 * SCALE)

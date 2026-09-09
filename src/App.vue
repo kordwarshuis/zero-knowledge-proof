@@ -511,62 +511,78 @@ onUnmounted(() => {
           </ol>
         </div>
 
-        <div class="menu">
-          <button
-            class="menu-toggle"
-            type="button"
-            :aria-expanded="menuOpen"
-            aria-controls="site-menu"
-            :aria-label="menuOpen ? t('menuClose') : t('menuOpen')"
-            @click="toggleMenu"
-          >
-            <span class="burger" :class="{ 'is-open': menuOpen }" aria-hidden="true">
-              <i></i><i></i><i></i>
-            </span>
-          </button>
+        <div class="header-actions-slot" aria-hidden="true"></div>
+        <div class="header-actions">
+          <a class="icon-btn home-btn" href="/" :aria-label="t('home')">
+            <svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 11.5 12 4l8 7.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"
+              />
+            </svg>
+          </a>
 
-          <div
-            v-if="menuOpen"
-            class="menu-backdrop"
-            aria-hidden="true"
-            @click="closeMenu"
-          ></div>
+          <div class="menu">
+            <button
+              class="icon-btn menu-toggle"
+              type="button"
+              :aria-expanded="menuOpen"
+              aria-controls="site-menu"
+              :aria-label="menuOpen ? t('menuClose') : t('menuOpen')"
+              @click="toggleMenu"
+            >
+              <span class="burger" :class="{ 'is-open': menuOpen }" aria-hidden="true">
+                <i></i><i></i><i></i>
+              </span>
+            </button>
 
-          <div
-            v-show="menuOpen"
-            id="site-menu"
-            class="menu-panel"
-            role="dialog"
-            :aria-label="t('menu')"
-          >
-            <section class="menu-section">
-              <h2>{{ t('language') }}</h2>
-              <div class="lang-switch" :aria-label="t('language')">
-                <button
-                  v-for="code in locales"
-                  :key="code"
-                  type="button"
-                  :class="{ 'is-active': locale === code }"
-                  :aria-pressed="locale === code"
-                  @click="chooseLocale(code)"
-                >
-                  {{ code.toUpperCase() }}
+            <div
+              v-if="menuOpen"
+              class="menu-backdrop"
+              aria-hidden="true"
+              @click="closeMenu"
+            ></div>
+
+            <div
+              v-show="menuOpen"
+              id="site-menu"
+              class="menu-panel"
+              role="dialog"
+              :aria-label="t('menu')"
+            >
+              <section class="menu-section">
+                <h2>{{ t('language') }}</h2>
+                <div class="lang-switch" :aria-label="t('language')">
+                  <button
+                    v-for="code in locales"
+                    :key="code"
+                    type="button"
+                    :class="{ 'is-active': locale === code }"
+                    :aria-pressed="locale === code"
+                    @click="chooseLocale(code)"
+                  >
+                    {{ code.toUpperCase() }}
+                  </button>
+                </div>
+              </section>
+
+              <section class="menu-section">
+                <h2>{{ t('info') }}</h2>
+                <p class="eyebrow">{{ t('eyebrow') }}</p>
+                <p class="lede">
+                  {{ t('ledeBefore') }}
+                  <em>{{ t('ledeEm') }}</em>
+                  {{ t('ledeAfter') }}
+                </p>
+                <button class="menu-link" type="button" @click="openWelcome">
+                  {{ t('welcome.title') }}
                 </button>
-              </div>
-            </section>
-
-            <section class="menu-section">
-              <h2>{{ t('info') }}</h2>
-              <p class="eyebrow">{{ t('eyebrow') }}</p>
-              <p class="lede">
-                {{ t('ledeBefore') }}
-                <em>{{ t('ledeEm') }}</em>
-                {{ t('ledeAfter') }}
-              </p>
-              <button class="menu-link" type="button" @click="openWelcome">
-                {{ t('welcome.title') }}
-              </button>
-            </section>
+              </section>
+            </div>
           </div>
         </div>
       </div>
@@ -842,12 +858,28 @@ h1 {
   border-bottom-color: var(--brass);
 }
 
+.header-actions-slot {
+  width: 92px;
+  height: 42px;
+  flex: 0 0 auto;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: fixed;
+  top: 14px;
+  right: max(20px, calc((100vw - min(1080px, 100vw)) / 2 + 20px));
+  z-index: 130;
+}
+
 .menu {
   position: relative;
   flex: 0 0 auto;
 }
 
-.menu-toggle {
+.icon-btn {
   appearance: none;
   width: 42px;
   height: 42px;
@@ -858,11 +890,23 @@ h1 {
   display: grid;
   place-items: center;
   cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
-.menu-toggle:focus-visible {
+.icon-btn:hover {
+  background: rgba(230, 200, 122, 0.12);
+}
+
+.icon-btn:focus-visible {
   outline: 2px solid #f7f1e6;
   outline-offset: 2px;
+}
+
+.home-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .burger {

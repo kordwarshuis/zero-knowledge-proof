@@ -10,7 +10,7 @@ export const OG_LOCALES = {
 export const messages = {
   nl: {
     htmlLang: 'nl',
-    documentTitle: 'Zero-knowledge-bewijs met speelkaarten',
+    documentTitle: 'Zero-knowledge-proof (nulkennisbewijs) met speelkaarten',
     socialDescription:
       'Bewijs welke kleur je hebt getrokken zonder de kaart te laten zien — en zonder te onthullen welke kaart van die kleur het is.',
     ogImageAlt:
@@ -19,9 +19,10 @@ export const messages = {
     menu: 'Menu',
     menuOpen: 'Menu openen',
     menuClose: 'Menu sluiten',
+    home: 'Home',
     info: 'Info',
     eyebrow: 'Een kleine demonstratie aan de kaarttafel',
-    title: 'Zero-knowledge-bewijs',
+    title: 'Zero-knowledge-proof (nulkennisbewijs)',
     ledeBefore:
       'Bewijs welke kleur je hebt getrokken zonder de kaart te laten zien — en zonder te onthullen',
     ledeEm: 'welke',
@@ -31,7 +32,7 @@ export const messages = {
     modalGotIt: 'Begrepen',
     modalStep: 'Stap {current} van {total}',
     welcome: {
-      title: 'Zero-knowledge-bewijs',
+      title: 'Zero-knowledge-proof (nulkennisbewijs)',
       riskTitle: 'Digitale identiteit',
       risk:
         'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Hackers krijgen vaak veel meer van jou te zien dan nodig is.',
@@ -44,7 +45,7 @@ export const messages = {
       },
       rethinkTitle: 'Minder laten zien',
       rethink:
-        'Daarom moeten we opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledge-bewijs helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
+        'Daarom moeten we opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledge-proof (nulkennisbewijs) helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
       exampleTitle: 'Een alledaags voorbeeld',
       example:
         'Bij de deur van een café wil de portier weten of je oud genoeg bent om binnen te mogen. Hij hoeft alleen te weten: ja of nee — niet wanneer je precies geboren bent, waar je woont, of andere gegevens op je ID.',
@@ -121,7 +122,7 @@ export const messages = {
     },
     narration: {
       intro:
-        'Een zero-knowledge-bewijs laat je iemand overtuigen dat een stelling waar is, zonder verder iets te onthullen. Hier wil de bewijzer bewijzen welke kleur haar kaart heeft — zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
+        'Een zero-knowledge-proof (nulkennisbewijs) laat je iemand overtuigen dat een stelling waar is, zonder verder iets te onthullen. Hier wil de bewijzer bewijzen welke kleur haar kaart heeft — zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
       inspect:
         'Voordat je een kaart trekt, bekijkt de controleur het hele spel: vier rode kaarten en vier zwarte. Jullie zijn het erover eens welke acht kaarten er zijn.',
       shuffling: 'De kaarten worden geschud en omgekeerd.',
@@ -195,9 +196,10 @@ export const messages = {
     menu: 'Menu',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
+    home: 'Home',
     info: 'Info',
     eyebrow: 'A small card-table demonstration',
-    title: 'Zero-knowledge proof',
+    title: 'Zero-knowledge-proof',
     ledeBefore:
       'Prove which colour you drew without showing the card — and without revealing',
     ledeEm: 'which',
@@ -207,7 +209,7 @@ export const messages = {
     modalGotIt: 'Got it',
     modalStep: 'Step {current} of {total}',
     welcome: {
-      title: 'Zero-knowledge proof',
+      title: 'Zero-knowledge-proof',
       riskTitle: 'Digital identity',
       risk:
         'Digital identity is increasingly vulnerable to hacks and misuse. Hackers often see far more of you than was ever needed.',
@@ -220,7 +222,7 @@ export const messages = {
       },
       rethinkTitle: 'Show less',
       rethink:
-        'So we need to rethink when we show something, what we show, and why. A zero-knowledge proof helps with that: you prove that something is true without revealing the underlying data.',
+        'So we need to rethink when we show something, what we show, and why. A zero-knowledge-proof helps with that: you prove that something is true without revealing the underlying data.',
       exampleTitle: 'An everyday example',
       example:
         'At the door of a bar, the doorman wants to know whether you are old enough to enter. They only need a yes or no — not your exact date of birth, where you live, or anything else on your ID.',
@@ -298,7 +300,7 @@ export const messages = {
     },
     narration: {
       intro:
-        'A zero-knowledge proof lets you convince someone a statement is true without revealing anything else. Here, the prover wants to prove which colour her card is — without showing which card it is. You can also try to lie, to see that cheating does not work.',
+        'A zero-knowledge-proof lets you convince someone a statement is true without revealing anything else. Here, the prover wants to prove which colour her card is — without showing which card it is. You can also try to lie, to see that cheating does not work.',
       inspect:
         'Before you draw a card, the verifier inspects the whole deck: four red cards and four black cards. Both of you agree on exactly which eight cards exist.',
       shuffling: 'The cards are shuffled and turned face down.',
@@ -372,6 +374,7 @@ export const messages = {
     menu: 'Menü',
     menuOpen: 'Menü öffnen',
     menuClose: 'Menü schließen',
+    home: 'Startseite',
     info: 'Info',
     eyebrow: 'Eine kleine Demonstration am Kartentisch',
     title: 'Zero-Knowledge-Beweis',
@@ -549,6 +552,7 @@ export const messages = {
     menu: 'Menu',
     menuOpen: 'Ouvrir le menu',
     menuClose: 'Fermer le menu',
+    home: 'Accueil',
     info: 'Info',
     eyebrow: 'Une petite démonstration à la table de cartes',
     title: 'Preuve à divulgation nulle',
