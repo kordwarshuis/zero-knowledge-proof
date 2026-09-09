@@ -178,9 +178,25 @@ const personBNote = computed(() => {
 
 const pendingLabel = ref('')
 const modalBody = ref([])
+const welcomeStep = ref(0)
+
+const welcomePages = computed(() => [
+  { titleKey: 'welcome.riskTitle', textKey: 'welcome.risk' },
+  { titleKey: 'welcome.rethinkTitle', textKey: 'welcome.rethink' },
+  { titleKey: 'welcome.exampleTitle', textKey: 'welcome.example' },
+  { titleKey: 'welcome.bridgeTitle', textKey: 'welcome.bridge' },
+  { titleKey: 'welcome.cardsTitle', textKey: 'welcome.cards' },
+])
+
+const welcomePage = computed(() => welcomePages.value[welcomeStep.value] ?? null)
+const welcomeIsLast = computed(
+  () => welcomeStep.value >= welcomePages.value.length - 1,
+)
 
 const modalTitle = computed(() => {
-  if (modalKind.value === 'welcome') return t('welcome.title')
+  if (modalKind.value === 'welcome' && welcomePage.value) {
+    return t(welcomePage.value.titleKey)
+  }
   if (modalKind.value === 'drawn') return t('steps.draw')
   if (modalKind.value === 'result') return t('steps.result')
   if (modalKind.value === 'cheat') {
@@ -191,15 +207,18 @@ const modalTitle = computed(() => {
 })
 
 const modalParagraphs = computed(() => {
-  if (modalKind.value === 'welcome') {
-    return [
-      { text: t('welcome.context') },
-      { text: t('welcome.example') },
-      { text: t('welcome.bridge') },
-      { text: t('welcome.cards') },
-    ]
+  if (modalKind.value === 'welcome' && welcomePage.value) {
+    return [{ text: t(welcomePage.value.textKey) }]
   }
   return modalBody.value
+})
+
+const modalStepLabel = computed(() => {
+  if (modalKind.value !== 'welcome') return ''
+  return t('modalStep', {
+    current: welcomeStep.value + 1,
+    total: welcomePages.value.length,
+  })
 })
 
 function resultModalBody() {
@@ -237,11 +256,13 @@ function toModalBody(body) {
   return [{ text: body }]
 }
 
-const modalConfirmLabel = computed(() =>
-  ['welcome', 'result', 'drawn'].includes(modalKind.value)
-    ? t('modalGotIt')
-    : t('modalContinue'),
-)
+const modalConfirmLabel = computed(() => {
+  if (modalKind.value === 'welcome') {
+    return welcomeIsLast.value ? t('modalGotIt') : t('modalContinue')
+  }
+  if (['result', 'drawn'].includes(modalKind.value)) return t('modalGotIt')
+  return t('modalContinue')
+})
 
 const primaryAction = computed(() => {
   switch (step.value) {
@@ -333,6 +354,7 @@ function openWelcome() {
   pendingAction.value = null
   pendingLabel.value = ''
   modalBody.value = []
+  welcomeStep.value = 0
   modalKind.value = 'welcome'
   modalOpen.value = true
   closeMenu()
@@ -349,6 +371,7 @@ function requestAction(action, kind = 'action') {
   modalBody.value = toModalBody(
     typeof action.body === 'function' ? action.body() : '',
   )
+  welcomeStep.value = 0
   modalKind.value = kind
   modalOpen.value = true
   closeMenu()
@@ -359,9 +382,19 @@ function dismissModal() {
   pendingAction.value = null
   pendingLabel.value = ''
   modalBody.value = []
+  welcomeStep.value = 0
   modalKind.value = null
   modalOpen.value = false
   if (typeof next === 'function') next()
+}
+
+function confirmModal() {
+  if (modalKind.value === 'welcome' && !welcomeIsLast.value) {
+    welcomeStep.value += 1
+    nextTick(() => modalCloseBtn.value?.focus())
+    return
+  }
+  dismissModal()
 }
 
 function onKeydown(event) {
@@ -371,6 +404,10 @@ function onKeydown(event) {
   if (event.key === 'Escape') {
     if (modalOpen.value) {
       event.preventDefault()
+      if (modalKind.value === 'welcome' && !welcomeIsLast.value) {
+        confirmModal()
+        return
+      }
       dismissModal()
       return
     }
@@ -643,13 +680,18 @@ onUnmounted(() => {
           class="modal-root"
           role="presentation"
         >
-          <div class="modal-backdrop" aria-hidden="true" @click="dismissModal"></div>
+          <div
+            class="modal-backdrop"
+            aria-hidden="true"
+            @click="confirmModal"
+          ></div>
           <div
             class="modal-dialog"
             role="dialog"
             aria-modal="true"
-            :aria-labelledby="'modal-title'"
+            aria-labelledby="modal-title"
           >
+            <p v-if="modalStepLabel" class="modal-step">{{ modalStepLabel }}</p>
             <h2 id="modal-title">{{ modalTitle }}</h2>
             <div class="modal-body">
               <p v-for="(paragraph, index) in modalParagraphs" :key="index">
@@ -661,7 +703,7 @@ onUnmounted(() => {
               ref="modalCloseBtn"
               class="action modal-confirm"
               type="button"
-              @click="dismissModal"
+              @click="confirmModal"
             >
               {{ modalConfirmLabel }}
             </button>
@@ -1350,6 +1392,15 @@ h1 {
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.2;
+}
+
+.modal-step {
+  margin: 0 0 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
 }
 
 .modal-body {

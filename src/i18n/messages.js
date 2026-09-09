@@ -18,16 +18,24 @@ export const messages = {
     modalClose: 'Sluiten',
     modalContinue: 'Verder',
     modalGotIt: 'Begrepen',
+    modalStep: 'Stap {current} van {total}',
     welcome: {
       title: 'Zero-knowledgebewijs',
-      context:
-        'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Wie een account overneemt of een datalek uitbuit, krijgt vaak veel meer van jou te zien dan nodig was. Daarom moeten we opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledgebewijs helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
+      riskTitle: 'Digitale identiteit',
+      risk:
+        'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Wie een account overneemt of een datalek uitbuit, krijgt vaak veel meer van jou te zien dan nodig was.',
+      rethinkTitle: 'Minder laten zien',
+      rethink:
+        'Daarom moeten we opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledgebewijs helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
+      exampleTitle: 'Een alledaags voorbeeld',
       example:
-        'Een alledaags voorbeeld: bij de deur van een café wil de portier weten of je oud genoeg bent om binnen te mogen. Hij hoeft alleen ja of nee te horen — niet wanneer je precies geboren bent, waar je woont, of andere gegevens op je ID.',
+        'Bij de deur van een café wil de portier weten of je oud genoeg bent om binnen te mogen. Hij hoeft alleen ja of nee te horen — niet wanneer je precies geboren bent, waar je woont, of andere gegevens op je ID.',
+      bridgeTitle: 'Ook digitaal',
       bridge:
-        'Hetzelfde idee werkt digitaal: apps en websites kunnen een bewering controleren zonder jouw privégegevens te leren. We laten nu een fysiek voorbeeld zien met speelkaarten — eenvoudig genoeg om met de hand te volgen, en hetzelfde principe als in de cryptografie.',
+        'Hetzelfde idee werkt digitaal: apps en websites kunnen een bewering controleren zonder jouw privégegevens te leren.',
+      cardsTitle: 'Een fysiek voorbeeld',
       cards:
-        'Hier wil de bewijzer bewijzen welke kleur haar kaart heeft — zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
+        'We laten dat nu zien met speelkaarten — eenvoudig genoeg om met de hand te volgen, en hetzelfde principe als in de cryptografie. De bewijzer bewijst welke kleur haar kaart heeft, zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
     },
     stepsLabel: 'Stappen van de demonstratie',
     steps: {
@@ -172,16 +180,24 @@ export const messages = {
     modalClose: 'Close',
     modalContinue: 'Continue',
     modalGotIt: 'Got it',
+    modalStep: 'Step {current} of {total}',
     welcome: {
       title: 'Zero-knowledge proof',
-      context:
-        'Digital identity is increasingly vulnerable to hacks and misuse. Whoever takes over an account or exploits a data breach often sees far more of you than was ever needed. So we need to rethink when we show something, what we show, and why. A zero-knowledge proof helps with that: you prove that something is true without revealing the underlying data.',
+      riskTitle: 'Digital identity',
+      risk:
+        'Digital identity is increasingly vulnerable to hacks and misuse. Whoever takes over an account or exploits a data breach often sees far more of you than was ever needed.',
+      rethinkTitle: 'Show less',
+      rethink:
+        'So we need to rethink when we show something, what we show, and why. A zero-knowledge proof helps with that: you prove that something is true without revealing the underlying data.',
+      exampleTitle: 'An everyday example',
       example:
-        'An everyday example: at the door of a bar, the doorman wants to know whether you are old enough to enter. They only need a yes or no — not your exact date of birth, where you live, or anything else on your ID.',
+        'At the door of a bar, the doorman wants to know whether you are old enough to enter. They only need a yes or no — not your exact date of birth, where you live, or anything else on your ID.',
+      bridgeTitle: 'Digitally too',
       bridge:
-        'The same idea works digitally: apps and websites can check a claim without learning your private details. Next we will show a physical example with playing cards — simple enough to follow by hand, and the same principle used in cryptography.',
+        'The same idea works digitally: apps and websites can check a claim without learning your private details.',
+      cardsTitle: 'A physical example',
       cards:
-        'Here, the prover wants to prove which colour her card is — without showing which card it is. You can also try to lie, to see that cheating does not work.',
+        'Next we will show that with playing cards — simple enough to follow by hand, and the same principle used in cryptography. The prover proves which colour her card is, without showing which card it is. You can also try to lie, to see that cheating does not work.',
     },
     stepsLabel: 'Demonstration steps',
     steps: {
