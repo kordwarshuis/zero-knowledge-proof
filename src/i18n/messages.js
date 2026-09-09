@@ -48,7 +48,7 @@ export const messages = {
         'Daarom moeten we opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledge-proof (nulkennisbewijs) helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
       exampleTitle: 'Een alledaags voorbeeld',
       example:
-        'Bij de deur van een café wil de portier weten of je oud genoeg bent om binnen te mogen. Hij hoeft alleen te weten: ja of nee — niet wanneer je precies geboren bent, waar je woont, of andere gegevens op je ID.',
+        'Bij de deur van een café hoeft de portier alleen te weten of je oud genoeg bent om binnen te mogen. Hij hoeft alleen te weten: ja of nee — niet wanneer je precies geboren bent, waar je woont, of andere gegevens op je ID.',
       bridgeTitle: 'Ook digitaal',
       bridge:
         'Dit kan ook digitaal: apps en websites kunnen een bewering controleren zonder jouw privégegevens te zien.',
@@ -225,7 +225,7 @@ export const messages = {
         'So we need to rethink when we show something, what we show, and why. A zero-knowledge-proof helps with that: you prove that something is true without revealing the underlying data.',
       exampleTitle: 'An everyday example',
       example:
-        'At the door of a bar, the doorman wants to know whether you are old enough to enter. They only need a yes or no — not your exact date of birth, where you live, or anything else on your ID.',
+        'At the door of a bar, the doorman only needs to know whether you are old enough to enter. They only need a yes or no — not your exact date of birth, where you live, or anything else on your ID.',
       bridgeTitle: 'Digitally too',
       bridge:
         'This also works digitally: apps and websites can check a claim without learning your private details.',
@@ -403,7 +403,7 @@ export const messages = {
         'Deshalb müssen wir neu darüber nachdenken, wann wir etwas zeigen, was wir zeigen und warum. Ein Zero-Knowledge-Beweis hilft dabei: Du beweist, dass etwas wahr ist, ohne die zugrunde liegenden Daten preiszugeben.',
       exampleTitle: 'Ein Alltagsbeispiel',
       example:
-        'An der Tür einer Bar will der Türsteher wissen, ob du alt genug bist, um hineinzugekommen. Er braucht nur ja oder nein — nicht dein genaues Geburtsdatum, deine Adresse oder andere Angaben auf dem Ausweis.',
+        'An der Tür einer Bar braucht der Türsteher wissen, ob du alt genug bist, um hineinzugekommen. Er braucht nur ja oder nein — nicht dein genaues Geburtsdatum, deine Adresse oder andere Angaben auf dem Ausweis.',
       bridgeTitle: 'Auch digital',
       bridge:
         'Das geht auch digital: Apps und Websites können eine Behauptung prüfen, ohne deine privaten Daten zu sehen.',
@@ -581,7 +581,7 @@ export const messages = {
         'Il faut donc repenser quand on montre quelque chose, ce qu’on montre, et pourquoi. Une preuve à divulgation nulle de connaissance y aide : vous prouvez qu’une chose est vraie sans révéler les données sous-jacentes.',
       exampleTitle: 'Un exemple du quotidien',
       example:
-        'À la porte d’un bar, le videur veut savoir si vous êtes assez âgé pour entrer. Il n’a besoin que d’un oui ou d’un non — pas de votre date de naissance exacte, de votre adresse, ni du reste de votre pièce d’identité.',
+        'À la porte d’un bar, le videur seulement doit savoir si vous êtes assez âgé pour entrer. Il n’a besoin que d’un oui ou d’un non — pas de votre date de naissance exacte, de votre adresse, ni du reste de votre pièce d’identité.',
       bridgeTitle: 'Aussi en numérique',
       bridge:
         'Cela fonctionne aussi en numérique : les apps et sites peuvent vérifier une affirmation sans apprendre vos données privées.',
