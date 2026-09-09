@@ -131,7 +131,7 @@ export const messages = {
       drawing:
         'De kaart schuift achter het privéscherm. Alleen jij ziet de voorkant.',
       drawn:
-        'Je hebt een {ownCard}. Bewijs het! (Of probeer te beweren dat je een {otherCard} hebt — en kijk hoe dat misgaat.)',
+        'Je hebt een {ownCard}. Bewijs het!',
       sorting:
         'Je bekijkt de overgebleven zeven kaarten in het privé. De controleur ziet hun voorkant nog steeds niet.',
       proving:
@@ -310,7 +310,7 @@ export const messages = {
       drawing:
         'The card slides behind the privacy screen. Only you will see its face.',
       drawn:
-        'You have a {ownCard}. Prove it! (Or try claiming you have a {otherCard} — and watch the cheat fail.)',
+        'You have a {ownCard}. Prove it!',
       sorting:
         'You look at the remaining seven cards in private. The verifier still cannot see their faces.',
       proving:
@@ -489,7 +489,7 @@ export const messages = {
       drawing:
         'Die Karte gleitet hinter den Sichtschutz. Nur du siehst die Vorderseite.',
       drawn:
-        'Du hast eine {ownCard}. Beweise es! (Oder behaupte, eine {otherCard} zu haben — und sieh, wie der Betrug scheitert.)',
+        'Du hast eine {ownCard}. Beweise es!',
       sorting:
         'Du betrachtest die übrigen sieben Karten privat. Der Prüfer sieht ihre Vorderseiten weiterhin nicht.',
       proving:
@@ -668,7 +668,7 @@ export const messages = {
       drawing:
         'La carte glisse derrière le paravent. Vous seul verrez sa face.',
       drawn:
-        'Vous avez une {ownCard}. Prouvez-le ! (Ou affirmez avoir une {otherCard} — et voyez la triche échouer.)',
+        'Vous avez une {ownCard}. Prouvez-le !',
       sorting:
         'Vous regardez les sept cartes restantes en privé. Le vérificateur ne voit toujours pas leurs faces.',
       proving:
