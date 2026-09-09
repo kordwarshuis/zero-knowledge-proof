@@ -1,9 +1,13 @@
-export const LOCALES = ['nl', 'en']
+export const LOCALES = ['en', 'nl']
 
 export const messages = {
   nl: {
     htmlLang: 'nl',
     documentTitle: 'Zero-knowledgebewijs met speelkaarten',
+    socialDescription:
+      'Bewijs welke kleur je hebt getrokken zonder de kaart te laten zien — en zonder te onthullen welke kaart van die kleur het is.',
+    ogImageAlt:
+      'Een kaarttafel met een privéscherm: de bewijzer ziet de harten-aas, de controleur ziet alleen een verborgen kaart.',
     language: 'Taal',
     menu: 'Menu',
     menuOpen: 'Menu openen',
@@ -23,7 +27,7 @@ export const messages = {
       title: 'Zero-knowledgebewijs',
       riskTitle: 'Digitale identiteit',
       risk:
-        'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Wie een account overneemt of een datalek uitbuit, krijgt vaak veel meer van jou te zien dan nodig was.',
+        'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Hackers krijgen vaak veel meer van jou te zien dan nodig was.',
       newspaper: {
         masthead: 'Het Digitaal Dagblad',
         date: 'Februari 2026',
@@ -176,6 +180,10 @@ export const messages = {
   en: {
     htmlLang: 'en',
     documentTitle: 'Zero-Knowledge Proof with playing cards',
+    socialDescription:
+      'Prove which colour you drew without showing the card — and without revealing which card of that colour it is.',
+    ogImageAlt:
+      'A card table with a privacy screen: the prover sees the ace of hearts, the verifier sees only a hidden card.',
     language: 'Language',
     menu: 'Menu',
     menuOpen: 'Open menu',
@@ -195,7 +203,7 @@ export const messages = {
       title: 'Zero-knowledge proof',
       riskTitle: 'Digital identity',
       risk:
-        'Digital identity is increasingly vulnerable to hacks and misuse. Whoever takes over an account or exploits a data breach often sees far more of you than was ever needed.',
+        'Digital identity is increasingly vulnerable to hacks and misuse. Hackers often see far more of you than was ever needed.',
       newspaper: {
         masthead: 'The Digital Gazette',
         date: 'September 2026',
