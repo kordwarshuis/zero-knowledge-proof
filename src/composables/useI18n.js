@@ -1,11 +1,11 @@
 import { computed, ref, watch } from 'vue'
-import { messages } from '../i18n/messages.js'
+import { LOCALES, OG_LOCALES, messages } from '../i18n/messages.js'
 
 const STORAGE_KEY = 'zkp-locale'
 const PARAM = 'lang'
 
 function isLocale(value) {
-  return value === 'nl' || value === 'en'
+  return LOCALES.includes(value)
 }
 
 function localeFromUrl() {
@@ -60,7 +60,7 @@ function applyDocumentLanguage(next) {
   document.documentElement.lang = copy.htmlLang
   document.title = copy.documentTitle
   setMeta('name', 'description', copy.socialDescription)
-  setMeta('property', 'og:locale', next === 'nl' ? 'nl_NL' : 'en_US')
+  setMeta('property', 'og:locale', OG_LOCALES[next] ?? 'en_US')
   setMeta('property', 'og:title', copy.documentTitle)
   setMeta('property', 'og:description', copy.socialDescription)
   setMeta('property', 'og:image:alt', copy.ogImageAlt)
@@ -107,6 +107,7 @@ export function useI18n() {
 
   return {
     locale,
+    locales: LOCALES,
     t,
     cardLabel,
     setLocale,

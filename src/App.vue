@@ -5,7 +5,7 @@ import PlayingCard from './components/PlayingCard.vue'
 import { useI18n } from './composables/useI18n.js'
 import { useProofGame } from './composables/useProofGame.js'
 
-const { locale, t, cardLabel, setLocale } = useI18n()
+const { locale, locales, t, cardLabel, setLocale } = useI18n()
 const game = useProofGame()
 const {
   step,
@@ -543,20 +543,14 @@ onUnmounted(() => {
               <h2>{{ t('language') }}</h2>
               <div class="lang-switch" :aria-label="t('language')">
                 <button
+                  v-for="code in locales"
+                  :key="code"
                   type="button"
-                  :class="{ 'is-active': locale === 'nl' }"
-                  :aria-pressed="locale === 'nl'"
-                  @click="chooseLocale('nl')"
+                  :class="{ 'is-active': locale === code }"
+                  :aria-pressed="locale === code"
+                  @click="chooseLocale(code)"
                 >
-                  NL
-                </button>
-                <button
-                  type="button"
-                  :class="{ 'is-active': locale === 'en' }"
-                  :aria-pressed="locale === 'en'"
-                  @click="chooseLocale('en')"
-                >
-                  EN
+                  {{ code.toUpperCase() }}
                 </button>
               </div>
             </section>
@@ -709,20 +703,14 @@ onUnmounted(() => {
               :aria-label="t('language')"
             >
               <button
+                v-for="code in locales"
+                :key="code"
                 type="button"
-                :class="{ 'is-active': locale === 'nl' }"
-                :aria-pressed="locale === 'nl'"
-                @click="setLocale('nl')"
+                :class="{ 'is-active': locale === code }"
+                :aria-pressed="locale === code"
+                @click="setLocale(code)"
               >
-                NL
-              </button>
-              <button
-                type="button"
-                :class="{ 'is-active': locale === 'en' }"
-                :aria-pressed="locale === 'en'"
-                @click="setLocale('en')"
-              >
-                EN
+                {{ code.toUpperCase() }}
               </button>
             </div>
             <div class="modal-body">
@@ -962,6 +950,7 @@ h1 {
 
 .lang-switch {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
 }
 
@@ -1587,6 +1576,7 @@ h1 {
 
 .modal-lang {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 6px;
   margin: -4px 0 14px;

@@ -1,4 +1,11 @@
-export const LOCALES = ['en', 'nl']
+export const LOCALES = ['en', 'nl', 'de', 'fr']
+
+export const OG_LOCALES = {
+  en: 'en_US',
+  nl: 'nl_NL',
+  de: 'de_DE',
+  fr: 'fr_FR',
+}
 
 export const messages = {
   nl: {
@@ -353,5 +360,359 @@ export const messages = {
       clubs: 'Clubs',
     },
     cardOf: '{rank} of {suit}',
+  },
+  de: {
+    htmlLang: 'de',
+    documentTitle: 'Zero-Knowledge-Beweis mit Spielkarten',
+    socialDescription:
+      'Beweise, welche Farbe du gezogen hast, ohne die Karte zu zeigen — und ohne zu verraten, welche Karte dieser Farbe es ist.',
+    ogImageAlt:
+      'Ein Kartentisch mit Sichtschutz: Die Beweisführerin sieht das Herz-Ass, die Prüferin sieht nur eine verdeckte Karte.',
+    language: 'Sprache',
+    menu: 'Menü',
+    menuOpen: 'Menü öffnen',
+    menuClose: 'Menü schließen',
+    info: 'Info',
+    eyebrow: 'Eine kleine Demonstration am Kartentisch',
+    title: 'Zero-Knowledge-Beweis',
+    ledeBefore:
+      'Beweise, welche Farbe du gezogen hast, ohne die Karte zu zeigen — und ohne zu verraten,',
+    ledeEm: 'welche',
+    ledeAfter: 'Karte dieser Farbe es ist.',
+    modalClose: 'Schließen',
+    modalContinue: 'Weiter',
+    modalGotIt: 'Verstanden',
+    modalStep: 'Schritt {current} von {total}',
+    welcome: {
+      title: 'Zero-Knowledge-Beweis',
+      riskTitle: 'Digitale Identität',
+      risk:
+        'Digitale Identität wird immer häufiger gehackt und missbraucht. Hacker sehen oft weit mehr von dir, als jemals nötig war.',
+      newspaper: {
+        masthead: 'Die Digitale Zeitung',
+        date: 'März 2026',
+        section: 'Cybersicherheit',
+        headline: 'Datenleck bei Identitätsfirma: Millionen Ausweis-Scans im Umlauf',
+        deck: 'Namen, Adressen und Ausweisnummern nach Angriff auf einen großen Verifizierungsdienst preisgegeben.',
+      },
+      rethinkTitle: 'Weniger zeigen',
+      rethink:
+        'Deshalb müssen wir neu darüber nachdenken, wann wir etwas zeigen, was wir zeigen und warum. Ein Zero-Knowledge-Beweis hilft dabei: Du beweist, dass etwas wahr ist, ohne die zugrunde liegenden Daten preiszugeben.',
+      exampleTitle: 'Ein Alltagsbeispiel',
+      example:
+        'An der Tür einer Bar will der Türsteher wissen, ob du alt genug bist, um hineinzugekommen. Er braucht nur ja oder nein — nicht dein genaues Geburtsdatum, deine Adresse oder andere Angaben auf dem Ausweis.',
+      bridgeTitle: 'Auch digital',
+      bridge:
+        'Das geht auch digital: Apps und Websites können eine Behauptung prüfen, ohne deine privaten Daten zu sehen.',
+      rolesTitle: 'Die Rollen',
+      rolesProver: 'Ich will die gezogene Karte nicht zeigen!',
+      rolesVerifier: 'Und trotzdem will ich wissen, ob die Karte rot ist oder nicht!',
+      cardsTitle: 'Ein Beispiel',
+      cards:
+        'Als Nächstes zeigen wir das mit Spielkarten. Die Beweisführerin beweist, welche Farbe ihre Karte hat, ohne zu zeigen, welche Karte es ist. (Du kannst auch versuchen zu lügen, um zu sehen, dass Betrug nicht funktioniert.)',
+    },
+    stepsLabel: 'Schritte der Demonstration',
+    steps: {
+      inspect: 'Prüfen',
+      draw: 'Ziehen',
+      prove: 'Beweisen',
+      result: 'Ergebnis',
+    },
+    personATitle: 'Die Beweisführerin',
+    personARole: '',
+    personBTitle: 'Die Prüferin',
+    personBRole: '',
+    tableLabel: 'Kartentisch',
+    plaquePrivate: 'Nur für dich',
+    plaquePublic: 'Kein Blick',
+    red: 'Rot',
+    black: 'Schwarz',
+    privateZone: 'Privat — die Prüferin sieht das nicht',
+    yourCard: 'Deine Karte',
+    cardComing: 'Kommt zu dir, verdeckt…',
+    personBCannotSeeCard: 'Die Prüferin kann diese Karte nicht sehen',
+    mysteryCard: 'Karte der Beweisführerin',
+    mysteryHidden: 'vor mir verborgen',
+    remainingPrivate: 'Übrige Karten — noch privat',
+    ownColorHidden: '{claimCards} bleiben verborgen',
+    shownToB: 'Der Prüferin gezeigt',
+    missingCard: 'Fehlende Karte',
+    watchCards: 'Schau auf die Karten…',
+    faceDownCard: 'Eine verdeckte Spielkarte',
+    personA: {
+      intro: 'Du ziehst eine Karte, die nur du sehen kannst.',
+      inspect: 'Du siehst das Spiel auch — noch ist nichts verborgen.',
+      shuffled: 'Die Karten liegen verdeckt. Ziehe eine zufällig.',
+      drawing: 'Die Karte geht hinter den Sichtschutz…',
+      drawn: 'Du hast {card} gezogen. Die Prüferin kann sie nicht sehen.',
+      sorting: 'Schau dir die übrigen Karten privat an.',
+      proving:
+        'Zeig der Prüferin alle vier {otherCards}. Halte die {claimCards} verborgen.',
+      provingCheat:
+        'Du behauptest, eine {claimCard} zu haben. Versuche, alle vier {otherCards} zu zeigen…',
+      result:
+        'Die Prüferin ist überzeugt — und weiß immer noch nicht, welche {ownCard} du hast.',
+      resultCheat:
+        'Der Betrug ist gescheitert. Du konntest keine vier {otherCards} zeigen, weil du eine {ownCard} hältst.',
+    },
+    personB: {
+      intro: 'Ich muss von der Farbe deiner Karte überzeugt werden.',
+      inspect: 'Vier rot, vier schwarz. Ich habe jede Karte in diesem Spiel gesehen.',
+      shuffling: 'Ich kenne die Reihenfolge nicht mehr.',
+      shuffled:
+        'Dieselben acht Karten, jetzt verdeckt. Ich weiß nicht, welche wo liegt.',
+      drawn:
+        'Die Beweisführerin hält eine Karte. Ich kann sie nicht sehen. Es könnte rot oder schwarz sein.',
+      sorting:
+        'Die Beweisführerin betrachtet den Rest. Der Sichtschutz blockiert meinen Blick.',
+      provingWait: 'Ich warte darauf, Karten zu sehen…',
+      provingOne: 'Bisher wurde mir 1 {otherCard} gezeigt.',
+      provingMany: 'Bisher wurden mir {count} {otherCards} gezeigt.',
+      result:
+        'Alle vier {otherCards} liegen hier. Die verdeckte Karte muss {claimColor} sein — aber ich weiß immer noch nicht, welche der vier {claimCards} es ist.',
+      resultCheat:
+        'Es wurden nur drei {otherCards} gezeigt. Eine fehlt. Ich akzeptiere die Behauptung nicht.',
+    },
+    narration: {
+      intro:
+        'Ein Zero-Knowledge-Beweis lässt dich jemanden überzeugen, dass eine Aussage wahr ist, ohne etwas anderes zu verraten. Hier will die Beweisführerin beweisen, welche Farbe ihre Karte hat — ohne zu zeigen, welche Karte es ist. Du kannst auch versuchen zu lügen, um zu sehen, dass Betrug nicht funktioniert.',
+      inspect:
+        'Bevor du eine Karte ziehst, prüft die Prüferin das ganze Spiel: vier rote und vier schwarze Karten. Ihr seid euch einig, welche acht Karten es gibt.',
+      shuffling: 'Die Karten werden gemischt und umgedreht.',
+      shuffled:
+        'Du bist die Beweisführerin. Ziehe eine zufällige Karte. Die Prüferin darf sie nicht sehen.',
+      drawing:
+        'Die Karte gleitet hinter den Sichtschutz. Nur du siehst die Vorderseite.',
+      drawn:
+        'Du hast eine {ownCard}. Beweise es! (Oder behaupte, eine {otherCard} zu haben — und sieh, wie der Betrug scheitert.)',
+      sorting:
+        'Du betrachtest die übrigen sieben Karten privat. Die Prüferin sieht ihre Vorderseiten weiterhin nicht.',
+      proving:
+        'Jede {otherCard} aus dem Rest wird der Prüferin gezeigt. Die {claimCards} bleiben auf deiner Seite des Sichtschutzes.',
+      provingCheat:
+        'Du versuchst zu beweisen, dass du eine {claimCard} hast, indem du alle {otherCards} zeigst. Weil deine echte Karte {ownColor} ist, kannst du nur drei vorzeigen.',
+      result:
+        'Die Prüferin hat jetzt alle vier {otherCards} gesehen, also muss deine verdeckte Karte {claimColor} sein. Die drei übrigen {claimCards} wurden nie gezeigt, also kann die Prüferin nicht sagen, welche der vier {claimCards} du gezogen hast. Das ist der Zero-Knowledge-Teil.',
+      resultCheat:
+        'Du hast behauptet, eine {claimCard} zu haben, konntest aber nur drei {otherCards} zeigen. Die Prüferin merkt, dass eine fehlt, und lehnt die Behauptung ab. Eine falsche Aussage lässt sich nicht beweisen — das nennt man Korrektheit (Soundness).',
+    },
+    actions: {
+      begin: 'Zeig der Prüferin das Spiel',
+      shuffle: 'Mischen und umdrehen',
+      draw: 'Eine zufällige Karte ziehen',
+      prove: 'Beweise, dass du eine {ownCard} hast',
+      cheat: 'Versuch zu lügen ({claimCard})',
+      again: 'Nochmal spielen',
+    },
+    properties: {
+      completenessLabel: 'Vollständigkeit.',
+      completeness: 'Die Aussage war wahr, also gelang der Beweis.',
+      zeroKnowledgeLabel: 'Nullwissen.',
+      zeroKnowledge:
+        'Die Prüferin erfuhr nur, dass deine Karte {ownColor} ist — nicht, welche der vier {ownCards} es ist.',
+      soundnessLabel: 'Korrektheit.',
+      soundness:
+        'Eine falsche Aussage lässt sich nicht beweisen. Indem du eine {claimCard} behauptet hast, während du eine {ownCard} gehalten hast, konntest du nicht alle vier {otherCards} zeigen.',
+    },
+    colors: {
+      red: 'rot',
+      black: 'schwarz',
+    },
+    colorCard: {
+      red: 'rote Karte',
+      black: 'schwarze Karte',
+    },
+    colorCards: {
+      red: 'rote Karten',
+      black: 'schwarze Karten',
+    },
+    ranks: {
+      A: 'Ass',
+      K: 'König',
+    },
+    suits: {
+      hearts: 'Herz',
+      diamonds: 'Karo',
+      spades: 'Pik',
+      clubs: 'Kreuz',
+    },
+    cardOf: '{suit}-{rank}',
+  },
+  fr: {
+    htmlLang: 'fr',
+    documentTitle: 'Preuve à divulgation nulle de connaissance avec des cartes',
+    socialDescription:
+      'Prouvez quelle couleur vous avez tirée sans montrer la carte — et sans révéler laquelle des cartes de cette couleur c’est.',
+    ogImageAlt:
+      'Une table de cartes avec un paravent : la proveuse voit l’as de cœur, la vérificatrice ne voit qu’une carte cachée.',
+    language: 'Langue',
+    menu: 'Menu',
+    menuOpen: 'Ouvrir le menu',
+    menuClose: 'Fermer le menu',
+    info: 'Info',
+    eyebrow: 'Une petite démonstration à la table de cartes',
+    title: 'Preuve à divulgation nulle',
+    ledeBefore:
+      'Prouvez quelle couleur vous avez tirée sans montrer la carte — et sans révéler',
+    ledeEm: 'laquelle',
+    ledeAfter: 'des cartes de cette couleur c’est.',
+    modalClose: 'Fermer',
+    modalContinue: 'Continuer',
+    modalGotIt: 'Compris',
+    modalStep: 'Étape {current} sur {total}',
+    welcome: {
+      title: 'Preuve à divulgation nulle',
+      riskTitle: 'Identité numérique',
+      risk:
+        'L’identité numérique est de plus en plus piratée et détournée. Les pirates voient souvent bien plus de vous que nécessaire.',
+      newspaper: {
+        masthead: 'La Gazette Numérique',
+        date: 'Avril 2026',
+        section: 'Cybersécurité',
+        headline: 'Fuite massive : des millions de scans d’identité en vente',
+        deck: 'Noms, adresses et numéros de pièces d’identité exposés après une attaque contre un grand service de vérification.',
+      },
+      rethinkTitle: 'Montrer moins',
+      rethink:
+        'Il faut donc repenser quand on montre quelque chose, ce qu’on montre, et pourquoi. Une preuve à divulgation nulle de connaissance y aide : vous prouvez qu’une chose est vraie sans révéler les données sous-jacentes.',
+      exampleTitle: 'Un exemple du quotidien',
+      example:
+        'À la porte d’un bar, le videur veut savoir si vous êtes assez âgé pour entrer. Il n’a besoin que d’un oui ou d’un non — pas de votre date de naissance exacte, de votre adresse, ni du reste de votre pièce d’identité.',
+      bridgeTitle: 'Aussi en numérique',
+      bridge:
+        'Cela fonctionne aussi en numérique : les apps et sites peuvent vérifier une affirmation sans apprendre vos données privées.',
+      rolesTitle: 'Les rôles',
+      rolesProver: 'Je ne veux pas montrer la carte que j’ai tirée !',
+      rolesVerifier: 'Et pourtant je veux savoir si la carte est rouge ou non !',
+      cardsTitle: 'Un exemple',
+      cards:
+        'Nous allons maintenant le montrer avec des cartes à jouer. La proveuse prouve la couleur de sa carte, sans montrer quelle carte c’est. (Vous pouvez aussi essayer de mentir, pour voir que la triche ne marche pas.)',
+    },
+    stepsLabel: 'Étapes de la démonstration',
+    steps: {
+      inspect: 'Inspecter',
+      draw: 'Tirer',
+      prove: 'Prouver',
+      result: 'Résultat',
+    },
+    personATitle: 'La Proveuse',
+    personARole: '',
+    personBTitle: 'La Vérificatrice',
+    personBRole: '',
+    tableLabel: 'Table de cartes',
+    plaquePrivate: 'Pour vous seuls',
+    plaquePublic: 'Pas de vue',
+    red: 'Rouge',
+    black: 'Noir',
+    privateZone: 'Privé — la vérificatrice ne voit pas ceci',
+    yourCard: 'Votre carte',
+    cardComing: 'Arrive vers vous, face cachée…',
+    personBCannotSeeCard: 'La vérificatrice ne peut pas voir cette carte',
+    mysteryCard: 'Carte de la proveuse',
+    mysteryHidden: 'cachée pour moi',
+    remainingPrivate: 'Cartes restantes — encore privées',
+    ownColorHidden: '{claimCards} restent cachées',
+    shownToB: 'Montrées à la vérificatrice',
+    missingCard: 'Carte manquante',
+    watchCards: 'Regardez les cartes…',
+    faceDownCard: 'Une carte à jouer face cachée',
+    personA: {
+      intro: 'Vous tirez une carte que vous seule pouvez voir.',
+      inspect: 'Vous voyez aussi le jeu — rien n’est encore caché.',
+      shuffled: 'Les cartes sont face cachée. Tirez-en une au hasard.',
+      drawing: 'La carte passe derrière le paravent…',
+      drawn: 'Vous avez tiré {card}. La vérificatrice ne peut pas la voir.',
+      sorting: 'Regardez les cartes restantes en privé.',
+      proving:
+        'Montrez à la vérificatrice les quatre {otherCards}. Gardez les {claimCards} cachées.',
+      provingCheat:
+        'Vous affirmez avoir une {claimCard}. Essayez de montrer les quatre {otherCards}…',
+      result:
+        'La vérificatrice est convaincue — et ne sait toujours pas quelle {ownCard} vous avez.',
+      resultCheat:
+        'La triche a échoué. Vous n’avez pas pu montrer quatre {otherCards}, parce que vous tenez une {ownCard}.',
+    },
+    personB: {
+      intro: 'Je dois être convaincue de la couleur de votre carte.',
+      inspect: 'Quatre rouges, quatre noires. J’ai vu chaque carte de ce jeu.',
+      shuffling: 'Je ne connais plus l’ordre.',
+      shuffled:
+        'Les mêmes huit cartes, maintenant face cachée. Je ne sais pas laquelle est laquelle.',
+      drawn:
+        'La proveuse tient une carte. Je ne peux pas la voir. Elle peut être rouge ou noire.',
+      sorting:
+        'La proveuse regarde le reste. Le paravent bloque ma vue.',
+      provingWait: 'J’attends de voir des cartes…',
+      provingOne: 'On m’a montré 1 {otherCard} jusqu’ici.',
+      provingMany: 'On m’a montré {count} {otherCards} jusqu’ici.',
+      result:
+        'Les quatre {otherCards} sont là. La carte cachée doit être {claimColor} — mais je ne sais toujours pas laquelle des quatre {claimCards} c’est.',
+      resultCheat:
+        'Seules trois {otherCards} ont été montrées. Il en manque une. Je n’accepte pas l’affirmation.',
+    },
+    narration: {
+      intro:
+        'Une preuve à divulgation nulle de connaissance permet de convaincre quelqu’un qu’une affirmation est vraie sans rien révéler d’autre. Ici, la proveuse veut prouver la couleur de sa carte — sans montrer quelle carte c’est. Vous pouvez aussi essayer de mentir, pour voir que la triche ne marche pas.',
+      inspect:
+        'Avant de tirer une carte, la vérificatrice inspecte tout le jeu : quatre cartes rouges et quatre noires. Vous êtes d’accord sur les huit cartes présentes.',
+      shuffling: 'Les cartes sont mélangées et retournées face cachée.',
+      shuffled:
+        'Vous êtes la proveuse. Tirez une carte au hasard. La vérificatrice ne pourra pas la voir.',
+      drawing:
+        'La carte glisse derrière le paravent. Vous seule verrez sa face.',
+      drawn:
+        'Vous avez une {ownCard}. Prouvez-le ! (Ou affirmez avoir une {otherCard} — et voyez la triche échouer.)',
+      sorting:
+        'Vous regardez les sept cartes restantes en privé. La vérificatrice ne voit toujours pas leurs faces.',
+      proving:
+        'Chaque {otherCard} du reste est montrée à la vérificatrice. Les {claimCards} restent de votre côté du paravent.',
+      provingCheat:
+        'Vous essayez de prouver que vous avez une {claimCard} en montrant toutes les {otherCards}. Comme votre vraie carte est {ownColor}, vous ne pouvez en produire que trois.',
+      result:
+        'La vérificatrice a maintenant vu les quatre {otherCards}, donc votre carte cachée doit être {claimColor}. Les trois {claimCards} restantes n’ont jamais été montrées, donc la vérificatrice ne peut pas dire laquelle des quatre {claimCards} vous avez tirée. C’est la partie à divulgation nulle.',
+      resultCheat:
+        'Vous avez affirmé avoir une {claimCard}, mais n’avez pu montrer que trois {otherCards}. La vérificatrice remarque qu’il en manque une et refuse l’affirmation. Une affirmation fausse ne peut pas être prouvée — c’est la solidité (soundness).',
+    },
+    actions: {
+      begin: 'Montrer le jeu à la vérificatrice',
+      shuffle: 'Mélanger et retourner',
+      draw: 'Tirer une carte au hasard',
+      prove: 'Prouver que vous avez une {ownCard}',
+      cheat: 'Essayer de tricher ({claimCard})',
+      again: 'Rejouer',
+    },
+    properties: {
+      completenessLabel: 'Complétude.',
+      completeness: 'L’affirmation était vraie, donc la preuve a réussi.',
+      zeroKnowledgeLabel: 'Divulgation nulle.',
+      zeroKnowledge:
+        'La vérificatrice a seulement appris que votre carte est {ownColor} — pas laquelle des quatre {ownCards} c’est.',
+      soundnessLabel: 'Solidité.',
+      soundness:
+        'Une affirmation fausse ne peut pas être prouvée. En affirmant une {claimCard} alors que vous teniez une {ownCard}, vous n’avez pas pu montrer les quatre {otherCards}.',
+    },
+    colors: {
+      red: 'rouge',
+      black: 'noire',
+    },
+    colorCard: {
+      red: 'carte rouge',
+      black: 'carte noire',
+    },
+    colorCards: {
+      red: 'cartes rouges',
+      black: 'cartes noires',
+    },
+    ranks: {
+      A: 'As',
+      K: 'Roi',
+    },
+    suits: {
+      hearts: 'cœur',
+      diamonds: 'carreau',
+      spades: 'pique',
+      clubs: 'trèfle',
+    },
+    cardOf: '{rank} de {suit}',
   },
 }
