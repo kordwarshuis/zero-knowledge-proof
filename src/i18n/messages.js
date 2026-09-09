@@ -36,7 +36,7 @@ export const messages = {
       rolesTitle: 'De rollen',
       rolesProver: 'Ik wil de getrokken kaart niet laten zien!',
       rolesVerifier: 'En toch wil ik weten of de kaart rood is of niet!',
-      cardsTitle: 'Een fysiek voorbeeld',
+      cardsTitle: 'Een voorbeeld',
       cards:
         'We laten dat nu zien met speelkaarten — eenvoudig genoeg om met de hand te volgen, en hetzelfde principe als in de cryptografie. De bewijzer bewijst welke kleur haar kaart heeft, zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
     },
@@ -201,7 +201,7 @@ export const messages = {
       rolesTitle: 'The roles',
       rolesProver: 'I do not want to show the card I drew!',
       rolesVerifier: 'And yet I want to know whether the card is red or not!',
-      cardsTitle: 'A physical example',
+      cardsTitle: 'An example',
       cards:
         'Next we will show that with playing cards — simple enough to follow by hand, and the same principle used in cryptography. The prover proves which colour her card is, without showing which card it is. You can also try to lie, to see that cheating does not work.',
     },
