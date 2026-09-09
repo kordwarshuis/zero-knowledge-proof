@@ -19,7 +19,7 @@ export const messages = {
     modalContinue: 'Verder',
     modalGotIt: 'Begrepen',
     welcome: {
-      title: 'Wat is een zero-knowledgebewijs?',
+      title: 'Mag jij wel autorijden?',
       police:
         'Stel: een agent wil weten of je mag rijden. Hij hoeft alleen te weten of dat zo is — niet wanneer je geboren bent, waar je woont, of andere gegevens op je rijbewijs. Een zero-knowledgebewijs is precies dat idee: je overtuigt iemand van een feit, zonder extra informatie prijs te geven.',
       bridge:
@@ -171,7 +171,7 @@ export const messages = {
     modalContinue: 'Continue',
     modalGotIt: 'Got it',
     welcome: {
-      title: 'What is a zero-knowledge proof?',
+      title: 'Are you allowed to drive?',
       police:
         'Imagine a police officer who wants to know whether you are allowed to drive. They only need a yes or no — not when you were born, where you live, or anything else on your licence. A zero-knowledge proof is exactly that idea: you convince someone of a fact without revealing extra information.',
       bridge:
