@@ -33,7 +33,10 @@ const {
 } = game
 
 const menuOpen = ref(false)
-const menuTab = ref(null)
+const modalOpen = ref(false)
+const modalKind = ref(null)
+const pendingAction = ref(null)
+const modalCloseBtn = ref(null)
 
 const steps = [
   { id: 'inspect', labelKey: 'steps.inspect' },
@@ -91,17 +94,13 @@ function toggleMenu() {
   menuOpen.value = !menuOpen.value
 }
 
-function openMenu() {
-  menuOpen.value = true
-}
-
 function closeMenu() {
   menuOpen.value = false
-  nextTick(() => menuTab.value?.focus())
 }
 
 function chooseLocale(next) {
   setLocale(next)
+  closeMenu()
 }
 
 function isTypingTarget(target) {
@@ -174,47 +173,74 @@ const personBNote = computed(() => {
   }
 })
 
-const narration = computed(() => {
-  switch (step.value) {
-    case 'intro':
-      return t('narration.intro')
-    case 'inspect':
-      return t('narration.inspect')
-    case 'shuffling':
-      return t('narration.shuffling')
-    case 'shuffled':
-      return t('narration.shuffled')
-    case 'drawing':
-      return t('narration.drawing')
-    case 'drawn':
-      return t('narration.drawn', colorVars.value)
-    case 'sorting':
-      return t('narration.sorting')
-    case 'proving':
-      return isCheating.value
-        ? t('narration.provingCheat', colorVars.value)
-        : t('narration.proving', colorVars.value)
-    case 'result':
-      return isCheating.value
-        ? t('narration.resultCheat', colorVars.value)
-        : t('narration.result', colorVars.value)
-    default:
-      return ''
+const pendingLabel = ref('')
+const modalBody = ref('')
+
+const modalTitle = computed(() => {
+  if (modalKind.value === 'welcome') return t('welcome.title')
+  if (modalKind.value === 'drawn') return t('steps.draw')
+  if (modalKind.value === 'result') return t('steps.result')
+  if (modalKind.value === 'cheat') {
+    return t('actions.cheat', { claimCard: colorVars.value.lieCard })
   }
+  if (pendingLabel.value) return pendingLabel.value
+  return t('title')
 })
+
+const modalParagraphs = computed(() => {
+  if (modalKind.value === 'welcome') {
+    return [t('welcome.police'), t('welcome.bridge'), t('welcome.cards')]
+  }
+  if (modalBody.value) return [modalBody.value]
+  return []
+})
+
+const modalConfirmLabel = computed(() =>
+  ['welcome', 'result', 'drawn'].includes(modalKind.value)
+    ? t('modalGotIt')
+    : t('modalContinue'),
+)
 
 const primaryAction = computed(() => {
   switch (step.value) {
     case 'intro':
-      return { label: t('actions.begin'), run: begin }
+      return {
+        id: 'begin',
+        label: t('actions.begin'),
+        run: begin,
+        body: () => t('narration.inspect'),
+      }
     case 'inspect':
-      return { label: t('actions.shuffle'), run: shuffleDeck }
+      return {
+        id: 'shuffle',
+        label: t('actions.shuffle'),
+        run: shuffleDeck,
+        body: () => t('narration.shuffling'),
+      }
     case 'shuffled':
-      return { label: t('actions.draw'), run: draw }
+      return {
+        id: 'draw',
+        label: t('actions.draw'),
+        run: draw,
+        body: () => t('narration.shuffled'),
+      }
     case 'drawn':
-      return { label: t('actions.prove', colorVars.value), run: prove }
+      return {
+        id: 'prove',
+        label: t('actions.prove', colorVars.value),
+        run: prove,
+        body: () => t('narration.proving', colorVars.value),
+      }
     case 'result':
-      return { label: t('actions.again'), run: reset }
+      return {
+        id: 'again',
+        label: t('actions.again'),
+        run: () => {
+          reset()
+          openWelcome()
+        },
+        skipModal: true,
+      }
     default:
       return null
   }
@@ -223,8 +249,10 @@ const primaryAction = computed(() => {
 const secondaryAction = computed(() => {
   if (step.value !== 'drawn' || !otherColor.value) return null
   return {
+    id: 'cheat',
     label: t('actions.cheat', { claimCard: colorVars.value.lieCard }),
     run: tryCheat,
+    body: () => t('narration.provingCheat', colorVars.value),
   }
 })
 
@@ -257,21 +285,55 @@ const missingSlotLayouts = computed(() => {
   })
 })
 
+const overlayOpen = computed(() => menuOpen.value || modalOpen.value)
+
+function openWelcome() {
+  pendingAction.value = null
+  pendingLabel.value = ''
+  modalBody.value = ''
+  modalKind.value = 'welcome'
+  modalOpen.value = true
+  closeMenu()
+}
+
+function requestAction(action, kind = 'action') {
+  if (busy.value || modalOpen.value) return
+  if (action.skipModal) {
+    action.run()
+    return
+  }
+  pendingAction.value = action.run
+  pendingLabel.value = action.label
+  modalBody.value = typeof action.body === 'function' ? action.body() : ''
+  modalKind.value = kind
+  modalOpen.value = true
+  closeMenu()
+}
+
+function dismissModal() {
+  const next = pendingAction.value
+  pendingAction.value = null
+  pendingLabel.value = ''
+  modalBody.value = ''
+  modalKind.value = null
+  modalOpen.value = false
+  if (typeof next === 'function') next()
+}
+
 function onKeydown(event) {
   if (event.metaKey || event.ctrlKey || event.altKey) return
   if (isTypingTarget(event.target)) return
 
   if (event.key === 'Escape') {
-    if (!menuOpen.value) return
-    event.preventDefault()
-    closeMenu()
-    return
-  }
-
-  if (event.key === 'o' || event.key === 'O') {
-    if (menuOpen.value) return
-    event.preventDefault()
-    openMenu()
+    if (modalOpen.value) {
+      event.preventDefault()
+      dismissModal()
+      return
+    }
+    if (menuOpen.value) {
+      event.preventDefault()
+      closeMenu()
+    }
   }
 }
 
@@ -279,17 +341,46 @@ function syncViewport() {
   setNarrow(window.matchMedia('(max-width: 720px)').matches)
 }
 
-watch(menuOpen, async (open) => {
+watch(overlayOpen, (open) => {
   document.body.style.overflow = open ? 'hidden' : ''
+})
+
+watch(modalOpen, async (open) => {
   if (!open) return
   await nextTick()
-  document.getElementById('site-menu')?.focus()
+  modalCloseBtn.value?.focus()
+})
+
+watch(step, (next, prev) => {
+  if (modalOpen.value) return
+
+  if (next === 'drawn' && prev !== 'drawn') {
+    pendingAction.value = null
+    pendingLabel.value = ''
+    modalBody.value = t('narration.drawn', colorVars.value)
+    modalKind.value = 'drawn'
+    modalOpen.value = true
+    closeMenu()
+    return
+  }
+
+  if (next === 'result' && prev !== 'result') {
+    pendingAction.value = null
+    pendingLabel.value = ''
+    modalBody.value = isCheating.value
+      ? t('narration.resultCheat', colorVars.value)
+      : t('narration.result', colorVars.value)
+    modalKind.value = 'result'
+    modalOpen.value = true
+    closeMenu()
+  }
 })
 
 onMounted(() => {
   syncViewport()
   window.addEventListener('resize', syncViewport)
   window.addEventListener('keydown', onKeydown)
+  openWelcome()
 })
 
 onUnmounted(() => {
@@ -301,27 +392,9 @@ onUnmounted(() => {
 
 <template>
   <div class="page">
-    <Transition name="fade">
-      <div
-        v-if="menuOpen"
-        class="menu-backdrop"
-        aria-hidden="true"
-        @click="closeMenu"
-      ></div>
-    </Transition>
-
-    <aside class="drawer" :class="{ 'is-open': menuOpen }">
-      <div
-        id="site-menu"
-        class="drawer-panel"
-        role="dialog"
-        tabindex="-1"
-        :inert="menuOpen ? undefined : true"
-        :aria-modal="menuOpen"
-        :aria-label="t('menu')"
-        :aria-hidden="!menuOpen"
-      >
-        <header class="brand">
+    <header class="top">
+      <div class="title-row">
+        <div class="brand">
           <h1>{{ t('title') }}</h1>
           <ol class="progress" :aria-label="t('stepsLabel')">
             <li
@@ -332,60 +405,77 @@ onUnmounted(() => {
                 'is-done': activeStepIndex > index && activeStepIndex !== -1,
               }"
             >
-              <span class="step-index">{{ index + 1 }}</span>
               <span class="step-label">{{ t(item.labelKey) }}</span>
             </li>
           </ol>
-        </header>
+        </div>
 
-        <section class="menu-section">
-          <h2>{{ t('language') }}</h2>
-          <div class="lang-switch" :aria-label="t('language')">
-            <button
-              type="button"
-              :class="{ 'is-active': locale === 'nl' }"
-              :aria-pressed="locale === 'nl'"
-              @click="chooseLocale('nl')"
-            >
-              NL
-            </button>
-            <button
-              type="button"
-              :class="{ 'is-active': locale === 'en' }"
-              :aria-pressed="locale === 'en'"
-              @click="chooseLocale('en')"
-            >
-              EN
-            </button>
+        <div class="menu">
+          <button
+            class="menu-toggle"
+            type="button"
+            :aria-expanded="menuOpen"
+            aria-controls="site-menu"
+            :aria-label="menuOpen ? t('menuClose') : t('menuOpen')"
+            @click="toggleMenu"
+          >
+            <span class="burger" :class="{ 'is-open': menuOpen }" aria-hidden="true">
+              <i></i><i></i><i></i>
+            </span>
+          </button>
+
+          <div
+            v-if="menuOpen"
+            class="menu-backdrop"
+            aria-hidden="true"
+            @click="closeMenu"
+          ></div>
+
+          <div
+            v-show="menuOpen"
+            id="site-menu"
+            class="menu-panel"
+            role="dialog"
+            :aria-label="t('menu')"
+          >
+            <section class="menu-section">
+              <h2>{{ t('language') }}</h2>
+              <div class="lang-switch" :aria-label="t('language')">
+                <button
+                  type="button"
+                  :class="{ 'is-active': locale === 'nl' }"
+                  :aria-pressed="locale === 'nl'"
+                  @click="chooseLocale('nl')"
+                >
+                  NL
+                </button>
+                <button
+                  type="button"
+                  :class="{ 'is-active': locale === 'en' }"
+                  :aria-pressed="locale === 'en'"
+                  @click="chooseLocale('en')"
+                >
+                  EN
+                </button>
+              </div>
+            </section>
+
+            <section class="menu-section">
+              <h2>{{ t('info') }}</h2>
+              <p class="eyebrow">{{ t('eyebrow') }}</p>
+              <p class="lede">
+                {{ t('ledeBefore') }}
+                <em>{{ t('ledeEm') }}</em>
+                {{ t('ledeAfter') }}
+              </p>
+              <button class="menu-link" type="button" @click="openWelcome">
+                {{ t('welcome.title') }}
+              </button>
+            </section>
           </div>
-        </section>
-
-        <section class="menu-section">
-          <h2>{{ t('info') }}</h2>
-          <p class="eyebrow">{{ t('eyebrow') }}</p>
-          <p class="lede">
-            {{ t('ledeBefore') }}
-            <em>{{ t('ledeEm') }}</em>
-            {{ t('ledeAfter') }}
-          </p>
-        </section>
+        </div>
       </div>
-
-      <button
-        ref="menuTab"
-        class="drawer-tab"
-        type="button"
-        :aria-expanded="menuOpen"
-        aria-controls="site-menu"
-        aria-keyshortcuts="O"
-        :aria-label="menuOpen ? t('menuClose') : t('menuOpen')"
-        @click="toggleMenu"
-      >
-        <span class="tab-chevron" aria-hidden="true"></span>
-        <span class="tab-label" aria-hidden="true">{{ t('menu') }}</span>
-        <kbd class="tab-key" aria-hidden="true">O</kbd>
-      </button>
-    </aside>
+    </header>
 
     <section class="status" aria-live="polite">
       <div class="people">
@@ -402,8 +492,6 @@ onUnmounted(() => {
           :note="personBNote"
         />
       </div>
-
-      <p class="narration">{{ narration }}</p>
 
       <div class="properties-slot">
         <ul v-if="step === 'result'" class="properties">
@@ -433,8 +521,8 @@ onUnmounted(() => {
               v-if="primaryAction"
               class="action"
               type="button"
-              :disabled="busy"
-              @click="primaryAction.run"
+              :disabled="busy || modalOpen"
+              @click="requestAction(primaryAction)"
             >
               {{ primaryAction.label }}
             </button>
@@ -442,8 +530,8 @@ onUnmounted(() => {
               v-if="secondaryAction"
               class="action action-secondary"
               type="button"
-              :disabled="busy"
-              @click="secondaryAction.run"
+              :disabled="busy || modalOpen"
+              @click="requestAction(secondaryAction, 'cheat')"
             >
               {{ secondaryAction.label }}
             </button>
@@ -512,6 +600,39 @@ onUnmounted(() => {
         />
       </div>
     </section>
+
+    <Teleport to="body">
+      <Transition name="fade">
+        <div
+          v-if="modalOpen"
+          class="modal-root"
+          role="presentation"
+        >
+          <div class="modal-backdrop" aria-hidden="true" @click="dismissModal"></div>
+          <div
+            class="modal-dialog"
+            role="dialog"
+            aria-modal="true"
+            :aria-labelledby="'modal-title'"
+          >
+            <h2 id="modal-title">{{ modalTitle }}</h2>
+            <div class="modal-body">
+              <p v-for="(paragraph, index) in modalParagraphs" :key="index">
+                {{ paragraph }}
+              </p>
+            </div>
+            <button
+              ref="modalCloseBtn"
+              class="action modal-confirm"
+              type="button"
+              @click="dismissModal"
+            >
+              {{ modalConfirmLabel }}
+            </button>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 
@@ -519,127 +640,23 @@ onUnmounted(() => {
 .page {
   width: min(1080px, 100%);
   margin: 0 auto;
-  padding: 16px 20px 36px;
+  padding: 14px 20px 36px;
 }
 
-@media (max-width: 1140px) {
-  .page {
-    padding-left: 56px;
-  }
+.top {
+  margin-bottom: 12px;
 }
 
-.menu-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-  background: rgba(8, 12, 10, 0.45);
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.drawer {
-  --tab-size: 42px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 90;
+.title-row {
   display: flex;
-  align-items: stretch;
-  transform: translateX(calc(-100% + var(--tab-size)));
-  transition: transform 0.28s ease;
-}
-
-.drawer.is-open {
-  transform: translateX(0);
-}
-
-.drawer-panel {
-  width: min(24rem, calc(100vw - 56px));
-  height: 100%;
-  overflow-y: auto;
-  padding: 28px 22px 32px;
-  background: rgba(16, 24, 20, 0.97);
-  border-right: 1px solid rgba(230, 200, 122, 0.22);
-  box-shadow: 8px 0 40px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(12px);
-}
-
-.drawer-panel:focus {
-  outline: none;
-}
-
-.drawer-tab {
-  appearance: none;
-  align-self: center;
-  width: var(--tab-size);
-  min-height: 132px;
-  padding: 14px 0 12px;
-  border: 1px solid rgba(230, 200, 122, 0.28);
-  border-left: 0;
-  border-radius: 0 12px 12px 0;
-  background: rgba(16, 24, 20, 0.96);
-  color: var(--cream);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 8px;
-  cursor: pointer;
-  box-shadow: 6px 0 18px rgba(0, 0, 0, 0.22);
-}
-
-.drawer-tab:focus-visible {
-  outline: 2px solid #f7f1e6;
-  outline-offset: 2px;
-}
-
-.tab-chevron {
-  width: 8px;
-  height: 8px;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(-45deg);
-  margin: 4px 0 2px 2px;
-  transition: transform 0.2s ease;
-}
-
-.drawer.is-open .tab-chevron {
-  transform: rotate(135deg);
-  margin-left: 0;
-}
-
-.tab-label {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--brass);
-}
-
-.tab-key {
-  font-family: var(--sans);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  padding: 2px 5px;
-  border-radius: 4px;
-  border: 1px solid rgba(230, 200, 122, 0.35);
-  color: var(--muted);
+  gap: 16px;
 }
 
 .brand {
   min-width: 0;
+  flex: 1;
 }
 
 h1 {
@@ -655,29 +672,27 @@ h1 {
 .progress {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0;
   padding: 0;
-  margin: 16px 0 0;
+  margin: 6px 0 0;
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   line-height: 1.35;
 }
 
 .progress li {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
+  display: inline-flex;
+  align-items: center;
   color: rgba(201, 214, 204, 0.55);
 }
 
-.progress li .step-index {
-  width: 1.1em;
-  flex: 0 0 auto;
-  font-size: 0.72rem;
+.progress li:not(:last-child)::after {
+  content: '·';
+  margin: 0 0.55em;
+  color: rgba(230, 200, 122, 0.45);
   font-weight: 600;
-  letter-spacing: 0.04em;
-  color: rgba(230, 200, 122, 0.55);
 }
 
 .progress li .step-label {
@@ -689,16 +704,7 @@ h1 {
   color: #cde3d4;
 }
 
-.progress li.is-done .step-index {
-  color: #cde3d4;
-}
-
 .progress li.is-active {
-  color: var(--cream);
-}
-
-.progress li.is-active .step-index,
-.progress li.is-active .step-label {
   color: var(--cream);
 }
 
@@ -706,15 +712,99 @@ h1 {
   border-bottom-color: var(--brass);
 }
 
-.menu-section + .menu-section {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(230, 200, 122, 0.14);
+.menu {
+  position: relative;
+  flex: 0 0 auto;
 }
 
-.brand + .menu-section {
-  margin-top: 22px;
-  padding-top: 16px;
+.menu-toggle {
+  appearance: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid rgba(230, 200, 122, 0.28);
+  background: rgba(15, 24, 20, 0.55);
+  color: var(--cream);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.menu-toggle:focus-visible {
+  outline: 2px solid #f7f1e6;
+  outline-offset: 2px;
+}
+
+.burger {
+  width: 18px;
+  height: 12px;
+  position: relative;
+  display: block;
+}
+
+.burger i {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 1px;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    top 0.2s ease;
+}
+
+.burger i:nth-child(1) {
+  top: 0;
+}
+
+.burger i:nth-child(2) {
+  top: 5px;
+}
+
+.burger i:nth-child(3) {
+  top: 10px;
+}
+
+.burger.is-open i:nth-child(1) {
+  top: 5px;
+  transform: rotate(45deg);
+}
+
+.burger.is-open i:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.is-open i:nth-child(3) {
+  top: 5px;
+  transform: rotate(-45deg);
+}
+
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(8, 12, 10, 0.35);
+}
+
+.menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 90;
+  width: min(22rem, calc(100vw - 40px));
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(16, 24, 20, 0.96);
+  border: 1px solid rgba(230, 200, 122, 0.22);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+}
+
+.menu-section + .menu-section {
+  margin-top: 16px;
+  padding-top: 14px;
   border-top: 1px solid rgba(230, 200, 122, 0.14);
 }
 
@@ -774,12 +864,25 @@ h1 {
   line-height: 1.45;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .drawer,
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: none;
-  }
+.menu-link {
+  appearance: none;
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(230, 200, 122, 0.28);
+  background: transparent;
+  color: var(--brass);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu-link:hover {
+  background: rgba(230, 200, 122, 0.1);
 }
 
 .people {
@@ -797,31 +900,23 @@ h1 {
   border: 1px solid rgba(230, 200, 122, 0.14);
   display: flex;
   flex-direction: column;
-  min-height: 17rem;
+  min-height: 8.5rem;
 }
 
 .status .people {
-  margin-bottom: 10px;
+  margin-bottom: 0;
   min-height: 4.75rem;
-}
-
-.narration {
-  margin: 0;
-  color: var(--cream);
-  font-size: 0.98rem;
-  line-height: 1.45;
-  min-height: 5.8em;
-  max-height: 5.8em;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(230, 200, 122, 0.35) transparent;
 }
 
 .properties-slot {
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px solid rgba(230, 200, 122, 0.14);
-  min-height: 3.8rem;
+  min-height: 0;
+}
+
+.properties-slot:empty {
+  display: none;
 }
 
 .properties {
@@ -1121,7 +1216,7 @@ h1 {
   }
 
   .status {
-    min-height: 19rem;
+    min-height: 10rem;
   }
 
   .status .people {
@@ -1208,6 +1303,81 @@ h1 {
   .actions {
     flex-direction: column;
     align-items: stretch;
+  }
+}
+</style>
+
+<style>
+.modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 12, 10, 0.62);
+}
+
+.modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(34rem, 100%);
+  max-height: min(80vh, 40rem);
+  overflow: auto;
+  padding: 24px 22px 20px;
+  border-radius: 16px;
+  background: rgba(16, 24, 20, 0.98);
+  border: 1px solid rgba(230, 200, 122, 0.28);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  color: var(--cream);
+}
+
+.modal-dialog h2 {
+  margin: 0 0 14px;
+  font-family: var(--heading);
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.modal-body {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.modal-body p {
+  margin: 0;
+  color: var(--cream);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.modal-confirm {
+  display: block;
+  width: 100%;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: none;
   }
 }
 </style>

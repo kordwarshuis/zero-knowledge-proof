@@ -15,6 +15,18 @@ export const messages = {
       'Bewijs welke kleur je hebt getrokken zonder de kaart te laten zien — en zonder te onthullen',
     ledeEm: 'welke',
     ledeAfter: 'kaart van die kleur het is.',
+    modalClose: 'Sluiten',
+    modalContinue: 'Verder',
+    modalGotIt: 'Begrepen',
+    welcome: {
+      title: 'Wat is een zero-knowledgebewijs?',
+      police:
+        'Stel: een agent wil weten of je mag rijden. Hij hoeft alleen te weten of dat zo is — niet wanneer je geboren bent, waar je woont, of andere gegevens op je rijbewijs. Een zero-knowledgebewijs is precies dat idee: je overtuigt iemand van een feit, zonder extra informatie prijs te geven.',
+      bridge:
+        'Dat kan ook digitaal: apps en websites kunnen een bewering controleren zonder jouw privégegevens te leren. We laten nu een fysiek voorbeeld zien met speelkaarten — eenvoudig genoeg om met de hand te volgen, en hetzelfde principe als in de cryptografie.',
+      cards:
+        'Hier wil de bewijzer bewijzen welke kleur haar kaart heeft — zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
+    },
     stepsLabel: 'Stappen van de demonstratie',
     steps: {
       inspect: 'Bekijken',
@@ -155,6 +167,18 @@ export const messages = {
       'Prove which colour you drew without showing the card — and without revealing',
     ledeEm: 'which',
     ledeAfter: 'card of that colour it is.',
+    modalClose: 'Close',
+    modalContinue: 'Continue',
+    modalGotIt: 'Got it',
+    welcome: {
+      title: 'What is a zero-knowledge proof?',
+      police:
+        'Imagine a police officer who wants to know whether you are allowed to drive. They only need a yes or no — not when you were born, where you live, or anything else on your licence. A zero-knowledge proof is exactly that idea: you convince someone of a fact without revealing extra information.',
+      bridge:
+        'The same idea works digitally: apps and websites can check a claim without learning your private details. Next we will show a physical example with playing cards — simple enough to follow by hand, and the same principle used in cryptography.',
+      cards:
+        'Here, the prover wants to prove which colour her card is — without showing which card it is. You can also try to lie, to see that cheating does not work.',
+    },
     stepsLabel: 'Demonstration steps',
     steps: {
       inspect: 'Inspect',
