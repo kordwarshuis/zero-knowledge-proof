@@ -36,16 +36,16 @@ export const messages = {
         'Daarom moeten we opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledgebewijs helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
       exampleTitle: 'Een alledaags voorbeeld',
       example:
-        'Bij de deur van een café wil de portier weten of je oud genoeg bent om binnen te mogen. Hij hoeft alleen ja of nee te horen — niet wanneer je precies geboren bent, waar je woont, of andere gegevens op je ID.',
+        'Bij de deur van een café wil de portier weten of je oud genoeg bent om binnen te mogen. Hij hoeft alleen te weten: ja of nee — niet wanneer je precies geboren bent, waar je woont, of andere gegevens op je ID.',
       bridgeTitle: 'Ook digitaal',
       bridge:
-        'Hetzelfde idee werkt digitaal: apps en websites kunnen een bewering controleren zonder jouw privégegevens te leren.',
+        'Dit kan ook digitaal: apps en websites kunnen een bewering controleren zonder jouw privégegevens te zien.',
       rolesTitle: 'De rollen',
       rolesProver: 'Ik wil de getrokken kaart niet laten zien!',
       rolesVerifier: 'En toch wil ik weten of de kaart rood is of niet!',
       cardsTitle: 'Een voorbeeld',
       cards:
-        'We laten dat nu zien met speelkaarten — eenvoudig genoeg om met de hand te volgen, en hetzelfde principe als in de cryptografie. De bewijzer bewijst welke kleur haar kaart heeft, zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
+        'We laten dat nu zien met speelkaarten. De bewijzer bewijst welke kleur haar kaart heeft, zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
     },
     stepsLabel: 'Stappen van de demonstratie',
     steps: {
@@ -112,14 +112,14 @@ export const messages = {
       intro:
         'Een zero-knowledgebewijs laat je iemand overtuigen dat een stelling waar is, zonder verder iets te onthullen. Hier wil de bewijzer bewijzen welke kleur haar kaart heeft — zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
       inspect:
-        'Voordat iemand trekt, bekijkt de controleur het hele spel: vier rode kaarten en vier zwarte. Jullie zijn het erover eens welke acht kaarten er zijn.',
+        'Voordat je een kaart trekt, bekijkt de controleur het hele spel: vier rode kaarten en vier zwarte. Jullie zijn het erover eens welke acht kaarten er zijn.',
       shuffling: 'De kaarten worden geschud en omgekeerd.',
       shuffled:
         'Jij bent de bewijzer. Trek een willekeurige kaart. De controleur mag die niet zien.',
       drawing:
         'De kaart schuift achter het privéscherm. Alleen jij ziet de voorkant.',
       drawn:
-        'Je hebt een {ownCard}. Bewijs dat eerlijk, of probeer te beweren dat je een {otherCard} hebt — en kijk hoe dat misgaat.',
+        'Je hebt een {ownCard}. Bewijs het! (Of probeer te beweren dat je een {otherCard} hebt — en kijk hoe dat misgaat.)',
       sorting:
         'Je bekijkt de overgebleven zeven kaarten in het privé. De controleur ziet hun voorkant nog steeds niet.',
       proving:
@@ -211,13 +211,13 @@ export const messages = {
         'At the door of a bar, the doorman wants to know whether you are old enough to enter. They only need a yes or no — not your exact date of birth, where you live, or anything else on your ID.',
       bridgeTitle: 'Digitally too',
       bridge:
-        'The same idea works digitally: apps and websites can check a claim without learning your private details.',
+        'This also works digitally: apps and websites can check a claim without learning your private details.',
       rolesTitle: 'The roles',
       rolesProver: 'I do not want to show the card I drew!',
       rolesVerifier: 'And yet I want to know whether the card is red or not!',
       cardsTitle: 'An example',
       cards:
-        'Next we will show that with playing cards — simple enough to follow by hand, and the same principle used in cryptography. The prover proves which colour her card is, without showing which card it is. You can also try to lie, to see that cheating does not work.',
+        'Next we will show that with playing cards. The prover proves which colour her card is, without showing which card it is. You can also try to lie, to see that cheating does not work.',
     },
     stepsLabel: 'Demonstration steps',
     steps: {
@@ -285,14 +285,14 @@ export const messages = {
       intro:
         'A zero-knowledge proof lets you convince someone a statement is true without revealing anything else. Here, the prover wants to prove which colour her card is — without showing which card it is. You can also try to lie, to see that cheating does not work.',
       inspect:
-        'Before anyone draws, the verifier inspects the whole deck: four red cards and four black cards. Both of you agree on exactly which eight cards exist.',
+        'Before you draw a card, the verifier inspects the whole deck: four red cards and four black cards. Both of you agree on exactly which eight cards exist.',
       shuffling: 'The cards are shuffled and turned face down.',
       shuffled:
         'You are the prover. Draw a random card. The verifier will not be allowed to see it.',
       drawing:
         'The card slides behind the privacy screen. Only you will see its face.',
       drawn:
-        'You have a {ownCard}. Prove that honestly, or try claiming you have a {otherCard} — and watch the cheat fail.',
+        'You have a {ownCard}. Prove it! (Or try claiming you have a {otherCard} — and watch the cheat fail.)',
       sorting:
         'You look at the remaining seven cards in private. The verifier still cannot see their faces.',
       proving:
