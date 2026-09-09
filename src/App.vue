@@ -194,7 +194,7 @@ const modalParagraphs = computed(() => {
   if (modalKind.value === 'welcome') {
     return [
       { text: t('welcome.context') },
-      { text: t('welcome.police') },
+      { text: t('welcome.example') },
       { text: t('welcome.bridge') },
       { text: t('welcome.cards') },
     ]
