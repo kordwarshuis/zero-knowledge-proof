@@ -57,7 +57,7 @@ export const messages = {
       rolesVerifier: 'En toch wil ik weten of de kaart rood is of niet!',
       cardsTitle: 'Een voorbeeld',
       cards:
-        'We laten dat nu zien met speelkaarten. De bewijzer bewijst welke kleur haar kaart heeft, zonder te laten zien welke kaart het is. (Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.)',
+        'We laten dat nu zien met speelkaarten. De bewijzer bewijst welke kleur zijn kaart heeft, zonder te laten zien welke kaart het is. (Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.)',
     },
     stepsLabel: 'Stappen van de demonstratie',
     steps: {
@@ -122,7 +122,7 @@ export const messages = {
     },
     narration: {
       intro:
-        'Een zero-knowledge-proof (nulkennisbewijs) laat je iemand overtuigen dat een stelling waar is, zonder verder iets te onthullen. Hier wil de bewijzer bewijzen welke kleur haar kaart heeft — zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
+        'Een zero-knowledge-proof (nulkennisbewijs) laat je iemand overtuigen dat een stelling waar is, zonder verder iets te onthullen. Hier wil de bewijzer bewijzen welke kleur zijn kaart heeft — zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
       inspect:
         'Voordat je een kaart trekt, bekijkt de controleur het hele spel: vier rode kaarten en vier zwarte. Jullie zijn het erover eens welke acht kaarten er zijn.',
       shuffling: 'De kaarten worden geschud en omgekeerd.',
@@ -235,7 +235,7 @@ export const messages = {
       rolesVerifier: 'And yet I want to know whether the card is red or not!',
       cardsTitle: 'An example',
       cards:
-        'Next we will show that with playing cards. The prover proves which colour her card is, without showing which card it is. (You can also try to lie, to see that cheating does not work.)',
+        'Next we will show that with playing cards. The prover proves which colour his card is, without showing which card it is. (You can also try to lie, to see that cheating does not work.)',
     },
     stepsLabel: 'Demonstration steps',
     steps: {
@@ -301,7 +301,7 @@ export const messages = {
     },
     narration: {
       intro:
-        'A zero-knowledge-proof lets you convince someone a statement is true without revealing anything else. Here, the prover wants to prove which colour her card is — without showing which card it is. You can also try to lie, to see that cheating does not work.',
+        'A zero-knowledge-proof lets you convince someone a statement is true without revealing anything else. Here, the prover wants to prove which colour his card is — without showing which card it is. You can also try to lie, to see that cheating does not work.',
       inspect:
         'Before you draw a card, the verifier inspects the whole deck: four red cards and four black cards. Both of you agree on exactly which eight cards exist.',
       shuffling: 'The cards are shuffled and turned face down.',
@@ -371,7 +371,7 @@ export const messages = {
     socialDescription:
       'Beweise, welche Farbe du gezogen hast, ohne die Karte zu zeigen — und ohne zu verraten, welche Karte dieser Farbe es ist.',
     ogImageAlt:
-      'Ein Kartentisch mit Sichtschutz: Die Beweisführerin sieht das Herz-Ass, die Prüferin sieht nur eine verdeckte Karte.',
+      'Ein Kartentisch mit Sichtschutz: Der Beweisführer sieht das Herz-Ass, der Prüfer sieht nur eine verdeckte Karte.',
     language: 'Sprache',
     menu: 'Menü',
     menuOpen: 'Menü öffnen',
@@ -414,7 +414,7 @@ export const messages = {
       rolesVerifier: 'Und trotzdem will ich wissen, ob die Karte rot ist oder nicht!',
       cardsTitle: 'Ein Beispiel',
       cards:
-        'Als Nächstes zeigen wir das mit Spielkarten. Die Beweisführerin beweist, welche Farbe ihre Karte hat, ohne zu zeigen, welche Karte es ist. (Du kannst auch versuchen zu lügen, um zu sehen, dass Betrug nicht funktioniert.)',
+        'Als Nächstes zeigen wir das mit Spielkarten. Der Beweisführer beweist, welche Farbe seine Karte hat, ohne zu zeigen, welche Karte es ist. (Du kannst auch versuchen zu lügen, um zu sehen, dass Betrug nicht funktioniert.)',
     },
     stepsLabel: 'Schritte der Demonstration',
     steps: {
@@ -423,24 +423,24 @@ export const messages = {
       prove: 'Beweisen',
       result: 'Ergebnis',
     },
-    personATitle: 'Die Beweisführerin',
+    personATitle: 'Der Beweisführer',
     personARole: '',
-    personBTitle: 'Die Prüferin',
+    personBTitle: 'Der Prüfer',
     personBRole: '',
     tableLabel: 'Kartentisch',
     plaquePrivate: 'Nur für dich',
     plaquePublic: 'Kein Blick',
     red: 'Rot',
     black: 'Schwarz',
-    privateZone: 'Privat — die Prüferin sieht das nicht',
+    privateZone: 'Privat — der Prüfer sieht das nicht',
     yourCard: 'Deine Karte',
     cardComing: 'Kommt zu dir, verdeckt…',
-    personBCannotSeeCard: 'Die Prüferin kann diese Karte nicht sehen',
-    mysteryCard: 'Karte der Beweisführerin',
+    personBCannotSeeCard: 'Der Prüfer kann diese Karte nicht sehen',
+    mysteryCard: 'Karte des Beweisführers',
     mysteryHidden: 'vor mir verborgen',
     remainingPrivate: 'Übrige Karten — noch privat',
     ownColorHidden: '{claimCards} bleiben verborgen',
-    shownToB: 'Der Prüferin gezeigt',
+    shownToB: 'Dem Prüfer gezeigt',
     missingCard: 'Fehlende Karte',
     watchCards: 'Schau auf die Karten…',
     faceDownCard: 'Eine verdeckte Spielkarte',
@@ -449,14 +449,14 @@ export const messages = {
       inspect: 'Du siehst das Spiel auch — noch ist nichts verborgen.',
       shuffled: 'Die Karten liegen verdeckt. Ziehe eine zufällig.',
       drawing: 'Die Karte geht hinter den Sichtschutz…',
-      drawn: 'Du hast {card} gezogen. Die Prüferin kann sie nicht sehen.',
+      drawn: 'Du hast {card} gezogen. Der Prüfer kann sie nicht sehen.',
       sorting: 'Schau dir die übrigen Karten privat an.',
       proving:
-        'Zeig der Prüferin alle vier {otherCards}. Halte die {claimCards} verborgen.',
+        'Zeig dem Prüfer alle vier {otherCards}. Halte die {claimCards} verborgen.',
       provingCheat:
         'Du behauptest, eine {claimCard} zu haben. Versuche, alle vier {otherCards} zu zeigen…',
       result:
-        'Die Prüferin ist überzeugt — und weiß immer noch nicht, welche {ownCard} du hast.',
+        'Der Prüfer ist überzeugt — und weiß immer noch nicht, welche {ownCard} du hast.',
       resultCheat:
         'Der Betrug ist gescheitert. Du konntest keine vier {otherCards} zeigen, weil du eine {ownCard} hältst.',
     },
@@ -467,9 +467,9 @@ export const messages = {
       shuffled:
         'Dieselben acht Karten, jetzt verdeckt. Ich weiß nicht, welche wo liegt.',
       drawn:
-        'Die Beweisführerin hält eine Karte. Ich kann sie nicht sehen. Es könnte rot oder schwarz sein.',
+        'Der Beweisführer hält eine Karte. Ich kann sie nicht sehen. Es könnte rot oder schwarz sein.',
       sorting:
-        'Die Beweisführerin betrachtet den Rest. Der Sichtschutz blockiert meinen Blick.',
+        'Der Beweisführer betrachtet den Rest. Der Sichtschutz blockiert meinen Blick.',
       provingWait: 'Ich warte darauf, Karten zu sehen…',
       provingOne: 'Bisher wurde mir 1 {otherCard} gezeigt.',
       provingMany: 'Bisher wurden mir {count} {otherCards} gezeigt.',
@@ -480,29 +480,29 @@ export const messages = {
     },
     narration: {
       intro:
-        'Ein Zero-Knowledge-Beweis lässt dich jemanden überzeugen, dass eine Aussage wahr ist, ohne etwas anderes zu verraten. Hier will die Beweisführerin beweisen, welche Farbe ihre Karte hat — ohne zu zeigen, welche Karte es ist. Du kannst auch versuchen zu lügen, um zu sehen, dass Betrug nicht funktioniert.',
+        'Ein Zero-Knowledge-Beweis lässt dich jemanden überzeugen, dass eine Aussage wahr ist, ohne etwas anderes zu verraten. Hier will der Beweisführer beweisen, welche Farbe seine Karte hat — ohne zu zeigen, welche Karte es ist. Du kannst auch versuchen zu lügen, um zu sehen, dass Betrug nicht funktioniert.',
       inspect:
-        'Bevor du eine Karte ziehst, prüft die Prüferin das ganze Spiel: vier rote und vier schwarze Karten. Ihr seid euch einig, welche acht Karten es gibt.',
+        'Bevor du eine Karte ziehst, prüft der Prüfer das ganze Spiel: vier rote und vier schwarze Karten. Ihr seid euch einig, welche acht Karten es gibt.',
       shuffling: 'Die Karten werden gemischt und umgedreht.',
       shuffled:
-        'Du bist die Beweisführerin. Ziehe eine zufällige Karte. Die Prüferin darf sie nicht sehen.',
+        'Du bist der Beweisführer. Ziehe eine zufällige Karte. Der Prüfer darf sie nicht sehen.',
       drawing:
         'Die Karte gleitet hinter den Sichtschutz. Nur du siehst die Vorderseite.',
       drawn:
         'Du hast eine {ownCard}. Beweise es! (Oder behaupte, eine {otherCard} zu haben — und sieh, wie der Betrug scheitert.)',
       sorting:
-        'Du betrachtest die übrigen sieben Karten privat. Die Prüferin sieht ihre Vorderseiten weiterhin nicht.',
+        'Du betrachtest die übrigen sieben Karten privat. Der Prüfer sieht ihre Vorderseiten weiterhin nicht.',
       proving:
-        'Jede {otherCard} aus dem Rest wird der Prüferin gezeigt. Die {claimCards} bleiben auf deiner Seite des Sichtschutzes.',
+        'Jede {otherCard} aus dem Rest wird dem Prüfer gezeigt. Die {claimCards} bleiben auf deiner Seite des Sichtschutzes.',
       provingCheat:
         'Du versuchst zu beweisen, dass du eine {claimCard} hast, indem du alle {otherCards} zeigst. Weil deine echte Karte {ownColor} ist, kannst du nur drei vorzeigen.',
       result:
-        'Die Prüferin hat jetzt alle vier {otherCards} gesehen, also muss deine verdeckte Karte {claimColor} sein. Die drei übrigen {claimCards} wurden nie gezeigt, also kann die Prüferin nicht sagen, welche der vier {claimCards} du gezogen hast. Das ist der Zero-Knowledge-Teil.',
+        'Der Prüfer hat jetzt alle vier {otherCards} gesehen, also muss deine verdeckte Karte {claimColor} sein. Die drei übrigen {claimCards} wurden nie gezeigt, also kann der Prüfer nicht sagen, welche der vier {claimCards} du gezogen hast. Das ist der Zero-Knowledge-Teil.',
       resultCheat:
-        'Du hast behauptet, eine {claimCard} zu haben, konntest aber nur drei {otherCards} zeigen. Die Prüferin merkt, dass eine fehlt, und lehnt die Behauptung ab. Eine falsche Aussage lässt sich nicht beweisen — das nennt man Korrektheit (Soundness).',
+        'Du hast behauptet, eine {claimCard} zu haben, konntest aber nur drei {otherCards} zeigen. Der Prüfer merkt, dass eine fehlt, und lehnt die Behauptung ab. Eine falsche Aussage lässt sich nicht beweisen — das nennt man Korrektheit (Soundness).',
     },
     actions: {
-      begin: 'Zeig der Prüferin das Spiel',
+      begin: 'Zeig dem Prüfer das Spiel',
       shuffle: 'Mischen und umdrehen',
       draw: 'Eine zufällige Karte ziehen',
       prove: 'Beweise, dass du eine {ownCard} hast',
@@ -514,7 +514,7 @@ export const messages = {
       completeness: 'Die Aussage war wahr, also gelang der Beweis.',
       zeroKnowledgeLabel: 'Nullwissen.',
       zeroKnowledge:
-        'Die Prüferin erfuhr nur, dass deine Karte {ownColor} ist — nicht, welche der vier {ownCards} es ist.',
+        'Der Prüfer erfuhr nur, dass deine Karte {ownColor} ist — nicht, welche der vier {ownCards} es ist.',
       soundnessLabel: 'Korrektheit.',
       soundness:
         'Eine falsche Aussage lässt sich nicht beweisen. Indem du eine {claimCard} behauptet hast, während du eine {ownCard} gehalten hast, konntest du nicht alle vier {otherCards} zeigen.',
@@ -550,7 +550,7 @@ export const messages = {
     socialDescription:
       'Prouvez quelle couleur vous avez tirée sans montrer la carte — et sans révéler laquelle des cartes de cette couleur c’est.',
     ogImageAlt:
-      'Une table de cartes avec un paravent : la proveuse voit l’as de cœur, la vérificatrice ne voit qu’une carte cachée.',
+      'Une table de cartes avec un paravent : le prouveur voit l’as de cœur, le vérificateur ne voit qu’une carte cachée.',
     language: 'Langue',
     menu: 'Menu',
     menuOpen: 'Ouvrir le menu',
@@ -593,7 +593,7 @@ export const messages = {
       rolesVerifier: 'Et pourtant je veux savoir si la carte est rouge ou non !',
       cardsTitle: 'Un exemple',
       cards:
-        'Nous allons maintenant le montrer avec des cartes à jouer. La proveuse prouve la couleur de sa carte, sans montrer quelle carte c’est. (Vous pouvez aussi essayer de mentir, pour voir que la triche ne marche pas.)',
+        'Nous allons maintenant le montrer avec des cartes à jouer. Le prouveur prouve la couleur de sa carte, sans montrer quelle carte c’est. (Vous pouvez aussi essayer de mentir, pour voir que la triche ne marche pas.)',
     },
     stepsLabel: 'Étapes de la démonstration',
     steps: {
@@ -602,53 +602,53 @@ export const messages = {
       prove: 'Prouver',
       result: 'Résultat',
     },
-    personATitle: 'La Proveuse',
+    personATitle: 'Le Prouveur',
     personARole: '',
-    personBTitle: 'La Vérificatrice',
+    personBTitle: 'Le Vérificateur',
     personBRole: '',
     tableLabel: 'Table de cartes',
     plaquePrivate: 'Pour vous seuls',
     plaquePublic: 'Pas de vue',
     red: 'Rouge',
     black: 'Noir',
-    privateZone: 'Privé — la vérificatrice ne voit pas ceci',
+    privateZone: 'Privé — le vérificateur ne voit pas ceci',
     yourCard: 'Votre carte',
     cardComing: 'Arrive vers vous, face cachée…',
-    personBCannotSeeCard: 'La vérificatrice ne peut pas voir cette carte',
-    mysteryCard: 'Carte de la proveuse',
+    personBCannotSeeCard: 'Le vérificateur ne peut pas voir cette carte',
+    mysteryCard: 'Carte du prouveur',
     mysteryHidden: 'cachée pour moi',
     remainingPrivate: 'Cartes restantes — encore privées',
     ownColorHidden: '{claimCards} restent cachées',
-    shownToB: 'Montrées à la vérificatrice',
+    shownToB: 'Montrées au vérificateur',
     missingCard: 'Carte manquante',
     watchCards: 'Regardez les cartes…',
     faceDownCard: 'Une carte à jouer face cachée',
     personA: {
-      intro: '“Je tire une carte que moi seule peux voir.”',
+      intro: '“Je tire une carte que moi seul peux voir.”',
       inspect: 'Vous voyez aussi le jeu — rien n’est encore caché.',
       shuffled: 'Les cartes sont face cachée. Tirez-en une au hasard.',
       drawing: 'La carte passe derrière le paravent…',
-      drawn: 'Vous avez tiré {card}. La vérificatrice ne peut pas la voir.',
+      drawn: 'Vous avez tiré {card}. Le vérificateur ne peut pas la voir.',
       sorting: 'Regardez les cartes restantes en privé.',
       proving:
-        'Montrez à la vérificatrice les quatre {otherCards}. Gardez les {claimCards} cachées.',
+        'Montrez au vérificateur les quatre {otherCards}. Gardez les {claimCards} cachées.',
       provingCheat:
         'Vous affirmez avoir une {claimCard}. Essayez de montrer les quatre {otherCards}…',
       result:
-        'La vérificatrice est convaincue — et ne sait toujours pas quelle {ownCard} vous avez.',
+        'Le vérificateur est convaincu — et ne sait toujours pas quelle {ownCard} vous avez.',
       resultCheat:
         'La triche a échoué. Vous n’avez pas pu montrer quatre {otherCards}, parce que vous tenez une {ownCard}.',
     },
     personB: {
-      intro: '“Je dois être convaincue de la couleur de votre carte.”',
+      intro: '“Je dois être convaincu de la couleur de votre carte.”',
       inspect: 'Quatre rouges, quatre noires. J’ai vu chaque carte de ce jeu.',
       shuffling: 'Je ne connais plus l’ordre.',
       shuffled:
         'Les mêmes huit cartes, maintenant face cachée. Je ne sais pas laquelle est laquelle.',
       drawn:
-        'La proveuse tient une carte. Je ne peux pas la voir. Elle peut être rouge ou noire.',
+        'Le prouveur tient une carte. Je ne peux pas la voir. Elle peut être rouge ou noire.',
       sorting:
-        'La proveuse regarde le reste. Le paravent bloque ma vue.',
+        'Le prouveur regarde le reste. Le paravent bloque ma vue.',
       provingWait: 'J’attends de voir des cartes…',
       provingOne: 'On m’a montré 1 {otherCard} jusqu’ici.',
       provingMany: 'On m’a montré {count} {otherCards} jusqu’ici.',
@@ -659,29 +659,29 @@ export const messages = {
     },
     narration: {
       intro:
-        'Une preuve à divulgation nulle de connaissance permet de convaincre quelqu’un qu’une affirmation est vraie sans rien révéler d’autre. Ici, la proveuse veut prouver la couleur de sa carte — sans montrer quelle carte c’est. Vous pouvez aussi essayer de mentir, pour voir que la triche ne marche pas.',
+        'Une preuve à divulgation nulle de connaissance permet de convaincre quelqu’un qu’une affirmation est vraie sans rien révéler d’autre. Ici, le prouveur veut prouver la couleur de sa carte — sans montrer quelle carte c’est. Vous pouvez aussi essayer de mentir, pour voir que la triche ne marche pas.',
       inspect:
-        'Avant de tirer une carte, la vérificatrice inspecte tout le jeu : quatre cartes rouges et quatre noires. Vous êtes d’accord sur les huit cartes présentes.',
+        'Avant de tirer une carte, le vérificateur inspecte tout le jeu : quatre cartes rouges et quatre noires. Vous êtes d’accord sur les huit cartes présentes.',
       shuffling: 'Les cartes sont mélangées et retournées face cachée.',
       shuffled:
-        'Vous êtes la proveuse. Tirez une carte au hasard. La vérificatrice ne pourra pas la voir.',
+        'Vous êtes le prouveur. Tirez une carte au hasard. Le vérificateur ne pourra pas la voir.',
       drawing:
-        'La carte glisse derrière le paravent. Vous seule verrez sa face.',
+        'La carte glisse derrière le paravent. Vous seul verrez sa face.',
       drawn:
         'Vous avez une {ownCard}. Prouvez-le ! (Ou affirmez avoir une {otherCard} — et voyez la triche échouer.)',
       sorting:
-        'Vous regardez les sept cartes restantes en privé. La vérificatrice ne voit toujours pas leurs faces.',
+        'Vous regardez les sept cartes restantes en privé. Le vérificateur ne voit toujours pas leurs faces.',
       proving:
-        'Chaque {otherCard} du reste est montrée à la vérificatrice. Les {claimCards} restent de votre côté du paravent.',
+        'Chaque {otherCard} du reste est montrée au vérificateur. Les {claimCards} restent de votre côté du paravent.',
       provingCheat:
         'Vous essayez de prouver que vous avez une {claimCard} en montrant toutes les {otherCards}. Comme votre vraie carte est {ownColor}, vous ne pouvez en produire que trois.',
       result:
-        'La vérificatrice a maintenant vu les quatre {otherCards}, donc votre carte cachée doit être {claimColor}. Les trois {claimCards} restantes n’ont jamais été montrées, donc la vérificatrice ne peut pas dire laquelle des quatre {claimCards} vous avez tirée. C’est la partie à divulgation nulle.',
+        'Le vérificateur a maintenant vu les quatre {otherCards}, donc votre carte cachée doit être {claimColor}. Les trois {claimCards} restantes n’ont jamais été montrées, donc le vérificateur ne peut pas dire laquelle des quatre {claimCards} vous avez tirée. C’est la partie à divulgation nulle.',
       resultCheat:
-        'Vous avez affirmé avoir une {claimCard}, mais n’avez pu montrer que trois {otherCards}. La vérificatrice remarque qu’il en manque une et refuse l’affirmation. Une affirmation fausse ne peut pas être prouvée — c’est la solidité (soundness).',
+        'Vous avez affirmé avoir une {claimCard}, mais n’avez pu montrer que trois {otherCards}. Le vérificateur remarque qu’il en manque une et refuse l’affirmation. Une affirmation fausse ne peut pas être prouvée — c’est la solidité (soundness).',
     },
     actions: {
-      begin: 'Montrer le jeu à la vérificatrice',
+      begin: 'Montrer le jeu au vérificateur',
       shuffle: 'Mélanger et retourner',
       draw: 'Tirer une carte au hasard',
       prove: 'Prouver que vous avez une {ownCard}',
@@ -693,7 +693,7 @@ export const messages = {
       completeness: 'L’affirmation était vraie, donc la preuve a réussi.',
       zeroKnowledgeLabel: 'Divulgation nulle.',
       zeroKnowledge:
-        'La vérificatrice a seulement appris que votre carte est {ownColor} — pas laquelle des quatre {ownCards} c’est.',
+        'Le vérificateur a seulement appris que votre carte est {ownColor} — pas laquelle des quatre {ownCards} c’est.',
       soundnessLabel: 'Solidité.',
       soundness:
         'Une affirmation fausse ne peut pas être prouvée. En affirmant une {claimCard} alors que vous teniez une {ownCard}, vous n’avez pas pu montrer les quatre {otherCards}.',
