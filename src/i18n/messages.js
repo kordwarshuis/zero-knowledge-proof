@@ -19,11 +19,13 @@ export const messages = {
     modalContinue: 'Verder',
     modalGotIt: 'Begrepen',
     welcome: {
-      title: 'Mag jij wel autorijden?',
+      title: 'Zero-knowledgebewijs',
+      context:
+        'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Wie een account overneemt of een datalek uitbuit, krijgt vaak veel meer van jou te zien dan nodig was. Daarom moeten we opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledgebewijs helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
       police:
-        'Stel: een agent wil weten of je mag rijden. Hij hoeft alleen te weten of dat zo is — niet wanneer je geboren bent, waar je woont, of andere gegevens op je rijbewijs. Een zero-knowledgebewijs is precies dat idee: je overtuigt iemand van een feit, zonder extra informatie prijs te geven.',
+        'Een alledaags voorbeeld: een agent wil weten of je mag rijden. Hij hoeft alleen te weten of dat zo is — niet wanneer je geboren bent, waar je woont, of andere gegevens op je rijbewijs.',
       bridge:
-        'Dat kan ook digitaal: apps en websites kunnen een bewering controleren zonder jouw privégegevens te leren. We laten nu een fysiek voorbeeld zien met speelkaarten — eenvoudig genoeg om met de hand te volgen, en hetzelfde principe als in de cryptografie.',
+        'Hetzelfde idee werkt digitaal: apps en websites kunnen een bewering controleren zonder jouw privégegevens te leren. We laten nu een fysiek voorbeeld zien met speelkaarten — eenvoudig genoeg om met de hand te volgen, en hetzelfde principe als in de cryptografie.',
       cards:
         'Hier wil de bewijzer bewijzen welke kleur haar kaart heeft — zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
     },
@@ -171,9 +173,11 @@ export const messages = {
     modalContinue: 'Continue',
     modalGotIt: 'Got it',
     welcome: {
-      title: 'Are you allowed to drive?',
+      title: 'Zero-knowledge proof',
+      context:
+        'Digital identity is increasingly vulnerable to hacks and misuse. Whoever takes over an account or exploits a data breach often sees far more of you than was ever needed. So we need to rethink when we show something, what we show, and why. A zero-knowledge proof helps with that: you prove that something is true without revealing the underlying data.',
       police:
-        'Imagine a police officer who wants to know whether you are allowed to drive. They only need a yes or no — not when you were born, where you live, or anything else on your licence. A zero-knowledge proof is exactly that idea: you convince someone of a fact without revealing extra information.',
+        'An everyday example: a police officer wants to know whether you are allowed to drive. They only need a yes or no — not when you were born, where you live, or anything else on your licence.',
       bridge:
         'The same idea works digitally: apps and websites can check a claim without learning your private details. Next we will show a physical example with playing cards — simple enough to follow by hand, and the same principle used in cryptography.',
       cards:
