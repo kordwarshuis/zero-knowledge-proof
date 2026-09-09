@@ -1360,6 +1360,12 @@ h1 {
 }
 
 @media (max-width: 720px) {
+  h1 {
+    font-size: 0.95rem;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
   .people {
     grid-template-columns: 1fr;
   }
