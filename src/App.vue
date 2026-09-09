@@ -177,7 +177,7 @@ const personBNote = computed(() => {
 })
 
 const pendingLabel = ref('')
-const modalBody = ref('')
+const modalBody = ref([])
 
 const modalTitle = computed(() => {
   if (modalKind.value === 'welcome') return t('welcome.title')
@@ -192,11 +192,49 @@ const modalTitle = computed(() => {
 
 const modalParagraphs = computed(() => {
   if (modalKind.value === 'welcome') {
-    return [t('welcome.police'), t('welcome.bridge'), t('welcome.cards')]
+    return [
+      { text: t('welcome.police') },
+      { text: t('welcome.bridge') },
+      { text: t('welcome.cards') },
+    ]
   }
-  if (modalBody.value) return [modalBody.value]
-  return []
+  return modalBody.value
 })
+
+function resultModalBody() {
+  const vars = colorVars.value
+  const paragraphs = [
+    {
+      text: isCheating.value
+        ? t('narration.resultCheat', vars)
+        : t('narration.result', vars),
+    },
+  ]
+  if (proofSucceeded.value) {
+    paragraphs.push(
+      {
+        label: t('properties.completenessLabel'),
+        text: t('properties.completeness'),
+      },
+      {
+        label: t('properties.zeroKnowledgeLabel'),
+        text: t('properties.zeroKnowledge', vars),
+      },
+    )
+  } else {
+    paragraphs.push({
+      label: t('properties.soundnessLabel'),
+      text: t('properties.soundness', vars),
+    })
+  }
+  return paragraphs
+}
+
+function toModalBody(body) {
+  if (Array.isArray(body)) return body
+  if (!body) return []
+  return [{ text: body }]
+}
 
 const modalConfirmLabel = computed(() =>
   ['welcome', 'result', 'drawn'].includes(modalKind.value)
@@ -293,7 +331,7 @@ const overlayOpen = computed(() => menuOpen.value || modalOpen.value)
 function openWelcome() {
   pendingAction.value = null
   pendingLabel.value = ''
-  modalBody.value = ''
+  modalBody.value = []
   modalKind.value = 'welcome'
   modalOpen.value = true
   closeMenu()
@@ -307,7 +345,9 @@ function requestAction(action, kind = 'action') {
   }
   pendingAction.value = action.run
   pendingLabel.value = action.label
-  modalBody.value = typeof action.body === 'function' ? action.body() : ''
+  modalBody.value = toModalBody(
+    typeof action.body === 'function' ? action.body() : '',
+  )
   modalKind.value = kind
   modalOpen.value = true
   closeMenu()
@@ -317,7 +357,7 @@ function dismissModal() {
   const next = pendingAction.value
   pendingAction.value = null
   pendingLabel.value = ''
-  modalBody.value = ''
+  modalBody.value = []
   modalKind.value = null
   modalOpen.value = false
   if (typeof next === 'function') next()
@@ -361,7 +401,7 @@ function scheduleAutoModal(kind, body) {
     if (modalOpen.value) return
     pendingAction.value = null
     pendingLabel.value = ''
-    modalBody.value = body
+    modalBody.value = toModalBody(typeof body === 'function' ? body() : body)
     modalKind.value = kind
     modalOpen.value = true
     closeMenu()
@@ -384,12 +424,7 @@ watch(step, (next, prev) => {
   }
 
   if (next === 'result' && prev !== 'result') {
-    scheduleAutoModal(
-      'result',
-      isCheating.value
-        ? t('narration.resultCheat', colorVars.value)
-        : t('narration.result', colorVars.value),
-    )
+    scheduleAutoModal('result', resultModalBody)
   }
 })
 
@@ -510,25 +545,6 @@ onUnmounted(() => {
           :note="personBNote"
         />
       </div>
-
-      <div class="properties-slot">
-        <ul v-if="step === 'result'" class="properties">
-          <template v-if="proofSucceeded">
-            <li>
-              <strong>{{ t('properties.completenessLabel') }}</strong>
-              {{ t('properties.completeness') }}
-            </li>
-            <li>
-              <strong>{{ t('properties.zeroKnowledgeLabel') }}</strong>
-              {{ t('properties.zeroKnowledge', colorVars) }}
-            </li>
-          </template>
-          <li v-else>
-            <strong>{{ t('properties.soundnessLabel') }}</strong>
-            {{ t('properties.soundness', colorVars) }}
-          </li>
-        </ul>
-      </div>
     </section>
 
     <section class="table" :aria-label="t('tableLabel')">
@@ -636,7 +652,8 @@ onUnmounted(() => {
             <h2 id="modal-title">{{ modalTitle }}</h2>
             <div class="modal-body">
               <p v-for="(paragraph, index) in modalParagraphs" :key="index">
-                {{ paragraph }}
+                <strong v-if="paragraph.label">{{ paragraph.label }}</strong>
+                {{ paragraph.text }}
               </p>
             </div>
             <button
@@ -918,37 +935,11 @@ h1 {
   border: 1px solid rgba(230, 200, 122, 0.14);
   display: flex;
   flex-direction: column;
-  min-height: 8.5rem;
 }
 
 .status .people {
   margin-bottom: 0;
   min-height: 4.75rem;
-}
-
-.properties-slot {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(230, 200, 122, 0.14);
-  min-height: 0;
-}
-
-.properties-slot:empty {
-  display: none;
-}
-
-.properties {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 6px;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.properties strong {
-  color: var(--brass);
 }
 
 .table {
@@ -1233,10 +1224,6 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .status {
-    min-height: 10rem;
-  }
-
   .status .people {
     min-height: 8.5rem;
   }
@@ -1375,6 +1362,10 @@ h1 {
   color: var(--cream);
   font-size: 0.98rem;
   line-height: 1.5;
+}
+
+.modal-body strong {
+  color: var(--brass);
 }
 
 .modal-confirm {
