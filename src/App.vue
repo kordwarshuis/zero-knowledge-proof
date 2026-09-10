@@ -859,6 +859,12 @@ onUnmounted(() => {
             >
               {{ modalConfirmLabel }}
             </button>
+            <p
+              v-if="modalKind === 'welcome' && welcomeStep === 0"
+              class="space-hint"
+            >
+              {{ t('spaceHint') }}
+            </p>
           </div>
         </div>
       </Transition>
@@ -1947,6 +1953,14 @@ h1 {
 .modal-confirm {
   display: block;
   width: 100%;
+}
+
+.space-hint {
+  margin: 10px 0 0;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: rgba(247, 241, 230, 0.72);
 }
 
 .fade-enter-active,

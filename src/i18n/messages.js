@@ -31,6 +31,7 @@ export const messages = {
     modalContinue: 'Verder',
     modalGotIt: 'Begrepen',
     modalStep: 'Stap {current} van {total}',
+    spaceHint: 'Tip: druk op de spatiebalk om verder te gaan',
     welcome: {
       title: '“Ik heb niks te verbergen”',
       nothingTitle: '“Ik heb niks te verbergen”',
@@ -225,6 +226,7 @@ export const messages = {
     modalContinue: 'Continue',
     modalGotIt: 'Got it',
     modalStep: 'Step {current} of {total}',
+    spaceHint: 'Tip: press the space bar to continue',
     welcome: {
       title: '“I have nothing to hide”',
       nothingTitle: '“I have nothing to hide”',
@@ -420,6 +422,7 @@ export const messages = {
     modalContinue: 'Weiter',
     modalGotIt: 'Verstanden',
     modalStep: 'Schritt {current} von {total}',
+    spaceHint: 'Tipp: Drücke die Leertaste, um weiterzugehen',
     welcome: {
       title: '“Ich habe nichts zu verbergen”',
       nothingTitle: '“Ich habe nichts zu verbergen”',
@@ -615,6 +618,7 @@ export const messages = {
     modalContinue: 'Continuer',
     modalGotIt: 'Compris',
     modalStep: 'Étape {current} sur {total}',
+    spaceHint: 'Astuce : appuyez sur la barre d’espace pour continuer',
     welcome: {
       title: '« Je n’ai rien à cacher »',
       nothingTitle: '« Je n’ai rien à cacher »',
