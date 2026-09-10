@@ -35,7 +35,7 @@ export const messages = {
       title: '“Ik heb niks te verbergen”',
       nothingTitle: '“Ik heb niks te verbergen”',
       nothing:
-        'Een bekende zin over persoonsgegevens. Alles laten zien voelt onschuldig — tot iemand anders een kopie krijgt.',
+        'Dat hoor je vaak. Het lijkt te kloppen; totdat je gegevens in verkeerde handen vallen.',
       sureTitle: 'Heb je echt niks te verbergen?',
       risk:
         'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Hackers krijgen vaak veel meer van jou te zien dan nodig is.',
@@ -54,10 +54,10 @@ export const messages = {
         'Banken, winkels, overheden en websites vragen vaak het hele ID, ook als ze maar één feit nodig hebben. Het voelt verplicht — alles invullen, of je komt niet verder.',
       anotherWayTitle: 'Misschien is er een andere manier',
       anotherWay:
-        'We kunnen opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledge-proof (nulkennisbewijs) helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
+        'We moeten opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledge-proof (nulkennisbewijs) helpt daarbij.',
       exampleTitle: 'Een alledaags voorbeeld',
       example:
-        'Bij de deur van een café hoeft de portier alleen te weten of je oud genoeg bent om binnen te mogen. Hij hoeft alleen te weten: ja of nee — niet wanneer je precies geboren bent, waar je woont, of andere gegevens op je ID.',
+        'Bij de deur van een café hoeft de portier alleen te weten of je oud genoeg bent om binnen te mogen. Hij hoeft niet te weten wanneer je precies geboren bent, waar je woont, of andere gegevens op je ID.',
       bridgeTitle: 'Ook digitaal',
       bridge:
         'Dit kan ook digitaal: apps en websites kunnen een bewering controleren zonder jouw privégegevens te zien.',
@@ -248,10 +248,10 @@ export const messages = {
         'Banks, shops, governments and websites often ask for the whole ID, even when they only need one fact. It feels mandatory — fill in everything, or you are stuck.',
       anotherWayTitle: 'Maybe there is another way',
       anotherWay:
-        'We can rethink when we show something, what we show, and why. A zero-knowledge-proof helps with that: you prove that something is true without revealing the underlying data.',
+        'We need to rethink when we reveal something, what we reveal, and why. A zero-knowledge proof helps with this.',
       exampleTitle: 'An everyday example',
       example:
-        'At the door of a bar, the doorman only needs to know whether you are old enough to enter. They only need a yes or no — not your exact date of birth, where you live, or anything else on your ID.',
+        'At the door of a café, the bouncer only needs to know whether you are old enough to be admitted. He does not need to know your exact date of birth, where you live, or other details on your ID',
       bridgeTitle: 'Digitally too',
       bridge:
         'This also works digitally: apps and websites can check a claim without learning your private details.',
@@ -424,7 +424,7 @@ export const messages = {
       title: '“Ich habe nichts zu verbergen”',
       nothingTitle: '“Ich habe nichts zu verbergen”',
       nothing:
-        'Ein bekannter Satz über persönliche Daten. Alles zu zeigen fühlt sich harmlos an — bis jemand anderes eine Kopie bekommt.',
+        'Das hört man oft. Es scheint zuzutreffen; bis Ihre Daten in die falschen Hände geraten.',
       sureTitle: 'Hast du wirklich nichts zu verbergen?',
       risk:
         'Digitale Identität wird immer häufiger gehackt und missbraucht. Hacker sehen oft weit mehr von dir, als jemals nötig war.',
@@ -443,10 +443,10 @@ export const messages = {
         'Banken, Läden, Behörden und Websites verlangen oft den ganzen Ausweis, auch wenn sie nur eine Tatsache brauchen. Es fühlt sich zwingend an — alles ausfüllen, oder du kommst nicht weiter.',
       anotherWayTitle: 'Vielleicht gibt es einen anderen Weg',
       anotherWay:
-        'Wir können neu darüber nachdenken, wann wir etwas zeigen, was wir zeigen und warum. Ein Zero-Knowledge-Beweis hilft dabei: Du beweist, dass etwas wahr ist, ohne die zugrunde liegenden Daten preiszugeben.',
+        'Wir müssen überdenken, wann wir etwas zeigen, was wir zeigen und warum. Ein Zero-Knowledge-Beweis hilft dabei.',
       exampleTitle: 'Ein Alltagsbeispiel',
       example:
-        'An der Tür einer Bar braucht der Türsteher wissen, ob du alt genug bist, um hineinzugekommen. Er braucht nur ja oder nein — nicht dein genaues Geburtsdatum, deine Adresse oder andere Angaben auf dem Ausweis.',
+        'An der Tür eines Cafés muss der Türsteher lediglich wissen, ob Sie alt genug sind, um einzutreten. Er muss weder Ihr genaues Geburtsdatum noch Ihren Wohnort oder andere Details auf Ihrem Ausweis kennen.',
       bridgeTitle: 'Auch digital',
       bridge:
         'Das geht auch digital: Apps und Websites können eine Behauptung prüfen, ohne deine privaten Daten zu sehen.',
@@ -619,7 +619,7 @@ export const messages = {
       title: '« Je n’ai rien à cacher »',
       nothingTitle: '« Je n’ai rien à cacher »',
       nothing:
-        'Une phrase familière sur les données personnelles. Tout montrer semble anodin — jusqu’à ce que quelqu’un d’autre en ait une copie.',
+        'On l`entend souvent.Cela semble vrai; jusqu`à ce que vos données tombent entre de mauvaises mains.',
       sureTitle: 'Vous n’avez vraiment rien à cacher ?',
       risk:
         'L’identité numérique est de plus en plus piratée et détournée. Les pirates voient souvent bien plus de vous que nécessaire.',
@@ -638,10 +638,10 @@ export const messages = {
         'Banques, commerces, administrations et sites demandent souvent toute la pièce d’identité, même s’ils n’ont besoin que d’un fait. Ça paraît obligatoire — tout remplir, ou vous restez bloqué.',
       anotherWayTitle: 'Peut-être y a-t-il une autre façon',
       anotherWay:
-        'On peut repenser quand on montre quelque chose, ce qu’on montre, et pourquoi. Une preuve à divulgation nulle de connaissance y aide : vous prouvez qu’une chose est vraie sans révéler les données sous-jacentes.',
+        'Il nous faut repenser le moment où nous montrons quelque chose, ce que nous montrons et pourquoi. Une preuve à divulgation nulle de connaissance nous y aide.',
       exampleTitle: 'Un exemple du quotidien',
       example:
-        'À la porte d’un bar, le videur seulement doit savoir si vous êtes assez âgé pour entrer. Il n’a besoin que d’un oui ou d’un non — pas de votre date de naissance exacte, de votre adresse, ni du reste de votre pièce d’identité.',
+        'À l`entrée d`un café, le videur a seulement besoin de savoir si vous avez l`âge légal pour entrer.Il n`a pas besoin de connaître votre date de naissance exacte, votre adresse ou d`autres informations figurant sur votre pièce d`identité.',
       bridgeTitle: 'Aussi en numérique',
       bridge:
         'Cela fonctionne aussi en numérique : les apps et sites peuvent vérifier une affirmation sans apprendre vos données privées.',
