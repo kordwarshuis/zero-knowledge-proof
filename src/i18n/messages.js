@@ -10,19 +10,19 @@ export const OG_LOCALES = {
 export const messages = {
   nl: {
     htmlLang: 'nl',
-    documentTitle: 'Zero-knowledge-proof (nulkennisbewijs) met speelkaarten',
+    documentTitle: '“Ik heb niks te verbergen” — Zero-knowledge-proof (nulkennisbewijs)',
     socialDescription:
-      'Bewijs welke kleur je hebt getrokken zonder de kaart te laten zien — en zonder te onthullen welke kaart van die kleur het is.',
+      '“Ik heb niks te verbergen”? Heb je dat echt? Na hacks van digitale identiteit is álles laten zien juist het risico. Als je niet alles had laten zien, hadden ze niets gehad — ontdek zero-knowledge met speelkaarten.',
     ogImageAlt:
-      'Een kaarttafel met een privéscherm: de bewijzer ziet de harten-aas, de controleur ziet alleen een verborgen kaart.',
+      '“Ik heb niks te verbergen” — heb je dat echt? Kaarttafel met privéscherm: de bewijzer ziet de harten-aas, de controleur ziet alleen een verborgen kaart.',
     language: 'Taal',
     menu: 'Menu',
     menuOpen: 'Menu openen',
     menuClose: 'Menu sluiten',
     home: 'Home',
     info: 'Info',
-    eyebrow: 'Een kleine demonstratie aan de kaarttafel',
-    title: 'Zero-knowledge-proof (nulkennisbewijs) en digitale identiteit',
+    eyebrow: 'Zero-knowledge-proof (nulkennisbewijs) en digitale identiteit',
+    title: '“Ik heb niks te verbergen”',
     ledeBefore:
       'Bewijs welke kleur je hebt getrokken zonder de kaart te laten zien — en zonder te onthullen',
     ledeEm: 'welke',
@@ -32,8 +32,8 @@ export const messages = {
     modalGotIt: 'Begrepen',
     modalStep: 'Stap {current} van {total}',
     welcome: {
-      title: 'Zero-knowledge-proof (nulkennisbewijs) en digitale identiteit',
-      nothingTitle: '“Ik heb niets te verbergen”',
+      title: '“Ik heb niks te verbergen”',
+      nothingTitle: '“Ik heb niks te verbergen”',
       nothing:
         'Een bekende zin over persoonsgegevens. Alles laten zien voelt onschuldig — tot iemand anders een kopie krijgt.',
       sureTitle: 'Heb je echt niks te verbergen?',
@@ -191,19 +191,19 @@ export const messages = {
   },
   en: {
     htmlLang: 'en',
-    documentTitle: 'Zero-Knowledge Proof with playing cards',
+    documentTitle: '“I have nothing to hide” — Zero-knowledge-proof',
     socialDescription:
-      'Prove which colour you drew without showing the card — and without revealing which card of that colour it is.',
+      '“I have nothing to hide”? Do you really? After digital-identity hacks, showing everything is the risk. If you had not shown everything, they would not have had anything — discover zero-knowledge with playing cards.',
     ogImageAlt:
-      'A card table with a privacy screen: the prover sees the ace of hearts, the verifier sees only a hidden card.',
+      '“I have nothing to hide” — do you really? A card table with a privacy screen: the prover sees the ace of hearts, the verifier sees only a hidden card.',
     language: 'Language',
     menu: 'Menu',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
     home: 'Home',
     info: 'Info',
-    eyebrow: 'A small card-table demonstration',
-    title: 'Zero-knowledge-proof and digital identity',
+    eyebrow: 'Zero-knowledge-proof and digital identity',
+    title: '“I have nothing to hide”',
     ledeBefore:
       'Prove which colour you drew without showing the card — and without revealing',
     ledeEm: 'which',
@@ -213,7 +213,7 @@ export const messages = {
     modalGotIt: 'Got it',
     modalStep: 'Step {current} of {total}',
     welcome: {
-      title: 'Zero-knowledge-proof and digital identity',
+      title: '“I have nothing to hide”',
       nothingTitle: '“I have nothing to hide”',
       nothing:
         'A familiar line about personal data. Showing everything feels harmless — until someone else gets a copy.',
@@ -373,19 +373,19 @@ export const messages = {
   },
   de: {
     htmlLang: 'de',
-    documentTitle: 'Zero-Knowledge-Beweis mit Spielkarten',
+    documentTitle: '“Ich habe nichts zu verbergen” — Zero-Knowledge-Beweis',
     socialDescription:
-      'Beweise, welche Farbe du gezogen hast, ohne die Karte zu zeigen — und ohne zu verraten, welche Karte dieser Farbe es ist.',
+      '“Ich habe nichts zu verbergen”? Wirklich? Nach Hacks digitaler Identität ist alles zu zeigen das Risiko. Hättest du nicht alles gezeigt, hätten sie nichts gehabt — entdecke Zero-Knowledge mit Spielkarten.',
     ogImageAlt:
-      'Ein Kartentisch mit Sichtschutz: Der Beweisführer sieht das Herz-Ass, der Prüfer sieht nur eine verdeckte Karte.',
+      '“Ich habe nichts zu verbergen” — wirklich? Ein Kartentisch mit Sichtschutz: Der Beweisführer sieht das Herz-Ass, der Prüfer sieht nur eine verdeckte Karte.',
     language: 'Sprache',
     menu: 'Menü',
     menuOpen: 'Menü öffnen',
     menuClose: 'Menü schließen',
     home: 'Startseite',
     info: 'Info',
-    eyebrow: 'Eine kleine Demonstration am Kartentisch',
-    title: 'Zero-Knowledge-Beweis und digitale Identität',
+    eyebrow: 'Zero-Knowledge-Beweis und digitale Identität',
+    title: '“Ich habe nichts zu verbergen”',
     ledeBefore:
       'Beweise, welche Farbe du gezogen hast, ohne die Karte zu zeigen — und ohne zu verraten,',
     ledeEm: 'welche',
@@ -395,7 +395,7 @@ export const messages = {
     modalGotIt: 'Verstanden',
     modalStep: 'Schritt {current} von {total}',
     welcome: {
-      title: 'Zero-Knowledge-Beweis und digitale Identität',
+      title: '“Ich habe nichts zu verbergen”',
       nothingTitle: '“Ich habe nichts zu verbergen”',
       nothing:
         'Ein bekannter Satz über persönliche Daten. Alles zu zeigen fühlt sich harmlos an — bis jemand anderes eine Kopie bekommt.',
@@ -555,19 +555,19 @@ export const messages = {
   },
   fr: {
     htmlLang: 'fr',
-    documentTitle: 'Preuve à divulgation nulle de connaissance avec des cartes',
+    documentTitle: '« Je n’ai rien à cacher » — Preuve à divulgation nulle',
     socialDescription:
-      'Prouvez quelle couleur vous avez tirée sans montrer la carte — et sans révéler laquelle des cartes de cette couleur c’est.',
+      '« Je n’ai rien à cacher » ? Vraiment ? Après les piratages d’identité numérique, tout montrer est le risque. Si vous n’aviez pas tout montré, ils n’auraient rien eu — découvrez la divulgation nulle avec des cartes.',
     ogImageAlt:
-      'Une table de cartes avec un paravent : le prouveur voit l’as de cœur, le vérificateur ne voit qu’une carte cachée.',
+      '« Je n’ai rien à cacher » — vraiment ? Une table de cartes avec un paravent : le prouveur voit l’as de cœur, le vérificateur ne voit qu’une carte cachée.',
     language: 'Langue',
     menu: 'Menu',
     menuOpen: 'Ouvrir le menu',
     menuClose: 'Fermer le menu',
     home: 'Accueil',
     info: 'Info',
-    eyebrow: 'Une petite démonstration à la table de cartes',
-    title: 'Preuve à divulgation nulle et identité numérique',
+    eyebrow: 'Preuve à divulgation nulle et identité numérique',
+    title: '« Je n’ai rien à cacher »',
     ledeBefore:
       'Prouvez quelle couleur vous avez tirée sans montrer la carte — et sans révéler',
     ledeEm: 'laquelle',
@@ -577,7 +577,7 @@ export const messages = {
     modalGotIt: 'Compris',
     modalStep: 'Étape {current} sur {total}',
     welcome: {
-      title: 'Preuve à divulgation nulle et identité numérique',
+      title: '« Je n’ai rien à cacher »',
       nothingTitle: '« Je n’ai rien à cacher »',
       nothing:
         'Une phrase familière sur les données personnelles. Tout montrer semble anodin — jusqu’à ce que quelqu’un d’autre en ait une copie.',

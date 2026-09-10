@@ -520,6 +520,7 @@ onUnmounted(() => {
     <header class="top">
       <div class="title-row">
         <div class="brand">
+          <p class="eyebrow">{{ t('eyebrow') }}</p>
           <h1>{{ t('title') }}</h1>
           <ol class="progress" :aria-label="t('stepsLabel')">
             <li
@@ -864,6 +865,11 @@ h1 {
   color: var(--cream);
   letter-spacing: -0.03em;
   line-height: 1.15;
+  font-style: italic;
+}
+
+.brand .eyebrow {
+  margin-bottom: 6px;
 }
 
 .progress {

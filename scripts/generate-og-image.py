@@ -282,15 +282,29 @@ def main():
     canvas = radial_glow(canvas, int(W * 0.95), int(H * 0.12), int(W * 0.48), (46, 107, 72, 255), 0.38)
 
     draw = ImageDraw.Draw(canvas)
-    eyebrow = fnt(HELV, 12, index=10)
-    title = fnt(GEORGIA_BOLD, 40)
-    lede = fnt(GEORGIA_ITALIC, 17)
+    eyebrow = fnt(HELV, 11, index=10)
+    title = fnt(GEORGIA_ITALIC, 48)
+    lede = fnt(GEORGIA_BOLD, 18)
+    detail = fnt(GEORGIA_ITALIC, 15)
 
-    draw.text((44 * SCALE, 22 * SCALE), spaced("A SMALL DEMONSTRATION"), font=eyebrow, fill=BRASS)
-    draw.text((44 * SCALE, 44 * SCALE), "Zero-knowledge-proof", font=title, fill=CREAM)
-    draw.text((44 * SCALE, 92 * SCALE), "Prove the colour — without showing the card.", font=lede, fill=MUTED)
+    # Hero hook first; ZKP is secondary branding.
+    draw.text((44 * SCALE, 18 * SCALE), spaced("ZERO-KNOWLEDGE-PROOF"), font=eyebrow, fill=BRASS)
+    draw.text((44 * SCALE, 38 * SCALE), "“I have nothing to hide”", font=title, fill=CREAM)
+    draw.text(
+        (44 * SCALE, 98 * SCALE),
+        "Do you really have nothing to hide?",
+        font=lede,
+        fill=BRASS,
+    )
+    draw.text(
+        (44 * SCALE, 128 * SCALE),
+        "If you hadn’t shown everything, they would not have had anything.",
+        font=detail,
+        fill=MUTED,
+    )
 
-    felt_box = (32 * SCALE, 136 * SCALE, W - 32 * SCALE, H - 28 * SCALE)
+    # Slightly lower felt so the quote block has more room.
+    felt_box = (32 * SCALE, 168 * SCALE, W - 32 * SCALE, H - 24 * SCALE)
     rail = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     ImageDraw.Draw(rail).rounded_rectangle(felt_box, 20 * SCALE, fill=(28, 18, 12, 255))
     canvas.alpha_composite(rail)
@@ -309,17 +323,17 @@ def main():
     canvas.alpha_composite(felt)
     ImageDraw.Draw(canvas).rounded_rectangle(inner, 16 * SCALE, outline=(255, 220, 160, 36), width=SCALE)
 
-    cw, ch = 158 * SCALE, 224 * SCALE
+    cw, ch = 140 * SCALE, 198 * SCALE
     hearts = make_card(cw, ch, True, "A", "♥", RED)
     spades = make_card(cw, ch, True, "K", "♠", BLACK)
     back = make_card(cw, ch, False)
     mystery = make_mystery(cw, ch)
 
-    table_cy = int((inner[1] + inner[3]) / 2 + 6 * SCALE)
+    table_cy = int((inner[1] + inner[3]) / 2 + 4 * SCALE)
     paste_rotated(canvas, back, int(W * 0.20), table_cy + 8 * SCALE, -15)
     paste_rotated(canvas, hearts, int(W * 0.335), table_cy - 4 * SCALE, -3)
 
-    screen_h = int((inner[3] - inner[1]) * 0.78)
+    screen_h = int((inner[3] - inner[1]) * 0.82)
     screen = make_privacy_screen(screen_h)
     sx = int(W * 0.47 - screen.width / 2)
     sy = int(inner[1] + (inner[3] - inner[1] - screen_h) / 2)
@@ -346,11 +360,11 @@ def main():
     paste_rotated(canvas, mystery, int(W * 0.62), table_cy - 12 * SCALE, 6)
     paste_rotated(canvas, spades, int(W * 0.80), table_cy + 12 * SCALE, 13)
 
-    lock = badge_with_lock(34 * SCALE)
+    lock = badge_with_lock(30 * SCALE)
     lock_on = drop_shadow(lock, blur=6, offset=(0, 3), opacity=80)
     canvas.alpha_composite(
         lock_on,
-        (int(W * 0.335 + 48 * SCALE - lock_on.width / 2), int(table_cy + 58 * SCALE)),
+        (int(W * 0.335 + 42 * SCALE - lock_on.width / 2), int(table_cy + 48 * SCALE)),
     )
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
