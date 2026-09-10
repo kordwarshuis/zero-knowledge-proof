@@ -36,7 +36,7 @@ export const messages = {
       nothingTitle: '“Ik heb niets te verbergen”',
       nothing:
         'Een bekende zin over persoonsgegevens. Alles laten zien voelt onschuldig — tot iemand anders een kopie krijgt.',
-      sureTitle: 'Weet je dat zeker?',
+      sureTitle: 'Heb je echt niks te verbergen?',
       risk:
         'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Hackers krijgen vaak veel meer van jou te zien dan nodig is.',
       newspaper: {
@@ -217,7 +217,7 @@ export const messages = {
       nothingTitle: '“I have nothing to hide”',
       nothing:
         'A familiar line about personal data. Showing everything feels harmless — until someone else gets a copy.',
-      sureTitle: 'Are you sure about that?',
+      sureTitle: 'Do you really have nothing to hide?',
       risk:
         'Digital identity is increasingly vulnerable to hacks and misuse. Hackers often see far more of you than was ever needed.',
       newspaper: {
@@ -399,7 +399,7 @@ export const messages = {
       nothingTitle: '“Ich habe nichts zu verbergen”',
       nothing:
         'Ein bekannter Satz über persönliche Daten. Alles zu zeigen fühlt sich harmlos an — bis jemand anderes eine Kopie bekommt.',
-      sureTitle: 'Bist du dir da sicher?',
+      sureTitle: 'Hast du wirklich nichts zu verbergen?',
       risk:
         'Digitale Identität wird immer häufiger gehackt und missbraucht. Hacker sehen oft weit mehr von dir, als jemals nötig war.',
       newspaper: {
@@ -581,7 +581,7 @@ export const messages = {
       nothingTitle: '« Je n’ai rien à cacher »',
       nothing:
         'Une phrase familière sur les données personnelles. Tout montrer semble anodin — jusqu’à ce que quelqu’un d’autre en ait une copie.',
-      sureTitle: 'Vous en êtes sûr ?',
+      sureTitle: 'Vous n’avez vraiment rien à cacher ?',
       risk:
         'L’identité numérique est de plus en plus piratée et détournée. Les pirates voient souvent bien plus de vous que nécessaire.',
       newspaper: {
