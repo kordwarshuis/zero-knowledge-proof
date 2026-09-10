@@ -456,6 +456,19 @@ function onKeydown(event) {
       event.preventDefault()
       closeMenu()
     }
+    return
+  }
+
+  if (event.key === ' ' || event.key === 'Spacebar') {
+    if (menuOpen.value) return
+    if (modalOpen.value) {
+      event.preventDefault()
+      confirmModal()
+      return
+    }
+    if (busy.value || !primaryAction.value) return
+    event.preventDefault()
+    requestAction(primaryAction.value)
   }
 }
 
