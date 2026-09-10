@@ -93,7 +93,7 @@ export const messages = {
     mysteryHidden: 'voor mij verborgen',
     mysteryColorKnown: 'Kleur bekend',
     mysteryWhichHidden: 'welke kaart: nog verborgen',
-    resultKnownTitle: 'De kleur is bekend',
+    resultKnownTitle: 'Iedereen blij',
     resultNeeded:
       'De controleur hoefde alleen de kleur te weten — niet welke kaart het is.',
     resultNowKnowsLabel: 'Nu bekend:',
@@ -288,7 +288,7 @@ export const messages = {
     mysteryHidden: 'hidden from me',
     mysteryColorKnown: 'Colour known',
     mysteryWhichHidden: 'which card: still hidden',
-    resultKnownTitle: 'The colour is known',
+    resultKnownTitle: 'Everyone happy',
     resultNeeded:
       'The verifier only needed to know the colour — not which card it is.',
     resultNowKnowsLabel: 'Now known:',
@@ -484,7 +484,7 @@ export const messages = {
     mysteryHidden: 'vor mir verborgen',
     mysteryColorKnown: 'Farbe bekannt',
     mysteryWhichHidden: 'welche Karte: noch verborgen',
-    resultKnownTitle: 'Die Farbe ist bekannt',
+    resultKnownTitle: 'Alle froh',
     resultNeeded:
       'Der Prüfer musste nur die Farbe wissen — nicht, welche Karte es ist.',
     resultNowKnowsLabel: 'Jetzt bekannt:',
@@ -680,7 +680,7 @@ export const messages = {
     mysteryHidden: 'cachée pour moi',
     mysteryColorKnown: 'Couleur connue',
     mysteryWhichHidden: 'quelle carte : toujours cachée',
-    resultKnownTitle: 'La couleur est connue',
+    resultKnownTitle: 'Tout le monde content',
     resultNeeded:
       'Le vérificateur n’avait besoin que de la couleur — pas de quelle carte c’est.',
     resultNowKnowsLabel: 'Maintenant connu :',
