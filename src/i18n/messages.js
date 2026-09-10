@@ -66,7 +66,7 @@ export const messages = {
       rolesVerifier: '“En toch wil ik weten of de kaart rood is of niet!”',
       cardsTitle: 'Een voorbeeld',
       cards:
-        'We laten dat nu zien met speelkaarten. De bewijzer bewijst welke kleur zijn kaart heeft, zonder te laten zien welke kaart het is. (Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.)',
+        'We laten dat nu zien met speelkaarten. De bewijzer bewijst welke kleur zijn kaart heeft, zonder te laten zien welke kaart het is.',
     },
     stepsLabel: 'Stappen van de demonstratie',
     steps: {
@@ -260,7 +260,7 @@ export const messages = {
       rolesVerifier: '“And yet I want to know whether the card is red or not!”',
       cardsTitle: 'An example',
       cards:
-        'Next we will show that with playing cards. The prover proves which colour his card is, without showing which card it is. (You can also try to lie, to see that cheating does not work.)',
+        'Next we will show that with playing cards. The prover proves which colour his card is, without showing which card it is.',
     },
     stepsLabel: 'Demonstration steps',
     steps: {
@@ -455,7 +455,7 @@ export const messages = {
       rolesVerifier: '“Und trotzdem will ich wissen, ob die Karte rot ist oder nicht!”',
       cardsTitle: 'Ein Beispiel',
       cards:
-        'Als Nächstes zeigen wir das mit Spielkarten. Der Beweisführer beweist, welche Farbe seine Karte hat, ohne zu zeigen, welche Karte es ist. (Du kannst auch versuchen zu lügen, um zu sehen, dass Betrug nicht funktioniert.)',
+        'Als Nächstes zeigen wir das mit Spielkarten. Der Beweisführer beweist, welche Farbe seine Karte hat, ohne zu zeigen, welche Karte es ist.',
     },
     stepsLabel: 'Schritte der Demonstration',
     steps: {
@@ -650,7 +650,7 @@ export const messages = {
       rolesVerifier: '“Et pourtant je veux savoir si la carte est rouge ou non !”',
       cardsTitle: 'Un exemple',
       cards:
-        'Nous allons maintenant le montrer avec des cartes à jouer. Le prouveur prouve la couleur de sa carte, sans montrer quelle carte c’est. (Vous pouvez aussi essayer de mentir, pour voir que la triche ne marche pas.)',
+        'Nous allons maintenant le montrer avec des cartes à jouer. Le prouveur prouve la couleur de sa carte, sans montrer quelle carte c’est.',
     },
     stepsLabel: 'Étapes de la démonstration',
     steps: {
