@@ -786,20 +786,6 @@ onUnmounted(() => {
             </h2>
 
             <div class="modal-body">
-              <div
-                v-if="modalKind === 'result' && proofSucceeded"
-                class="result-verdict"
-                :class="{
-                  'is-red': handColor === 'red',
-                  'is-black': handColor === 'black',
-                }"
-              >
-                <p>{{ t('resultNeeded') }}</p>
-                <p class="result-known">
-                  <strong>{{ t('resultNowKnowsLabel') }}</strong>
-                  {{ t('resultNowKnows', colorVars) }}
-                </p>
-              </div>
               <div v-if="welcomeShowsRoles" class="welcome-roles">
                 <Character
                   who="a"
@@ -1690,36 +1676,6 @@ h1 {
 .modal-body strong,
 .welcome-copy strong {
   color: var(--brass);
-}
-
-.result-verdict {
-  display: grid;
-  gap: 8px;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(230, 200, 122, 0.4);
-  background: rgba(230, 200, 122, 0.1);
-}
-
-.result-verdict p {
-  margin: 0;
-  font-size: 0.98rem;
-  line-height: 1.45;
-}
-
-.result-verdict .result-known {
-  font-size: 1.12rem;
-  line-height: 1.35;
-}
-
-.result-verdict.is-red {
-  border-color: rgba(212, 90, 90, 0.55);
-  background: rgba(120, 28, 32, 0.28);
-}
-
-.result-verdict.is-black {
-  border-color: rgba(201, 214, 204, 0.4);
-  background: rgba(8, 12, 14, 0.35);
 }
 
 .welcome-with-art {
