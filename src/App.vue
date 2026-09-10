@@ -2,6 +2,7 @@
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import Character from './components/Character.vue'
 import PlayingCard from './components/PlayingCard.vue'
+import WelcomeIllustration from './components/WelcomeIllustration.vue'
 import { useI18n } from './composables/useI18n.js'
 import { useProofGame } from './composables/useProofGame.js'
 
@@ -182,10 +183,26 @@ const welcomeStep = ref(0)
 
 const welcomePages = computed(() => [
   { titleKey: 'welcome.riskTitle', textKey: 'welcome.risk', kind: 'risk' },
-  { titleKey: 'welcome.rethinkTitle', textKey: 'welcome.rethink' },
-  { titleKey: 'welcome.exampleTitle', textKey: 'welcome.example' },
-  { titleKey: 'welcome.bridgeTitle', textKey: 'welcome.bridge' },
-  { titleKey: 'welcome.cardsTitle', textKey: 'welcome.cards' },
+  {
+    titleKey: 'welcome.rethinkTitle',
+    textKey: 'welcome.rethink',
+    illustration: 'rethink',
+  },
+  {
+    titleKey: 'welcome.exampleTitle',
+    textKey: 'welcome.example',
+    illustration: 'example',
+  },
+  {
+    titleKey: 'welcome.bridgeTitle',
+    textKey: 'welcome.bridge',
+    illustration: 'bridge',
+  },
+  {
+    titleKey: 'welcome.cardsTitle',
+    textKey: 'welcome.cards',
+    illustration: 'cards',
+  },
   { titleKey: 'welcome.rolesTitle', kind: 'roles' },
 ])
 
@@ -765,10 +782,24 @@ onUnmounted(() => {
                   <h3 class="newspaper-headline">{{ t('welcome.newspaper.headline') }}</h3>
                   <p class="newspaper-deck">{{ t('welcome.newspaper.deck') }}</p>
                 </figure>
-                <p v-for="(paragraph, index) in modalParagraphs" :key="index">
-                  <strong v-if="paragraph.label">{{ paragraph.label }}</strong>
-                  {{ paragraph.text }}
-                </p>
+                <div
+                  v-if="welcomePage?.illustration"
+                  class="welcome-with-art"
+                >
+                  <WelcomeIllustration :kind="welcomePage.illustration" />
+                  <div class="welcome-copy">
+                    <p v-for="(paragraph, index) in modalParagraphs" :key="index">
+                      <strong v-if="paragraph.label">{{ paragraph.label }}</strong>
+                      {{ paragraph.text }}
+                    </p>
+                  </div>
+                </div>
+                <template v-else>
+                  <p v-for="(paragraph, index) in modalParagraphs" :key="index">
+                    <strong v-if="paragraph.label">{{ paragraph.label }}</strong>
+                    {{ paragraph.text }}
+                  </p>
+                </template>
               </template>
             </div>
             <button
@@ -1531,15 +1562,28 @@ h1 {
   margin-bottom: 18px;
 }
 
-.modal-body > p {
+.modal-body > p,
+.welcome-copy > p {
   margin: 0;
   color: var(--cream);
   font-size: 0.98rem;
   line-height: 1.5;
 }
 
-.modal-body strong {
+.modal-body strong,
+.welcome-copy strong {
   color: var(--brass);
+}
+
+.welcome-with-art {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.welcome-copy {
+  min-width: 0;
+  flex: 1;
 }
 
 .newspaper {
