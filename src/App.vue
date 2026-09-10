@@ -1560,7 +1560,7 @@ h1 {
   box-shadow:
     inset 0 0 0 1px rgba(40, 32, 24, 0.18),
     0 10px 24px rgba(0, 0, 0, 0.22);
-  transform: rotate(-0.4deg);
+  transform: rotate(-1.2deg);
 }
 
 .newspaper p,
