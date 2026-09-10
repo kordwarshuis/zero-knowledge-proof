@@ -1731,7 +1731,7 @@ h1 {
 
 .newspaper {
   margin: 0 0 4px;
-  padding: 18px 18px 16px;
+  padding: 0 18px 0;
   border-radius: 0;
   background:
     /* soft crease wrinkles */
@@ -1832,7 +1832,12 @@ h1 {
 .newspaper p,
 .newspaper h3 {
   color: inherit;
+  font-size: 0.9rem;
 }
+.newspaper p {
+  font-size: 0.7rem;
+}
+
 
 .newspaper-masthead {
   margin: 0;
