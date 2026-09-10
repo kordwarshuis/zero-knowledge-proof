@@ -53,8 +53,8 @@ export const messages = {
       bridge:
         'Dit kan ook digitaal: apps en websites kunnen een bewering controleren zonder jouw privégegevens te zien.',
       rolesTitle: 'De rollen',
-      rolesProver: 'Ik wil de getrokken kaart niet laten zien!',
-      rolesVerifier: 'En toch wil ik weten of de kaart rood is of niet!',
+      rolesProver: '“Ik wil de getrokken kaart niet laten zien!”',
+      rolesVerifier: '“En toch wil ik weten of de kaart rood is of niet!”',
       cardsTitle: 'Een voorbeeld',
       cards:
         'We laten dat nu zien met speelkaarten. De bewijzer bewijst welke kleur zijn kaart heeft, zonder te laten zien welke kaart het is. (Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.)',
@@ -71,13 +71,13 @@ export const messages = {
     personBTitle: 'De Controleur',
     personBRole: '',
     tableLabel: 'Kaarttafel',
-    plaquePrivate: 'Alleen jij',
+    plaquePrivate: 'Alleen ik',
     plaquePublic: 'Geen zicht',
     red: 'Rood',
     black: 'Zwart',
     privateZone: 'Privé — de controleur ziet dit niet',
-    yourCard: 'Jouw kaart',
-    cardComing: 'Komt naar je toe, achterkant boven…',
+    yourCard: 'Mijn kaart',
+    cardComing: 'Komt naar mij toe, achterkant boven…',
     personBCannotSeeCard: 'De controleur kan deze kaart niet zien',
     mysteryCard: 'Kaart van de bewijzer',
     mysteryHidden: 'voor mij verborgen',
@@ -89,36 +89,36 @@ export const messages = {
     faceDownCard: 'Een speelkaart met de achterkant naar boven',
     personA: {
       intro: '“Ik trek een kaart die alleen ik kan zien.”',
-      inspect: 'Jij ziet het spel ook — er is nog niets verborgen.',
-      shuffled: 'De kaarten liggen achterkant boven. Trek er willekeurig één.',
-      drawing: 'De kaart gaat achter het privéscherm…',
-      drawn: 'Je trok {card}. De controleur kan die niet zien.',
-      sorting: 'Bekijk de overgebleven kaarten in het privé.',
+      inspect: '“Ik zie het spel ook — er is nog niets verborgen.”',
+      shuffled: '“De kaarten liggen achterkant boven. Ik trek er willekeurig één.”',
+      drawing: '“De kaart gaat achter het privéscherm…”',
+      drawn: '“Ik trok {card}. De controleur kan die niet zien.”',
+      sorting: '“Ik bekijk de overgebleven kaarten in het privé.”',
       proving:
-        'Laat de controleur alle vier de {otherCards} zien. Houd de {claimCards} verborgen.',
+        '“Ik laat de controleur alle vier de {otherCards} zien. Ik houd de {claimCards} verborgen.”',
       provingCheat:
-        'Je beweert een {claimCard} te hebben. Probeer alle vier de {otherCards} te laten zien…',
+        '“Ik beweer een {claimCard} te hebben. Ik probeer alle vier de {otherCards} te laten zien…”',
       result:
-        'De controleur is overtuigd — en weet nog steeds niet welke {ownCard} je hebt.',
+        '“De controleur is overtuigd — en weet nog steeds niet welke {ownCard} ik heb.”',
       resultCheat:
-        'Het bedrog mislukte. Je kon geen vier {otherCards} laten zien, omdat je een {ownCard} vasthoudt.',
+        '“Het bedrog mislukte. Ik kon geen vier {otherCards} laten zien, omdat ik een {ownCard} vasthoud.”',
     },
     personB: {
       intro: '“Ik moet overtuigd raken van de kleur van jouw kaart.”',
-      inspect: 'Vier rood, vier zwart. Ik heb elke kaart in dit spel gezien.',
-      shuffling: 'Ik ken de volgorde niet meer.',
+      inspect: '“Vier rood, vier zwart. Ik heb elke kaart in dit spel gezien.”',
+      shuffling: '“Ik ken de volgorde niet meer.”',
       shuffled:
-        'Dezelfde acht kaarten, nu achterkant boven. Ik weet niet welke waar ligt.',
+        '“Dezelfde acht kaarten, nu achterkant boven. Ik weet niet welke waar ligt.”',
       drawn:
-        'De bewijzer houdt een kaart vast. Ik kan die niet zien. Het kan rood of zwart zijn.',
-      sorting: 'De bewijzer bekijkt de rest. Het scherm blokkeert mijn zicht.',
-      provingWait: 'Ik wacht tot ik kaarten te zien krijg…',
-      provingOne: 'Ik heb tot nu toe 1 {otherCard} gezien.',
-      provingMany: 'Ik heb tot nu toe {count} {otherCards} gezien.',
+        '“De bewijzer houdt een kaart vast. Ik kan die niet zien. Het kan rood of zwart zijn.”',
+      sorting: '“De bewijzer bekijkt de rest. Het scherm blokkeert mijn zicht.”',
+      provingWait: '“Ik wacht tot ik kaarten te zien krijg…”',
+      provingOne: '“Ik heb tot nu toe 1 {otherCard} gezien.”',
+      provingMany: '“Ik heb tot nu toe {count} {otherCards} gezien.”',
       result:
-        'Alle vier de {otherCards} liggen hier. De verborgen kaart moet {claimColor} zijn — maar ik weet nog steeds niet welke van de vier {claimCards} het is.',
+        '“Alle vier de {otherCards} liggen hier. De verborgen kaart moet {claimColor} zijn — maar ik weet nog steeds niet welke van de vier {claimCards} het is.”',
       resultCheat:
-        'Er zijn maar drie {otherCards} getoond. Er ontbreekt er één. Ik geloof de bewering niet.',
+        '“Er zijn maar drie {otherCards} getoond. Er ontbreekt er één. Ik geloof de bewering niet.”',
     },
     narration: {
       intro:
@@ -147,7 +147,7 @@ export const messages = {
       begin: 'Laat de controleur het spel zien',
       shuffle: 'Schudden en omdraaien',
       draw: 'Trek een willekeurige kaart',
-      prove: 'Bewijs dat je een {ownCard} hebt',
+      prove: 'Bewijs dat ik een {ownCard} heb',
       cheat: 'Probeer te liegen ({claimCard})',
       again: 'Opnieuw spelen',
     },
@@ -156,10 +156,10 @@ export const messages = {
       completeness: 'De stelling was waar, dus het bewijs slaagde.',
       zeroKnowledgeLabel: 'Nulkennis.',
       zeroKnowledge:
-        'De controleur leerde alleen dat jouw kaart {ownColor} is — niet welke van de vier {ownCards} het is.',
+        'De controleur leerde alleen dat mijn kaart {ownColor} is — niet welke van de vier {ownCards} het is.',
       soundnessLabel: 'Deugdelijkheid.',
       soundness:
-        'Een onware stelling valt niet te bewijzen. Door te beweren dat je een {claimCard} had terwijl je een {ownCard} vasthield, kon je niet alle vier de {otherCards} laten zien.',
+        'Een onware stelling valt niet te bewijzen. Door te beweren dat ik een {claimCard} had terwijl ik een {ownCard} vasthield, kon ik niet alle vier de {otherCards} laten zien.',
     },
     colors: {
       red: 'rood',
@@ -231,8 +231,8 @@ export const messages = {
       bridge:
         'This also works digitally: apps and websites can check a claim without learning your private details.',
       rolesTitle: 'The roles',
-      rolesProver: 'I do not want to show the card I drew!',
-      rolesVerifier: 'And yet I want to know whether the card is red or not!',
+      rolesProver: '“I do not want to show the card I drew!”',
+      rolesVerifier: '“And yet I want to know whether the card is red or not!”',
       cardsTitle: 'An example',
       cards:
         'Next we will show that with playing cards. The prover proves which colour his card is, without showing which card it is. (You can also try to lie, to see that cheating does not work.)',
@@ -249,13 +249,13 @@ export const messages = {
     personBTitle: 'The Verifier',
     personBRole: '',
     tableLabel: 'Card table',
-    plaquePrivate: 'Your eyes only',
+    plaquePrivate: 'My eyes only',
     plaquePublic: 'No view',
     red: 'Red',
     black: 'Black',
     privateZone: 'Private — the verifier cannot see this',
-    yourCard: 'Your card',
-    cardComing: 'Coming to you face down…',
+    yourCard: 'My card',
+    cardComing: 'Coming to me face down…',
     personBCannotSeeCard: 'The verifier cannot see this card',
     mysteryCard: 'The prover’s card',
     mysteryHidden: 'hidden from me',
@@ -267,37 +267,37 @@ export const messages = {
     faceDownCard: 'A face-down playing card',
     personA: {
       intro: '“I will draw a card that only I can see.”',
-      inspect: 'You can see the deck too — nothing is hidden yet.',
-      shuffled: 'The cards are face down. Draw one at random.',
-      drawing: 'Pulling a card behind the privacy screen…',
-      drawn: 'You drew the {card}. The verifier cannot see it.',
-      sorting: 'Look through the remaining cards in private.',
+      inspect: '“I can see the deck too — nothing is hidden yet.”',
+      shuffled: '“The cards are face down. I draw one at random.”',
+      drawing: '“Pulling a card behind the privacy screen…”',
+      drawn: '“I drew the {card}. The verifier cannot see it.”',
+      sorting: '“I look through the remaining cards in private.”',
       proving:
-        'Show the verifier all four {otherCards}. Keep the {claimCards} hidden.',
+        '“I show the verifier all four {otherCards}. I keep the {claimCards} hidden.”',
       provingCheat:
-        'You claim to have a {claimCard}. Try to show all four {otherCards}…',
+        '“I claim to have a {claimCard}. I try to show all four {otherCards}…”',
       result:
-        'The verifier is convinced — and still does not know which {ownCard} you hold.',
+        '“The verifier is convinced — and still does not know which {ownCard} I hold.”',
       resultCheat:
-        'The cheat failed. You could not show four {otherCards}, because you are holding a {ownCard}.',
+        '“The cheat failed. I could not show four {otherCards}, because I am holding a {ownCard}.”',
     },
     personB: {
       intro: '“I need to be convinced about the colour of your card.”',
-      inspect: 'Four red, four black. I have seen every card in this deck.',
-      shuffling: 'I no longer know the order.',
+      inspect: '“Four red, four black. I have seen every card in this deck.”',
+      shuffling: '“I no longer know the order.”',
       shuffled:
-        'Same eight cards, now face down. I do not know which is which.',
+        '“Same eight cards, now face down. I do not know which is which.”',
       drawn:
-        'The prover is holding a card. I cannot see it. It might be red or black.',
+        '“The prover is holding a card. I cannot see it. It might be red or black.”',
       sorting:
-        'The prover is looking at the remaining cards. The screen blocks my view.',
-      provingWait: 'Waiting to see cards…',
-      provingOne: 'I have been shown 1 {otherCard} so far.',
-      provingMany: 'I have been shown {count} {otherCards} so far.',
+        '“The prover is looking at the remaining cards. The screen blocks my view.”',
+      provingWait: '“Waiting to see cards…”',
+      provingOne: '“I have been shown 1 {otherCard} so far.”',
+      provingMany: '“I have been shown {count} {otherCards} so far.”',
       result:
-        'All four {otherCards} are here. The hidden card must be {claimColor} — but I still do not know which of the four {claimCards} it is.',
+        '“All four {otherCards} are here. The hidden card must be {claimColor} — but I still do not know which of the four {claimCards} it is.”',
       resultCheat:
-        'Only three {otherCards} were shown. One is missing. I do not accept the claim.',
+        '“Only three {otherCards} were shown. One is missing. I do not accept the claim.”',
     },
     narration: {
       intro:
@@ -326,7 +326,7 @@ export const messages = {
       begin: 'Show the verifier the deck',
       shuffle: 'Shuffle and turn face down',
       draw: 'Draw a random card',
-      prove: 'Prove you have a {ownCard}',
+      prove: 'Prove I have a {ownCard}',
       cheat: 'Try to cheat ({claimCard})',
       again: 'Play again',
     },
@@ -335,10 +335,10 @@ export const messages = {
       completeness: 'The statement was true, so the proof succeeded.',
       zeroKnowledgeLabel: 'Zero knowledge.',
       zeroKnowledge:
-        'The verifier learned only that your card is {ownColor} — not which of the four {ownCards} it is.',
+        'The verifier learned only that my card is {ownColor} — not which of the four {ownCards} it is.',
       soundnessLabel: 'Soundness.',
       soundness:
-        'A false statement cannot be proven. By claiming a {claimCard} while holding a {ownCard}, you could not show all four {otherCards}.',
+        'A false statement cannot be proven. By claiming a {claimCard} while holding a {ownCard}, I could not show all four {otherCards}.',
     },
     colors: {
       red: 'red',
@@ -410,8 +410,8 @@ export const messages = {
       bridge:
         'Das geht auch digital: Apps und Websites können eine Behauptung prüfen, ohne deine privaten Daten zu sehen.',
       rolesTitle: 'Die Rollen',
-      rolesProver: 'Ich will die gezogene Karte nicht zeigen!',
-      rolesVerifier: 'Und trotzdem will ich wissen, ob die Karte rot ist oder nicht!',
+      rolesProver: '“Ich will die gezogene Karte nicht zeigen!”',
+      rolesVerifier: '“Und trotzdem will ich wissen, ob die Karte rot ist oder nicht!”',
       cardsTitle: 'Ein Beispiel',
       cards:
         'Als Nächstes zeigen wir das mit Spielkarten. Der Beweisführer beweist, welche Farbe seine Karte hat, ohne zu zeigen, welche Karte es ist. (Du kannst auch versuchen zu lügen, um zu sehen, dass Betrug nicht funktioniert.)',
@@ -428,13 +428,13 @@ export const messages = {
     personBTitle: 'Der Prüfer',
     personBRole: '',
     tableLabel: 'Kartentisch',
-    plaquePrivate: 'Nur für dich',
+    plaquePrivate: 'Nur für mich',
     plaquePublic: 'Kein Blick',
     red: 'Rot',
     black: 'Schwarz',
     privateZone: 'Privat — der Prüfer sieht das nicht',
-    yourCard: 'Deine Karte',
-    cardComing: 'Kommt zu dir, verdeckt…',
+    yourCard: 'Meine Karte',
+    cardComing: 'Kommt zu mir, verdeckt…',
     personBCannotSeeCard: 'Der Prüfer kann diese Karte nicht sehen',
     mysteryCard: 'Karte des Beweisführers',
     mysteryHidden: 'vor mir verborgen',
@@ -446,37 +446,37 @@ export const messages = {
     faceDownCard: 'Eine verdeckte Spielkarte',
     personA: {
       intro: '“Ich ziehe eine Karte, die nur ich sehen kann.”',
-      inspect: 'Du siehst das Spiel auch — noch ist nichts verborgen.',
-      shuffled: 'Die Karten liegen verdeckt. Ziehe eine zufällig.',
-      drawing: 'Die Karte geht hinter den Sichtschutz…',
-      drawn: 'Du hast {card} gezogen. Der Prüfer kann sie nicht sehen.',
-      sorting: 'Schau dir die übrigen Karten privat an.',
+      inspect: '“Ich sehe das Spiel auch — noch ist nichts verborgen.”',
+      shuffled: '“Die Karten liegen verdeckt. Ich ziehe eine zufällig.”',
+      drawing: '“Die Karte geht hinter den Sichtschutz…”',
+      drawn: '“Ich habe {card} gezogen. Der Prüfer kann sie nicht sehen.”',
+      sorting: '“Ich schaue mir die übrigen Karten privat an.”',
       proving:
-        'Zeig dem Prüfer alle vier {otherCards}. Halte die {claimCards} verborgen.',
+        '“Ich zeige dem Prüfer alle vier {otherCards}. Ich halte die {claimCards} verborgen.”',
       provingCheat:
-        'Du behauptest, eine {claimCard} zu haben. Versuche, alle vier {otherCards} zu zeigen…',
+        '“Ich behaupte, eine {claimCard} zu haben. Ich versuche, alle vier {otherCards} zu zeigen…”',
       result:
-        'Der Prüfer ist überzeugt — und weiß immer noch nicht, welche {ownCard} du hast.',
+        '“Der Prüfer ist überzeugt — und weiß immer noch nicht, welche {ownCard} ich habe.”',
       resultCheat:
-        'Der Betrug ist gescheitert. Du konntest keine vier {otherCards} zeigen, weil du eine {ownCard} hältst.',
+        '“Der Betrug ist gescheitert. Ich konnte keine vier {otherCards} zeigen, weil ich eine {ownCard} halte.”',
     },
     personB: {
       intro: '“Ich muss von der Farbe deiner Karte überzeugt werden.”',
-      inspect: 'Vier rot, vier schwarz. Ich habe jede Karte in diesem Spiel gesehen.',
-      shuffling: 'Ich kenne die Reihenfolge nicht mehr.',
+      inspect: '“Vier rot, vier schwarz. Ich habe jede Karte in diesem Spiel gesehen.”',
+      shuffling: '“Ich kenne die Reihenfolge nicht mehr.”',
       shuffled:
-        'Dieselben acht Karten, jetzt verdeckt. Ich weiß nicht, welche wo liegt.',
+        '“Dieselben acht Karten, jetzt verdeckt. Ich weiß nicht, welche wo liegt.”',
       drawn:
-        'Der Beweisführer hält eine Karte. Ich kann sie nicht sehen. Es könnte rot oder schwarz sein.',
+        '“Der Beweisführer hält eine Karte. Ich kann sie nicht sehen. Es könnte rot oder schwarz sein.”',
       sorting:
-        'Der Beweisführer betrachtet den Rest. Der Sichtschutz blockiert meinen Blick.',
-      provingWait: 'Ich warte darauf, Karten zu sehen…',
-      provingOne: 'Bisher wurde mir 1 {otherCard} gezeigt.',
-      provingMany: 'Bisher wurden mir {count} {otherCards} gezeigt.',
+        '“Der Beweisführer betrachtet den Rest. Der Sichtschutz blockiert meinen Blick.”',
+      provingWait: '“Ich warte darauf, Karten zu sehen…”',
+      provingOne: '“Bisher wurde mir 1 {otherCard} gezeigt.”',
+      provingMany: '“Bisher wurden mir {count} {otherCards} gezeigt.”',
       result:
-        'Alle vier {otherCards} liegen hier. Die verdeckte Karte muss {claimColor} sein — aber ich weiß immer noch nicht, welche der vier {claimCards} es ist.',
+        '“Alle vier {otherCards} liegen hier. Die verdeckte Karte muss {claimColor} sein — aber ich weiß immer noch nicht, welche der vier {claimCards} es ist.”',
       resultCheat:
-        'Es wurden nur drei {otherCards} gezeigt. Eine fehlt. Ich akzeptiere die Behauptung nicht.',
+        '“Es wurden nur drei {otherCards} gezeigt. Eine fehlt. Ich akzeptiere die Behauptung nicht.”',
     },
     narration: {
       intro:
@@ -505,7 +505,7 @@ export const messages = {
       begin: 'Zeig dem Prüfer das Spiel',
       shuffle: 'Mischen und umdrehen',
       draw: 'Eine zufällige Karte ziehen',
-      prove: 'Beweise, dass du eine {ownCard} hast',
+      prove: 'Beweise, dass ich eine {ownCard} habe',
       cheat: 'Versuch zu lügen ({claimCard})',
       again: 'Nochmal spielen',
     },
@@ -514,10 +514,10 @@ export const messages = {
       completeness: 'Die Aussage war wahr, also gelang der Beweis.',
       zeroKnowledgeLabel: 'Nullwissen.',
       zeroKnowledge:
-        'Der Prüfer erfuhr nur, dass deine Karte {ownColor} ist — nicht, welche der vier {ownCards} es ist.',
+        'Der Prüfer erfuhr nur, dass meine Karte {ownColor} ist — nicht, welche der vier {ownCards} es ist.',
       soundnessLabel: 'Korrektheit.',
       soundness:
-        'Eine falsche Aussage lässt sich nicht beweisen. Indem du eine {claimCard} behauptet hast, während du eine {ownCard} gehalten hast, konntest du nicht alle vier {otherCards} zeigen.',
+        'Eine falsche Aussage lässt sich nicht beweisen. Indem ich eine {claimCard} behauptet habe, während ich eine {ownCard} gehalten habe, konnte ich nicht alle vier {otherCards} zeigen.',
     },
     colors: {
       red: 'rot',
@@ -589,8 +589,8 @@ export const messages = {
       bridge:
         'Cela fonctionne aussi en numérique : les apps et sites peuvent vérifier une affirmation sans apprendre vos données privées.',
       rolesTitle: 'Les rôles',
-      rolesProver: 'Je ne veux pas montrer la carte que j’ai tirée !',
-      rolesVerifier: 'Et pourtant je veux savoir si la carte est rouge ou non !',
+      rolesProver: '“Je ne veux pas montrer la carte que j’ai tirée !”',
+      rolesVerifier: '“Et pourtant je veux savoir si la carte est rouge ou non !”',
       cardsTitle: 'Un exemple',
       cards:
         'Nous allons maintenant le montrer avec des cartes à jouer. Le prouveur prouve la couleur de sa carte, sans montrer quelle carte c’est. (Vous pouvez aussi essayer de mentir, pour voir que la triche ne marche pas.)',
@@ -607,13 +607,13 @@ export const messages = {
     personBTitle: 'Le Vérificateur',
     personBRole: '',
     tableLabel: 'Table de cartes',
-    plaquePrivate: 'Pour vous seuls',
+    plaquePrivate: 'Pour moi seul',
     plaquePublic: 'Pas de vue',
     red: 'Rouge',
     black: 'Noir',
     privateZone: 'Privé — le vérificateur ne voit pas ceci',
-    yourCard: 'Votre carte',
-    cardComing: 'Arrive vers vous, face cachée…',
+    yourCard: 'Ma carte',
+    cardComing: 'Arrive vers moi, face cachée…',
     personBCannotSeeCard: 'Le vérificateur ne peut pas voir cette carte',
     mysteryCard: 'Carte du prouveur',
     mysteryHidden: 'cachée pour moi',
@@ -625,37 +625,37 @@ export const messages = {
     faceDownCard: 'Une carte à jouer face cachée',
     personA: {
       intro: '“Je tire une carte que moi seul peux voir.”',
-      inspect: 'Vous voyez aussi le jeu — rien n’est encore caché.',
-      shuffled: 'Les cartes sont face cachée. Tirez-en une au hasard.',
-      drawing: 'La carte passe derrière le paravent…',
-      drawn: 'Vous avez tiré {card}. Le vérificateur ne peut pas la voir.',
-      sorting: 'Regardez les cartes restantes en privé.',
+      inspect: '“Je vois aussi le jeu — rien n’est encore caché.”',
+      shuffled: '“Les cartes sont face cachée. J’en tire une au hasard.”',
+      drawing: '“La carte passe derrière le paravent…”',
+      drawn: '“J’ai tiré {card}. Le vérificateur ne peut pas la voir.”',
+      sorting: '“Je regarde les cartes restantes en privé.”',
       proving:
-        'Montrez au vérificateur les quatre {otherCards}. Gardez les {claimCards} cachées.',
+        '“Je montre au vérificateur les quatre {otherCards}. Je garde les {claimCards} cachées.”',
       provingCheat:
-        'Vous affirmez avoir une {claimCard}. Essayez de montrer les quatre {otherCards}…',
+        '“J’affirme avoir une {claimCard}. J’essaie de montrer les quatre {otherCards}…”',
       result:
-        'Le vérificateur est convaincu — et ne sait toujours pas quelle {ownCard} vous avez.',
+        '“Le vérificateur est convaincu — et ne sait toujours pas quelle {ownCard} j’ai.”',
       resultCheat:
-        'La triche a échoué. Vous n’avez pas pu montrer quatre {otherCards}, parce que vous tenez une {ownCard}.',
+        '“La triche a échoué. Je n’ai pas pu montrer quatre {otherCards}, parce que je tiens une {ownCard}.”',
     },
     personB: {
       intro: '“Je dois être convaincu de la couleur de votre carte.”',
-      inspect: 'Quatre rouges, quatre noires. J’ai vu chaque carte de ce jeu.',
-      shuffling: 'Je ne connais plus l’ordre.',
+      inspect: '“Quatre rouges, quatre noires. J’ai vu chaque carte de ce jeu.”',
+      shuffling: '“Je ne connais plus l’ordre.”',
       shuffled:
-        'Les mêmes huit cartes, maintenant face cachée. Je ne sais pas laquelle est laquelle.',
+        '“Les mêmes huit cartes, maintenant face cachée. Je ne sais pas laquelle est laquelle.”',
       drawn:
-        'Le prouveur tient une carte. Je ne peux pas la voir. Elle peut être rouge ou noire.',
+        '“Le prouveur tient une carte. Je ne peux pas la voir. Elle peut être rouge ou noire.”',
       sorting:
-        'Le prouveur regarde le reste. Le paravent bloque ma vue.',
-      provingWait: 'J’attends de voir des cartes…',
-      provingOne: 'On m’a montré 1 {otherCard} jusqu’ici.',
-      provingMany: 'On m’a montré {count} {otherCards} jusqu’ici.',
+        '“Le prouveur regarde le reste. Le paravent bloque ma vue.”',
+      provingWait: '“J’attends de voir des cartes…”',
+      provingOne: '“On m’a montré 1 {otherCard} jusqu’ici.”',
+      provingMany: '“On m’a montré {count} {otherCards} jusqu’ici.”',
       result:
-        'Les quatre {otherCards} sont là. La carte cachée doit être {claimColor} — mais je ne sais toujours pas laquelle des quatre {claimCards} c’est.',
+        '“Les quatre {otherCards} sont là. La carte cachée doit être {claimColor} — mais je ne sais toujours pas laquelle des quatre {claimCards} c’est.”',
       resultCheat:
-        'Seules trois {otherCards} ont été montrées. Il en manque une. Je n’accepte pas l’affirmation.',
+        '“Seules trois {otherCards} ont été montrées. Il en manque une. Je n’accepte pas l’affirmation.”',
     },
     narration: {
       intro:
@@ -684,7 +684,7 @@ export const messages = {
       begin: 'Montrer le jeu au vérificateur',
       shuffle: 'Mélanger et retourner',
       draw: 'Tirer une carte au hasard',
-      prove: 'Prouver que vous avez une {ownCard}',
+      prove: 'Prouver que j’ai une {ownCard}',
       cheat: 'Essayer de tricher ({claimCard})',
       again: 'Rejouer',
     },
@@ -693,10 +693,10 @@ export const messages = {
       completeness: 'L’affirmation était vraie, donc la preuve a réussi.',
       zeroKnowledgeLabel: 'Divulgation nulle.',
       zeroKnowledge:
-        'Le vérificateur a seulement appris que votre carte est {ownColor} — pas laquelle des quatre {ownCards} c’est.',
+        'Le vérificateur a seulement appris que ma carte est {ownColor} — pas laquelle des quatre {ownCards} c’est.',
       soundnessLabel: 'Solidité.',
       soundness:
-        'Une affirmation fausse ne peut pas être prouvée. En affirmant une {claimCard} alors que vous teniez une {ownCard}, vous n’avez pas pu montrer les quatre {otherCards}.',
+        'Une affirmation fausse ne peut pas être prouvée. En affirmant une {claimCard} alors que je tenais une {ownCard}, je n’ai pas pu montrer les quatre {otherCards}.',
     },
     colors: {
       red: 'rouge',
