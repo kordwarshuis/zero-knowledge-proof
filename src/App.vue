@@ -182,10 +182,17 @@ const modalBody = ref([])
 const welcomeStep = ref(0)
 
 const welcomePages = computed(() => [
-  { titleKey: 'welcome.riskTitle', textKey: 'welcome.risk', kind: 'risk' },
+  {
+    titleKey: 'welcome.nothingTitle',
+    textKey: 'welcome.nothing',
+    kind: 'quote',
+    illustration: 'nothing',
+  },
+  { titleKey: 'welcome.sureTitle', textKey: 'welcome.risk', kind: 'risk' },
   {
     titleKey: 'welcome.rethinkTitle',
     textKey: 'welcome.rethink',
+    kind: 'punchline',
     illustration: 'rethink',
   },
   {
@@ -733,7 +740,16 @@ onUnmounted(() => {
             aria-labelledby="modal-title"
           >
             <p v-if="modalStepLabel" class="modal-step">{{ modalStepLabel }}</p>
-            <h2 id="modal-title">{{ modalTitle }}</h2>
+            <h2
+              id="modal-title"
+              :class="{
+                'is-quote': modalKind === 'welcome' && welcomePage?.kind === 'quote',
+                'is-punchline':
+                  modalKind === 'welcome' && welcomePage?.kind === 'punchline',
+              }"
+            >
+              {{ modalTitle }}
+            </h2>
             <div
               v-if="modalKind === 'welcome' && welcomeStep === 0"
               class="lang-switch modal-lang"
@@ -1544,6 +1560,18 @@ h1 {
   letter-spacing: -0.02em;
   line-height: 1.2;
   text-align: center;
+}
+
+.modal-dialog h2.is-quote {
+  font-style: italic;
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.modal-dialog h2.is-punchline {
+  font-size: clamp(1.18rem, 2.1vw, 1.48rem);
+  line-height: 1.28;
 }
 
 .modal-step {

@@ -4,7 +4,7 @@ defineProps({
     type: String,
     required: true,
     validator: (value) =>
-      ['rethink', 'example', 'bridge', 'cards'].includes(value),
+      ['nothing', 'rethink', 'example', 'bridge', 'cards'].includes(value),
   },
 })
 </script>
@@ -20,8 +20,36 @@ defineProps({
     <circle cx="40" cy="40" r="38" class="ring" />
     <circle cx="40" cy="40" r="32" class="disc" />
 
+    <!-- Nothing to hide: a shrug with open palms -->
+    <template v-if="kind === 'nothing'">
+      <circle cx="40" cy="26" r="10" class="skin" />
+      <path class="hair" d="M30 26c1.1-9.5 5.8-13.4 10-13.4s8.9 3.9 10 13.4v2.6H30z" />
+      <ellipse cx="36.2" cy="27.2" rx="1.55" ry="1.75" class="eye" />
+      <ellipse cx="43.8" cy="27.2" rx="1.55" ry="1.75" class="eye" />
+      <path class="mouth" d="M36.6 32.2c1.6 1.8 5.2 1.8 6.8 0" />
+      <path class="collar" d="M27 48c6.5-12 19.5-12 26 0v20H27z" />
+      <path class="arm" d="M30.5 50.5c-7.4-1-13.4-8.2-14.2-15.4" />
+      <path class="arm" d="M49.5 50.5c7.4-1 13.4-8.2 14.2-15.4" />
+      <ellipse
+        cx="16.4"
+        cy="31.4"
+        rx="7"
+        ry="8.4"
+        class="skin"
+        transform="rotate(-26 16.4 31.4)"
+      />
+      <ellipse
+        cx="63.6"
+        cy="31.4"
+        rx="7"
+        ry="8.4"
+        class="skin"
+        transform="rotate(26 63.6 31.4)"
+      />
+    </template>
+
     <!-- Show less: ID with redacted fields, only a yes remains -->
-    <template v-if="kind === 'rethink'">
+    <template v-else-if="kind === 'rethink'">
       <rect x="22" y="18" width="36" height="44" rx="3" class="paper" />
       <circle cx="32" cy="30" r="5.2" class="photo" />
       <rect x="40" y="25" width="14" height="2.6" rx="1" class="line" />
@@ -119,6 +147,7 @@ defineProps({
   stroke-width: 3;
 }
 
+.is-nothing .ring,
 .is-rethink .ring,
 .is-cards .ring {
   stroke: #e6c87a;
@@ -210,6 +239,13 @@ defineProps({
   fill: none;
   stroke: #7a4a3a;
   stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+.arm {
+  fill: none;
+  stroke: #e8c7a8;
+  stroke-width: 3.4;
   stroke-linecap: round;
 }
 

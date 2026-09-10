@@ -33,7 +33,10 @@ export const messages = {
     modalStep: 'Stap {current} van {total}',
     welcome: {
       title: 'Zero-knowledge-proof (nulkennisbewijs) en digitale identiteit',
-      riskTitle: 'Digitale identiteit',
+      nothingTitle: '“Ik heb niets te verbergen”',
+      nothing:
+        'Een bekende zin over persoonsgegevens. Alles laten zien voelt onschuldig — tot iemand anders een kopie krijgt.',
+      sureTitle: 'Weet je dat zeker?',
       risk:
         'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Hackers krijgen vaak veel meer van jou te zien dan nodig is.',
       newspaper: {
@@ -43,7 +46,7 @@ export const messages = {
         headline: 'Miljoenen Odido-klanten getroffen door grootschalige hack',
         deck: 'Namen, adressen, rekeningnummers en documentnummers van identiteitsbewijzen op straat na weigering losgeld.',
       },
-      rethinkTitle: 'Minder laten zien',
+      rethinkTitle: 'Als je niet alles had laten zien, hadden ze niets gehad',
       rethink:
         'Daarom moeten we opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledge-proof (nulkennisbewijs) helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
       exampleTitle: 'Een alledaags voorbeeld',
@@ -211,7 +214,10 @@ export const messages = {
     modalStep: 'Step {current} of {total}',
     welcome: {
       title: 'Zero-knowledge-proof and digital identity',
-      riskTitle: 'Digital identity',
+      nothingTitle: '“I have nothing to hide”',
+      nothing:
+        'A familiar line about personal data. Showing everything feels harmless — until someone else gets a copy.',
+      sureTitle: 'Are you sure about that?',
       risk:
         'Digital identity is increasingly vulnerable to hacks and misuse. Hackers often see far more of you than was ever needed.',
       newspaper: {
@@ -221,7 +227,7 @@ export const messages = {
         headline: 'IDScan breach puts 150M+ driver’s licences up for sale',
         deck: 'High-resolution identity scans from shops and rental desks exposed after hackers hit a major verification firm.',
       },
-      rethinkTitle: 'Show less',
+      rethinkTitle: 'If you had not shown everything, they would not have had anything',
       rethink:
         'So we need to rethink when we show something, what we show, and why. A zero-knowledge-proof helps with that: you prove that something is true without revealing the underlying data.',
       exampleTitle: 'An everyday example',
@@ -390,7 +396,10 @@ export const messages = {
     modalStep: 'Schritt {current} von {total}',
     welcome: {
       title: 'Zero-Knowledge-Beweis und digitale Identität',
-      riskTitle: 'Digitale Identität',
+      nothingTitle: '“Ich habe nichts zu verbergen”',
+      nothing:
+        'Ein bekannter Satz über persönliche Daten. Alles zu zeigen fühlt sich harmlos an — bis jemand anderes eine Kopie bekommt.',
+      sureTitle: 'Bist du dir da sicher?',
       risk:
         'Digitale Identität wird immer häufiger gehackt und missbraucht. Hacker sehen oft weit mehr von dir, als jemals nötig war.',
       newspaper: {
@@ -400,7 +409,7 @@ export const messages = {
         headline: 'Datenleck bei Identitätsfirma: Millionen Ausweis-Scans im Umlauf',
         deck: 'Namen, Adressen und Ausweisnummern nach Angriff auf einen großen Verifizierungsdienst preisgegeben.',
       },
-      rethinkTitle: 'Weniger zeigen',
+      rethinkTitle: 'Hättest du nicht alles gezeigt, hätten sie nichts gehabt',
       rethink:
         'Deshalb müssen wir neu darüber nachdenken, wann wir etwas zeigen, was wir zeigen und warum. Ein Zero-Knowledge-Beweis hilft dabei: Du beweist, dass etwas wahr ist, ohne die zugrunde liegenden Daten preiszugeben.',
       exampleTitle: 'Ein Alltagsbeispiel',
@@ -569,7 +578,10 @@ export const messages = {
     modalStep: 'Étape {current} sur {total}',
     welcome: {
       title: 'Preuve à divulgation nulle et identité numérique',
-      riskTitle: 'Identité numérique',
+      nothingTitle: '« Je n’ai rien à cacher »',
+      nothing:
+        'Une phrase familière sur les données personnelles. Tout montrer semble anodin — jusqu’à ce que quelqu’un d’autre en ait une copie.',
+      sureTitle: 'Vous en êtes sûr ?',
       risk:
         'L’identité numérique est de plus en plus piratée et détournée. Les pirates voient souvent bien plus de vous que nécessaire.',
       newspaper: {
@@ -579,7 +591,7 @@ export const messages = {
         headline: 'Fuite massive : des millions de scans d’identité en vente',
         deck: 'Noms, adresses et numéros de pièces d’identité exposés après une attaque contre un grand service de vérification.',
       },
-      rethinkTitle: 'Montrer moins',
+      rethinkTitle: 'Si vous n’aviez pas tout montré, ils n’auraient rien eu',
       rethink:
         'Il faut donc repenser quand on montre quelque chose, ce qu’on montre, et pourquoi. Une preuve à divulgation nulle de connaissance y aide : vous prouvez qu’une chose est vraie sans révéler les données sous-jacentes.',
       exampleTitle: 'Un exemple du quotidien',
