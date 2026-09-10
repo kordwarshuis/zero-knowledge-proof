@@ -239,7 +239,9 @@ const modalTitle = computed(() => {
     return t(welcomePage.value.titleKey)
   }
   if (modalKind.value === 'drawn') return t('steps.draw')
-  if (modalKind.value === 'result') return t('steps.result')
+  if (modalKind.value === 'result') {
+    return proofSucceeded.value ? t('resultKnownTitle') : t('steps.result')
+  }
   if (modalKind.value === 'cheat') {
     return t('actions.cheat', { claimCard: colorVars.value.lieCard })
   }
@@ -267,31 +269,26 @@ const modalStepLabel = computed(() => {
 
 function resultModalBody() {
   const vars = colorVars.value
-  const paragraphs = [
+  if (isCheating.value) {
+    return [
+      { text: t('narration.resultCheat', vars) },
+      {
+        label: t('properties.soundnessLabel'),
+        text: t('properties.soundness', vars),
+      },
+    ]
+  }
+  return [
+    { text: t('narration.result', vars) },
     {
-      text: isCheating.value
-        ? t('narration.resultCheat', vars)
-        : t('narration.result', vars),
+      label: t('properties.completenessLabel'),
+      text: t('properties.completeness'),
+    },
+    {
+      label: t('properties.zeroKnowledgeLabel'),
+      text: t('properties.zeroKnowledge', vars),
     },
   ]
-  if (proofSucceeded.value) {
-    paragraphs.push(
-      {
-        label: t('properties.completenessLabel'),
-        text: t('properties.completeness'),
-      },
-      {
-        label: t('properties.zeroKnowledgeLabel'),
-        text: t('properties.zeroKnowledge', vars),
-      },
-    )
-  } else {
-    paragraphs.push({
-      label: t('properties.soundnessLabel'),
-      text: t('properties.soundness', vars),
-    })
-  }
-  return paragraphs
 }
 
 function toModalBody(body) {
@@ -691,10 +688,22 @@ onUnmounted(() => {
         <div
           v-if="hand && showPrivateLabel"
           class="unknown-card"
+          :class="{
+            'is-colour-known': proofSucceeded,
+            'is-red': proofSucceeded && handColor === 'red',
+            'is-black': proofSucceeded && handColor === 'black',
+          }"
           aria-hidden="true"
         >
-          <span class="mystery">?</span>
-          <small>{{ t('mysteryCard') }}<br />{{ t('mysteryHidden') }}</small>
+          <template v-if="proofSucceeded">
+            <span class="color-pip" aria-hidden="true"></span>
+            <strong>{{ t(`colors.${handColor}`) }}</strong>
+            <small>{{ t('mysteryColorKnown') }}<br />{{ t('mysteryWhichHidden') }}</small>
+          </template>
+          <template v-else>
+            <span class="mystery">?</span>
+            <small>{{ t('mysteryCard') }}<br />{{ t('mysteryHidden') }}</small>
+          </template>
         </div>
         <p v-if="showSecretPile" class="zone-label secret">
           {{
@@ -757,6 +766,7 @@ onUnmounted(() => {
                 'is-quote': modalKind === 'welcome' && welcomePage?.kind === 'quote',
                 'is-punchline':
                   modalKind === 'welcome' && welcomePage?.kind === 'punchline',
+                'is-colour-known': modalKind === 'result' && proofSucceeded,
               }"
             >
               {{ modalTitle }}
@@ -778,6 +788,20 @@ onUnmounted(() => {
               </button>
             </div>
             <div class="modal-body">
+              <div
+                v-if="modalKind === 'result' && proofSucceeded"
+                class="result-verdict"
+                :class="{
+                  'is-red': handColor === 'red',
+                  'is-black': handColor === 'black',
+                }"
+              >
+                <p>{{ t('resultNeeded') }}</p>
+                <p class="result-known">
+                  <strong>{{ t('resultNowKnowsLabel') }}</strong>
+                  {{ t('resultNowKnows', colorVars) }}
+                </p>
+              </div>
               <div v-if="welcomeShowsRoles" class="welcome-roles">
                 <Character
                   who="a"
@@ -1339,6 +1363,47 @@ h1 {
   line-height: 1;
 }
 
+.unknown-card.is-colour-known {
+  border-style: solid;
+  gap: 4px;
+}
+
+.unknown-card.is-red {
+  border-color: #d45a5a;
+  background: rgba(120, 28, 32, 0.42);
+  color: #f7d4d4;
+}
+
+.unknown-card.is-black {
+  border-color: #c9d4dc;
+  background: rgba(18, 22, 26, 0.55);
+  color: #e8eef2;
+}
+
+.unknown-card .color-pip {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  margin-bottom: 2px;
+}
+
+.unknown-card.is-red .color-pip {
+  background: #d45a5a;
+  box-shadow: 0 0 0 3px rgba(212, 90, 90, 0.28);
+}
+
+.unknown-card.is-black .color-pip {
+  background: #1c1917;
+  box-shadow: 0 0 0 3px rgba(244, 239, 228, 0.28);
+}
+
+.unknown-card.is-colour-known strong {
+  font-family: var(--heading);
+  font-size: 1.15rem;
+  line-height: 1.1;
+  text-transform: capitalize;
+}
+
 .unknown-card small {
   font-size: 0.68rem;
   letter-spacing: 0.02em;
@@ -1590,6 +1655,10 @@ h1 {
   line-height: 1.28;
 }
 
+.modal-dialog h2.is-colour-known {
+  color: var(--brass);
+}
+
 .modal-step {
   margin: 0 0 8px;
   font-size: 0.72rem;
@@ -1617,6 +1686,36 @@ h1 {
 .modal-body strong,
 .welcome-copy strong {
   color: var(--brass);
+}
+
+.result-verdict {
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(230, 200, 122, 0.4);
+  background: rgba(230, 200, 122, 0.1);
+}
+
+.result-verdict p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.result-verdict .result-known {
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.result-verdict.is-red {
+  border-color: rgba(212, 90, 90, 0.55);
+  background: rgba(120, 28, 32, 0.28);
+}
+
+.result-verdict.is-black {
+  border-color: rgba(201, 214, 204, 0.4);
+  background: rgba(8, 12, 14, 0.35);
 }
 
 .welcome-with-art {

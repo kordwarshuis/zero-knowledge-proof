@@ -90,6 +90,13 @@ export const messages = {
     personBCannotSeeCard: 'De controleur kan deze kaart niet zien',
     mysteryCard: 'Kaart van de bewijzer',
     mysteryHidden: 'voor mij verborgen',
+    mysteryColorKnown: 'Kleur bekend',
+    mysteryWhichHidden: 'welke kaart: nog verborgen',
+    resultKnownTitle: 'De kleur is bekend',
+    resultNeeded:
+      'De controleur hoefde alleen de kleur te weten — niet welke kaart het is.',
+    resultNowKnowsLabel: 'Nu bekend:',
+    resultNowKnows: 'de kaart is {claimColor}.',
     remainingPrivate: 'Overgebleven kaarten — nog privé',
     ownColorHidden: '{claimCards} blijven verborgen',
     shownToB: 'Getoond aan de controleur',
@@ -108,7 +115,7 @@ export const messages = {
       provingCheat:
         '“Ik beweer een {claimCard} te hebben. Ik probeer alle vier de {otherCards} te laten zien…”',
       result:
-        '“De controleur is overtuigd — en weet nog steeds niet welke {ownCard} ik heb.”',
+        '“De controleur hoefde alleen de kleur te weten. Nu weet hij die: {ownColor}. Welke {ownCard} ik heb, blijft verborgen.”',
       resultCheat:
         '“Het bedrog mislukte. Ik kon geen vier {otherCards} laten zien, omdat ik een {ownCard} vasthoud.”',
     },
@@ -125,7 +132,7 @@ export const messages = {
       provingOne: '“Ik heb tot nu toe 1 {otherCard} gezien.”',
       provingMany: '“Ik heb tot nu toe {count} {otherCards} gezien.”',
       result:
-        '“Alle vier de {otherCards} liggen hier. De verborgen kaart moet {claimColor} zijn — maar ik weet nog steeds niet welke van de vier {claimCards} het is.”',
+        '“Ik hoefde alleen de kleur te weten. Nu weet ik die: {claimColor}. Welke van de vier {claimCards} het is, weet ik nog steeds niet.”',
       resultCheat:
         '“Er zijn maar drie {otherCards} getoond. Er ontbreekt er één. Ik geloof de bewering niet.”',
     },
@@ -148,7 +155,7 @@ export const messages = {
       provingCheat:
         'Je probeert te bewijzen dat je een {claimCard} hebt door alle {otherCards} te tonen. Omdat je eigenlijke kaart {ownColor} is, kun je er maar drie laten zien.',
       result:
-        'De controleur heeft nu alle vier de {otherCards} gezien, dus jouw verborgen kaart moet wel {claimColor} zijn. De drie overgebleven {claimCards} zijn nooit getoond, dus de controleur kan niet zeggen welke van de vier {claimCards} je hebt getrokken. Dat is het zero-knowledge-gedeelte.',
+        'De controleur hoefde alleen de kleur te weten, niet welke kaart. Dat weet hij nu: {claimColor} — omdat alle vier de {otherCards} zijn getoond. De drie overgebleven {claimCards} zijn nooit getoond, dus hij kan niet zeggen welke van de vier {claimCards} je hebt getrokken. Dat is het zero-knowledge-gedeelte.',
       resultCheat:
         'Je beweerde een {claimCard} te hebben, maar kon maar drie {otherCards} tonen. De controleur merkt dat er één ontbreekt en weigert de bewering. Een onware stelling kun je niet bewijzen — dat heet deugdelijkheid (soundness).',
     },
@@ -162,10 +169,10 @@ export const messages = {
     },
     properties: {
       completenessLabel: 'Volledigheid.',
-      completeness: 'De stelling was waar, dus het bewijs slaagde.',
+      completeness: 'De stelling was waar, dus het bewijs slaagde: de controleur kent nu de kleur.',
       zeroKnowledgeLabel: 'Nulkennis.',
       zeroKnowledge:
-        'De controleur leerde alleen dat mijn kaart {ownColor} is — niet welke van de vier {ownCards} het is.',
+        'De controleur leerde alleen de kleur — {ownColor} — niet welke van de vier {ownCards} het is.',
       soundnessLabel: 'Deugdelijkheid.',
       soundness:
         'Een onware stelling valt niet te bewijzen. Door te beweren dat ik een {claimCard} had terwijl ik een {ownCard} vasthield, kon ik niet alle vier de {otherCards} laten zien.',
@@ -277,6 +284,13 @@ export const messages = {
     personBCannotSeeCard: 'The verifier cannot see this card',
     mysteryCard: 'The prover’s card',
     mysteryHidden: 'hidden from me',
+    mysteryColorKnown: 'Colour known',
+    mysteryWhichHidden: 'which card: still hidden',
+    resultKnownTitle: 'The colour is known',
+    resultNeeded:
+      'The verifier only needed to know the colour — not which card it is.',
+    resultNowKnowsLabel: 'Now known:',
+    resultNowKnows: 'the card is {claimColor}.',
     remainingPrivate: 'Remaining cards — still private',
     ownColorHidden: '{claimCards} kept hidden',
     shownToB: 'Shown to the verifier',
@@ -295,7 +309,7 @@ export const messages = {
       provingCheat:
         '“I claim to have a {claimCard}. I try to show all four {otherCards}…”',
       result:
-        '“The verifier is convinced — and still does not know which {ownCard} I hold.”',
+        '“The verifier only needed the colour. They now know it: {ownColor}. Which {ownCard} I hold stays hidden.”',
       resultCheat:
         '“The cheat failed. I could not show four {otherCards}, because I am holding a {ownCard}.”',
     },
@@ -313,7 +327,7 @@ export const messages = {
       provingOne: '“I have been shown 1 {otherCard} so far.”',
       provingMany: '“I have been shown {count} {otherCards} so far.”',
       result:
-        '“All four {otherCards} are here. The hidden card must be {claimColor} — but I still do not know which of the four {claimCards} it is.”',
+        '“I only needed to know the colour. I now know it: {claimColor}. I still do not know which of the four {claimCards} it is.”',
       resultCheat:
         '“Only three {otherCards} were shown. One is missing. I do not accept the claim.”',
     },
@@ -336,7 +350,7 @@ export const messages = {
       provingCheat:
         'You try to prove you have a {claimCard} by showing all the {otherCards}. Because your real card is {ownColor}, you can only produce three.',
       result:
-        'The verifier has now seen all four {otherCards}, so your hidden card must be {claimColor}. The three leftover {claimCards} were never shown, so the verifier cannot tell which of the four {claimCards} you drew. That is the zero-knowledge part.',
+        'The verifier only needed to know the colour, not which card. They now know it is {claimColor}: all four {otherCards} are accounted for. The three leftover {claimCards} were never shown, so they cannot tell which of the four {claimCards} you drew. That is the zero-knowledge part.',
       resultCheat:
         'You claimed to have a {claimCard}, but could only show three {otherCards}. The verifier notices one is missing and rejects the claim. A false statement cannot be proven — that is soundness.',
     },
@@ -350,10 +364,10 @@ export const messages = {
     },
     properties: {
       completenessLabel: 'Completeness.',
-      completeness: 'The statement was true, so the proof succeeded.',
+      completeness: 'The statement was true, so the proof succeeded: the verifier now knows the colour.',
       zeroKnowledgeLabel: 'Zero knowledge.',
       zeroKnowledge:
-        'The verifier learned only that my card is {ownColor} — not which of the four {ownCards} it is.',
+        'The verifier learned only the colour — {ownColor} — not which of the four {ownCards} it is.',
       soundnessLabel: 'Soundness.',
       soundness:
         'A false statement cannot be proven. By claiming a {claimCard} while holding a {ownCard}, I could not show all four {otherCards}.',
@@ -465,6 +479,13 @@ export const messages = {
     personBCannotSeeCard: 'Der Prüfer kann diese Karte nicht sehen',
     mysteryCard: 'Karte des Beweisführers',
     mysteryHidden: 'vor mir verborgen',
+    mysteryColorKnown: 'Farbe bekannt',
+    mysteryWhichHidden: 'welche Karte: noch verborgen',
+    resultKnownTitle: 'Die Farbe ist bekannt',
+    resultNeeded:
+      'Der Prüfer musste nur die Farbe wissen — nicht, welche Karte es ist.',
+    resultNowKnowsLabel: 'Jetzt bekannt:',
+    resultNowKnows: 'die Karte ist {claimColor}.',
     remainingPrivate: 'Übrige Karten — noch privat',
     ownColorHidden: '{claimCards} bleiben verborgen',
     shownToB: 'Dem Prüfer gezeigt',
@@ -483,7 +504,7 @@ export const messages = {
       provingCheat:
         '“Ich behaupte, eine {claimCard} zu haben. Ich versuche, alle vier {otherCards} zu zeigen…”',
       result:
-        '“Der Prüfer ist überzeugt — und weiß immer noch nicht, welche {ownCard} ich habe.”',
+        '“Der Prüfer musste nur die Farbe wissen. Jetzt kennt er sie: {ownColor}. Welche {ownCard} ich habe, bleibt verborgen.”',
       resultCheat:
         '“Der Betrug ist gescheitert. Ich konnte keine vier {otherCards} zeigen, weil ich eine {ownCard} halte.”',
     },
@@ -501,7 +522,7 @@ export const messages = {
       provingOne: '“Bisher wurde mir 1 {otherCard} gezeigt.”',
       provingMany: '“Bisher wurden mir {count} {otherCards} gezeigt.”',
       result:
-        '“Alle vier {otherCards} liegen hier. Die verdeckte Karte muss {claimColor} sein — aber ich weiß immer noch nicht, welche der vier {claimCards} es ist.”',
+        '“Ich musste nur die Farbe wissen. Jetzt kenne ich sie: {claimColor}. Welche der vier {claimCards} es ist, weiß ich immer noch nicht.”',
       resultCheat:
         '“Es wurden nur drei {otherCards} gezeigt. Eine fehlt. Ich akzeptiere die Behauptung nicht.”',
     },
@@ -524,7 +545,7 @@ export const messages = {
       provingCheat:
         'Du versuchst zu beweisen, dass du eine {claimCard} hast, indem du alle {otherCards} zeigst. Weil deine echte Karte {ownColor} ist, kannst du nur drei vorzeigen.',
       result:
-        'Der Prüfer hat jetzt alle vier {otherCards} gesehen, also muss deine verdeckte Karte {claimColor} sein. Die drei übrigen {claimCards} wurden nie gezeigt, also kann der Prüfer nicht sagen, welche der vier {claimCards} du gezogen hast. Das ist der Zero-Knowledge-Teil.',
+        'Der Prüfer musste nur die Farbe wissen, nicht welche Karte. Jetzt kennt er sie: {claimColor} — weil alle vier {otherCards} gezeigt wurden. Die drei übrigen {claimCards} wurden nie gezeigt, also kann er nicht sagen, welche der vier {claimCards} du gezogen hast. Das ist der Zero-Knowledge-Teil.',
       resultCheat:
         'Du hast behauptet, eine {claimCard} zu haben, konntest aber nur drei {otherCards} zeigen. Der Prüfer merkt, dass eine fehlt, und lehnt die Behauptung ab. Eine falsche Aussage lässt sich nicht beweisen — das nennt man Korrektheit (Soundness).',
     },
@@ -538,10 +559,10 @@ export const messages = {
     },
     properties: {
       completenessLabel: 'Vollständigkeit.',
-      completeness: 'Die Aussage war wahr, also gelang der Beweis.',
+      completeness: 'Die Aussage war wahr, also gelang der Beweis: der Prüfer kennt jetzt die Farbe.',
       zeroKnowledgeLabel: 'Nullwissen.',
       zeroKnowledge:
-        'Der Prüfer erfuhr nur, dass meine Karte {ownColor} ist — nicht, welche der vier {ownCards} es ist.',
+        'Der Prüfer erfuhr nur die Farbe — {ownColor} — nicht, welche der vier {ownCards} es ist.',
       soundnessLabel: 'Korrektheit.',
       soundness:
         'Eine falsche Aussage lässt sich nicht beweisen. Indem ich eine {claimCard} behauptet habe, während ich eine {ownCard} gehalten habe, konnte ich nicht alle vier {otherCards} zeigen.',
@@ -653,6 +674,13 @@ export const messages = {
     personBCannotSeeCard: 'Le vérificateur ne peut pas voir cette carte',
     mysteryCard: 'Carte du prouveur',
     mysteryHidden: 'cachée pour moi',
+    mysteryColorKnown: 'Couleur connue',
+    mysteryWhichHidden: 'quelle carte : toujours cachée',
+    resultKnownTitle: 'La couleur est connue',
+    resultNeeded:
+      'Le vérificateur n’avait besoin que de la couleur — pas de quelle carte c’est.',
+    resultNowKnowsLabel: 'Maintenant connu :',
+    resultNowKnows: 'la carte est {claimColor}.',
     remainingPrivate: 'Cartes restantes — encore privées',
     ownColorHidden: '{claimCards} restent cachées',
     shownToB: 'Montrées au vérificateur',
@@ -671,7 +699,7 @@ export const messages = {
       provingCheat:
         '“J’affirme avoir une {claimCard}. J’essaie de montrer les quatre {otherCards}…”',
       result:
-        '“Le vérificateur est convaincu — et ne sait toujours pas quelle {ownCard} j’ai.”',
+        '“Le vérificateur n’avait besoin que de la couleur. Il la connaît maintenant : {ownColor}. Quelle {ownCard} j’ai reste cachée.”',
       resultCheat:
         '“La triche a échoué. Je n’ai pas pu montrer quatre {otherCards}, parce que je tiens une {ownCard}.”',
     },
@@ -689,7 +717,7 @@ export const messages = {
       provingOne: '“On m’a montré 1 {otherCard} jusqu’ici.”',
       provingMany: '“On m’a montré {count} {otherCards} jusqu’ici.”',
       result:
-        '“Les quatre {otherCards} sont là. La carte cachée doit être {claimColor} — mais je ne sais toujours pas laquelle des quatre {claimCards} c’est.”',
+        '“Je n’avais besoin que de la couleur. Je la connais maintenant : {claimColor}. Je ne sais toujours pas laquelle des quatre {claimCards} c’est.”',
       resultCheat:
         '“Seules trois {otherCards} ont été montrées. Il en manque une. Je n’accepte pas l’affirmation.”',
     },
@@ -712,7 +740,7 @@ export const messages = {
       provingCheat:
         'Vous essayez de prouver que vous avez une {claimCard} en montrant toutes les {otherCards}. Comme votre vraie carte est {ownColor}, vous ne pouvez en produire que trois.',
       result:
-        'Le vérificateur a maintenant vu les quatre {otherCards}, donc votre carte cachée doit être {claimColor}. Les trois {claimCards} restantes n’ont jamais été montrées, donc le vérificateur ne peut pas dire laquelle des quatre {claimCards} vous avez tirée. C’est la partie à divulgation nulle.',
+        'Le vérificateur n’avait besoin que de la couleur, pas de quelle carte. Il la connaît maintenant : {claimColor} — parce que les quatre {otherCards} sont là. Les trois {claimCards} restantes n’ont jamais été montrées, donc il ne peut pas dire laquelle des quatre {claimCards} vous avez tirée. C’est la partie à divulgation nulle.',
       resultCheat:
         'Vous avez affirmé avoir une {claimCard}, mais n’avez pu montrer que trois {otherCards}. Le vérificateur remarque qu’il en manque une et refuse l’affirmation. Une affirmation fausse ne peut pas être prouvée — c’est la solidité (soundness).',
     },
@@ -726,10 +754,10 @@ export const messages = {
     },
     properties: {
       completenessLabel: 'Complétude.',
-      completeness: 'L’affirmation était vraie, donc la preuve a réussi.',
+      completeness: 'L’affirmation était vraie, donc la preuve a réussi : le vérificateur connaît maintenant la couleur.',
       zeroKnowledgeLabel: 'Divulgation nulle.',
       zeroKnowledge:
-        'Le vérificateur a seulement appris que ma carte est {ownColor} — pas laquelle des quatre {ownCards} c’est.',
+        'Le vérificateur a seulement appris la couleur — {ownColor} — pas laquelle des quatre {ownCards} c’est.',
       soundnessLabel: 'Solidité.',
       soundness:
         'Une affirmation fausse ne peut pas être prouvée. En affirmant une {claimCard} alors que je tenais une {ownCard}, je n’ai pas pu montrer les quatre {otherCards}.',
