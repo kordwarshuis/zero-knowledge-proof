@@ -40,7 +40,7 @@ export const messages = {
       risk:
         'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Hackers krijgen vaak veel meer van jou te zien dan nodig is.',
       newspaper: {
-        masthead: 'Het Digitaal Dagblad',
+        masthead: 'Het Dagblad',
         date: 'Februari 2026',
         section: 'Cybersecurity',
         headline: 'Miljoenen Odido-klanten getroffen door grootschalige hack',
@@ -234,7 +234,7 @@ export const messages = {
       risk:
         'Digital identity is increasingly vulnerable to hacks and misuse. Hackers often see far more of you than was ever needed.',
       newspaper: {
-        masthead: 'The Digital Gazette',
+        masthead: 'The Gazette',
         date: 'September 2026',
         section: 'Cybersecurity',
         headline: 'IDScan breach puts 150M+ driver’s licences up for sale',
@@ -429,7 +429,7 @@ export const messages = {
       risk:
         'Digitale Identität wird immer häufiger gehackt und missbraucht. Hacker sehen oft weit mehr von dir, als jemals nötig war.',
       newspaper: {
-        masthead: 'Die Digitale Zeitung',
+        masthead: 'Die Zeitung',
         date: 'März 2026',
         section: 'Cybersicherheit',
         headline: 'Datenleck bei Identitätsfirma: Millionen Ausweis-Scans im Umlauf',
@@ -624,7 +624,7 @@ export const messages = {
       risk:
         'L’identité numérique est de plus en plus piratée et détournée. Les pirates voient souvent bien plus de vous que nécessaire.',
       newspaper: {
-        masthead: 'La Gazette Numérique',
+        masthead: 'La Gazette',
         date: 'Avril 2026',
         section: 'Cybersécurité',
         headline: 'Fuite massive : des millions de scans d’identité en vente',
