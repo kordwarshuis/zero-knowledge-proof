@@ -50,7 +50,7 @@ export const messages = {
       rethinkTitle: 'Als je niet alles had laten zien, hadden ze niets gehad',
       rethink:
         'Namen, adressen, rekeningnummers, documentnummers: alles wat ooit is ingevuld, lag klaar voor de hackers.',
-      noChoiceTitle: '“Maar ik móet al die gegevens geven, ik heb geen keuze!”',
+      noChoiceTitle: '“Maar ik heb geen keuze!”',
       noChoice:
         'Banken, winkels, overheden en websites vragen vaak het hele ID, ook als ze maar één feit nodig hebben. Het voelt verplicht — alles invullen, of je komt niet verder.',
       anotherWayTitle: 'Misschien is er een andere manier',
@@ -245,7 +245,7 @@ export const messages = {
       rethinkTitle: 'If you had not shown everything, they would not have had anything',
       rethink:
         'Names, addresses, account numbers, ID scans: everything that was ever collected was sitting there for the taking.',
-      noChoiceTitle: '“But I have to provide all that information, I have no choice!”',
+      noChoiceTitle: '“But I have no choice!”',
       noChoice:
         'Banks, shops, governments and websites often ask for the whole ID, even when they only need one fact. It feels mandatory — fill in everything, or you are stuck.',
       anotherWayTitle: 'Maybe there is another way',
@@ -441,7 +441,7 @@ export const messages = {
       rethinkTitle: 'Hättest du nicht alles gezeigt, hätten sie nichts gehabt',
       rethink:
         'Namen, Adressen, Kontonummern, Ausweis-Scans: alles, was je gesammelt wurde, lag bereit.',
-      noChoiceTitle: '“Aber ich muss all diese Angaben machen, ich habe keine Wahl!”',
+      noChoiceTitle: '“Aber ich habe keine Wahl!”',
       noChoice:
         'Banken, Läden, Behörden und Websites verlangen oft den ganzen Ausweis, auch wenn sie nur eine Tatsache brauchen. Es fühlt sich zwingend an — alles ausfüllen, oder du kommst nicht weiter.',
       anotherWayTitle: 'Vielleicht gibt es einen anderen Weg',
@@ -637,7 +637,7 @@ export const messages = {
       rethinkTitle: 'Si vous n’aviez pas tout montré, ils n’auraient rien eu',
       rethink:
         'Noms, adresses, numéros de compte, scans d’identité : tout ce qui avait été collecté était là, prêt à être pris.',
-      noChoiceTitle: '« Mais je dois fournir toutes ces informations, je n’ai pas le choix ! »',
+      noChoiceTitle: '« Mais je n’ai pas le choix ! »',
       noChoice:
         'Banques, commerces, administrations et sites demandent souvent toute la pièce d’identité, même s’ils n’ont besoin que d’un fait. Ça paraît obligatoire — tout remplir, ou vous restez bloqué.',
       anotherWayTitle: 'Peut-être y a-t-il une autre façon',
