@@ -193,6 +193,16 @@ const welcomePages = computed(() => [
     titleKey: 'welcome.rethinkTitle',
     textKey: 'welcome.rethink',
     kind: 'punchline',
+  },
+  {
+    titleKey: 'welcome.noChoiceTitle',
+    textKey: 'welcome.noChoice',
+    kind: 'quote',
+    illustration: 'choice',
+  },
+  {
+    titleKey: 'welcome.anotherWayTitle',
+    textKey: 'welcome.anotherWay',
     illustration: 'rethink',
   },
   {

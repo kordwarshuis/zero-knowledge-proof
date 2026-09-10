@@ -48,7 +48,13 @@ export const messages = {
       },
       rethinkTitle: 'Als je niet alles had laten zien, hadden ze niets gehad',
       rethink:
-        'Daarom moeten we opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledge-proof (nulkennisbewijs) helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
+        'Namen, adressen, rekeningnummers, documentnummers: alles wat ooit is ingevuld, lag klaar voor de hackers.',
+      noChoiceTitle: '“Maar ik móet al die gegevens geven, ik heb geen keuze!”',
+      noChoice:
+        'Banken, winkels, overheden en websites vragen vaak het hele ID, ook als ze maar één feit nodig hebben. Het voelt verplicht — alles invullen, of je komt niet verder.',
+      anotherWayTitle: 'Misschien is er een andere manier',
+      anotherWay:
+        'We kunnen opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledge-proof (nulkennisbewijs) helpt daarbij: je bewijst dat iets waar is, zonder de onderliggende gegevens prijs te geven.',
       exampleTitle: 'Een alledaags voorbeeld',
       example:
         'Bij de deur van een café hoeft de portier alleen te weten of je oud genoeg bent om binnen te mogen. Hij hoeft alleen te weten: ja of nee — niet wanneer je precies geboren bent, waar je woont, of andere gegevens op je ID.',
@@ -229,7 +235,13 @@ export const messages = {
       },
       rethinkTitle: 'If you had not shown everything, they would not have had anything',
       rethink:
-        'So we need to rethink when we show something, what we show, and why. A zero-knowledge-proof helps with that: you prove that something is true without revealing the underlying data.',
+        'Names, addresses, account numbers, ID scans: everything that was ever collected was sitting there for the taking.',
+      noChoiceTitle: '“But I have to provide all that information, I have no choice!”',
+      noChoice:
+        'Banks, shops, governments and websites often ask for the whole ID, even when they only need one fact. It feels mandatory — fill in everything, or you are stuck.',
+      anotherWayTitle: 'Maybe there is another way',
+      anotherWay:
+        'We can rethink when we show something, what we show, and why. A zero-knowledge-proof helps with that: you prove that something is true without revealing the underlying data.',
       exampleTitle: 'An everyday example',
       example:
         'At the door of a bar, the doorman only needs to know whether you are old enough to enter. They only need a yes or no — not your exact date of birth, where you live, or anything else on your ID.',
@@ -411,7 +423,13 @@ export const messages = {
       },
       rethinkTitle: 'Hättest du nicht alles gezeigt, hätten sie nichts gehabt',
       rethink:
-        'Deshalb müssen wir neu darüber nachdenken, wann wir etwas zeigen, was wir zeigen und warum. Ein Zero-Knowledge-Beweis hilft dabei: Du beweist, dass etwas wahr ist, ohne die zugrunde liegenden Daten preiszugeben.',
+        'Namen, Adressen, Kontonummern, Ausweis-Scans: alles, was je gesammelt wurde, lag bereit.',
+      noChoiceTitle: '“Aber ich muss all diese Angaben machen, ich habe keine Wahl!”',
+      noChoice:
+        'Banken, Läden, Behörden und Websites verlangen oft den ganzen Ausweis, auch wenn sie nur eine Tatsache brauchen. Es fühlt sich zwingend an — alles ausfüllen, oder du kommst nicht weiter.',
+      anotherWayTitle: 'Vielleicht gibt es einen anderen Weg',
+      anotherWay:
+        'Wir können neu darüber nachdenken, wann wir etwas zeigen, was wir zeigen und warum. Ein Zero-Knowledge-Beweis hilft dabei: Du beweist, dass etwas wahr ist, ohne die zugrunde liegenden Daten preiszugeben.',
       exampleTitle: 'Ein Alltagsbeispiel',
       example:
         'An der Tür einer Bar braucht der Türsteher wissen, ob du alt genug bist, um hineinzugekommen. Er braucht nur ja oder nein — nicht dein genaues Geburtsdatum, deine Adresse oder andere Angaben auf dem Ausweis.',
@@ -593,7 +611,13 @@ export const messages = {
       },
       rethinkTitle: 'Si vous n’aviez pas tout montré, ils n’auraient rien eu',
       rethink:
-        'Il faut donc repenser quand on montre quelque chose, ce qu’on montre, et pourquoi. Une preuve à divulgation nulle de connaissance y aide : vous prouvez qu’une chose est vraie sans révéler les données sous-jacentes.',
+        'Noms, adresses, numéros de compte, scans d’identité : tout ce qui avait été collecté était là, prêt à être pris.',
+      noChoiceTitle: '« Mais je dois fournir toutes ces informations, je n’ai pas le choix ! »',
+      noChoice:
+        'Banques, commerces, administrations et sites demandent souvent toute la pièce d’identité, même s’ils n’ont besoin que d’un fait. Ça paraît obligatoire — tout remplir, ou vous restez bloqué.',
+      anotherWayTitle: 'Peut-être y a-t-il une autre façon',
+      anotherWay:
+        'On peut repenser quand on montre quelque chose, ce qu’on montre, et pourquoi. Une preuve à divulgation nulle de connaissance y aide : vous prouvez qu’une chose est vraie sans révéler les données sous-jacentes.',
       exampleTitle: 'Un exemple du quotidien',
       example:
         'À la porte d’un bar, le videur seulement doit savoir si vous êtes assez âgé pour entrer. Il n’a besoin que d’un oui ou d’un non — pas de votre date de naissance exacte, de votre adresse, ni du reste de votre pièce d’identité.',

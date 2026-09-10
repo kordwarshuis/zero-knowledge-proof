@@ -4,7 +4,7 @@ defineProps({
     type: String,
     required: true,
     validator: (value) =>
-      ['nothing', 'rethink', 'example', 'bridge', 'cards'].includes(value),
+      ['nothing', 'choice', 'rethink', 'example', 'bridge', 'cards'].includes(value),
   },
 })
 </script>
@@ -46,6 +46,20 @@ defineProps({
         class="skin"
         transform="rotate(26 63.6 31.4)"
       />
+    </template>
+
+    <!-- No choice: the whole ID, every field filled in -->
+    <template v-else-if="kind === 'choice'">
+      <rect x="22" y="16" width="36" height="48" rx="3" class="paper" />
+      <circle cx="32" cy="28" r="5.2" class="photo" />
+      <rect x="40" y="23" width="14" height="2.6" rx="1" class="line" />
+      <rect x="40" y="28.5" width="10" height="2.6" rx="1" class="line soft" />
+      <rect x="26" y="38" width="28" height="2.8" rx="1" class="line" />
+      <rect x="26" y="43.5" width="24" height="2.8" rx="1" class="line" />
+      <rect x="26" y="49" width="20" height="2.8" rx="1" class="line" />
+      <rect x="26" y="54.5" width="16" height="2.8" rx="1" class="line soft" />
+      <circle cx="56" cy="58" r="10" class="stamp" />
+      <text x="56" y="61.2" text-anchor="middle" class="stamp-text">!</text>
     </template>
 
     <!-- Show less: ID with redacted fields, only a yes remains -->
@@ -153,6 +167,7 @@ defineProps({
   stroke: #e6c87a;
 }
 
+.is-choice .ring,
 .is-example .ring,
 .is-bridge .ring {
   stroke: #9eb7c8;
@@ -185,12 +200,14 @@ defineProps({
 
 .badge,
 .collar,
-.medallion {
+.medallion,
+.stamp {
   fill: #3d5a73;
 }
 
 .badge,
-.medallion {
+.medallion,
+.stamp {
   stroke: #e6c87a;
   stroke-width: 1.6;
 }
@@ -204,6 +221,7 @@ defineProps({
 }
 
 .badge-text,
+.stamp-text,
 .zk {
   fill: #e6c87a;
   font-family: Georgia, 'Times New Roman', serif;
@@ -212,6 +230,10 @@ defineProps({
 
 .badge-text {
   font-size: 9px;
+}
+
+.stamp-text {
+  font-size: 14px;
 }
 
 .zk {
