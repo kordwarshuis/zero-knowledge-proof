@@ -771,22 +771,7 @@ onUnmounted(() => {
             >
               {{ modalTitle }}
             </h2>
-            <div
-              v-if="modalKind === 'welcome' && welcomeStep === 0"
-              class="lang-switch modal-lang"
-              :aria-label="t('language')"
-            >
-              <button
-                v-for="code in locales"
-                :key="code"
-                type="button"
-                :class="{ 'is-active': locale === code }"
-                :aria-pressed="locale === code"
-                @click="setLocale(code)"
-              >
-                {{ code.toUpperCase() }}
-              </button>
-            </div>
+
             <div class="modal-body">
               <div
                 v-if="modalKind === 'result' && proofSucceeded"
