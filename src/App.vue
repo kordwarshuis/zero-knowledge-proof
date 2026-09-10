@@ -1,12 +1,15 @@
 <script setup>
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import Character from './components/Character.vue'
+import CookieBanner from './components/CookieBanner.vue'
 import PlayingCard from './components/PlayingCard.vue'
 import WelcomeIllustration from './components/WelcomeIllustration.vue'
+import { useCookieConsent } from './composables/useCookieConsent.js'
 import { useI18n } from './composables/useI18n.js'
 import { useProofGame } from './composables/useProofGame.js'
 
 const { locale, locales, t, cardLabel, setLocale } = useI18n()
+const { openSettings: openCookieSettings } = useCookieConsent()
 const game = useProofGame()
 const {
   step,
@@ -752,7 +755,12 @@ onUnmounted(() => {
 
     <footer class="site-credit">
       <p>{{ t('credit') }}</p>
+      <button class="cookie-settings" type="button" @click="openCookieSettings">
+        {{ t('cookies.settings') }}
+      </button>
     </footer>
+
+    <CookieBanner />
 
     <Teleport to="body">
       <Transition name="fade">
@@ -1484,6 +1492,10 @@ h1 {
 .site-credit {
   margin: 18px 0 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 
 .site-credit p {
@@ -1492,6 +1504,31 @@ h1 {
   font-size: 0.78rem;
   letter-spacing: 0.02em;
   opacity: 0.78;
+}
+
+.cookie-settings {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgba(201, 214, 204, 0.78);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.cookie-settings:hover {
+  color: var(--cream);
+}
+
+.cookie-settings:focus-visible {
+  outline: 2px solid #f7f1e6;
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 @media (max-width: 720px) {

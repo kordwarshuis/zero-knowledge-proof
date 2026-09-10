@@ -201,6 +201,13 @@ export const messages = {
       clubs: 'klaveren',
     },
     cardOf: '{rank} van {suit}',
+    cookies: {
+      title: 'Cookies',
+      text: 'We gebruiken Google Analytics alleen als je dat toestaat, om te zien hoe deze pagina wordt gebruikt. Zonder toestemming laden we geen analytics.',
+      accept: 'Accepteren',
+      reject: 'Weigeren',
+      settings: 'Cookie-instellingen',
+    },
     credit: '© Kor Dwarshuis – 2026 – gemaakt met AI',
   },
   en: {
@@ -397,6 +404,13 @@ export const messages = {
       clubs: 'Clubs',
     },
     cardOf: '{rank} of {suit}',
+    cookies: {
+      title: 'Cookies',
+      text: 'We use Google Analytics only if you allow it, to see how this page is used. Without consent, we do not load analytics.',
+      accept: 'Accept',
+      reject: 'Reject',
+      settings: 'Cookie settings',
+    },
     credit: '© Kor Dwarshuis – 2026 – made with AI',
   },
   de: {
@@ -593,6 +607,13 @@ export const messages = {
       clubs: 'Kreuz',
     },
     cardOf: '{suit}-{rank}',
+    cookies: {
+      title: 'Cookies',
+      text: 'Wir nutzen Google Analytics nur mit deiner Erlaubnis, um zu sehen, wie diese Seite genutzt wird. Ohne Zustimmung laden wir keine Analytics.',
+      accept: 'Akzeptieren',
+      reject: 'Ablehnen',
+      settings: 'Cookie-Einstellungen',
+    },
     credit: '© Kor Dwarshuis – 2026 – erstellt mit KI',
   },
   fr: {
@@ -789,6 +810,13 @@ export const messages = {
       clubs: 'trèfle',
     },
     cardOf: '{rank} de {suit}',
+    cookies: {
+      title: 'Cookies',
+      text: 'Nous utilisons Google Analytics uniquement si vous l’autorisez, pour voir comment cette page est utilisée. Sans consentement, nous ne chargeons pas d’analytique.',
+      accept: 'Accepter',
+      reject: 'Refuser',
+      settings: 'Paramètres des cookies',
+    },
     credit: '© Kor Dwarshuis – 2026 – réalisé avec l’IA',
   },
 }
