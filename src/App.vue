@@ -264,15 +264,16 @@ function splitSentences(text) {
 
 function toParagraphs(items) {
   return items.flatMap((item) => {
-    if (typeof item === 'string') {
-      const sentences = splitSentences(item)
-      return sentences.length ? [{ sentences }] : []
-    }
-    const sentences = splitSentences(item?.text)
+    const label = typeof item === 'object' ? item.label : undefined
+    const text = typeof item === 'string' ? item : item?.text
+    const sentences = splitSentences(text)
     if (!sentences.length) {
-      return item?.label ? [{ label: item.label, sentences: [] }] : []
+      return label ? [{ label, text: '' }] : []
     }
-    return [{ label: item.label, sentences }]
+    return sentences.map((sentence, index) => ({
+      label: index === 0 ? label : undefined,
+      text: sentence,
+    }))
   })
 }
 
@@ -872,25 +873,15 @@ onUnmounted(() => {
                   <WelcomeIllustration :kind="welcomePage.illustration" />
                   <div class="welcome-copy">
                     <p v-for="(paragraph, index) in modalParagraphs" :key="index">
-                      <span
-                        v-for="(sentence, sIndex) in paragraph.sentences"
-                        :key="sIndex"
-                        class="modal-sentence"
-                      >
-                        <strong v-if="paragraph.label && sIndex === 0">{{ paragraph.label }} </strong>{{ sentence }}
-                      </span>
+                      <strong v-if="paragraph.label">{{ paragraph.label }}</strong>
+                      {{ paragraph.text }}
                     </p>
                   </div>
                 </div>
                 <template v-else>
                   <p v-for="(paragraph, index) in modalParagraphs" :key="index">
-                    <span
-                      v-for="(sentence, sIndex) in paragraph.sentences"
-                      :key="sIndex"
-                      class="modal-sentence"
-                    >
-                      <strong v-if="paragraph.label && sIndex === 0">{{ paragraph.label }} </strong>{{ sentence }}
-                    </span>
+                    <strong v-if="paragraph.label">{{ paragraph.label }}</strong>
+                    {{ paragraph.text }}
                   </p>
                 </template>
               </template>
@@ -1768,10 +1759,6 @@ h1 {
   color: var(--cream);
   font-size: 0.98rem;
   line-height: 1.5;
-}
-
-.modal-sentence {
-  display: block;
 }
 
 .modal-body strong,
