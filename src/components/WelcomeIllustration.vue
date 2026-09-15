@@ -75,35 +75,40 @@ defineProps({
       <path class="check" d="M49.2 56.2l2.8 2.8 5.8-6.2" />
     </template>
 
-    <!-- Everyday example: doorman only needs an age yes/no -->
+    <!-- Passwords sent: the secret leaves the login form and can be stolen -->
     <template v-else-if="kind === 'example'">
-      <rect x="34" y="16" width="26" height="48" rx="2" class="paper" />
-      <rect x="38" y="22" width="18" height="14" rx="1" class="panel" />
-      <rect x="38" y="40" width="18" height="14" rx="1" class="panel" />
-      <circle cx="54" cy="39" r="2" class="accent" />
-      <circle cx="24" cy="34" r="10" class="skin" />
-      <path class="hair" d="M15 34c1.2-9 6-14 9-14s7.8 5 9 14v4H15z" />
-      <rect x="17.5" y="33" width="13" height="2.2" rx="1" class="glasses" />
-      <ellipse cx="21" cy="34.5" rx="3.4" ry="3" class="lens" />
-      <ellipse cx="27" cy="34.5" rx="3.4" ry="3" class="lens" />
-      <ellipse cx="21" cy="34.5" rx="1.5" ry="1.6" class="eye" />
-      <ellipse cx="27" cy="34.5" rx="1.5" ry="1.6" class="eye" />
-      <path class="mouth" d="M22 39.5c1.2 1.6 3.6 1.6 4.8 0" />
-      <path class="collar" d="M15 48c5-8 14-8 19 0v10H15z" />
-      <circle cx="56" cy="22" r="10" class="badge" />
-      <text x="56" y="25.6" text-anchor="middle" class="badge-text">18+</text>
+      <rect x="12" y="16" width="40" height="36" rx="3" class="paper" />
+      <rect x="12" y="16" width="40" height="8" rx="3" class="chrome" />
+      <rect x="12" y="20" width="40" height="4" class="chrome" />
+      <circle cx="16.4" cy="20" r="1.2" class="win" />
+      <circle cx="20.4" cy="20" r="1.2" class="win" />
+      <circle cx="24.4" cy="20" r="1.2" class="win" />
+      <rect x="17" y="32" width="30" height="10" rx="1.6" class="field" />
+      <circle cx="22.2" cy="37" r="1.45" class="dot" />
+      <circle cx="27" cy="37" r="1.45" class="dot" />
+      <circle cx="31.8" cy="37" r="1.45" class="dot" />
+      <path class="leak" d="M44 38c5 3 9 9 12.5 14" />
+      <circle cx="49.4" cy="41.6" r="1.55" class="dot" />
+      <circle cx="54.6" cy="47.4" r="1.7" class="dot" />
+      <circle cx="60" cy="56" r="13" class="thief-bg" />
+      <circle cx="54.6" cy="56" r="1.9" class="dot-stolen" />
+      <circle cx="60" cy="56" r="1.9" class="dot-stolen" />
+      <circle cx="65.4" cy="56" r="1.9" class="dot-stolen" />
     </template>
 
-    <!-- Digitally too: phone verifies a claim behind a shield -->
+    <!-- Prove knowledge without sending the password -->
     <template v-else-if="kind === 'bridge'">
-      <rect x="27" y="14" width="26" height="52" rx="4" class="paper" />
-      <rect x="30" y="20" width="20" height="38" rx="2" class="panel" />
-      <path
-        class="shield"
-        d="M40 26c3.8 1.8 8.5 2.4 8.5 2.4V37c0 5.6-4 9.4-8.5 11.4C35.5 46.4 31.5 42.6 31.5 37V28.4S36.2 27.8 40 26z"
-      />
-      <path class="check" d="M35.6 38.2l3.1 3.1 6.6-7.1" />
-      <circle cx="40" cy="60" r="2" class="accent" />
+      <rect x="12" y="16" width="40" height="36" rx="3" class="paper" />
+      <rect x="12" y="16" width="40" height="8" rx="3" class="chrome" />
+      <rect x="12" y="20" width="40" height="4" class="chrome" />
+      <circle cx="16.4" cy="20" r="1.2" class="win" />
+      <circle cx="20.4" cy="20" r="1.2" class="win" />
+      <circle cx="24.4" cy="20" r="1.2" class="win" />
+      <rect x="17" y="32" width="30" height="10" rx="1.6" class="field" />
+      <rect x="27.2" y="35.4" width="9.6" height="6.2" rx="1.3" class="lock-body" />
+      <path class="lock-shackle" d="M29.4 35.4v-2.4a3.4 3.4 0 0 1 6.8 0v2.4" />
+      <circle cx="60" cy="56" r="13" class="badge" />
+      <path class="check" d="M53.2 56.4l4.4 4.4 9-9.6" />
     </template>
 
     <!-- Cards demo: face-down card + colour claim, not the exact card -->
@@ -182,8 +187,52 @@ defineProps({
 }
 
 .photo,
-.panel {
+.panel,
+.chrome,
+.field {
   fill: #d7c4a4;
+}
+
+.field {
+  fill: #cbb896;
+}
+
+.win {
+  fill: #8a7a68;
+}
+
+.dot {
+  fill: #1c1917;
+}
+
+.leak {
+  fill: none;
+  stroke: #d45a5a;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.thief-bg {
+  fill: #1c1917;
+  stroke: #d45a5a;
+  stroke-width: 1.6;
+}
+
+.dot-stolen {
+  fill: #f7d4d4;
+}
+
+.lock-body {
+  fill: #3d5a73;
+  stroke: #e6c87a;
+  stroke-width: 1.3;
+}
+
+.lock-shackle {
+  fill: none;
+  stroke: #3d5a73;
+  stroke-width: 1.8;
+  stroke-linecap: round;
 }
 
 .line {
@@ -220,16 +269,11 @@ defineProps({
   stroke-linejoin: round;
 }
 
-.badge-text,
 .stamp-text,
 .zk {
   fill: #e6c87a;
   font-family: Georgia, 'Times New Roman', serif;
   font-weight: 700;
-}
-
-.badge-text {
-  font-size: 9px;
 }
 
 .stamp-text {
@@ -269,22 +313,6 @@ defineProps({
   stroke: #e8c7a8;
   stroke-width: 3.4;
   stroke-linecap: round;
-}
-
-.glasses {
-  fill: #1c1917;
-}
-
-.lens {
-  fill: rgba(214, 232, 242, 0.45);
-  stroke: #1c1917;
-  stroke-width: 1.4;
-}
-
-.shield {
-  fill: #9eb7c8;
-  stroke: #e6c87a;
-  stroke-width: 1.4;
 }
 
 @media (max-width: 520px) {

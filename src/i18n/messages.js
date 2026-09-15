@@ -45,7 +45,7 @@ export const messages = {
         date: 'Februari 2026',
         section: 'Cybersecurity',
         headline: 'Miljoenen Odido-klanten getroffen door grootschalige hack',
-        deck: 'Namen, adressen, rekeningnummers en documentnummers van identiteitsbewijzen op straat na weigering losgeld.',
+        deck: 'Medewerker voerde het wachtwoord in op een nagemaakte inlogpagina. Daarna lagen namen, adressen en rekeningnummers van miljoenen klanten op straat.',
       },
       rethinkTitle: 'Als je niet alles had laten zien, hadden ze niets gehad',
       rethink:
@@ -56,12 +56,12 @@ export const messages = {
       anotherWayTitle: 'Misschien is er een andere manier',
       anotherWay:
         'We moeten opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledge-proof (nulkennisbewijs) helpt daarbij.',
-      exampleTitle: 'Een alledaags voorbeeld',
+      exampleTitle: 'Je stuurt je wachtwoord mee',
       example:
-        'Bij de deur van een café hoeft de portier alleen te weten of je oud genoeg bent om binnen te mogen. Hij hoeft niet te weten wanneer je precies geboren bent, waar je woont, of andere gegevens op je ID.',
-      bridgeTitle: 'Ook digitaal',
+        'Om in te loggen stuur je je wachtwoord naar de website. Bij Odido tikte een medewerker het in op een nagemaakte pagina. Zodra het wachtwoord weg is, kan het gestolen worden.',
+      bridgeTitle: 'Wat als je het niet hoeft te sturen?',
       bridge:
-        'Dit kan ook digitaal: apps en websites kunnen een bewering controleren zonder jouw privégegevens te zien.',
+        'Je zou de dienst kunnen overtuigen dat je het wachtwoord kent, zonder het ooit te onthullen. Dat is precies wat een zero-knowledge-proof (nulkennisbewijs) doet.',
       rolesTitle: 'De rollen',
       rolesProver: '“Ik wil de getrokken kaart niet laten zien!”',
       rolesVerifier: '“En toch wil ik weten of de kaart rood is of niet!”',
@@ -258,12 +258,12 @@ export const messages = {
       anotherWayTitle: 'Maybe there is another way',
       anotherWay:
         'We need to rethink when we reveal something, what we reveal, and why. A zero-knowledge proof helps with this.',
-      exampleTitle: 'An everyday example',
+      exampleTitle: 'You send the password',
       example:
-        'At the door of a café, the bouncer only needs to know whether you are old enough to be admitted. He does not need to know your exact date of birth, where you live, or other details on your ID',
-      bridgeTitle: 'Digitally too',
+        'To log in, you send your password to the website. If that page is fake — or the service is later hacked — the secret is gone.',
+      bridgeTitle: 'What if you never sent it?',
       bridge:
-        'This also works digitally: apps and websites can check a claim without learning your private details.',
+        'You could convince the service that you know the password, without ever revealing it. That is what a zero-knowledge proof does.',
       rolesTitle: 'The roles',
       rolesProver: '“I do not want to show the card I drew!”',
       rolesVerifier: '“And yet I want to know whether the card is red or not!”',
@@ -461,12 +461,12 @@ export const messages = {
       anotherWayTitle: 'Vielleicht gibt es einen anderen Weg',
       anotherWay:
         'Wir müssen überdenken, wann wir etwas zeigen, was wir zeigen und warum. Ein Zero-Knowledge-Beweis hilft dabei.',
-      exampleTitle: 'Ein Alltagsbeispiel',
+      exampleTitle: 'Du schickst das Passwort mit',
       example:
-        'An der Tür eines Cafés muss der Türsteher lediglich wissen, ob Sie alt genug sind, um einzutreten. Er muss weder Ihr genaues Geburtsdatum noch Ihren Wohnort oder andere Details auf Ihrem Ausweis kennen.',
-      bridgeTitle: 'Auch digital',
+        'Zum Anmelden schickst du dein Passwort an die Website. Ist die Seite gefälscht — oder wird der Dienst später gehackt — ist das Geheimnis weg.',
+      bridgeTitle: 'Was, wenn du es nie schicken müsstest?',
       bridge:
-        'Das geht auch digital: Apps und Websites können eine Behauptung prüfen, ohne deine privaten Daten zu sehen.',
+        'Du könntest den Dienst überzeugen, dass du das Passwort kennst, ohne es je zu verraten. Genau das tut ein Zero-Knowledge-Beweis.',
       rolesTitle: 'Die Rollen',
       rolesProver: '“Ich will die gezogene Karte nicht zeigen!”',
       rolesVerifier: '“Und trotzdem will ich wissen, ob die Karte rot ist oder nicht!”',
@@ -664,12 +664,12 @@ export const messages = {
       anotherWayTitle: 'Peut-être y a-t-il une autre façon',
       anotherWay:
         'Il nous faut repenser le moment où nous montrons quelque chose, ce que nous montrons et pourquoi. Une preuve à divulgation nulle de connaissance nous y aide.',
-      exampleTitle: 'Un exemple du quotidien',
+      exampleTitle: 'Vous envoyez le mot de passe',
       example:
-        'À l`entrée d`un café, le videur a seulement besoin de savoir si vous avez l`âge légal pour entrer.Il n`a pas besoin de connaître votre date de naissance exacte, votre adresse ou d`autres informations figurant sur votre pièce d`identité.',
-      bridgeTitle: 'Aussi en numérique',
+        'Pour vous connecter, vous envoyez votre mot de passe au site. Si la page est une copie — ou si le service est piraté plus tard — le secret est parti.',
+      bridgeTitle: 'Et si vous ne l’envoyiez jamais ?',
       bridge:
-        'Cela fonctionne aussi en numérique : les apps et sites peuvent vérifier une affirmation sans apprendre vos données privées.',
+        'Vous pourriez convaincre le service que vous connaissez le mot de passe, sans jamais le révéler. C’est ce que fait une preuve à divulgation nulle de connaissance.',
       rolesTitle: 'Les rôles',
       rolesProver: '“Je ne veux pas montrer la carte que j’ai tirée !”',
       rolesVerifier: '“Et pourtant je veux savoir si la carte est rouge ou non !”',
