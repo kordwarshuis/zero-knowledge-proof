@@ -231,7 +231,9 @@ const welcomePage = computed(() => welcomePages.value[welcomeStep.value] ?? null
 const welcomeIsLast = computed(
   () => welcomeStep.value >= welcomePages.value.length - 1,
 )
-const showModalBack = computed(() => modalKind.value === 'welcome')
+const showModalBack = computed(
+  () => modalKind.value === 'welcome' && welcomeStep.value > 0,
+)
 const welcomeShowsRoles = computed(
   () => modalKind.value === 'welcome' && welcomePage.value?.kind === 'roles',
 )
