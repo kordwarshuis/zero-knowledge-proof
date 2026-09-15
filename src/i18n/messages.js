@@ -68,7 +68,7 @@ export const messages = {
       rolesVerifier: '“En toch wil ik weten of de kaart rood is of niet!”',
       cardsTitle: 'Eerst met speelkaarten',
       cards:
-        'Hoe bewijs je iets zonder het te laten zien? Dat oefenen we met acht speelkaarten: jij bewijst welke kleur jouw kaart heeft, zonder te laten zien welke kaart het is.',
+        'Hoe bewijs je iets zonder het te laten zien? Dat oefenen we met acht speelkaarten: jij bewijst welke kleur jouw kaart heeft, zonder te laten zien welke kaart het is. Dit kan ook met een volledig kaartspel.',
     },
     stepsLabel: 'Stappen van de demonstratie',
     steps: {
@@ -271,7 +271,7 @@ export const messages = {
       rolesVerifier: '“And yet I want to know whether the card is red or not!”',
       cardsTitle: 'First, with playing cards',
       cards:
-        'How do you prove something without showing it? We practise that with eight playing cards: you prove which colour your card is, without showing which card it is.',
+        'How do you prove something without showing it? We practise that with eight playing cards: you prove which colour your card is, without showing which card it is. This could also be done with a full deck of cards.',
     },
     stepsLabel: 'Demonstration steps',
     steps: {
@@ -475,7 +475,7 @@ export const messages = {
       rolesVerifier: '“Und trotzdem will ich wissen, ob die Karte rot ist oder nicht!”',
       cardsTitle: 'Zuerst mit Spielkarten',
       cards:
-        'Wie beweist man etwas, ohne es zu zeigen? Das üben wir mit acht Spielkarten: Du beweist, welche Farbe deine Karte hat, ohne zu zeigen, welche Karte es ist.',
+        'Wie beweist man etwas, ohne es zu zeigen? Das üben wir mit acht Spielkarten: Du beweist, welche Farbe deine Karte hat, ohne zu zeigen, welche Karte es ist. Das ginge auch mit einem vollständigen Kartenspiel.',
     },
     stepsLabel: 'Schritte der Demonstration',
     steps: {
@@ -679,7 +679,7 @@ export const messages = {
       rolesVerifier: '« Et pourtant je veux savoir si la carte est rouge ou non ! »',
       cardsTitle: 'D’abord, avec des cartes à jouer',
       cards:
-        'Comment prouver quelque chose sans le montrer ? Nous nous y exerçons avec huit cartes à jouer : vous prouvez la couleur de votre carte, sans montrer quelle carte c’est.',
+        'Comment prouver quelque chose sans le montrer ? Nous nous y exerçons avec huit cartes à jouer : vous prouvez la couleur de votre carte, sans montrer quelle carte c’est. Cela pourrait aussi se faire avec un jeu de cartes complet.',
     },
     stepsLabel: 'Étapes de la démonstration',
     steps: {
