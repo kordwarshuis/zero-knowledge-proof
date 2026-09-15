@@ -37,38 +37,38 @@ export const messages = {
       title: '“Ik heb niks te verbergen”',
       nothingTitle: '“Ik heb niks te verbergen”',
       nothing:
-        'Dat hoor je vaak. Het lijkt te kloppen; totdat je gegevens in verkeerde handen vallen.',
+        'Dat zeggen veel mensen over hun gegevens. Het klinkt logisch — tot alles wat je ooit hebt afgegeven ergens opduikt waar je het nooit wilde hebben.',
       sureTitle: 'Heb je echt niks te verbergen?',
       risk:
-        'Digitale identiteit wordt steeds vaker gehackt en misbruikt. Hackers krijgen vaak veel meer van jou te zien dan nodig is.',
+        'Elk bedrijf en elke instantie waar je iets invult, bewaart een kopie. Wordt zo’n partij gehackt, dan ligt in één klap alles op straat wat daar was opgeslagen.',
       newspaper: {
         masthead: 'Het Dagblad',
         date: 'Februari 2026',
         section: 'Cybersecurity',
         headline: 'Miljoenen Odido-klanten getroffen door grootschalige hack',
-        deck: 'Medewerker voerde het wachtwoord in op een nagemaakte inlogpagina. Daarna lagen namen, adressen en rekeningnummers van miljoenen klanten op straat.',
+        deck: 'Namen, adressen, geboortedata en rekeningnummers van ruim zes miljoen klanten op straat nadat het bedrijf weigerde losgeld te betalen.',
       },
       rethinkTitle: 'Als je niet alles had laten zien, hadden ze niets gehad',
       rethink:
-        'Namen, adressen, rekeningnummers, documentnummers: alles wat ooit is ingevuld, lag klaar voor de hackers.',
+        'Gegevens die je nooit hebt afgegeven, kunnen ook niet worden gestolen. Wat er lekte, was precies alles wat ooit was ingevuld.',
       noChoiceTitle: '“Maar ik heb geen keuze!”',
       noChoice:
-        'Banken, winkels, overheden en websites vragen vaak het hele ID, ook als ze maar één feit nodig hebben. Het voelt verplicht — alles invullen, of je komt niet verder.',
-      anotherWayTitle: 'Misschien is er een andere manier',
+        'Dat klopt vaak. Banken, winkels, overheden en websites vragen je hele identiteitsbewijs, terwijl ze maar één ding hoeven te weten. Alles invullen, of je komt niet verder.',
+      anotherWayTitle: 'Misschien kan het anders',
       anotherWay:
-        'We moeten opnieuw nadenken over wanneer we iets laten zien, wat we laten zien, en waarom. Een zero-knowledge-proof (nulkennisbewijs) helpt daarbij.',
-      exampleTitle: 'Je stuurt je wachtwoord mee',
+        'Wat als je alleen dat ene ding kon bewijzen, en verder niets prijsgaf? Dat is precies wat een zero-knowledge-proof (nulkennisbewijs) doet.',
+      exampleTitle: 'Nu: je geeft je wachtwoord weg',
       example:
-        'Om in te loggen stuur je je wachtwoord naar de website. Bij Odido tikte een medewerker het in op een nagemaakte pagina. Zodra het wachtwoord weg is, kan het gestolen worden.',
-      bridgeTitle: 'Wat als je het niet hoeft te sturen?',
+        'Bij het inloggen stuur je je wachtwoord naar de dienst; die moet het hebben om te controleren of het klopt. Is de inlogpagina nep, of wordt de dienst later gehackt, dan heeft een ander jouw wachtwoord.',
+      bridgeTitle: 'Beter: je bewijst dat je het kent',
       bridge:
-        'Je zou de dienst kunnen overtuigen dat je het wachtwoord kent, zonder het ooit te onthullen. Dat is precies wat een zero-knowledge-proof (nulkennisbewijs) doet.',
+        'Je kunt de dienst ook overtuigen dat je het wachtwoord kent zonder het te versturen. De dienst weet dan net zo zeker dat jij het bent, maar heeft je wachtwoord nooit gezien — er valt dus niets te stelen.',
       rolesTitle: 'De rollen',
       rolesProver: '“Ik wil de getrokken kaart niet laten zien!”',
       rolesVerifier: '“En toch wil ik weten of de kaart rood is of niet!”',
-      cardsTitle: 'Een voorbeeld',
+      cardsTitle: 'Eerst met speelkaarten',
       cards:
-        'We laten dat nu zien met speelkaarten. De bewijzer bewijst welke kleur zijn kaart heeft, zonder te laten zien welke kaart het is.',
+        'Hoe bewijs je iets zonder het te laten zien? Dat oefenen we met acht speelkaarten: jij bewijst welke kleur jouw kaart heeft, zonder te laten zien welke kaart het is.',
     },
     stepsLabel: 'Stappen van de demonstratie',
     steps: {
@@ -140,7 +140,7 @@ export const messages = {
     },
     narration: {
       intro:
-        'Een zero-knowledge-proof (nulkennisbewijs) laat je iemand overtuigen dat een stelling waar is, zonder verder iets te onthullen. Hier wil de bewijzer bewijzen welke kleur zijn kaart heeft — zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
+        'Met een zero-knowledge-proof (nulkennisbewijs) overtuig je iemand dat een stelling waar is, zonder verder iets te onthullen. Jij bent de bewijzer: je bewijst welke kleur jouw kaart heeft, zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
       inspect:
         'Voordat je een kaart trekt, bekijkt de controleur het hele spel: vier rode kaarten en vier zwarte. Jullie zijn het erover eens welke acht kaarten er zijn.',
       shuffling: 'De kaarten worden geschud en omgekeerd.',
@@ -240,38 +240,38 @@ export const messages = {
       title: '“I have nothing to hide”',
       nothingTitle: '“I have nothing to hide”',
       nothing:
-        'A familiar line about personal data. Showing everything feels harmless — until someone else gets a copy.',
+        'Many people say this about their personal data. It sounds reasonable — until everything you ever handed over turns up somewhere you never intended.',
       sureTitle: 'Do you really have nothing to hide?',
       risk:
-        'Digital identity is increasingly vulnerable to hacks and misuse. Hackers often see far more of you than was ever needed.',
+        'Every company and authority you fill a form in with keeps a copy. When one of them is hacked, everything they stored is out in the open at once.',
       newspaper: {
         masthead: 'The Gazette',
         date: 'September 2026',
         section: 'Cybersecurity',
         headline: 'IDScan breach puts 150M+ driver’s licences up for sale',
-        deck: 'High-resolution identity scans from shops and rental desks exposed after hackers hit a major verification firm.',
+        deck: 'Names, licence numbers and document scans of more than 150 million people offered for sale after a breach at an identity-verification company.',
       },
       rethinkTitle: 'If you had not shown everything, they would not have had anything',
       rethink:
-        'Names, addresses, account numbers, ID scans: everything that was ever collected was sitting there for the taking.',
+        'Data you never handed over cannot be stolen. What leaked was exactly everything that had ever been collected.',
       noChoiceTitle: '“But I have no choice!”',
       noChoice:
-        'Banks, shops, governments and websites often ask for the whole ID, even when they only need one fact. It feels mandatory — fill in everything, or you are stuck.',
+        'Often that is true. Banks, shops, governments and websites ask for your whole ID when they only need to know one thing. Fill in everything, or you cannot continue.',
       anotherWayTitle: 'Maybe there is another way',
       anotherWay:
-        'We need to rethink when we reveal something, what we reveal, and why. A zero-knowledge proof helps with this.',
-      exampleTitle: 'You send the password',
+        'What if you could prove just that one thing and reveal nothing else? That is exactly what a zero-knowledge proof does.',
+      exampleTitle: 'Now: you hand over your password',
       example:
-        'To log in, you send your password to the website. If that page is fake — or the service is later hacked — the secret is gone.',
-      bridgeTitle: 'What if you never sent it?',
+        'To log in, you send your password to the service, because it needs the password to check that it is right. If the login page is fake, or the service is hacked later, someone else has your password.',
+      bridgeTitle: 'Better: you prove you know it',
       bridge:
-        'You could convince the service that you know the password, without ever revealing it. That is what a zero-knowledge proof does.',
+        'You can also convince the service that you know the password without sending it. The service ends up just as certain that it is you, but it has never seen your password — so there is nothing to steal.',
       rolesTitle: 'The roles',
       rolesProver: '“I do not want to show the card I drew!”',
       rolesVerifier: '“And yet I want to know whether the card is red or not!”',
-      cardsTitle: 'An example',
+      cardsTitle: 'First, with playing cards',
       cards:
-        'Next we will show that with playing cards. The prover proves which colour his card is, without showing which card it is.',
+        'How do you prove something without showing it? We practise that with eight playing cards: you prove which colour your card is, without showing which card it is.',
     },
     stepsLabel: 'Demonstration steps',
     steps: {
@@ -344,7 +344,7 @@ export const messages = {
     },
     narration: {
       intro:
-        'A zero-knowledge-proof lets you convince someone a statement is true without revealing anything else. Here, the prover wants to prove which colour his card is — without showing which card it is. You can also try to lie, to see that cheating does not work.',
+        'A zero-knowledge proof lets you convince someone that a statement is true without revealing anything else. You are the prover: you prove which colour your card is, without showing which card it is. You can also try to lie, to see that cheating does not work.',
       inspect:
         'Before you draw a card, the verifier inspects the whole deck: four red cards and four black cards. Both of you agree on exactly which eight cards exist.',
       shuffling: 'The cards are shuffled and turned face down.',
@@ -444,38 +444,38 @@ export const messages = {
       title: '“Ich habe nichts zu verbergen”',
       nothingTitle: '“Ich habe nichts zu verbergen”',
       nothing:
-        'Das hört man oft. Es scheint zuzutreffen; bis Ihre Daten in die falschen Hände geraten.',
+        'Das sagen viele über ihre Daten. Es klingt einleuchtend — bis alles, was du je angegeben hast, irgendwo auftaucht, wo du es nie haben wolltest.',
       sureTitle: 'Hast du wirklich nichts zu verbergen?',
       risk:
-        'Digitale Identität wird immer häufiger gehackt und missbraucht. Hacker sehen oft weit mehr von dir, als jemals nötig war.',
+        'Jede Firma und jede Behörde, bei der du etwas ausfüllst, behält eine Kopie. Wird eine davon gehackt, liegt auf einen Schlag alles offen, was dort gespeichert war.',
       newspaper: {
         masthead: 'Die Zeitung',
         date: 'März 2026',
         section: 'Cybersicherheit',
         headline: 'Datenleck bei Identitätsfirma: Millionen Ausweis-Scans im Umlauf',
-        deck: 'Namen, Adressen und Ausweisnummern nach Angriff auf einen großen Verifizierungsdienst preisgegeben.',
+        deck: 'Namen, Adressen und Ausweisnummern von Millionen Menschen im Umlauf, nachdem ein großer Verifizierungsdienst angegriffen wurde.',
       },
       rethinkTitle: 'Hättest du nicht alles gezeigt, hätten sie nichts gehabt',
       rethink:
-        'Namen, Adressen, Kontonummern, Ausweis-Scans: alles, was je gesammelt wurde, lag bereit.',
+        'Daten, die du nie herausgegeben hast, kann auch niemand stehlen. Geleakt wurde genau das, was über die Jahre gesammelt worden war.',
       noChoiceTitle: '“Aber ich habe keine Wahl!”',
       noChoice:
-        'Banken, Läden, Behörden und Websites verlangen oft den ganzen Ausweis, auch wenn sie nur eine Tatsache brauchen. Es fühlt sich zwingend an — alles ausfüllen, oder du kommst nicht weiter.',
-      anotherWayTitle: 'Vielleicht gibt es einen anderen Weg',
+        'Oft stimmt das. Banken, Läden, Behörden und Websites verlangen den ganzen Ausweis, obwohl sie nur eine einzige Sache wissen müssen. Alles ausfüllen, oder du kommst nicht weiter.',
+      anotherWayTitle: 'Vielleicht geht es auch anders',
       anotherWay:
-        'Wir müssen überdenken, wann wir etwas zeigen, was wir zeigen und warum. Ein Zero-Knowledge-Beweis hilft dabei.',
-      exampleTitle: 'Du schickst das Passwort mit',
+        'Was, wenn du nur diese eine Sache beweisen könntest und sonst nichts preisgibst? Genau das tut ein Zero-Knowledge-Beweis.',
+      exampleTitle: 'Jetzt: du gibst dein Passwort her',
       example:
-        'Zum Anmelden schickst du dein Passwort an die Website. Ist die Seite gefälscht — oder wird der Dienst später gehackt — ist das Geheimnis weg.',
-      bridgeTitle: 'Was, wenn du es nie schicken müsstest?',
+        'Zum Anmelden schickst du dein Passwort an den Dienst, denn er braucht es, um es zu prüfen. Ist die Anmeldeseite gefälscht oder wird der Dienst später gehackt, hat jemand anderes dein Passwort.',
+      bridgeTitle: 'Besser: du beweist, dass du es kennst',
       bridge:
-        'Du könntest den Dienst überzeugen, dass du das Passwort kennst, ohne es je zu verraten. Genau das tut ein Zero-Knowledge-Beweis.',
+        'Du kannst den Dienst auch überzeugen, dass du das Passwort kennst, ohne es zu schicken. Der Dienst ist danach genauso sicher, dass du es bist, hat dein Passwort aber nie gesehen — es gibt also nichts zu stehlen.',
       rolesTitle: 'Die Rollen',
       rolesProver: '“Ich will die gezogene Karte nicht zeigen!”',
       rolesVerifier: '“Und trotzdem will ich wissen, ob die Karte rot ist oder nicht!”',
-      cardsTitle: 'Ein Beispiel',
+      cardsTitle: 'Zuerst mit Spielkarten',
       cards:
-        'Als Nächstes zeigen wir das mit Spielkarten. Der Beweisführer beweist, welche Farbe seine Karte hat, ohne zu zeigen, welche Karte es ist.',
+        'Wie beweist man etwas, ohne es zu zeigen? Das üben wir mit acht Spielkarten: Du beweist, welche Farbe deine Karte hat, ohne zu zeigen, welche Karte es ist.',
     },
     stepsLabel: 'Schritte der Demonstration',
     steps: {
@@ -548,7 +548,7 @@ export const messages = {
     },
     narration: {
       intro:
-        'Ein Zero-Knowledge-Beweis lässt dich jemanden überzeugen, dass eine Aussage wahr ist, ohne etwas anderes zu verraten. Hier will der Beweisführer beweisen, welche Farbe seine Karte hat — ohne zu zeigen, welche Karte es ist. Du kannst auch versuchen zu lügen, um zu sehen, dass Betrug nicht funktioniert.',
+        'Mit einem Zero-Knowledge-Beweis überzeugst du jemanden, dass eine Aussage wahr ist, ohne sonst etwas zu verraten. Du bist der Beweisführer: Du beweist, welche Farbe deine Karte hat, ohne zu zeigen, welche Karte es ist. Du kannst auch versuchen zu lügen, um zu sehen, dass Betrug nicht funktioniert.',
       inspect:
         'Bevor du eine Karte ziehst, prüft der Prüfer das ganze Spiel: vier rote und vier schwarze Karten. Ihr seid euch einig, welche acht Karten es gibt.',
       shuffling: 'Die Karten werden gemischt und umgedreht.',
@@ -648,38 +648,38 @@ export const messages = {
       title: '« Je n’ai rien à cacher »',
       nothingTitle: '« Je n’ai rien à cacher »',
       nothing:
-        'On l`entend souvent.Cela semble vrai; jusqu`à ce que vos données tombent entre de mauvaises mains.',
+        'Beaucoup de gens le disent de leurs données. Cela semble raisonnable — jusqu’au jour où tout ce que vous avez fourni réapparaît là où vous ne l’avez jamais voulu.',
       sureTitle: 'Vous n’avez vraiment rien à cacher ?',
       risk:
-        'L’identité numérique est de plus en plus piratée et détournée. Les pirates voient souvent bien plus de vous que nécessaire.',
+        'Chaque entreprise et chaque administration où vous remplissez un formulaire en garde une copie. Si l’une d’elles est piratée, tout ce qu’elle stockait se retrouve dans la nature d’un seul coup.',
       newspaper: {
         masthead: 'La Gazette',
         date: 'Avril 2026',
         section: 'Cybersécurité',
         headline: 'Fuite massive : des millions de scans d’identité en vente',
-        deck: 'Noms, adresses et numéros de pièces d’identité exposés après une attaque contre un grand service de vérification.',
+        deck: 'Noms, adresses et numéros de pièces d’identité de millions de personnes mis en vente après une attaque contre un grand service de vérification.',
       },
       rethinkTitle: 'Si vous n’aviez pas tout montré, ils n’auraient rien eu',
       rethink:
-        'Noms, adresses, numéros de compte, scans d’identité : tout ce qui avait été collecté était là, prêt à être pris.',
+        'Les données que vous n’avez jamais fournies ne peuvent pas être volées. Ce qui a fuité, c’est exactement tout ce qui avait été collecté.',
       noChoiceTitle: '« Mais je n’ai pas le choix ! »',
       noChoice:
-        'Banques, commerces, administrations et sites demandent souvent toute la pièce d’identité, même s’ils n’ont besoin que d’un fait. Ça paraît obligatoire — tout remplir, ou vous restez bloqué.',
-      anotherWayTitle: 'Peut-être y a-t-il une autre façon',
+        'C’est souvent vrai. Banques, commerces, administrations et sites demandent toute la pièce d’identité alors qu’ils n’ont besoin de savoir qu’une seule chose. Tout remplir, ou vous restez bloqué.',
+      anotherWayTitle: 'Il existe peut-être une autre façon',
       anotherWay:
-        'Il nous faut repenser le moment où nous montrons quelque chose, ce que nous montrons et pourquoi. Une preuve à divulgation nulle de connaissance nous y aide.',
-      exampleTitle: 'Vous envoyez le mot de passe',
+        'Et si vous pouviez prouver cette seule chose sans rien révéler d’autre ? C’est exactement ce que fait une preuve à divulgation nulle de connaissance.',
+      exampleTitle: 'Aujourd’hui : vous livrez votre mot de passe',
       example:
-        'Pour vous connecter, vous envoyez votre mot de passe au site. Si la page est une copie — ou si le service est piraté plus tard — le secret est parti.',
-      bridgeTitle: 'Et si vous ne l’envoyiez jamais ?',
+        'Pour vous connecter, vous envoyez votre mot de passe au service, car il lui faut le mot de passe pour le vérifier. Si la page de connexion est une copie, ou si le service est piraté plus tard, quelqu’un d’autre a votre mot de passe.',
+      bridgeTitle: 'Mieux : vous prouvez que vous le connaissez',
       bridge:
-        'Vous pourriez convaincre le service que vous connaissez le mot de passe, sans jamais le révéler. C’est ce que fait une preuve à divulgation nulle de connaissance.',
+        'Vous pouvez aussi convaincre le service que vous connaissez le mot de passe sans l’envoyer. Le service est tout aussi certain que c’est bien vous, mais il n’a jamais vu votre mot de passe — il n’y a donc rien à voler.',
       rolesTitle: 'Les rôles',
-      rolesProver: '“Je ne veux pas montrer la carte que j’ai tirée !”',
-      rolesVerifier: '“Et pourtant je veux savoir si la carte est rouge ou non !”',
-      cardsTitle: 'Un exemple',
+      rolesProver: '« Je ne veux pas montrer la carte que j’ai tirée ! »',
+      rolesVerifier: '« Et pourtant je veux savoir si la carte est rouge ou non ! »',
+      cardsTitle: 'D’abord, avec des cartes à jouer',
       cards:
-        'Nous allons maintenant le montrer avec des cartes à jouer. Le prouveur prouve la couleur de sa carte, sans montrer quelle carte c’est.',
+        'Comment prouver quelque chose sans le montrer ? Nous nous y exerçons avec huit cartes à jouer : vous prouvez la couleur de votre carte, sans montrer quelle carte c’est.',
     },
     stepsLabel: 'Étapes de la démonstration',
     steps: {
@@ -717,42 +717,42 @@ export const messages = {
     watchCards: 'Regardez les cartes…',
     faceDownCard: 'Une carte à jouer face cachée',
     personA: {
-      intro: '“Je tire une carte que moi seul peux voir.”',
-      inspect: '“Je vois aussi le jeu — rien n’est encore caché.”',
-      shuffled: '“Les cartes sont face cachée. J’en tire une au hasard.”',
-      drawing: '“La carte passe derrière le paravent…”',
-      drawn: '“J’ai tiré {card}. Le vérificateur ne peut pas la voir.”',
-      sorting: '“Je regarde les cartes restantes en privé.”',
+      intro: '« Je tire une carte que moi seul peux voir. »',
+      inspect: '« Je vois aussi le jeu — rien n’est encore caché. »',
+      shuffled: '« Les cartes sont face cachée. J’en tire une au hasard. »',
+      drawing: '« La carte passe derrière le paravent… »',
+      drawn: '« J’ai tiré {card}. Le vérificateur ne peut pas la voir. »',
+      sorting: '« Je regarde les cartes restantes en privé. »',
       proving:
-        '“Je montre au vérificateur les quatre {otherCards}. Je garde les {claimCards} cachées.”',
+        '« Je montre au vérificateur les quatre {otherCards}. Je garde les {claimCards} cachées. »',
       provingCheat:
-        '“J’affirme avoir une {claimCard}. J’essaie de montrer les quatre {otherCards}…”',
+        '« J’affirme avoir une {claimCard}. J’essaie de montrer les quatre {otherCards}… »',
       result:
-        '“Le vérificateur n’avait besoin que de la couleur. Il la connaît maintenant : {ownColor}. Quelle {ownCard} j’ai reste cachée.”',
+        '« Le vérificateur n’avait besoin que de la couleur. Il la connaît maintenant : {ownColor}. Quelle {ownCard} j’ai reste cachée. »',
       resultCheat:
-        '“La triche a échoué. Je n’ai pas pu montrer quatre {otherCards}, parce que je tiens une {ownCard}.”',
+        '« La triche a échoué. Je n’ai pas pu montrer quatre {otherCards}, parce que je tiens une {ownCard}. »',
     },
     personB: {
-      intro: '“Je dois être convaincu de la couleur de votre carte.”',
-      inspect: '“Quatre rouges, quatre noires. J’ai vu chaque carte de ce jeu.”',
-      shuffling: '“Je ne connais plus l’ordre.”',
+      intro: '« Je dois être convaincu de la couleur de votre carte. »',
+      inspect: '« Quatre rouges, quatre noires. J’ai vu chaque carte de ce jeu. »',
+      shuffling: '« Je ne connais plus l’ordre. »',
       shuffled:
-        '“Les mêmes huit cartes, maintenant face cachée. Je ne sais pas laquelle est laquelle.”',
+        '« Les mêmes huit cartes, maintenant face cachée. Je ne sais pas laquelle est laquelle. »',
       drawn:
-        '“Le prouveur tient une carte. Je ne peux pas la voir. Elle peut être rouge ou noire.”',
+        '« Le prouveur tient une carte. Je ne peux pas la voir. Elle peut être rouge ou noire. »',
       sorting:
-        '“Le prouveur regarde le reste. Le paravent bloque ma vue.”',
-      provingWait: '“J’attends de voir des cartes…”',
-      provingOne: '“On m’a montré 1 {otherCard} jusqu’ici.”',
-      provingMany: '“On m’a montré {count} {otherCards} jusqu’ici.”',
+        '« Le prouveur regarde le reste. Le paravent bloque ma vue. »',
+      provingWait: '« J’attends de voir des cartes… »',
+      provingOne: '« On m’a montré 1 {otherCard} jusqu’ici. »',
+      provingMany: '« On m’a montré {count} {otherCards} jusqu’ici. »',
       result:
-        '“Je n’avais besoin que de la couleur. Je la connais maintenant : {claimColor}. Je ne sais toujours pas laquelle des quatre {claimCards} c’est.”',
+        '« Je n’avais besoin que de la couleur. Je la connais maintenant : {claimColor}. Je ne sais toujours pas laquelle des quatre {claimCards} c’est. »',
       resultCheat:
-        '“Seules trois {otherCards} ont été montrées. Il en manque une. Je n’accepte pas l’affirmation.”',
+        '« Seules trois {otherCards} ont été montrées. Il en manque une. Je n’accepte pas l’affirmation. »',
     },
     narration: {
       intro:
-        'Une preuve à divulgation nulle de connaissance permet de convaincre quelqu’un qu’une affirmation est vraie sans rien révéler d’autre. Ici, le prouveur veut prouver la couleur de sa carte — sans montrer quelle carte c’est. Vous pouvez aussi essayer de mentir, pour voir que la triche ne marche pas.',
+        'Une preuve à divulgation nulle de connaissance permet de convaincre quelqu’un qu’une affirmation est vraie sans rien révéler d’autre. Vous êtes le prouveur : vous prouvez la couleur de votre carte, sans montrer quelle carte c’est. Vous pouvez aussi essayer de mentir, pour voir que la triche ne marche pas.',
       inspect:
         'Avant de tirer une carte, le vérificateur inspecte tout le jeu : quatre cartes rouges et quatre noires. Vous êtes d’accord sur les huit cartes présentes.',
       shuffling: 'Les cartes sont mélangées et retournées face cachée.',
