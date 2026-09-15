@@ -245,7 +245,6 @@ const modalTitle = computed(() => {
   if (modalKind.value === 'welcome' && welcomePage.value) {
     return t(welcomePage.value.titleKey)
   }
-  if (modalKind.value === 'drawn') return t('steps.draw')
   if (modalKind.value === 'result') {
     return proofSucceeded.value ? t('resultKnownTitle') : t('steps.result')
   }
@@ -329,7 +328,7 @@ const modalConfirmLabel = computed(() => {
   if (modalKind.value === 'welcome') {
     return welcomeIsLast.value ? t('modalGotIt') : t('modalContinue')
   }
-  if (['result', 'drawn'].includes(modalKind.value)) return t('modalGotIt')
+  if (modalKind.value === 'result') return t('modalGotIt')
   return t('modalContinue')
 })
 
@@ -552,11 +551,6 @@ watch(modalOpen, async (open) => {
 watch(step, (next, prev) => {
   clearAutoModalTimer()
   if (modalOpen.value) return
-
-  if (next === 'drawn' && prev !== 'drawn') {
-    scheduleAutoModal('drawn', t('narration.drawn', colorVars.value))
-    return
-  }
 
   if (next === 'result' && prev !== 'result') {
     scheduleAutoModal('result', resultModalBody)

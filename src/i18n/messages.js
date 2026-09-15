@@ -148,8 +148,6 @@ export const messages = {
         'Jij bent de bewijzer. Trek een willekeurige kaart. De controleur mag die niet zien.',
       drawing:
         'De kaart schuift achter het privéscherm. Alleen jij ziet de voorkant.',
-      drawn:
-        'Je hebt een {ownCard}. Bewijs het!',
       sorting:
         'Je bekijkt de overgebleven zeven kaarten in het privé. De controleur ziet hun voorkant nog steeds niet.',
       proving:
@@ -352,8 +350,6 @@ export const messages = {
         'You are the prover. Draw a random card. The verifier will not be allowed to see it.',
       drawing:
         'The card slides behind the privacy screen. Only you will see its face.',
-      drawn:
-        'You have a {ownCard}. Prove it!',
       sorting:
         'You look at the remaining seven cards in private. The verifier still cannot see their faces.',
       proving:
@@ -556,8 +552,6 @@ export const messages = {
         'Du bist der Beweisführer. Ziehe eine zufällige Karte. Der Prüfer darf sie nicht sehen.',
       drawing:
         'Die Karte gleitet hinter den Sichtschutz. Nur du siehst die Vorderseite.',
-      drawn:
-        'Du hast eine {ownCard}. Beweise es!',
       sorting:
         'Du betrachtest die übrigen sieben Karten privat. Der Prüfer sieht ihre Vorderseiten weiterhin nicht.',
       proving:
@@ -760,8 +754,6 @@ export const messages = {
         'Vous êtes le prouveur. Tirez une carte au hasard. Le vérificateur ne pourra pas la voir.',
       drawing:
         'La carte glisse derrière le paravent. Vous seul verrez sa face.',
-      drawn:
-        'Vous avez une {ownCard}. Prouvez-le !',
       sorting:
         'Vous regardez les sept cartes restantes en privé. Le vérificateur ne voit toujours pas leurs faces.',
       proving:
