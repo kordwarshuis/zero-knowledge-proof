@@ -1773,6 +1773,8 @@ h1 {
 }
 
 .welcome-copy {
+  display: grid;
+  gap: 12px;
   min-width: 0;
   flex: 1;
 }
