@@ -1973,17 +1973,21 @@ h1 {
 
 .modal-actions {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 
-.modal-actions .action {
-  flex: 1;
-  min-width: 0;
+.action.modal-back {
+  flex: 0 0 auto;
+  padding: 7px 12px;
+  font-size: 0.82rem;
 }
 
 .modal-confirm {
+  flex: 1;
   display: block;
   width: 100%;
+  min-width: 0;
 }
 
 .space-hint {
