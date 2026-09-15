@@ -41,6 +41,7 @@ const modalOpen = ref(false)
 const modalKind = ref(null)
 const pendingAction = ref(null)
 const modalCloseBtn = ref(null)
+const modalDialog = ref(null)
 let autoModalTimer = null
 
 const AUTO_MODAL_DELAY_MS = 2000
@@ -230,6 +231,7 @@ const welcomePage = computed(() => welcomePages.value[welcomeStep.value] ?? null
 const welcomeIsLast = computed(
   () => welcomeStep.value >= welcomePages.value.length - 1,
 )
+const showModalBack = computed(() => modalKind.value === 'welcome')
 const welcomeShowsRoles = computed(
   () => modalKind.value === 'welcome' && welcomePage.value?.kind === 'roles',
 )
@@ -432,10 +434,25 @@ function dismissModal() {
   if (typeof next === 'function') next()
 }
 
+function focusModalConfirm() {
+  modalDialog.value?.scrollTo({ top: 0 })
+  modalCloseBtn.value?.focus()
+}
+
+function goBackModal() {
+  if (modalKind.value !== 'welcome') return
+  if (welcomeStep.value > 0) {
+    welcomeStep.value -= 1
+    nextTick(focusModalConfirm)
+    return
+  }
+  dismissModal()
+}
+
 function confirmModal() {
   if (modalKind.value === 'welcome' && !welcomeIsLast.value) {
     welcomeStep.value += 1
-    nextTick(() => modalCloseBtn.value?.focus())
+    nextTick(focusModalConfirm)
     return
   }
   dismissModal()
@@ -448,8 +465,8 @@ function onKeydown(event) {
   if (event.key === 'Escape') {
     if (modalOpen.value) {
       event.preventDefault()
-      if (modalKind.value === 'welcome' && !welcomeIsLast.value) {
-        confirmModal()
+      if (modalKind.value === 'welcome') {
+        goBackModal()
         return
       }
       dismissModal()
@@ -775,6 +792,7 @@ onUnmounted(() => {
             @click="confirmModal"
           ></div>
           <div
+            ref="modalDialog"
             class="modal-dialog"
             role="dialog"
             aria-modal="true"
@@ -845,14 +863,24 @@ onUnmounted(() => {
                 </template>
               </template>
             </div>
-            <button
-              ref="modalCloseBtn"
-              class="action modal-confirm"
-              type="button"
-              @click="confirmModal"
-            >
-              {{ modalConfirmLabel }}
-            </button>
+            <div class="modal-actions">
+              <button
+                v-if="showModalBack"
+                class="action action-secondary modal-back"
+                type="button"
+                @click="goBackModal"
+              >
+                {{ t('modalBack') }}
+              </button>
+              <button
+                ref="modalCloseBtn"
+                class="action modal-confirm"
+                type="button"
+                @click="confirmModal"
+              >
+                {{ modalConfirmLabel }}
+              </button>
+            </div>
             <p
               v-if="modalKind === 'welcome' && welcomeStep === 0"
               class="space-hint"
@@ -1941,6 +1969,16 @@ h1 {
 .modal-lang button:focus-visible {
   outline: 2px solid #f7f1e6;
   outline-offset: 2px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-actions .action {
+  flex: 1;
+  min-width: 0;
 }
 
 .modal-confirm {
