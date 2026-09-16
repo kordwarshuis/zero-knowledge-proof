@@ -68,7 +68,7 @@ export const messages = {
       rolesVerifier: '“En toch wil ik weten of de kaart rood is of niet!”',
       cardsTitle: 'Eerst met speelkaarten',
       cards:
-        'Hoe bewijs je iets zonder het te laten zien? Dat oefenen we met acht speelkaarten: jij bewijst welke kleur jouw kaart heeft, zonder te laten zien welke kaart het is. Dit kan ook met een volledig kaartspel.',
+        'Hoe bewijs je iets zonder het te laten zien? Dat oefenen we met acht speelkaarten: jij bewijst welke kleur jouw kaart heeft, zonder te laten zien welke kaart het is. (Dit kan ook met een volledig kaartspel).',
     },
     stepsLabel: 'Stappen van de demonstratie',
     steps: {
@@ -161,7 +161,7 @@ export const messages = {
     },
     actions: {
       begin: 'Laat de controleur het spel zien',
-      shuffle: 'Schudden en omdraaien',
+      shuffle: 'Schud de kaarten en draai ze om',
       draw: 'Trek een willekeurige kaart',
       prove: 'Bewijs dat ik een {ownCard} heb',
       cheat: 'Probeer te liegen ({claimCard})',
@@ -269,7 +269,7 @@ export const messages = {
       rolesVerifier: '“And yet I want to know whether the card is red or not!”',
       cardsTitle: 'First, with playing cards',
       cards:
-        'How do you prove something without showing it? We practise that with eight playing cards: you prove which colour your card is, without showing which card it is. This could also be done with a full deck of cards.',
+        'How do you prove something without showing it? We practise that with eight playing cards: you prove which colour your card is, without showing which card it is. (This could also be done with a full deck of cards).',
     },
     stepsLabel: 'Demonstration steps',
     steps: {
@@ -363,7 +363,7 @@ export const messages = {
     },
     actions: {
       begin: 'Show the verifier the deck',
-      shuffle: 'Shuffle and turn face down',
+      shuffle: 'Shuffle the cards and turn them over',
       draw: 'Draw a random card',
       prove: 'Prove I have a {ownCard}',
       cheat: 'Try to cheat ({claimCard})',
@@ -471,7 +471,7 @@ export const messages = {
       rolesVerifier: '“Und trotzdem will ich wissen, ob die Karte rot ist oder nicht!”',
       cardsTitle: 'Zuerst mit Spielkarten',
       cards:
-        'Wie beweist man etwas, ohne es zu zeigen? Das üben wir mit acht Spielkarten: Du beweist, welche Farbe deine Karte hat, ohne zu zeigen, welche Karte es ist. Das ginge auch mit einem vollständigen Kartenspiel.',
+        'Wie beweist man etwas, ohne es zu zeigen? Das üben wir mit acht Spielkarten: Du beweist, welche Farbe deine Karte hat, ohne zu zeigen, welche Karte es ist. (Das ginge auch mit einem vollständigen Kartenspiel).',
     },
     stepsLabel: 'Schritte der Demonstration',
     steps: {
@@ -565,7 +565,7 @@ export const messages = {
     },
     actions: {
       begin: 'Zeig dem Prüfer das Spiel',
-      shuffle: 'Mischen und umdrehen',
+      shuffle: 'Mischt die Karten und dreht sie um',
       draw: 'Eine zufällige Karte ziehen',
       prove: 'Beweise, dass ich eine {ownCard} habe',
       cheat: 'Versuch zu lügen ({claimCard})',
@@ -673,7 +673,7 @@ export const messages = {
       rolesVerifier: '« Et pourtant je veux savoir si la carte est rouge ou non ! »',
       cardsTitle: 'D’abord, avec des cartes à jouer',
       cards:
-        'Comment prouver quelque chose sans le montrer ? Nous nous y exerçons avec huit cartes à jouer : vous prouvez la couleur de votre carte, sans montrer quelle carte c’est. Cela pourrait aussi se faire avec un jeu de cartes complet.',
+        'Comment prouver quelque chose sans le montrer ? Nous nous y exerçons avec huit cartes à jouer : vous prouvez la couleur de votre carte, sans montrer quelle carte c’est. (Cela pourrait aussi se faire avec un jeu de cartes complet).',
     },
     stepsLabel: 'Étapes de la démonstration',
     steps: {
@@ -767,7 +767,7 @@ export const messages = {
     },
     actions: {
       begin: 'Montrer le jeu au vérificateur',
-      shuffle: 'Mélanger et retourner',
+      shuffle: 'Mélangez les cartes et retournez-les',
       draw: 'Tirer une carte au hasard',
       prove: 'Prouver que j’ai une {ownCard}',
       cheat: 'Essayer de tricher ({claimCard})',
