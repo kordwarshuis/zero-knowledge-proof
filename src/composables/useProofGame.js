@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue'
-import { cloneDeck, shuffle, wait } from '../data/deck.js'
+import { byColorThenRank, byRank, cloneDeck, shuffle, wait } from '../data/deck.js'
 
 function slot(x, y, extras = {}) {
   return {
@@ -102,8 +102,8 @@ export function useProofGame() {
     }
 
     if (current === 'inspect') {
-      const reds = list.filter((card) => card.color === 'red')
-      const blacks = list.filter((card) => card.color === 'black')
+      const reds = list.filter((card) => card.color === 'red').sort(byRank)
+      const blacks = list.filter((card) => card.color === 'black').sort(byRank)
       reds.forEach((card, i) => {
         map[card.id] = slot(
           narrow ? 20 + i * 21 : 52 + i * 11.5,
@@ -167,7 +167,7 @@ export function useProofGame() {
     const showPrivateFaces =
       current === 'sorting' || current === 'proving' || current === 'result'
 
-    remaining.value.forEach((card, i) => {
+    remaining.value.slice().sort(byColorThenRank).forEach((card, i) => {
       if (narrow) {
         map[card.id] = slot(22 + (i % 4) * 20, 62 + Math.floor(i / 4) * 12, {
           rot: -10 + i * 3,
@@ -261,9 +261,9 @@ export function useProofGame() {
     // Honest claim: show all four of the opposite colour.
     // False claim: try the same protocol for the lie — only three cards are left.
     const needed = opposite(claim)
-    const toShow = cards.value.filter(
-      (card) => card.color === needed && card.id !== handId.value,
-    )
+    const toShow = cards.value
+      .filter((card) => card.color === needed && card.id !== handId.value)
+      .sort(byRank)
 
     for (const card of toShow) {
       await wait(520)

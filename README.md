@@ -1,12 +1,12 @@
 # “I have nothing to hide” — Zero-knowledge-proof
 
-An interactive Vue.js demonstration that starts from the familiar line “I have nothing to hide”, then shows why showing less matters — with a simplified zero-knowledge-proof using four red cards and four black cards. Available in Dutch, English, German, and French.
+An interactive Vue.js demonstration that starts from the familiar line “I have nothing to hide”, then shows why showing less matters — with a simplified zero-knowledge-proof using hearts 1–4 and spades 1–4. Available in Dutch, English, German, and French.
 
 You are **the prover**. You draw a random card that only you can see. Then you convince **the verifier** of the card's colour — without showing it, and without revealing which card of that colour it is. You can also try to cheat, to see that a false claim fails.
 
 ## How the proof works
 
-1. The verifier inspects the whole deck first: four red, four black.
+1. The verifier inspects the whole deck first: hearts 1 through 4 and spades 1 through 4.
 2. The cards are shuffled face down. You draw one at random behind a privacy screen.
 3. To prove the hidden card's colour honestly, you show the verifier **all four cards of the other colour**. Drew red? Show the four blacks. Drew black? Show the four reds.
 4. Since all four cards of the other colour are accounted for, the hidden card must be the remaining colour. The three leftover cards of your own colour stay hidden, so the verifier never learns *which* card you hold.

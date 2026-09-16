@@ -6,14 +6,14 @@ export const SUITS = {
 }
 
 export const FULL_DECK = [
-  { id: 'AH', rank: 'A', suit: 'hearts' },
-  { id: 'KH', rank: 'K', suit: 'hearts' },
-  { id: 'AD', rank: 'A', suit: 'diamonds' },
-  { id: 'KD', rank: 'K', suit: 'diamonds' },
-  { id: 'AS', rank: 'A', suit: 'spades' },
-  { id: 'KS', rank: 'K', suit: 'spades' },
-  { id: 'AC', rank: 'A', suit: 'clubs' },
-  { id: 'KC', rank: 'K', suit: 'clubs' },
+  { id: '1H', rank: '1', suit: 'hearts' },
+  { id: '2H', rank: '2', suit: 'hearts' },
+  { id: '3H', rank: '3', suit: 'hearts' },
+  { id: '4H', rank: '4', suit: 'hearts' },
+  { id: '1S', rank: '1', suit: 'spades' },
+  { id: '2S', rank: '2', suit: 'spades' },
+  { id: '3S', rank: '3', suit: 'spades' },
+  { id: '4S', rank: '4', suit: 'spades' },
 ].map((card) => ({
   ...card,
   color: SUITS[card.suit].color,
@@ -22,6 +22,15 @@ export const FULL_DECK = [
 
 export function cloneDeck() {
   return FULL_DECK.map((card) => ({ ...card }))
+}
+
+export function byRank(a, b) {
+  return Number(a.rank) - Number(b.rank)
+}
+
+export function byColorThenRank(a, b) {
+  if (a.color !== b.color) return a.color === 'red' ? -1 : 1
+  return byRank(a, b)
 }
 
 export function shuffle(list) {

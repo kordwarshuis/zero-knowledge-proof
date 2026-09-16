@@ -123,7 +123,8 @@ export const messages = {
     },
     personB: {
       intro: '“Ik moet overtuigd raken van de kleur van jouw kaart.”',
-      inspect: '“Vier rood, vier zwart. Ik heb elke kaart in dit spel gezien.”',
+      inspect:
+        '“Harten 1 tot en met 4, schoppen 1 tot en met 4. Ik heb elke kaart in dit spel gezien.”',
       shuffling: '“Ik ken de volgorde niet meer.”',
       shuffled:
         '“Dezelfde acht kaarten, nu achterkant boven. Ik weet niet welke waar ligt.”',
@@ -142,7 +143,7 @@ export const messages = {
       intro:
         'Met een zero-knowledge-proof (nulkennisbewijs) overtuig je iemand dat een stelling waar is, zonder verder iets te onthullen. Jij bent de bewijzer: je bewijst welke kleur jouw kaart heeft, zonder te laten zien welke kaart het is. Je kunt ook proberen te liegen, om te zien dat bedrog niet werkt.',
       inspect:
-        'Voordat je een kaart trekt, bekijkt de controleur het hele spel: vier rode kaarten en vier zwarte. Jullie zijn het erover eens welke acht kaarten er zijn.',
+        'Voordat je een kaart trekt, bekijkt de controleur het hele spel: harten 1 tot en met 4 en schoppen 1 tot en met 4 — vier rood, vier zwart. Jullie zijn het erover eens welke acht kaarten er zijn.',
       shuffling: 'De kaarten worden geschud en omgekeerd.',
       shuffled:
         'Jij bent de bewijzer. Trek een willekeurige kaart. De controleur mag die niet zien.',
@@ -190,8 +191,10 @@ export const messages = {
       black: 'zwarte kaarten',
     },
     ranks: {
-      A: 'Aas',
-      K: 'Heer',
+      1: '1',
+      2: '2',
+      3: '3',
+      4: '4',
     },
     suits: {
       hearts: 'harten',
@@ -324,7 +327,8 @@ export const messages = {
     },
     personB: {
       intro: '“I need to be convinced about the colour of your card.”',
-      inspect: '“Four red, four black. I have seen every card in this deck.”',
+      inspect:
+        '“Hearts 1 through 4, spades 1 through 4. I have seen every card in this deck.”',
       shuffling: '“I no longer know the order.”',
       shuffled:
         '“Same eight cards, now face down. I do not know which is which.”',
@@ -344,7 +348,7 @@ export const messages = {
       intro:
         'A zero-knowledge proof lets you convince someone that a statement is true without revealing anything else. You are the prover: you prove which colour your card is, without showing which card it is. You can also try to lie, to see that cheating does not work.',
       inspect:
-        'Before you draw a card, the verifier inspects the whole deck: four red cards and four black cards. Both of you agree on exactly which eight cards exist.',
+        'Before you draw a card, the verifier inspects the whole deck: hearts 1 through 4 and spades 1 through 4 — four red and four black. Both of you agree on exactly which eight cards exist.',
       shuffling: 'The cards are shuffled and turned face down.',
       shuffled:
         'You are the prover. Draw a random card. The verifier will not be allowed to see it.',
@@ -392,8 +396,10 @@ export const messages = {
       black: 'black cards',
     },
     ranks: {
-      A: 'Ace',
-      K: 'King',
+      1: '1',
+      2: '2',
+      3: '3',
+      4: '4',
     },
     suits: {
       hearts: 'Hearts',
@@ -526,7 +532,8 @@ export const messages = {
     },
     personB: {
       intro: '“Ich muss von der Farbe deiner Karte überzeugt werden.”',
-      inspect: '“Vier rot, vier schwarz. Ich habe jede Karte in diesem Spiel gesehen.”',
+      inspect:
+        '“Herz 1 bis 4, Pik 1 bis 4. Ich habe jede Karte in diesem Spiel gesehen.”',
       shuffling: '“Ich kenne die Reihenfolge nicht mehr.”',
       shuffled:
         '“Dieselben acht Karten, jetzt verdeckt. Ich weiß nicht, welche wo liegt.”',
@@ -546,7 +553,7 @@ export const messages = {
       intro:
         'Mit einem Zero-Knowledge-Beweis überzeugst du jemanden, dass eine Aussage wahr ist, ohne sonst etwas zu verraten. Du bist der Beweisführer: Du beweist, welche Farbe deine Karte hat, ohne zu zeigen, welche Karte es ist. Du kannst auch versuchen zu lügen, um zu sehen, dass Betrug nicht funktioniert.',
       inspect:
-        'Bevor du eine Karte ziehst, prüft der Prüfer das ganze Spiel: vier rote und vier schwarze Karten. Ihr seid euch einig, welche acht Karten es gibt.',
+        'Bevor du eine Karte ziehst, prüft der Prüfer das ganze Spiel: Herz 1 bis 4 und Pik 1 bis 4 — vier rot, vier schwarz. Ihr seid euch einig, welche acht Karten es gibt.',
       shuffling: 'Die Karten werden gemischt und umgedreht.',
       shuffled:
         'Du bist der Beweisführer. Ziehe eine zufällige Karte. Der Prüfer darf sie nicht sehen.',
@@ -594,8 +601,10 @@ export const messages = {
       black: 'schwarze Karten',
     },
     ranks: {
-      A: 'Ass',
-      K: 'König',
+      1: '1',
+      2: '2',
+      3: '3',
+      4: '4',
     },
     suits: {
       hearts: 'Herz',
@@ -673,7 +682,7 @@ export const messages = {
       rolesVerifier: '« Et pourtant je veux savoir si la carte est rouge ou non ! »',
       cardsTitle: 'D’abord, avec des cartes à jouer',
       cards:
-        'Comment prouver quelque chose sans le montrer ? Nous nous y exerçons avec huit cartes à jouer : vous prouvez la couleur de votre carte, sans montrer quelle carte c’est. (Cela pourrait aussi se faire avec un jeu de cartes complet).',
+        'Comment prouver quelque chose sans le montrer ? Nous nous y exerçons avec huit cartes à jouer: vous prouvez la couleur de votre carte, sans montrer quelle carte c’est. (Cela pourrait aussi se faire avec un jeu de cartes complet).',
     },
     stepsLabel: 'Étapes de la démonstration',
     steps: {
@@ -728,7 +737,8 @@ export const messages = {
     },
     personB: {
       intro: '« Je dois être convaincu de la couleur de votre carte. »',
-      inspect: '« Quatre rouges, quatre noires. J’ai vu chaque carte de ce jeu. »',
+      inspect:
+        '« Cœur 1 à 4, pique 1 à 4. J’ai vu chaque carte de ce jeu. »',
       shuffling: '« Je ne connais plus l’ordre. »',
       shuffled:
         '« Les mêmes huit cartes, maintenant face cachée. Je ne sais pas laquelle est laquelle. »',
@@ -748,7 +758,7 @@ export const messages = {
       intro:
         'Une preuve à divulgation nulle de connaissance permet de convaincre quelqu’un qu’une affirmation est vraie sans rien révéler d’autre. Vous êtes le prouveur : vous prouvez la couleur de votre carte, sans montrer quelle carte c’est. Vous pouvez aussi essayer de mentir, pour voir que la triche ne marche pas.',
       inspect:
-        'Avant de tirer une carte, le vérificateur inspecte tout le jeu : quatre cartes rouges et quatre noires. Vous êtes d’accord sur les huit cartes présentes.',
+        'Avant de tirer une carte, le vérificateur inspecte tout le jeu : cœur 1 à 4 et pique 1 à 4 — quatre rouges et quatre noires. Vous êtes d’accord sur les huit cartes présentes.',
       shuffling: 'Les cartes sont mélangées et retournées face cachée.',
       shuffled:
         'Vous êtes le prouveur. Tirez une carte au hasard. Le vérificateur ne pourra pas la voir.',
@@ -796,8 +806,10 @@ export const messages = {
       black: 'cartes noires',
     },
     ranks: {
-      A: 'As',
-      K: 'Roi',
+      1: '1',
+      2: '2',
+      3: '3',
+      4: '4',
     },
     suits: {
       hearts: 'cœur',
